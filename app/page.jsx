@@ -1,7 +1,11 @@
+import Hero from '@/components/hero.jsx';
+import Navbar from '@/components/navbar.jsx';
+
 export default function Home() {
   return (
-    <main>
-      <h2 className='m-8 p-4 text-2xl font-bold'>CESA Website</h2>
+    <main className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
+      <Navbar />
+      <Hero />
     </main>
   );
 }
