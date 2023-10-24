@@ -7,7 +7,7 @@ const font = Poppins({
 });
 
 export const metadata = {
-  title: 'CESA Website',
+  title: 'CESA',
   description:
     'Official website of Computer Engineering Student Association, BVCOENM',
 };
