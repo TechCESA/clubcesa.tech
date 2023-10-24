@@ -35,10 +35,10 @@ export default function NabBar() {
         />
       </Link>
 
-      <div className='hidden flex-row items-center gap-8 font-bold text-gray-500 sm:flex'>
+      <div className='hidden flex-row items-center gap-8 font-bold text-stone-500 sm:flex'>
         {navText.map((el, i) => {
           return (
-            <Link key={i} href={'/'} className='p-2 hover:text-black'>
+            <Link key={i} href={'/'} className='p-2 hover:text-white'>
               <h3>{el}</h3>
             </Link>
           );
@@ -47,7 +47,7 @@ export default function NabBar() {
 
       <div className='sm:hidden'>
         <button
-          className='block text-gray-800 focus:outline-none'
+          className='block text-white focus:outline-none'
           onClick={toggleMenu}
         >
           <svg
@@ -68,13 +68,13 @@ export default function NabBar() {
         </button>
 
         {isOpen && (
-          <div className='fixed right-0 top-0 mt-4 min-h-full w-56 bg-white shadow-lg'>
+          <div className='fixed right-0 top-0 z-10 min-h-full w-56 bg-stone-900 pt-4 shadow-lg'>
             <ul className='font-semibold'>
               {navText.map((el, i) => {
                 return (
                   <li
                     key={i}
-                    className='cursor-pointer px-4 py-2 hover:bg-gray-100'
+                    className='cursor-pointer px-4 py-2 hover:bg-stone-950'
                   >
                     <h3>{el}</h3>
                   </li>

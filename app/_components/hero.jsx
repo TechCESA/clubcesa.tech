@@ -91,7 +91,10 @@ export default function Hero() {
 
       <h3 className='font-bold sm:text-2xl'>
         Community <span id='text'></span>
-        <span id='cursor'>|</span> Students
+        <span id='cursor' className='font-normal'>
+          |
+        </span>{' '}
+        Students
       </h3>
     </div>
   );
