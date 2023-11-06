@@ -49,10 +49,16 @@ Store reusable components in the "components" directory. Create subdirectories f
 // Example :-
 
 app/
-  pages/
    - index.js
-   - about.js
-   - products/[id].js
+   - layout.js
+   - global.css
+   - about/
+      - index.js
+      - layout.js
+   - product/
+      - [id].js
+      - index.js
+      - layout.js
    - ...
 
 // Outside app folder
