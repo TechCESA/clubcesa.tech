@@ -7,11 +7,11 @@ This README provides guidelines for organizing your Next.js project, including f
 
 # Folder and File Naming Conventions
 
-#### 1. Pages Directory
+#### 1. App Directory
 
-In the Next.js "pages" directory, follow these conventions:
+In the Next.js "App" directory, follow these conventions:
 
-- Each file in the "pages" directory represents a route or page.
+- Each file in the "App" directory represents a route or page.
 - The file name corresponds to the route's path. For example, "about.js" creates a route for "/about".
 
 #### 2. Dynamic Routes
