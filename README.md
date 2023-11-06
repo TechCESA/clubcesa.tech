@@ -5,38 +5,42 @@ This README provides guidelines for organizing your Next.js project, including f
 
 
 
-## Folder and File Naming Conventions
+# Folder and File Naming Conventions
 
-### 1. Pages Directory
+#### 1. Pages Directory
 
 In the Next.js "pages" directory, follow these conventions:
 
 - Each file in the "pages" directory represents a route or page.
 - The file name corresponds to the route's path. For example, "about.js" creates a route for "/about".
 
-### 2. Dynamic Routes
+#### 2. Dynamic Routes
 
 To create dynamic routes, use brackets in the file name. For example, "pages/products/[id].js" will match routes like "/products/1" and "/products/2".
 
-### 3. Optional Catch-All Routes
+#### 3. Optional Catch-All Routes
 
 Use brackets with three dots in the file name to create optional catch-all routes. For example, "pages/products/..." can match various subpaths like "/products/1/2/3".
 
-### 4. Custom Route Names
+#### 4. Custom Route Names
 
 You can set custom route names using the "as" key in "getServerSideProps" or "getStaticProps" functions if you want to define the route's name independently of the file structure.
 This will change the URL displayed in the browser, while preserving the actual route structure.
 
-### 5. Nested Routes
+#### 5. Nested Routes
 
 Organize your files and directories to create nested routes. For example, "pages/blog/index.js" creates a route for "/blog", and "pages/blog/post.js" creates a nested route for "/blog/post".
 
 
 
 
-## Organizing Code
+# Organizing Code
 
-### 1. Components
+
+### **_We Will Be Using Feature-Based Folder Architecture_**
+
+
+#### 1. Components
 
 Store reusable components in the "components" directory. Create subdirectories for each feature or component, following this pattern:
 
@@ -49,35 +53,44 @@ Store reusable components in the "components" directory. Create subdirectories f
 // Example :-
 
 app/
-   - page.js
-   - layout.js
+   - page.jsx
+   - layout.jsx
    - global.css
+   // specific routes only
    - about/
-      - page.js
-      - layout.js
+      - page.jsx
+      - layout.jsx
    - product/
-      - [id].js
-      - page.js
-      - layout.js
+      - [id].jsx
+      - page.jsx
+      - layout.jsx
    - ...
 
 // Outside app folder
-components/
- - Footer/
-   - Footer.js
-   - FooterModel.js
-   - FooterService.js
- - Header/
-   - Header.js
-   - HeaderModel.js
-   - HeaderService.js
+modules/
+ - pages/
+    - Footer/
+      - Footer.jsx           // should contain main view of components only
+      - FooterModel.jsx      // logic regarding api and other
+      - FooterService.jsx    // Actual functions should be defined and implemented here only
+    - Home/
+      - Home.jsx
+      - HomeModel.jsx
+      - HomeService.jsx
+ - components/
+// contains only reusable components
+    - button.jsx
+    - gallery_cards.jsx
+ - utils/
+    - theme_color.jsx
+    - theme_font.jsx
  - ... 
 
 ```
 
 
 
-### 2. Git Naming conventions
+#### 2. Git Naming conventions
 
 
 1. **issue Branch:**
