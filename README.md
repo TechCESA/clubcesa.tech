@@ -43,21 +43,21 @@ Store reusable components in the "components" directory. Create subdirectories f
 - **Feature Name**
   - **FeatureName.js**: The main React component for the feature.
   - **FeatureNameModel.js**: View models or data-fetching functions specific to the feature.
-  - **FeatureNameService.js**: Service or utility functions for the feature.
+  - **FeatureNameService.js**: Third party services or utility functions for the feature.
 
 ```js
 // Example :-
 
 app/
-   - index.js
+   - page.js
    - layout.js
    - global.css
    - about/
-      - index.js
+      - page.js
       - layout.js
    - product/
       - [id].js
-      - index.js
+      - page.js
       - layout.js
    - ...
 
