@@ -13,7 +13,10 @@ export default function NabBar() {
   };
 
   return (
-    <nav className='mt-4 flex flex-row items-center justify-between'>
+    <nav
+      id='navbar'
+      className='sticky z-20 mt-4 flex flex-row items-center justify-between opacity-0'
+    >
       <Link href={'/'} className='sm:hidden'>
         <Image
           src='/cesa_logo.jpeg'
