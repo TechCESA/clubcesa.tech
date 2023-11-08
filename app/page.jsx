@@ -1,7 +1,7 @@
 'use client';
 
 import gsap from 'gsap';
-import Image from 'next/image.js';
+import Image from 'next/image';
 import { useEffect } from 'react';
 
 import Hero from '@/components/hero.jsx';
