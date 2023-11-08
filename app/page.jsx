@@ -11,7 +11,9 @@ import Cloud from '@/public/images/cloud.png';
 
 export default function Page() {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // To prevent automatic browser scroll on refresh
+    history.scrollRestoration = 'manual';
+
     const tl = gsap.timeline();
 
     tl.to('#cloud1', {
