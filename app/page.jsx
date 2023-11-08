@@ -50,6 +50,7 @@ export default function Page() {
           className='absolute -left-96 top-16 z-10 w-full rotate-180'
           priority={true}
           id='cloud1'
+          draggable={false}
         />
         <Image
           src={Cloud}
@@ -57,6 +58,7 @@ export default function Page() {
           className='absolute -right-96 top-16 z-10 w-full rotate-0'
           priority={true}
           id='cloud2'
+          draggable={false}
         />
         <main className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
           <Navbar />
