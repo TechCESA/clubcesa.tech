@@ -82,7 +82,7 @@ export default function Hero() {
   });
 
   return (
-    <div className='-mt-10 flex min-h-screen flex-col items-center justify-center'>
+    <div className='flex min-h-screen flex-col items-center justify-center pb-40'>
       <h1
         className='text-8xl font-black leading-none tracking-wider sm:text-[12rem]'
         ref={headingRef}

@@ -38,7 +38,7 @@ export default function NabBar() {
         />
       </Link>
 
-      <div className='hidden flex-row items-center gap-8 font-bold text-stone-500 sm:flex'>
+      <div className='hidden flex-row items-center gap-8 font-bold text-stone-400 sm:flex'>
         {navText.map((el, i) => {
           return (
             <Link key={i} href={'/'} className='p-2 hover:text-white'>

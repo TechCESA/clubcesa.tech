@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import About from '@/components/about.jsx';
-import Cloud from '@/public/images/cloud.png';
+import Cloud from '@/public/images/wcloud.png';
 
 export default function Page() {
   useEffect(() => {
@@ -17,14 +17,14 @@ export default function Page() {
     const tl = gsap.timeline();
 
     tl.to('#cloud1', {
-      x: -1200,
-      scale: 2,
+      x: -1500,
+      scale: 2.5,
       duration: 3,
     }).to(
       '#cloud2',
       {
-        x: 1200,
-        scale: 2,
+        x: 1500,
+        scale: 2.5,
         duration: 3,
       },
       '-=3'
@@ -45,19 +45,19 @@ export default function Page() {
 
   return (
     <>
-      <div className='relative min-h-screen overflow-hidden bg-[url("/images/Earth-Horizon-croped.jpg")] bg-cover bg-fixed bg-no-repeat'>
+      <div className='relative min-h-screen overflow-hidden bg-[url("/crowd/background-cropped.png")] bg-cover bg-fixed bg-no-repeat'>
         <Image
           src={Cloud}
-          alt='Cloud1 image'
-          className='absolute -left-96 top-16 z-10 w-full rotate-180'
+          alt='Cloud image'
+          className='absolute -left-[30%] top-0 z-10 w-full rotate-0 scale-150'
           priority={true}
           id='cloud1'
           draggable={false}
         />
         <Image
           src={Cloud}
-          alt='Cloud2 image'
-          className='absolute -right-96 top-16 z-10 w-full rotate-0'
+          alt='Cloud image'
+          className='absolute -right-[30%] top-0 z-10 w-full rotate-180 scale-150'
           priority={true}
           id='cloud2'
           draggable={false}
