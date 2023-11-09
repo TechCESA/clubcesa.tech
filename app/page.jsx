@@ -46,6 +46,7 @@ export default function Page() {
           start: 'top 35%',
           end: 'bottom 35%',
           scrub: true,
+          // markers: true,
         },
         y: 150,
         duration: 5,
@@ -70,6 +71,8 @@ export default function Page() {
       t2.kill();
       clearTimeout(navTimeout);
       clearTimeout(overflowTimeout);
+
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
