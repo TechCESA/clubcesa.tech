@@ -4,6 +4,8 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 import { TextPlugin } from 'gsap/all';
 
+gsap.registerPlugin(TextPlugin); // Register the TextPlugin
+
 export default function Hero() {
   const HEADING = 'CESA';
   const QUOTEWORDS = ['For', 'Of', 'By'];
@@ -51,8 +53,6 @@ export default function Hero() {
 
   useEffect(() => {
     appearTitle(headingRef, 1);
-
-    gsap.registerPlugin(TextPlugin); // Register the TextPlugin
 
     const textTl = gsap.timeline({ repeat: -1 });
 
