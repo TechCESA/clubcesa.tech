@@ -14,8 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className='select-none'>
-      <body className={font.className}>{children}</body>
+    <html lang='en' className='select-none scroll-smooth'>
+      <body className={`${font.className} overflow-hidden`}>{children}</body>
     </html>
   );
 }
