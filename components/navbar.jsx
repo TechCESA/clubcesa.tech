@@ -13,7 +13,10 @@ export default function NabBar() {
   };
 
   return (
-    <nav className='mt-4 flex flex-row items-center justify-between'>
+    <nav
+      id='navbar'
+      className='sticky z-20 mt-4 flex flex-row items-center justify-between opacity-0'
+    >
       <Link href={'/'} className='sm:hidden'>
         <Image
           src='/cesa_logo.jpeg'
@@ -35,10 +38,11 @@ export default function NabBar() {
         />
       </Link>
 
-      <div className='hidden flex-row items-center gap-8 font-bold text-stone-500 sm:flex'>
+      <div className='hidden flex-row items-center gap-8 font-bold text-stone-400 sm:flex'>
         {navText.map((el, i) => {
+          const href = el.toLowerCase();
           return (
-            <Link key={i} href={'/'} className='p-2 hover:text-white'>
+            <Link key={i} href={`#${href}`} className='p-2 hover:text-white'>
               <h3>{el}</h3>
             </Link>
           );
