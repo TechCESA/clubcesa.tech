@@ -10,6 +10,8 @@ import Navbar from '@/components/navbar.jsx';
 import About from '@/components/about.jsx';
 import Cloud from '@/public/images/wcloud.png';
 import Crowd from '@/public/images/crowd.png';
+import Events from '@/components/events';
+import Footer from '@/components/footer';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
 
@@ -113,9 +115,8 @@ export default function Page() {
       </div>
       <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
         <About />
-        {/* 
-          // add your code here
-          */}
+        <Events />
+        <Footer />
       </div>
     </>
   );

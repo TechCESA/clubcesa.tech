@@ -40,8 +40,9 @@ export default function NabBar() {
 
       <div className='hidden flex-row items-center gap-8 font-bold text-stone-400 sm:flex'>
         {navText.map((el, i) => {
+          const href = el.toLowerCase();
           return (
-            <Link key={i} href={'/'} className='p-2 hover:text-white'>
+            <Link key={i} href={`#${href}`} className='p-2 hover:text-white'>
               <h3>{el}</h3>
             </Link>
           );
