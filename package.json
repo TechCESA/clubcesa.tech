@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "eslint": "eslint .",
+    "eslint": "eslint --fix && eslint .",
     "lint-staged": "lint-staged && echo 'lint-staged success' || echo 'lint-staged failed'",
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "prepare": "husky install"
@@ -15,7 +15,6 @@
   "lint-staged": {
     "*.{js,jsx,html}": [
       "npm run format:fix",
-      "eslint --fix",
       "npm run eslint"
     ],
     "*.{css,json}": [
