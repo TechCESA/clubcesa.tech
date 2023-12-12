@@ -6,6 +6,7 @@ module.exports = {
     'type-enum': [
       2,
       'always',
+
       [
         'feat', // feature
         'fix', // bug

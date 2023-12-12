@@ -1,4 +1,8 @@
-# #!/usr/bin/env sh
-# . "$(dirname -- "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# npx --no -- commitlint --edit 
+echo ""
+echo -e "\033[1;33mRunning pre-commit tests..\033[0m"
+echo ""
+npx --no -- commitlint --edit 
+echo ""

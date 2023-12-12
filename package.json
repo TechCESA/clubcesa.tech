@@ -15,8 +15,7 @@
   "lint-staged": {
     "*.{js,jsx,html}": [
       "npm run format:fix",
-      "npm run eslint",
-      "npx --no -- commitlint --edit"
+      "npm run eslint"
     ],
     "*.{css,json}": [
       "prettier --write --ignore-path .gitignore ."
