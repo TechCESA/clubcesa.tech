@@ -74,7 +74,7 @@ export default function Page() {
         y: 150,
         duration: 5,
         zIndex: 0,
-        ease: 'slow(0.3, 0.3, false)',
+        ease: 'slow(1, 1, false)',
       }
     );
 
@@ -135,7 +135,7 @@ export default function Page() {
           className='absolute bottom-0 z-10 mb-12 w-full -scale-x-100 object-cover object-center'
         />
         <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-black blur-xl'></div>
-        <div className='absolute -left-12 -top-10 z-10 h-[200px] w-[120%] bg-black/80 blur-2xl'></div>
+        <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-black/80 blur-2xl'></div>
         <main className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
           <Navbar />
           <Hero />
