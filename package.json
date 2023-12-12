@@ -8,14 +8,15 @@
     "start": "next start",
     "lint": "next lint",
     "eslint": "eslint --fix && eslint .",
-    "lint-staged": "lint-staged && echo 'lint-staged success' || echo 'lint-staged failed'",
-    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "lint-staged": "lint-staged  -q -p false -v && ( echo  \"\\033[0;32m\" && echo 'Staged files checks passed & has no errors'  && echo  \"\\033[0m\") || (echo  \"\\033[0;31m\" && echo 'Staged files have above Errors' && echo  \"\\033[0m\")",
+    "format:fix": " echo  \"\\033[0;32m\" && echo 'Prettier formating files' && echo  \"\\033[0m\" &&  prettier --write --ignore-path .gitignore . && echo  \"\\033[0;32m\" && echo 'Prettier fixed all files' && echo  \"\\033[0m\"",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx,html}": [
       "npm run format:fix",
-      "npm run eslint"
+      "npm run eslint",
+      "npx --no -- commitlint --edit"
     ],
     "*.{css,json}": [
       "prettier --write --ignore-path .gitignore ."

@@ -13,7 +13,7 @@
     "no-unused-vars": "error",
     "no-undef": "error",
     "no-console": "warn",
-    "eqeqeq": "error",
+    "eqeqeq": ["error", "always"],
     "no-alert": "error",
     "arrow-parens": ["error", "always"],
     // Security

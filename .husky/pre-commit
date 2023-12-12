@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 
-npm run lint-staged --concurrent false
+npm run lint-staged 
