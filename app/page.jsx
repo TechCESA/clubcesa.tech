@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/all';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import About from '@/components/about.jsx';
-import Cloud from '@/public/images/wcloud.png';
+import Cloud from '@/public/images/wcloud-e.png';
 import Crowd from '@/public/images/crowd.png';
 import Events from '@/components/events';
 import Footer from '@/components/footer';
@@ -22,6 +22,7 @@ export default function Page() {
 
     const tl = gsap.timeline();
     const t2 = gsap.timeline();
+    const t3 = gsap.timeline();
 
     tl.to('#cloud1', {
       x: -1500,
@@ -57,6 +58,26 @@ export default function Page() {
       }
     );
 
+    t3.fromTo(
+      '#crowd-back',
+      {
+        y: -150,
+      },
+      {
+        scrollTrigger: {
+          trigger: '#background',
+          start: 'top 35%',
+          end: 'bottom 35%',
+          scrub: true,
+          // markers: true,
+        },
+        y: 150,
+        duration: 5,
+        zIndex: 0,
+        ease: 'slow(0.3, 0.3, false)',
+      }
+    );
+
     // Delay the display of the navbar for 2 seconds
     const navbar = document.getElementById('navbar');
     // gsap.set(navbar, { opacity: 0 }); // Set initial opacity to 0 (completely hidden)
@@ -71,6 +92,7 @@ export default function Page() {
     return () => {
       tl.kill();
       t2.kill();
+      t3.kill();
       clearTimeout(navTimeout);
       clearTimeout(overflowTimeout);
 
@@ -103,8 +125,14 @@ export default function Page() {
         <Image
           src={Crowd}
           alt='Crowd'
-          id='crowd'
-          className='absolute bottom-0 z-10 w-full object-cover object-center'
+          id='crowd-front'
+          className='absolute bottom-0 z-10 mt-28 w-full object-cover object-center'
+        />
+        <Image
+          src={Crowd}
+          alt='Crowd'
+          id='crowd-back'
+          className='absolute bottom-0 z-10 mb-12 w-full -scale-x-100 object-cover object-center'
         />
         <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-black blur-xl'></div>
         <div className='absolute -left-12 -top-10 z-10 h-[200px] w-[120%] bg-black/80 blur-2xl'></div>
