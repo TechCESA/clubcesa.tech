@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo ""
+echo -e "\033[1;33m📍 Running formatting & lint tests on staged files..\033[0m"
+echo ""
+
+if npm run pre-commit; then
+  echo ""
+  echo -e "\033[0;32m✅✅Staged files checks passed & have no errors...\033[0m"
+  echo ""
+  exit 0
+else
+  echo ""
+  echo -e "\033[0;31m😅😅Staged files have above errors..😅😅\033[0m"
+  echo ""
+  exit 1
+fi

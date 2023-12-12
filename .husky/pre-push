@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo ""
+echo -e "\033[1;33mRunning custom pre-push checks..\033[0m"
+echo ""
+
+if npm run pre-push; then
+  echo ""
+  echo -e "\033[0;32m✅✅ Pre-push checks passed... \033[0m"
+  echo ""
+  exit 0
+else
+  echo ""
+  echo -e "\033[0;31m🤔🤔 Pre-push checks failed...🤔🤔\033[0m"
+  echo ""
+  exit 1
+fi
