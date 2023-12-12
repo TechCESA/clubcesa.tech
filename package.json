@@ -7,8 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore ."
+    "eslint": "eslint . && echo 'No Errors' && echo '' && npm run format:fix && echo '' && cross-env FORCE_COLOR=1 echo 'Formatted Successfully!'  && echo ''",
+    "pre-commit": "npm run eslint ",
+    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write --ignore-path .gitignore .",
+      "eslint --fix",
+      "eslint"
+    ],
+    "*.{css,scss,json}": [
+      "prettier --write --ignore-path .gitignore ."
+    ]
   },
   "dependencies": {
     "gsap": "^3.12.2",
@@ -18,10 +30,14 @@
   },
   "devDependencies": {
     "autoprefixer": "^10",
-    "eslint": "^8",
+    "chalk": "^5.3.0",
+    "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-security": "^1.7.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "postcss": "^8",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
