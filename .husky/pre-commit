@@ -5,3 +5,4 @@ echo ""
 echo -e "\033[1;33mRunning formating & lint tests on staged files..\033[0m"
 echo ""
 npm run lint-staged
+
