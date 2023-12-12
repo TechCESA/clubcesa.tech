@@ -7,18 +7,18 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "eslint": "eslint . && echo 'No Errors' && echo '' && npm run format:fix && echo '' && cross-env FORCE_COLOR=1 echo 'Formatted Successfully!'  && echo ''",
-    "pre-commit": "npm run eslint ",
+    "eslint": "eslint .",
+    "lint-staged": "lint-staged && echo 'lint-staged success' || echo 'lint-staged failed'",
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write --ignore-path .gitignore .",
+    "*.{js,jsx,html}": [
+      "npm run format:fix",
       "eslint --fix",
-      "eslint"
+      "npm run eslint"
     ],
-    "*.{css,scss,json}": [
+    "*.{css,json}": [
       "prettier --write --ignore-path .gitignore ."
     ]
   },
