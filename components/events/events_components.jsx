@@ -3,7 +3,7 @@ export default function EventCard() {
   return (
     <div
       id='event_container'
-      className='relative h-fit w-[70vw] overflow-hidden rounded-xl  bg-white pb-4 lg:w-[35vw] xl:w-[20vw] '
+      className='-md:w-[20vw] relative h-fit w-[70vw] overflow-hidden  rounded-xl bg-white pb-4 lg:w-[35vw] xl:w-[20vw] '
     >
       <div
         id='event_date'
@@ -19,12 +19,12 @@ export default function EventCard() {
       >
         <h1 className='text-sm lg:text-xl '>?</h1>
       </div>
-      <div
+      {/* <div
         id='event_location'
         className='absolute right-2 top-[22vh] z-10 line-clamp-1 flex h-6 w-fit max-w-[7.5rem] items-center justify-center text-ellipsis rounded-md bg-white px-2 text-center text-purple-500 shadow-md shadow-purple-200/70 backdrop-blur-md hover:bg-purple-500/20 hover:text-white lg:right-4 lg:top-[23vh] lg:h-8 lg:max-h-8 lg:max-w-[12rem] xl:top-[21vh] xl:h-10 xl:max-h-10 xl:max-w-[14rem] '
       >
         <h1 className='text-sm font-semibold lg:text-lg  '>Computer Lab</h1>
-      </div>
+      </div> */}
       <Image
         src='/images/background.png'
         alt='events_image'
