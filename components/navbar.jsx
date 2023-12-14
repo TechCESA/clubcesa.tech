@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function NabBar() {
   const navText = ['Home', 'About', 'Events', 'Connect'];
@@ -12,14 +12,21 @@ export default function NabBar() {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+    // return () => {
+    //   document.body.style.overflow = 'auto';
+    // };
+  }, [isOpen]);
+
   return (
     <nav
       id='navbar'
       className='sticky z-20 mt-4 flex flex-row items-center justify-between opacity-0'
     >
-      <Link href={'/'} className='sm:hidden'>
+      <Link href={'/'} className='md:hidden'>
         <Image
-          src='/cesa_logo.jpeg'
+          src='/cesa_logo.png'
           alt='CESA'
           width={36}
           height={36}
@@ -27,9 +34,9 @@ export default function NabBar() {
           className='rounded-full'
         />
       </Link>
-      <Link href={'/'} className='hidden sm:block'>
+      <Link href={'/'} className='hidden md:block'>
         <Image
-          src='/cesa_logo.jpeg'
+          src='/cesa_logo.png'
           alt='CESA'
           width={54}
           height={54}
@@ -38,7 +45,7 @@ export default function NabBar() {
         />
       </Link>
 
-      <div className='hidden flex-row items-center gap-8 font-bold text-stone-400 sm:flex'>
+      <div className='hidden flex-row items-center gap-8 font-bold text-stone-400 md:flex'>
         {navText.map((el, i) => {
           const href = el.toLowerCase();
           return (
@@ -49,9 +56,9 @@ export default function NabBar() {
         })}
       </div>
 
-      <div className='sm:hidden'>
+      <div className='md:hidden'>
         <button
-          className='block text-white focus:outline-none'
+          className='relative z-50 block text-white focus:outline-none'
           onClick={toggleMenu}
         >
           <svg
@@ -78,7 +85,7 @@ export default function NabBar() {
                 return (
                   <li
                     key={i}
-                    className='cursor-pointer px-4 py-2 hover:bg-stone-950'
+                    className='my-4 cursor-pointer px-4 py-2 hover:bg-stone-950'
                   >
                     <h3>{el}</h3>
                   </li>

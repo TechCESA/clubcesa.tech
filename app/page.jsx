@@ -27,15 +27,15 @@ export default function Page() {
     tl.to('#cloud1', {
       x: -1500,
       scale: 2.5,
-      duration: 3,
+      duration: 4,
     }).to(
       '#cloud2',
       {
         x: 1500,
         scale: 2.5,
-        duration: 3,
+        duration: 4,
       },
-      '-=3'
+      '-=4'
     );
 
     t2.fromTo(
@@ -104,12 +104,12 @@ export default function Page() {
     <>
       <div
         id='background'
-        className='relative min-h-screen overflow-hidden bg-[url("/images/background.png")] bg-cover bg-fixed bg-no-repeat'
+        className='relative min-h-screen overflow-hidden bg-[url("/images/background.png")] bg-cover bg-fixed bg-center bg-no-repeat md:bg-top'
       >
         <Image
           src={Cloud}
           alt='Cloud image'
-          className='absolute -left-[30%] top-0 z-20 w-full rotate-0 scale-150'
+          className='absolute -left-[30%] top-0 z-20 w-full rotate-0 scale-[6] md:scale-150'
           priority={true}
           id='cloud1'
           draggable={false}
@@ -117,7 +117,7 @@ export default function Page() {
         <Image
           src={Cloud}
           alt='Cloud image'
-          className='absolute -right-[30%] top-0 z-20 w-full rotate-180 scale-150'
+          className='absolute -right-[30%] top-0 z-20 w-full rotate-180 scale-[6] md:scale-150'
           priority={true}
           id='cloud2'
           draggable={false}
@@ -126,13 +126,13 @@ export default function Page() {
           src={Crowd}
           alt='Crowd'
           id='crowd-front'
-          className='absolute bottom-0 z-10 mt-28 w-full object-cover object-center'
+          className='absolute bottom-0 z-10 mt-28 hidden w-full object-cover object-center md:block'
         />
         <Image
           src={Crowd}
           alt='Crowd'
           id='crowd-back'
-          className='absolute bottom-0 z-10 mb-12 w-full -scale-x-100 object-cover object-center'
+          className='absolute bottom-0 z-10 mb-12 hidden w-full -scale-x-100 object-cover object-center md:block'
         />
         <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-black blur-xl'></div>
         <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-black/80 blur-2xl'></div>
