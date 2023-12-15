@@ -144,8 +144,8 @@ export default function Page() {
       <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
         <About />
         <Events />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 }
