@@ -10,7 +10,7 @@ import Navbar from '@/components/navbar.jsx';
 import About from '@/components/about.jsx';
 import Cloud from '@/public/images/wcloud-e.png';
 import Crowd from '@/public/images/crowd.png';
-import Events from '@/components/events';
+import Events from '@/components/events/events';
 import Footer from '@/components/footer';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
