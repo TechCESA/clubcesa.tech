@@ -31,18 +31,15 @@ export default function Events() {
   ];
 
   return (
-    <>
+    <div id='events'>
       <h1 className='mb-12 text-center text-2xl font-semibold lg:text-5xl'>
         Events
       </h1>
-      <section
-        id='events'
-        className='max-w-screen flex min-h-screen flex-col items-center justify-center gap-y-20 lg:grid lg:grid-cols-3 lg:justify-items-center '
-      >
+      <section className='max-w-screen flex min-h-screen flex-col items-center justify-center gap-y-20 lg:grid lg:grid-cols-3 lg:justify-items-center'>
         {eventInformation.map((event, index) => {
           return <EventCard eventInformation={event} key={index} />;
         })}
       </section>
-    </>
+    </div>
   );
 }

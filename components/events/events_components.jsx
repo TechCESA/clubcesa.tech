@@ -41,10 +41,14 @@ export default function EventCard({ eventInformation }) {
         className='flex flex-col text-black lg:flex-row lg:justify-evenly lg:px-2 xl:justify-around'
       >
         <button className='mx-2 my-1 h-8 rounded-xl  bg-purple-600 text-center text-white hover:bg-gray-200 hover:text-black lg:h-10 lg:w-36 lg:text-xl xl:w-44 xl:text-lg'>
-          <Link href={eventInformation.registerLink}>Register</Link>
+          <Link href={eventInformation.registerLink} target='_blank'>
+            Register
+          </Link>
         </button>
         <button className='mx-2 my-1 h-8 rounded-xl border-2 border-purple-600 text-center hover:border-gray-200 lg:h-10 lg:w-36 lg:text-xl  xl:w-44 xl:text-lg'>
-          <Link href={eventInformation.knowMoreLink}>Know More</Link>
+          <Link href={eventInformation.knowMoreLink} target='_blank'>
+            Know More
+          </Link>
         </button>
       </div>
     </div>
