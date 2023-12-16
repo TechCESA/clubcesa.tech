@@ -1,50 +1,56 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 export default function EventCard({ eventInformation }) {
   return (
     <div
       id='event_container'
-      className='-md:w-[20vw] relative h-fit w-[70vw] overflow-hidden  rounded-xl bg-white pb-4 lg:w-[35vw] xl:w-[20vw] '
+      className='relative max-w-[90vw] overflow-hidden rounded-xl bg-white md:w-[35vw] lg:w-[20vw]'
     >
       <div
         id='event_date'
-        className='absolute left-2 top-2 z-10 h-14 w-14 rounded-md bg-gray-200/40 text-center font-semibold text-white backdrop-blur-xl hover:bg-purple-300/40 lg:left-4 lg:top-4 lg:h-16 lg:w-16'
+        className='absolute right-2 top-2 z-10 rounded-xl px-4 py-1 text-center font-semibold text-white backdrop-blur-md hover:bg-purple-800'
       >
-        <h1 className='text-2xl lg:text-3xl'>{eventInformation.date}</h1>
-        <h1 className='text-sm lg:text-base'>{eventInformation.month}</h1>
+        <h1 className='text-2xl'>{eventInformation.date}</h1>
+        <h1 className='text-sm'>{eventInformation.month}</h1>
       </div>
 
       <Image
         src={eventInformation.image}
         alt='events_image'
-        width={1000}
-        height={1000}
+        width={512}
+        height={512}
         loading='lazy'
-        quality={20}
+        quality={100}
         placeholder='blur'
         blurDataURL='/images/background.png'
-        className='  pointer-events-none object-cover object-center '
+        className='pointer-events-none h-full w-full object-cover object-center'
       />
-      <div id='event_details' className='p-2 text-black lg:mt-2 lg:p-4'>
-        <h1 className='text-xl font-bold hover:cursor-pointer lg:text-4xl xl:text-3xl'>
-          {eventInformation.title}
-        </h1>
-        <p className='mb-2 line-clamp-3 text-ellipsis text-xs font-normal capitalize lg:text-xl xl:text-lg'>
-          {eventInformation.time}{' '}
-        </p>
-        <p className='mt-3 line-clamp-3 text-ellipsis text-xs text-gray-500 lg:line-clamp-4 lg:text-lg xl:text-base '>
+      <div id='event_details' className='p-4 text-black'>
+        <h1 className='text-2xl font-bold'>{eventInformation.title}</h1>
+        <div className='flex flex-row items-center justify-between'>
+          <div className='flex flex-row items-center'>
+            <Image
+              src='/icons/location.webp'
+              alt='CESA'
+              width={12}
+              height={12}
+              loading='eager'
+              className='mr-1'
+            />
+            <p className='text-xs text-stone-500'>
+              {eventInformation.location}
+            </p>
+          </div>
+          <p className='text-xs text-stone-500'>{eventInformation.time}</p>
+        </div>
+        <p className='mt-3 line-clamp-4 text-sm'>
           {eventInformation.description}
         </p>
-      </div>
-      <div
-        id='event_btns'
-        className='flex flex-col text-black lg:flex-row lg:justify-evenly lg:px-2 xl:justify-around'
-      >
-        <button className='mx-2 my-1 h-8 rounded-xl  bg-purple-600 text-center text-white hover:bg-gray-200 hover:text-black lg:h-10 lg:w-36 lg:text-xl xl:w-44 xl:text-lg'>
-          <Link href={eventInformation.registerLink}>Register</Link>
-        </button>
-        <button className='mx-2 my-1 h-8 rounded-xl border-2 border-purple-600 text-center hover:border-gray-200 lg:h-10 lg:w-36 lg:text-xl  xl:w-44 xl:text-lg'>
-          <Link href={eventInformation.knowMoreLink}>Know More</Link>
+        <button className='mt-4 w-full rounded-xl bg-purple-600 p-2 text-center font-semibold text-white'>
+          <Link href={eventInformation.registerLink} target='_blank'>
+            Register
+          </Link>
         </button>
       </div>
     </div>
