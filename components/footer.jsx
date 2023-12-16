@@ -8,12 +8,12 @@ export default function Footer() {
         <div className='address mb-8 flex flex-col items-center text-center text-white md:block md:text-start'>
           <div className='flex flex-row items-center py-2 font-bold'>
             <Image
-              src='/icons/location.webp'
+              src='/icons/location.png'
               alt='CESA'
-              width={16}
-              height={16}
+              width={20}
+              height={20}
               loading='eager'
-              className='mr-2'
+              className='mr-1'
             />
             Address
           </div>
@@ -65,25 +65,25 @@ export default function Footer() {
           <div className='py-2 font-bold'>Contact Us</div>
           <div className='flex flex-row items-center'>
             <Image
-              src='/icons/phone.webp'
+              src='/icons/phone.png'
               alt='CESA'
               width={16}
               height={16}
               loading='eager'
-              className='mr-2'
+              className='mr-1'
             />
-            9372356911
+            +91 1234567890
           </div>
           <div className='flex flex-row items-center'>
             <Image
-              src='/icons/email.webp'
+              src='/icons/email.png'
               alt='CESA'
               width={16}
               height={16}
               loading='eager'
-              className='mr-2'
+              className='mr-1'
             />
-            techcesa@gmail.com
+            cesa.bvcoe@gmail.com
           </div>
         </div>
       </div>

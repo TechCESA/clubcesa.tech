@@ -12,6 +12,7 @@ import Cloud from '@/public/images/wcloud-e.png';
 import Crowd from '@/public/images/crowd.png';
 import Events from '@/components/events/events';
 import Footer from '@/components/footer';
+import Sponsors from '@/components/sponsors';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
 
@@ -142,6 +143,7 @@ export default function Page() {
         </main>
       </div>
       <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
+        <Sponsors />
         <Events />
         <About />
       </div>
