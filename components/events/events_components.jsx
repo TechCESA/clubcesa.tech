@@ -9,7 +9,7 @@ export default function EventCard({ eventInformation }) {
     >
       <div
         id='event_date'
-        className='absolute right-2 top-2 z-10 rounded-xl px-4 py-1 text-center font-semibold text-white backdrop-blur-md hover:bg-purple-800'
+        className='absolute right-2 top-2 z-10 rounded-xl from-[#001aff] to-[#ff005e] px-4 py-1 text-center font-semibold text-white backdrop-blur-md hover:bg-gradient-to-tr'
       >
         <h1 className='text-2xl'>{eventInformation.date}</h1>
         <h1 className='text-sm'>{eventInformation.month}</h1>
@@ -31,7 +31,7 @@ export default function EventCard({ eventInformation }) {
         <div className='flex flex-row items-center justify-between'>
           <div className='flex flex-row items-center'>
             <Image
-              src='/icons/location.webp'
+              src='/icons/location.png'
               alt='CESA'
               width={12}
               height={12}
@@ -47,11 +47,11 @@ export default function EventCard({ eventInformation }) {
         <p className='mt-3 line-clamp-4 text-sm'>
           {eventInformation.description}
         </p>
-        <button className='mt-4 w-full rounded-xl bg-purple-600 p-2 text-center font-semibold text-white'>
-          <Link href={eventInformation.registerLink} target='_blank'>
+        <Link href={eventInformation.registerLink} target='_blank'>
+          <button className='mt-4 w-full rounded-xl bg-gradient-to-tr from-[#001aff] to-[#ff005e] p-2 text-center font-semibold text-white transition-all duration-300 hover:bg-gradient-to-bl'>
             Register
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </div>
   );
