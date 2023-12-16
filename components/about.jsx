@@ -1,8 +1,8 @@
 export default function About() {
   return (
     <div id='about'>
-      <div className='sticky z-10 min-h-screen py-16'>
-        <h1 className='my-4 text-4xl font-black'>About</h1>
+      <div className='sticky z-10 min-h-screen py-4'>
+        <h1 className='my-12 text-4xl font-black'>About</h1>
         <p className='text-justify'>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium
           incidunt esse voluptatem laudantium velit nihil rem labore, mollitia

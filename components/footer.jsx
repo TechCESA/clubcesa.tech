@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className='bg-zinc-900 py-4' id='connect'>
+    <footer className='mt-8 bg-zinc-900 py-4' id='connect'>
       <div className='m-auto flex max-w-[90vw] flex-col items-center justify-between sm:max-w-[75vw] md:flex-row md:items-start'>
-        <div className='address mb-8 text-center text-white md:text-start'>
+        <div className='address mb-8 flex flex-col items-center text-center text-white md:block md:text-start'>
           <div className='flex flex-row items-center py-2 font-bold'>
             <Image
               src='/icons/location.webp'
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className='flex flex-col text-center text-white md:text-start'>
+        <div className='flex flex-col items-center text-center text-white md:items-start'>
           <div className='py-2 font-bold'>Contact Us</div>
           <div className='flex flex-row items-center'>
             <Image

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function NabBar() {
-  const navText = ['Home', 'About', 'Events', 'Connect'];
+  const navText = ['Home', 'Events', 'About', 'Connect'];
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
