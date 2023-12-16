@@ -126,13 +126,13 @@ export default function Page() {
           src={Crowd}
           alt='Crowd'
           id='crowd-front'
-          className='absolute bottom-0 z-10 mt-28 hidden w-full object-cover object-center md:block'
+          className='absolute bottom-0 z-10 mt-28 hidden w-full object-cover object-center md:block lg:scale-150'
         />
         <Image
           src={Crowd}
           alt='Crowd'
           id='crowd-back'
-          className='absolute bottom-0 z-10 mb-12 hidden w-full -scale-x-100 object-cover object-center md:block'
+          className='absolute bottom-0 z-10 mb-12 hidden w-full -scale-x-100 object-cover object-center md:block lg:scale-150'
         />
         <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-black blur-xl'></div>
         <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-black/80 blur-2xl'></div>
