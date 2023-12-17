@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className='select-none scroll-smooth antialiased'>
+    <html lang='en' className='scroll-smooth antialiased'>
       <body className={`${font.className} overflow-hidden`}>{children}</body>
     </html>
   );

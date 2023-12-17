@@ -15,15 +15,15 @@ export default function Footer() {
               loading='eager'
               className='mr-1'
             />
-            Address
+            {`Address`}
           </div>
           <div className='address w-60 text-sm'>
-            BVCOENM, Sector-7, CBD Belapur, Navi Mumbai, Maharashtra 400614
+            {`BVCOENM, Sector-7, CBD Belapur, Navi Mumbai, Maharashtra 400614`}
           </div>
         </div>
 
         <div className='follow mb-8 w-40 text-center text-white'>
-          <div className='py-2 font-bold'>Follow Us</div>
+          <div className='py-2 font-bold'>{`Follow Us`}</div>
           <div className='flex justify-around'>
             <Link href='https://www.instagram.com/cesa.bvcoe/' target='_blank'>
               <Image
@@ -36,33 +36,11 @@ export default function Footer() {
                 quality={100}
               />
             </Link>
-            {/* <Link href='https://www.linkedin.com/' target='_blank'>
-              <Image
-                src='/icons/linkedin.webp'
-                alt='CESA'
-                width={32}
-                height={32}
-                loading='eager'
-                className='h-10 w-10 rounded-full'
-                quality={100}
-              />
-            </Link>
-            <Link href='https://www.twitter.com/' target='_blank'>
-              <Image
-                src='/icons/twitter.webp'
-                alt='CESA'
-                width={32}
-                height={32}
-                loading='eager'
-                className='h-10 w-10 rounded-full'
-                quality={100}
-              />
-            </Link> */}
           </div>
         </div>
 
         <div className='flex flex-col items-center text-center text-white md:items-start'>
-          <div className='py-2 font-bold'>Contact Us</div>
+          <div className='py-2 font-bold'>{`Contact Us`}</div>
           <div className='flex flex-row items-center'>
             <Image
               src='/icons/phone.png'
@@ -72,7 +50,7 @@ export default function Footer() {
               loading='eager'
               className='mr-1'
             />
-            +91 1234567890
+            {`+91 8169840285`}
           </div>
           <div className='flex flex-row items-center'>
             <Image
@@ -83,7 +61,7 @@ export default function Footer() {
               loading='eager'
               className='mr-1'
             />
-            cesa.bvcoe@gmail.com
+            {`cesaofficial2023@gmail.com`}
           </div>
         </div>
       </div>
