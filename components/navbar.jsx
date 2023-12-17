@@ -79,16 +79,22 @@ export default function NabBar() {
         </button>
 
         {isOpen && (
-          <div className='fixed right-0 top-0 z-10 min-h-full w-56 bg-zinc-900 pt-4 shadow-lg'>
+          <div className='fixed right-0 top-0 z-10 min-h-full w-56 bg-zinc-900 pt-12 shadow-lg'>
             <ul className='font-semibold'>
               {navText.map((el, i) => {
                 return (
-                  <li
+                  <Link
+                    href={`#${el.toLowerCase()}`}
                     key={i}
-                    className='my-4 cursor-pointer px-4 py-2 hover:bg-zinc-950'
+                    onClick={toggleMenu}
                   >
-                    <h3>{el}</h3>
-                  </li>
+                    <li
+                      key={i}
+                      className='my-4 cursor-pointer px-4 py-2 hover:bg-zinc-950'
+                    >
+                      <h3>{el}</h3>
+                    </li>
+                  </Link>
                 );
               })}
             </ul>
