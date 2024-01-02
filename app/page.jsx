@@ -26,13 +26,13 @@ export default function Page() {
     const t3 = gsap.timeline();
 
     tl.to('#cloud1', {
-      x: -1500,
+      x: `-150%`,
       scale: 2.5,
       duration: 4,
     }).to(
       '#cloud2',
       {
-        x: 1500,
+        x: `150%`,
         scale: 2.5,
         duration: 4,
       },
