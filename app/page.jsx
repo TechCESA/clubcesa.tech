@@ -10,6 +10,7 @@ import Events from '@/components/events/events';
 import Footer from '@/components/footer';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
+import PastEvents from '@/components/past_events/past_events';
 import Sponsors from '@/components/sponsors';
 import Crowd from '@/public/images/crowd.png';
 import Cloud from '@/public/images/wcloud-e.png';
@@ -145,6 +146,7 @@ export default function Page() {
       <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
         <Sponsors />
         <Events />
+        <PastEvents />
         <About />
       </div>
       <Footer />
