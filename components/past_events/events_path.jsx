@@ -44,9 +44,6 @@ export default function EventPath() {
 
   return (
     <div className='relative' ref={ref}>
-      <div className='fixed top-0 bg-white'>
-        <h2 className='bg-white text-black'>{percentage}</h2>
-      </div>
       <div
         className={`circles absolute left-[50%] top-[24%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
       ></div>
