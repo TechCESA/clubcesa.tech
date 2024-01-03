@@ -86,7 +86,7 @@ export default function PastEvents() {
             <PastEventCard pastEvents={pastEventInformation[1]} />
           </div>
         </div>
-        <div className='flex flex-col pl-10 sm:hidden'>
+        <div className='flex flex-col pl-4 sm:hidden'>
           <div className='right-cards-2 my-5'>
             <PastEventCard pastEvents={pastEventInformation[0]} />
           </div>
