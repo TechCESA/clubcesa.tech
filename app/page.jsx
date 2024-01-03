@@ -1,18 +1,19 @@
 'use client';
 
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import { ScrollTrigger } from 'gsap/all';
 
-import Hero from '@/components/hero.jsx';
-import Navbar from '@/components/navbar.jsx';
 import About from '@/components/about.jsx';
-import Cloud from '@/public/images/wcloud-e.png';
-import Crowd from '@/public/images/crowd.png';
 import Events from '@/components/events/events';
 import Footer from '@/components/footer';
+import Hero from '@/components/hero.jsx';
+import Navbar from '@/components/navbar.jsx';
+import PastEvents from '@/components/past_events/past_events';
 import Sponsors from '@/components/sponsors';
+import Crowd from '@/public/images/crowd.png';
+import Cloud from '@/public/images/wcloud-e.png';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
 
@@ -145,6 +146,7 @@ export default function Page() {
       <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
         <Sponsors />
         <Events />
+        <PastEvents />
         <About />
       </div>
       <Footer />
