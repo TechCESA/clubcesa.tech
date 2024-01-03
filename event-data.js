@@ -45,7 +45,7 @@ export const pastEventInformation = [
 
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-    url: 'https://www.example.com',
+    url: '/event/techfest1',
   },
   {
     title: 'Techfest2',
@@ -54,6 +54,6 @@ export const pastEventInformation = [
 
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-    url: 'https://www.example.com',
+    url: '/event/techfest2',
   },
 ];

@@ -8,8 +8,9 @@ import PastEventCard from './past_events_components';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const points = [0.13, 0.5];
+
 export default function PastEvents() {
-  const points = [0.13, 0.5];
   useEffect(() => {
     let leftCards = gsap.utils.toArray('.left-cards');
     leftCards.forEach((card, index) => {
@@ -58,8 +59,8 @@ export default function PastEvents() {
         {
           scrollTrigger: {
             trigger: '#path',
-            start: `0% ${100 - points[index] * 100 * 2}%`,
-            end: `10% ${100 - points[index] * 100 * 2}%`,
+            start: `0% ${100 - points[index * 1] * 100 * 2}%`,
+            end: `10% ${100 - points[index * 1] * 100 * 2}%`,
             scrub: 1,
           },
           x: 0,
@@ -86,7 +87,7 @@ export default function PastEvents() {
             <PastEventCard pastEvents={pastEventInformation[1]} />
           </div>
         </div>
-        <div className='flex flex-col pl-10 sm:hidden'>
+        <div className='flex flex-col pl-4 sm:hidden'>
           <div className='right-cards-2 my-5'>
             <PastEventCard pastEvents={pastEventInformation[0]} />
           </div>

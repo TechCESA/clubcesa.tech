@@ -18,18 +18,19 @@ export default function Carousel() {
 
   return (
     <div className='overflow-hidden' ref={emblaRef}>
-      <div className='flex h-[70vh] touch-pan-y'>
+      <div className='flex h-full touch-pan-y md:h-[70vh]'>
         {slides.map((img) => (
           <div
-            className='mx-4 min-w-0 flex-shrink-0 flex-grow-0 basis-full'
+            className='min-w-0 flex-shrink-0 flex-grow-0 basis-full'
             key={Math.random().toString()}
           >
             <Image
               src={img}
-              alt='img'
-              height={1024}
-              width={1024}
-              className='block h-full w-full object-cover object-center'
+              alt={img}
+              height={512}
+              width={512}
+              quality={100}
+              className='m-auto block h-full w-[70%] object-cover object-center'
             />
           </div>
         ))}

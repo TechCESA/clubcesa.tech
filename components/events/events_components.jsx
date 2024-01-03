@@ -36,7 +36,6 @@ export default function EventCard({ eventInformation }) {
               alt='CESA'
               width={12}
               height={12}
-              loading='eager'
               className='mr-1'
             />
             <p className='text-xs text-stone-500'>
