@@ -13,15 +13,15 @@ const slides = [Picture_1, Picture_2, Picture_3, Picture_4, Picture_5];
 
 export default function Carousel() {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 5000, stopOnInteraction: false }),
+    Autoplay({ delay: 3000, stopOnInteraction: false }),
   ]);
 
   return (
-    <div className='embla overflow-hidden' ref={emblaRef}>
-      <div className='embla__container flex h-[70vh] touch-pan-y'>
+    <div className='overflow-hidden' ref={emblaRef}>
+      <div className='flex h-[70vh] touch-pan-y'>
         {slides.map((img) => (
           <div
-            className='embla__slide mx-4 min-w-0 flex-shrink-0 flex-grow-0 basis-full'
+            className='mx-4 min-w-0 flex-shrink-0 flex-grow-0 basis-full'
             key={Math.random().toString()}
           >
             <Image
@@ -29,7 +29,7 @@ export default function Carousel() {
               alt='img'
               height={1024}
               width={1024}
-              className='embla__slide__img block h-full w-full object-cover object-center'
+              className='block h-full w-full object-cover object-center'
             />
           </div>
         ))}

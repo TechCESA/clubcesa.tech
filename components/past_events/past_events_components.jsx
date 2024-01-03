@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import EventImage from '@/public/event/event.avif';
 import './style.css';
 
 export default function PastEventCard({ pastEvents }) {
@@ -8,7 +9,7 @@ export default function PastEventCard({ pastEvents }) {
       <Image
         className='overflow-hidden rounded-xl'
         alt='past event image'
-        src={pastEvents.image}
+        src={EventImage}
         layout='fill'
         objectFit='contain'
       />
