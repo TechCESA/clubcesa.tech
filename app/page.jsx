@@ -13,6 +13,7 @@ import Crowd from '@/public/images/crowd.png';
 import Events from '@/components/events/events';
 import Footer from '@/components/footer';
 import Sponsors from '@/components/sponsors';
+import Teams from '@/components/teams/teams';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
 
@@ -146,6 +147,7 @@ export default function Page() {
         <Sponsors />
         <Events />
         <About />
+        <Teams />
       </div>
       <Footer />
     </>
