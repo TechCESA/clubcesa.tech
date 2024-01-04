@@ -14,7 +14,6 @@ export default function Page({ params }) {
     event = productInformation[0];
   }
 
- 
   return (
     <>
       <Nav />
