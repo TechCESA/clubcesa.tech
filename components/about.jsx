@@ -1,45 +1,12 @@
-const backgroundImage = '/images/01.gif';
 export default function About() {
   return (
-    <>
-      <br></br>
-      <br></br>
-      <br></br>
-      <div
-        style={{
-          width: '100%',
-          height: '100vh',
-          position: 'relative',
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <h1 className='mt-12 text-4xl font-black'>About</h1>
-        <div
-          style={{
-            width: '90%', // Adjust width as needed
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)', // Center horizontally and vertically
-            background: 'rgba(0,0,0,0.3)',
-            borderRadius: 60,
-            padding: '20px',
-          }}
-        >
-          <p
-            className='about'
-            style={{
-              textAlign: 'justify',
-              color: 'white',
-              fontFamily: 'Inter',
-              fontSize: '80%',
-              fontWeight: '300',
-              textAlign: 'center',
-            }}
-          >
-            {`Welcome to the heart of innovation and collaboration at Bharati
+    <div className="relative mb-12 mt-28 h-screen w-full overflow-hidden bg-[url('/images/01.gif')] bg-cover bg-center">
+      <div className='absolute -left-8 -top-10 z-10 h-[80px] w-[110%] bg-[#121212] blur-lg'></div>
+      <div className='absolute -bottom-10 -left-8 z-10 h-[80px] w-[110%] bg-[#121212] blur-lg'></div>
+      <div className='m-auto flex h-full max-w-[90vw] flex-col items-start justify-center sm:max-w-[75vw]'>
+        <h1 className='pb-12 text-4xl font-black'>About</h1>
+        <p className='text-justify text-xl'>
+          {`Welcome to the heart of innovation and collaboration at Bharati
             Vidyapeeth College of Engineering! The Computer Engineering Student
             Association (CESA) is the dynamic hub where brilliant minds
             converge, ideas flourish, and friendships are forged. As the
@@ -52,22 +19,8 @@ export default function About() {
             welcomes you! Join us in shaping the future of computer engineering,
             where your ideas are the currency, and your potential knows no
             bounds. Lets code the future together!`}
-          </p>
-          <style jsx>{`
-            @media (min-width: 768px) {
-              div {
-                font-size: 1.6rem; // Larger font size for medium and large screens
-              }
-            }
-
-            @media (min-width: 992px) {
-              div {
-                font-size: 1.8rem; // Even larger font size for large screens
-              }
-            }
-          `}</style>
-        </div>
+        </p>
       </div>
-    </>
+    </div>
   );
 }

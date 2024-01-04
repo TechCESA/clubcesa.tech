@@ -147,7 +147,9 @@ export default function Page() {
         {/* <Sponsors /> */} {/* not ready yet */}
         {/* <Events /> */} {/* not ready yet */}
         <PastEvents />
-        <About />
+      </div>
+      <About />
+      <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
         <Teams />
       </div>
     </>

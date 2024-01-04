@@ -61,6 +61,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <h3 className='text-md my-1 text-center font-semibold text-stone-500'>{`Made with ❤️ by CESA Technical Team Only`}</h3>
     </footer>
   );
 }
