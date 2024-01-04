@@ -6,14 +6,14 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 
 import About from '@/components/about.jsx';
-import Events from '@/components/events/events';
+// import Events from '@/components/events/events';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import PastEvents from '@/components/past_events/past_events';
-import Sponsors from '@/components/sponsors';
+// import Sponsors from '@/components/sponsors';
 import Teams from '@/components/teams/teams';
 import Crowd from '@/public/images/crowd.png';
-import Cloud from '@/public/images/wcloud-e.png';
+import Cloud from '@/public/images/wcloud.png';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
 
@@ -144,8 +144,8 @@ export default function Page() {
         </main>
       </div>
       <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
-        <Sponsors />
-        <Events />
+        {/* <Sponsors /> */} {/* not ready yet */}
+        {/* <Events /> */} {/* not ready yet */}
         <PastEvents />
         <About />
         <Teams />

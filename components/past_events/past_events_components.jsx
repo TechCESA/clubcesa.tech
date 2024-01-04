@@ -8,7 +8,7 @@ export default function PastEventCard({ pastEvents }) {
       <Image
         className='overflow-hidden rounded-xl object-cover object-center'
         alt='past event image'
-        src={pastEvents.image}
+        src={pastEvents.home_image}
         width={260}
         height={280}
       />

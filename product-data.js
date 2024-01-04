@@ -10,19 +10,19 @@ export const productInformation = [
     ],
     images: [
       {
-        src: '/images/merch2.jpg',
+        src: '/merch/merch2.jpg',
         alt: 'Two each of gray, white, and black shirts laying flat.',
       },
       {
-        src: '/images/merch1.jpg',
+        src: '/merch/merch1.jpg',
         alt: 'Model wearing plain black basic tee.',
       },
       {
-        src: '/images/merch5.jpg',
+        src: '/merch/merch5.jpg',
         alt: 'Model wearing plain gray basic tee.',
       },
       {
-        src: '/images/merch4.jpg',
+        src: '/merch/merch4.jpg',
         alt: 'Model wearing plain white basic tee.',
       },
     ],

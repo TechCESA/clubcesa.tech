@@ -16,7 +16,6 @@ module.exports = {
       ],
     ],
     'body-max-line-length': [2, 'always', 80],
-    'subject-case': [2, 'always', 'sentence-case'],
   },
   helUrl: 'Contact CESA Technical Team, for more information.',
 };
