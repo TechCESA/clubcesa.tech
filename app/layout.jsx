@@ -1,5 +1,6 @@
 import { Poppins } from 'next/font/google';
 import './globals.css';
+import Footer from '@/components/footer';
 
 const font = Poppins({
   subsets: ['devanagari'],
@@ -15,7 +16,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className='scroll-smooth antialiased'>
-      <body className={`${font.className} overflow-hidden`}>{children}</body>
+      <body className={`${font.className}`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

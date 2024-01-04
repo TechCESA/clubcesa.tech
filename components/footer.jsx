@@ -3,26 +3,25 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className='mt-8 bg-zinc-900 py-4' id='connect'>
+    <footer className='mt-8 bg-[#1d1d1d] py-4' id='connect'>
       <div className='m-auto flex max-w-[90vw] flex-col items-center justify-between sm:max-w-[75vw] md:flex-row md:items-start'>
-        <div className='address mb-8 flex flex-col items-center text-center text-white md:block md:text-start'>
+        <div className='address mb-8 flex flex-col items-center text-center text-white md:mb-0 md:block md:text-start'>
           <div className='flex flex-row items-center py-2 font-bold'>
             <Image
               src='/icons/location.png'
               alt='CESA'
               width={20}
               height={20}
-              loading='eager'
               className='mr-1'
             />
             {`Address`}
           </div>
           <div className='address w-60 text-sm'>
-            {`BVCOENM, Sector-7, CBD Belapur, Navi Mumbai, Maharashtra 400614`}
+            {`Bharati Vidyapeeth College Of Engineering, Sector-7, CBD Belapur, Navi Mumbai, Maharashtra 400614`}
           </div>
         </div>
 
-        <div className='follow mb-8 w-40 text-center text-white'>
+        <div className='follow mb-8 w-40 text-center text-white md:mb-0'>
           <div className='py-2 font-bold'>{`Follow Us`}</div>
           <div className='flex justify-around'>
             <Link href='https://www.instagram.com/cesa.bvcoe/' target='_blank'>
@@ -31,7 +30,6 @@ export default function Footer() {
                 alt='CESA'
                 width={32}
                 height={32}
-                loading='eager'
                 className='h-10 w-10 rounded-full'
                 quality={100}
               />
@@ -47,7 +45,6 @@ export default function Footer() {
               alt='CESA'
               width={16}
               height={16}
-              loading='eager'
               className='mr-1'
             />
             {`+91 8169840285`}
@@ -58,7 +55,6 @@ export default function Footer() {
               alt='CESA'
               width={16}
               height={16}
-              loading='eager'
               className='mr-1'
             />
             {`cesaofficial2023@gmail.com`}

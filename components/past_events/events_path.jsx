@@ -1,4 +1,5 @@
 'use client';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useEffect, useRef, useState } from 'react';
@@ -10,7 +11,7 @@ export default function EventPath() {
   const [ref, percentage] = useScrollPercentage({});
   let pathRef = useRef(null);
   const [flag, setFlag] = useState(true);
-  const points = [0.08, 0.24, 0.41, 0.59, 0.76];
+  const points = [0.13, 0.5];
 
   useEffect(() => {
     if (flag) {
@@ -24,8 +25,8 @@ export default function EventPath() {
           {
             scrollTrigger: {
               trigger: '#path',
-              start: `0% ${100 - points[index] * 100 * 2}%`,
-              end: `10% ${100 - points[index] * 100 * 2}%`,
+              start: `0% ${100 - points[index * 1] * 100 * 2}%`,
+              end: `10% ${100 - points[index * 1] * 100 * 2}%`,
               scrub: 1,
             },
             scale: 1.2,
@@ -38,30 +39,21 @@ export default function EventPath() {
 
     var pathLength = pathRef.getTotalLength();
     pathRef.style.strokeDasharray = pathLength + ' ' + pathLength;
-    let drawOffset = pathLength * percentage * 1.2;
+    let drawOffset = pathLength * percentage * 0.8;
     pathRef.style.strokeDashoffset = pathLength - drawOffset;
   }, [percentage]);
 
   return (
     <div className='relative' ref={ref}>
       <div
-        className={`circles absolute left-[50%] top-[12%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
+        className={`circles absolute left-[50%] top-[24%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
       ></div>
       <div
-        className={`circles absolute left-[50%] top-[32%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
-      ></div>
-      <div
-        className={`circles absolute left-[50%] top-[52%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
-      ></div>
-      <div
-        className={`circles absolute left-[50%] top-[72%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
-      ></div>
-      <div
-        className={`circles absolute left-[50%] top-[92%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
+        className={`circles absolute left-[50%] top-[74%] h-5 w-5 translate-x-[-50%] translate-y-[-50%] rounded-full bg-white`}
       ></div>
       <svg
         ref={ref}
-        viewBox='0 0 8 1021'
+        viewBox='0 0 8 640'
         fill='none'
         height='100%'
         width={8}
@@ -72,7 +64,7 @@ export default function EventPath() {
           ref={(ele) => (pathRef = ele)}
           d='M4 0V621V1022.5'
           stroke='white'
-          stroke-width='6'
+          strokeWidth='15'
         />
       </svg>
     </div>

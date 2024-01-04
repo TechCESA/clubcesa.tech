@@ -4,36 +4,36 @@ import './style.css';
 
 export default function PastEventCard({ pastEvents }) {
   return (
-    <div className='relative inline-block h-[175px] w-[250px] rounded-xl border-2 border-white max-sm:h-[140px] max-sm:w-[200px]'>
+    <div className='relative inline-block h-[291.2px] w-[260px] rounded-xl'>
       <Image
-        className='overflow-hidden rounded-xl'
+        className='overflow-hidden rounded-xl object-cover object-center'
         alt='past event image'
         src={pastEvents.image}
-        layout='fill'
-        objectFit='contain'
+        width={260}
+        height={280}
       />
       <div
         id='caption'
         className='absolute left-0 top-0 flex h-full w-full flex-col justify-between overflow-hidden rounded-xl bg-[#15161850] px-3 py-3'
       >
-        <h2 id='title' className='text-[100%] font-semibold'>
+        <h2 id='title' className='text-2xl font-bold'>
           {pastEvents.title}
         </h2>
         <h2
           id='description'
-          className='text-ellipse h-[50px] overflow-hidden text-xs'
+          className='text-ellipse line-clamp-4 h-[100px] overflow-hidden text-center text-sm'
         >
           {pastEvents.description}
         </h2>
         <div id='footer' className='flex flex-row justify-between'>
-          <p className='text-[90%]'> {pastEvents.date}</p>
-          <Link href={pastEvents.url} target='_blank'>
+          <p className='text-lg'> {pastEvents.date}</p>
+          <Link href={pastEvents.url}>
             <Image
               className='img cursor-pointer'
               src='/icons/arrow.png'
               alt='Icon'
-              width={30}
-              height={30}
+              width={35}
+              height={35}
             />
           </Link>
         </div>
