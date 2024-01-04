@@ -1,10 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import { pastEventInformation } from '@/event-data';
 import { notFound } from 'next/navigation';
-import EventImage from '@/public/event/event.avif';
-import './globals.css';
 import Carousel from '@/components/teams/carousel';
 
 const findEvent = (slug) => {
@@ -21,41 +18,23 @@ export default function Page({ params }) {
   }
 
   return (
-    <div className='newbody z-0'>
-      <div className='eventpage animate-fade-in opacity-0'>
-        <div className='custom-gradient flex-wrap p-7 pt-10 md:flex-wrap md:pt-10 lg:flex lg:pt-24'>
-          <Image
+    <div className='m-auto max-w-[90vw] animate-fadeIn sm:max-w-[75vw]'>
+      <div className='py-8 text-white'>
+        {/* <Image
             src={EventImage}
             alt='detailed event image'
-            className='event-image animate-entry mx-auto h-48 rounded-2xl bg-black shadow-lg md:mx-auto md:flex md:h-44 lg:mx-0 lg:h-56'
+            className='animate-entry h-56 rounded-xl'
             width={512}
             height={512}
             quality={100}
-          />
-          <header className='text-white'>
-            <h1 className='eventname animate-fade-in pt-8 text-center text-xl font-bold md:pt-10 md:text-center md:text-5xl lg:pl-10 lg:pt-24 lg:text-7xl'>
-              {event.title}
-            </h1>
-          </header>
-        </div>
-        <div className='eventdetails mx-auto w-full px-4 py-8 shadow-lg'>
-          <section className='px-4 py-6'>
-            <p className='mb-4 text-justify text-white'>
-              <b>Date </b>: October 2023
-            </p>
-            <p className='mb-4 text-justify text-white'>
-              <b>Location </b>: Bharati vidyapeeth college of engineering Navi
-              Mumbai
-            </p>
-            <p className='mb-8 text-justify leading-relaxed text-white'>
-              <b>Description </b>: Smart India Hackathon is a nationwide
-              initiative to provide students with a platform to solve problems
-              and offer innovative solutions.
-            </p>
-          </section>
-        </div>
-        <Carousel />
+          /> */}
+        <h1 className='text-4xl font-black'>{event.title}</h1>
+        <p className='text-md font-semibold text-stone-500'>{event.date}</p>
+        <section className='pb-8 pt-4'>
+          <p>{event.description}</p>
+        </section>
       </div>
+      <Carousel />
     </div>
   );
 }

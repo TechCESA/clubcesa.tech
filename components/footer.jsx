@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className='mt-8 bg-zinc-900 py-4' id='connect'>
+    <footer className='mt-8 bg-[#1d1d1d] py-4' id='connect'>
       <div className='m-auto flex max-w-[90vw] flex-col items-center justify-between sm:max-w-[75vw] md:flex-row md:items-start'>
         <div className='address mb-8 flex flex-col items-center text-center text-white md:block md:text-start'>
           <div className='flex flex-row items-center py-2 font-bold'>
@@ -17,7 +17,7 @@ export default function Footer() {
             {`Address`}
           </div>
           <div className='address w-60 text-sm'>
-            {`BVCOENM, Sector-7, CBD Belapur, Navi Mumbai, Maharashtra 400614`}
+            {`Bharati Vidyapeeth College Of Engineering, Sector-7, CBD Belapur, Navi Mumbai, Maharashtra 400614`}
           </div>
         </div>
 
