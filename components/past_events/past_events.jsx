@@ -72,7 +72,7 @@ export default function PastEvents() {
   return (
     <div id='pastevents'>
       <h1 className='my-12 text-4xl font-black'>Past&nbsp;&nbsp;Events</h1>
-      <div className='mb-16 flex flex-row justify-center'>
+      <div className='mb-16 flex w-full flex-row justify-center overflow-hidden'>
         <div className='flex flex-col justify-between pr-[5%] max-sm:hidden'>
           <div className='left-cards my-5'>
             <PastEventCard pastEvents={pastEventInformation[0]} />
