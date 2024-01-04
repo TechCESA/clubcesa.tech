@@ -14,9 +14,9 @@ export default function Nav() {
             <Image
               className='h-8 w-auto'
               src='/cesa_logo.png'
+              width={36}
+              height={36}
               alt=''
-              width={128}
-              height={128}
             />
           </Link>
         </div>
@@ -24,23 +24,7 @@ export default function Nav() {
           <button
             type='button'
             className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
-          >
-            <span className='sr-only'>Open main menu</span>
-            <svg
-              className='h-6 w-6'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth='1.5'
-              stroke='currentColor'
-              aria-hidden='true'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-              />
-            </svg>
-          </button>
+          ></button>
         </div>
         <div className='hidden lg:flex lg:gap-x-12'>
           <div className='relative'>
@@ -49,9 +33,16 @@ export default function Nav() {
 
           {/* Other menu items */}
           {/* <a href="/product/Varsity" className="text-sm font-semibold leading-6 text-gray-900">Varsity</a> */}
+
           <Link
-            href='/product/sport-jersey'
-            className='text-xl font-semibold leading-6 text-gray-900'
+            href='/register/varsity'
+            className='text-sm font-semibold leading-6 text-gray-900'
+          >
+            Varsity
+          </Link>
+          <Link
+            href='/register/sport-jersey'
+            className='text-sm font-semibold leading-6 text-gray-900'
           >
             Jersey
           </Link>
@@ -62,6 +53,7 @@ export default function Nav() {
       </nav>
       {/* Mobile menu */}
       <div className='lg:hidden' role='dialog' aria-modal='true'>
+        <h1>Hello</h1>
         {/* ... Your mobile menu code ... */}
       </div>
     </header>
