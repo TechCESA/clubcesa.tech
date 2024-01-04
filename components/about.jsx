@@ -39,20 +39,19 @@ export default function About() {
               textAlign: 'center',
             }}
           >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Praesentium incidunt esse voluptatem laudantium velit nihil rem
-            labore, mollitia officiis! Distinctio, earum! Fuga, esse excepturi
-            cumque voluptatem non id deleniti voluptate eum amet, vel quaerat
-            expedita nisi adipisci! Consequatur, impedit facere maiores
-            architecto nemo doloribus, magni quo ducimus reiciendis autem
-            quaerat explicabo asperiores consectetur iste ratione perferendis
-            ipsa molestiae. Cumque, odit odio molestiae esse illo consequuntur
-            sit non, aspernatur perspiciatis quaerat necessitatibus sequi
-            sapiente laudantium dignissimos expedita mollitia quisquam modi
-            alias earum aliquam, placeat consequatur. Libero qui consectetur
-            odio non deserunt officia quam pariatur dignissimos quis quisquam.
-            Voluptatum nemo exercitationem, accusantium laudantium delectus
-            inventore eius
+            Welcome to the heart of innovation and collaboration at Bharati
+            Vidyapeeth College of Engineering! The Computer Engineering Student
+            Association (CESA) is the dynamic hub where brilliant minds
+            converge, ideas flourish, and friendships are forged. As the
+            torchbearer of creativity and excellence, CESA is more than just an
+            association—it is a family of tech enthusiasts, problem solvers, and
+            future leaders. At CESA, our mission is to cultivate a thriving
+            community of computer engineering students dedicated to pushing the
+            boundaries of technology. Whether you are a coding prodigy, a
+            hardware enthusiast, or just passionate about technology, CESA
+            welcomes you! Join us in shaping the future of computer engineering,
+            where your ideas are the currency, and your potential knows no
+            bounds. Lets code the future together!
           </p>
           <style jsx>{`
             @media (min-width: 768px) {
