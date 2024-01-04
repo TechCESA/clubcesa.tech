@@ -15,7 +15,7 @@ export default function Page({ params }) {
   }
 
   // const event = findEvent(params.slug)
-  console.log(params);
+  // console.log(params);
   // if (!event) {
   //   console.log("Not found")
   // }

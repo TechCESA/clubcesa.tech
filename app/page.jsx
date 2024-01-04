@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 
 import About from '@/components/about.jsx';
 import Events from '@/components/events/events';
-import Footer from '@/components/footer';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import PastEvents from '@/components/past_events/past_events';
@@ -137,8 +136,8 @@ export default function Page() {
           id='crowd-back'
           className='absolute bottom-0 z-10 mb-12 hidden w-full -scale-x-100 object-cover object-center min-[800px]:block'
         />
-        <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-black blur-xl'></div>
-        <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-black/80 blur-2xl'></div>
+        <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-[#121212] blur-xl'></div>
+        <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-[#121212]/80 blur-2xl'></div>
         <main className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
           <Navbar />
           <Hero />
@@ -151,7 +150,6 @@ export default function Page() {
         <About />
         <Teams />
       </div>
-      <Footer />
     </>
   );
 }

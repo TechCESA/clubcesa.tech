@@ -1,59 +1,16 @@
 'use client';
 
 import { gsap } from 'gsap';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { TextPlugin } from 'gsap/all';
+import '@/css/heading.scss';
 
 gsap.registerPlugin(TextPlugin); // Register the TextPlugin
 
 export default function Hero() {
-  const HEADING = 'CESA';
   const QUOTEWORDS = ['For', 'Of', 'By'];
 
-  const headingRef = useRef(null);
-
-  const randomChar = () =>
-    HEADING.charAt(Math.floor(Math.random() * HEADING.length));
-
-  function appearTitle(titlePart, delay) {
-    for (let i = 0; i < titlePart.current.children.length; i++) {
-      let char = titlePart.current.children[i].children[0];
-      let initState = char.innerHTML;
-
-      let inc = 0;
-      let dur = 0.8;
-      let startDate = 0;
-      let del = i * 0.5 + delay;
-
-      gsap.fromTo(
-        char,
-        {
-          opacity: 0,
-          // k: '-10%',
-        },
-        {
-          duration: dur,
-          delay: del,
-          opacity: 1,
-          ease: 'power3.Out',
-          x: 0,
-          onStart() {
-            startDate = Date.now();
-          },
-          onUpdate: () => {
-            if (inc % 3 === 0) char.innerHTML = randomChar();
-            inc++;
-            if (Date.now() - startDate >= (dur - 0.1) * 1000)
-              char.innerHTML = initState;
-          },
-        }
-      );
-    }
-  }
-
   useEffect(() => {
-    appearTitle(headingRef, 1);
-
     const textTl = gsap.timeline({ repeat: -1 });
 
     QUOTEWORDS.forEach((w) => {
@@ -86,18 +43,17 @@ export default function Hero() {
       id='cesa'
       className='z-0 flex min-h-screen flex-col items-center justify-center pb-64 md:pb-48'
     >
-      <h1
-        className='text-8xl font-black leading-none tracking-wider sm:text-[12rem]'
-        ref={headingRef}
-      >
-        {HEADING.split('').map((el, i) => {
-          return (
-            <span key={i}>
-              <span>{el}</span>
-            </span>
-          );
-        })}
-      </h1>
+      <div className='container text-center'>
+        <div
+          className='glitch text-center text-8xl font-black leading-none tracking-wider sm:text-[12rem]'
+          data-text='CESA'
+        >
+          CESA
+        </div>
+        <div className='glow text-center text-8xl font-black leading-none tracking-wider sm:text-[12rem]'>
+          CESA
+        </div>
+      </div>
 
       <h3 className='font-bold sm:text-2xl' id='quote'>
         Community <span id='text'></span>

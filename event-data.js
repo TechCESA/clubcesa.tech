@@ -44,7 +44,7 @@ export const pastEventInformation = [
     date: '09 Jan 2023',
 
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     url: '/event/techfest1',
   },
   {
@@ -53,7 +53,7 @@ export const pastEventInformation = [
     date: '10 Jan 2023',
 
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     url: '/event/techfest2',
   },
 ];
