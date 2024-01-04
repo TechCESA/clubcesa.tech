@@ -1,15 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import Picture_1 from '@/public/carousel/image-1.avif';
-import Picture_2 from '@/public/carousel/image-2.avif';
-import Picture_3 from '@/public/carousel/image-3.avif';
-import Picture_4 from '@/public/carousel/image-4.avif';
-import Picture_5 from '@/public/carousel/image-5.avif';
-
-const slides = [Picture_1, Picture_2, Picture_3, Picture_4, Picture_5];
+import Profile from '../profile';
+import { CESA_TEAM, creative_team } from '@/team_data';
 
 export default function Carousel() {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
@@ -19,21 +13,37 @@ export default function Carousel() {
   return (
     <div className='overflow-hidden' ref={emblaRef}>
       <div className='flex h-full touch-pan-y md:h-[70vh]'>
-        {slides.map((img) => (
+        {CESA_TEAM.map(({ team_name, lead, jt_lead }) => (
           <div
             className='min-w-0 flex-shrink-0 flex-grow-0 basis-full'
             key={Math.random().toString()}
           >
-            <Image
-              src={img}
-              alt={img}
-              height={512}
-              width={512}
-              quality={100}
-              className='m-auto block h-full w-[70%] object-cover object-center'
-            />
+            <div className='m-auto flex w-[80%] flex-col items-center gap-12 py-12'>
+              <h1 className='text-2xl font-bold'>
+                {team_name.replace(/[\s]/g, '\u00a0\u00a0')}
+              </h1>
+              <div className='flex w-full flex-col items-center justify-evenly gap-8 md:flex-row'>
+                <Profile {...lead} />
+                <Profile {...jt_lead} />
+              </div>
+            </div>
           </div>
         ))}
+        <div
+          className='min-w-0 flex-shrink-0 flex-grow-0 basis-full'
+          key={Math.random().toString()}
+        >
+          <div className='m-auto flex w-[80%] flex-col items-center gap-12 py-12'>
+            <h1 className='text-2xl font-bold'>
+              {creative_team.team_name.replace(/[\s]/g, '\u00a0\u00a0')}
+            </h1>
+            <div className='flex w-full flex-col items-center justify-evenly gap-8 md:flex-row'>
+              <Profile {...creative_team.jt_lead_1} />
+              <Profile {...creative_team.lead} />
+              <Profile {...creative_team.jt_lead_2} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

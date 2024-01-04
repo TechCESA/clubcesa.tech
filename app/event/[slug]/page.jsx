@@ -2,7 +2,7 @@
 
 import { pastEventInformation } from '@/event-data';
 import { notFound } from 'next/navigation';
-import Carousel from '@/components/teams/carousel';
+import Carousel from '@/components/past_events/carousel';
 
 const findEvent = (slug) => {
   return pastEventInformation.find(
