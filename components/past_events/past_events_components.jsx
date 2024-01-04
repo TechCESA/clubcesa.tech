@@ -4,12 +4,12 @@ import './style.css';
 
 export default function PastEventCard({ pastEvents }) {
   return (
-    <div className='relative inline-block h-[280px] w-[250px] rounded-xl'>
+    <div className='relative inline-block h-[291.2px] w-[260px] rounded-xl'>
       <Image
         className='overflow-hidden rounded-xl object-cover object-center'
         alt='past event image'
         src={pastEvents.image}
-        width={250}
+        width={260}
         height={280}
       />
       <div
@@ -21,7 +21,7 @@ export default function PastEventCard({ pastEvents }) {
         </h2>
         <h2
           id='description'
-          className='text-ellipse line-clamp-4 h-[100px] overflow-hidden text-sm'
+          className='text-ellipse line-clamp-4 h-[100px] overflow-hidden text-center text-sm'
         >
           {pastEvents.description}
         </h2>
