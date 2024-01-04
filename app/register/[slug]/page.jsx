@@ -14,11 +14,7 @@ export default function Page({ params }) {
     event = productInformation[0];
   }
 
-  // const event = findEvent(params.slug)
-  // console.log(params);
-  // if (!event) {
-  //   console.log("Not found")
-  // }
+ 
   return (
     <>
       <Nav />
