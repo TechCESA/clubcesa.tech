@@ -55,6 +55,8 @@ export default function Page({ merch_info }) {
               src={product.images[0].src}
               alt={product.images[0].alt}
               className='h-full w-full object-cover object-center'
+              width={1000}
+              height={1200}
             />
           </div>
           <div className='hidden lg:grid lg:grid-cols-1 lg:gap-y-8'>
@@ -63,6 +65,8 @@ export default function Page({ merch_info }) {
                 src={product.images[1].src}
                 alt={product.images[1].alt}
                 className='h-full w-full object-cover object-center'
+                width={1000}
+                height={1200}
               />
             </div>
             <div className='aspect-h-2 aspect-w-3 overflow-hidden rounded-lg'>
@@ -70,6 +74,8 @@ export default function Page({ merch_info }) {
                 src={product.images[2].src}
                 alt={product.images[2].alt}
                 className='h-full w-full object-cover object-center'
+                width={1000}
+                height={1200}
               />
             </div>
           </div>
@@ -78,6 +84,8 @@ export default function Page({ merch_info }) {
               src={product.images[3].src}
               alt={product.images[3].alt}
               className='h-full w-full object-cover object-center'
+              width={1000}
+              height={1200}
             />
           </div>
         </div>
@@ -106,14 +114,14 @@ export default function Page({ merch_info }) {
             <div className='flex items-center justify-between'>
               <h3 className='text-sm font-medium text-gray-900'>Size</h3>
               <a
-                href='/images/size_chart_Jersey.jpg'
+                href={product.size_chart}
                 className='text-sm font-medium text-indigo-600 hover:text-indigo-500'
               >
                 Size guide
               </a>
             </div>
 
-            <Link href='https://forms.gle/PoncM2q3GmYNBKFbA'>
+            <Link href={product.google_form}>
               <button
                 type='submit'
                 className='mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
