@@ -1,4 +1,5 @@
 'use client';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useEffect, useRef, useState } from 'react';
@@ -24,8 +25,8 @@ export default function EventPath() {
           {
             scrollTrigger: {
               trigger: '#path',
-              start: `0% ${100 - points[index] * 100 * 2}%`,
-              end: `10% ${100 - points[index] * 100 * 2}%`,
+              start: `0% ${100 - points[index * 1] * 100 * 2}%`,
+              end: `10% ${100 - points[index * 1] * 100 * 2}%`,
               scrub: 1,
             },
             scale: 1.2,

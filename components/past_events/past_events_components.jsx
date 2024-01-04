@@ -4,7 +4,7 @@ import './style.css';
 
 export default function PastEventCard({ pastEvents }) {
   return (
-    <div className='relative inline-block h-[291.2px] w-[260px] rounded-xl '>
+    <div className='relative inline-block h-[291.2px] w-[260px] rounded-xl'>
       <Image
         className='overflow-hidden rounded-xl object-cover object-center'
         alt='past event image'
@@ -27,7 +27,7 @@ export default function PastEventCard({ pastEvents }) {
         </h2>
         <div id='footer' className='flex flex-row justify-between'>
           <p className='text-lg'> {pastEvents.date}</p>
-          <Link href={pastEvents.url} target='_blank'>
+          <Link href={pastEvents.url}>
             <Image
               className='img cursor-pointer'
               src='/icons/arrow.png'

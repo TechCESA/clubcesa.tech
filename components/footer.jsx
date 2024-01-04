@@ -12,7 +12,6 @@ export default function Footer() {
               alt='CESA'
               width={20}
               height={20}
-              loading='eager'
               className='mr-1'
             />
             {`Address`}
@@ -31,7 +30,6 @@ export default function Footer() {
                 alt='CESA'
                 width={32}
                 height={32}
-                loading='eager'
                 className='h-10 w-10 rounded-full'
                 quality={100}
               />
@@ -47,7 +45,6 @@ export default function Footer() {
               alt='CESA'
               width={16}
               height={16}
-              loading='eager'
               className='mr-1'
             />
             {`+91 8169840285`}
@@ -58,7 +55,6 @@ export default function Footer() {
               alt='CESA'
               width={16}
               height={16}
-              loading='eager'
               className='mr-1'
             />
             {`cesaofficial2023@gmail.com`}

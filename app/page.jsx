@@ -12,6 +12,7 @@ import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import PastEvents from '@/components/past_events/past_events';
 import Sponsors from '@/components/sponsors';
+import Teams from '@/components/teams/teams';
 import Crowd from '@/public/images/crowd.png';
 import Cloud from '@/public/images/wcloud-e.png';
 
@@ -148,6 +149,7 @@ export default function Page() {
         <Events />
         <PastEvents />
         <About />
+        <Teams />
       </div>
       <Footer />
     </>

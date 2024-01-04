@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import EventImage from '@/public/event/event.avif';
 
 export default function EventCard({ eventInformation }) {
   return (
@@ -16,7 +17,7 @@ export default function EventCard({ eventInformation }) {
       </div>
 
       <Image
-        src={eventInformation.image}
+        src={EventImage}
         alt='events_image'
         width={512}
         height={512}
@@ -35,7 +36,6 @@ export default function EventCard({ eventInformation }) {
               alt='CESA'
               width={12}
               height={12}
-              loading='eager'
               className='mr-1'
             />
             <p className='text-xs text-stone-500'>
