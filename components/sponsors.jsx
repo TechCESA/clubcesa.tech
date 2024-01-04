@@ -4,7 +4,7 @@ export default function Sponsors() {
   return (
     <div>
       <p className='text-center text-4xl font-semibold'>Sponsors</p>
-      <div className='my-10 grid grid-cols-2 items-center justify-center  justify-items-center gap-4 md:grid-flow-col md:grid-cols-1 md:gap-10'>
+      <div className='my-10 grid grid-cols-2 items-center justify-center  justify-items-center gap-4 md:grid-flow-col  md:grid-cols-1  md:gap-10 lg:grid-cols-3 lg:grid-rows-2'>
         <div className='flex justify-center rounded-2xl border-2 border-white/30 bg-white/80 px-8 py-2'>
           <Image
             src={
