@@ -1,6 +1,5 @@
 import Product from '@/components/product/product';
 import Nav from '@/components/product/nav';
-import './global.css';
 import { productInformation } from '@/product-data';
 
 const findEvent = (slug) => {
@@ -20,10 +19,10 @@ export default function Page({ params }) {
   //   console.log("Not found")
   // }
   return (
-    <>
+    <div className='overflow-auto bg-white'>
       <Nav />
       {/* <Banner /> */}
       <Product merch_info={event} />
-    </>
+    </div>
   );
 }

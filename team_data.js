@@ -2,7 +2,7 @@ import profile_pic from '@/public/team/vwn4o.jpg';
 
 export const CESA_TEAM = [
   {
-    team_name: 'Core Team',
+    team_name: 'Management Team',
     lead: {
       name: 'Aakash Joshi',
       role: 'President',

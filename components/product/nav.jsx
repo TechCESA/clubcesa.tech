@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+
 export default function Nav() {
   return (
     <header>
@@ -7,10 +9,16 @@ export default function Nav() {
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
-          <a href='/' className='-m-1.5 p-1.5'>
+          <Link href='/' className='-m-1.5 p-1.5'>
             <span className='sr-only'>CESA</span>
-            <Image className='h-8 w-auto' src='/cesa_logo.png' alt='' />
-          </a>
+            <Image
+              className='h-8 w-auto'
+              src='/cesa_logo.png'
+              alt=''
+              width={128}
+              height={128}
+            />
+          </Link>
         </div>
         <div className='flex lg:hidden'>
           <button
@@ -41,12 +49,12 @@ export default function Nav() {
 
           {/* Other menu items */}
           {/* <a href="/product/Varsity" className="text-sm font-semibold leading-6 text-gray-900">Varsity</a> */}
-          <a
+          <Link
             href='/product/sport-jersey'
             className='text-xl font-semibold leading-6 text-gray-900'
           >
             Jersey
-          </a>
+          </Link>
         </div>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
           {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a> */}
