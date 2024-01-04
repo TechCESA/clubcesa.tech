@@ -15,7 +15,7 @@ export default function About() {
           backgroundPosition: 'center',
         }}
       >
-        <h1 class='mt-12 text-4xl font-black'>About</h1>
+        <h1 className='mt-12 text-4xl font-black'>About</h1>
         <div
           style={{
             width: '90%', // Adjust width as needed
@@ -29,7 +29,7 @@ export default function About() {
           }}
         >
           <p
-            class='about'
+            className='about'
             style={{
               textAlign: 'justify',
               color: 'white',
@@ -39,7 +39,7 @@ export default function About() {
               textAlign: 'center',
             }}
           >
-            Welcome to the heart of innovation and collaboration at Bharati
+            {`Welcome to the heart of innovation and collaboration at Bharati
             Vidyapeeth College of Engineering! The Computer Engineering Student
             Association (CESA) is the dynamic hub where brilliant minds
             converge, ideas flourish, and friendships are forged. As the
@@ -51,7 +51,7 @@ export default function About() {
             hardware enthusiast, or just passionate about technology, CESA
             welcomes you! Join us in shaping the future of computer engineering,
             where your ideas are the currency, and your potential knows no
-            bounds. Lets code the future together!
+            bounds. Lets code the future together!`}
           </p>
           <style jsx>{`
             @media (min-width: 768px) {

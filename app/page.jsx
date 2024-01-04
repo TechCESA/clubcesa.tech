@@ -13,7 +13,7 @@ import PastEvents from '@/components/past_events/past_events';
 // import Sponsors from '@/components/sponsors';
 import Teams from '@/components/teams/teams';
 import Crowd from '@/public/images/crowd.png';
-import Cloud from '@/public/images/wcloud-e.png';
+import Cloud from '@/public/images/wcloud.png';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
 

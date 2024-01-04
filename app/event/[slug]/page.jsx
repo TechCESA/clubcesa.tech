@@ -5,9 +5,7 @@ import { notFound } from 'next/navigation';
 import Carousel from '@/components/past_events/carousel';
 
 const findEvent = (slug) => {
-  return pastEventInformation.find(
-    (event) => event.title.toLowerCase() === slug
-  );
+  return pastEventInformation.find((event) => event.sku === slug);
 };
 
 export default function Page({ params }) {
@@ -34,7 +32,7 @@ export default function Page({ params }) {
           <p>{event.description}</p>
         </section>
       </div>
-      <Carousel />
+      <Carousel images={event.images} />
     </div>
   );
 }
