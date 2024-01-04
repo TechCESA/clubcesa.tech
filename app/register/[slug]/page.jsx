@@ -1,6 +1,6 @@
 import Product from '@/components/product/product';
 import Nav from '@/components/product/nav';
-import './global.css';
+import './local.css';
 import { productInformation } from '@/product-data';
 
 const findEvent = (slug) => {
