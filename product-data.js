@@ -10,19 +10,19 @@ export const productInformation = [
     ],
     images: [
       {
-        src: '/images/merch2.jpg',
+        src: '/merch/jersey/merch2.jpg',
         alt: 'Two each of gray, white, and black shirts laying flat.',
       },
       {
-        src: '/images/merch1.jpg',
+        src: '/merch/jersey/merch1.jpg',
         alt: 'Model wearing plain black basic tee.',
       },
       {
-        src: '/images/merch5.jpg',
+        src: '/merch/jersey/merch5.jpg',
         alt: 'Model wearing plain gray basic tee.',
       },
       {
-        src: '/images/merch4.jpg',
+        src: '/merch/jersey/merch4.jpg',
         alt: 'Model wearing plain white basic tee.',
       },
     ],
@@ -48,7 +48,7 @@ export const productInformation = [
       'Dyed with our proprietary colors',
       'breathable fabric',
     ],
-    size_chart: '/images/size_chart_Jersey.jpg',
+    size_chart: '/merch/jersey/size_chart_Jersey.jpg',
     google_form: 'https://forms.gle/PoncM2q3GmYNBKFbA',
     details:
       'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
@@ -64,19 +64,19 @@ export const productInformation = [
     ],
     images: [
       {
-        src: '/images/v3.jpg',
+        src: '/merch/varsity/v3.jpg',
         alt: 'Two each of gray, white, and black shirts laying flat.',
       },
       {
-        src: '/images/varsity1.jpg',
+        src: '/merch/varsity/varsity1.jpg',
         alt: 'Model wearing plain black basic tee.',
       },
       {
-        src: '/images/v2.jpg',
+        src: '/merch/varsity/v2.jpg',
         alt: 'Model wearing plain gray basic tee.',
       },
       {
-        src: '/images/v4.jpg',
+        src: '/merch/varsity/v4.jpg',
         alt: 'Model wearing plain white basic tee.',
       },
     ],
@@ -98,7 +98,7 @@ export const productInformation = [
     description:
       "Introducing our Varsity Edition Jackets – the epitome of style, comfort, and college spirit. Elevate your presence at campus events with our vibrant designs that seamlessly blend tradition and contemporary flair.Crafted with meticulous attention to detail, these varsity jackets are more than just a garment; they're a symbol of your academic journey and the camaraderie that defines college life. The striking design, featuring bold colors and dynamic graphics, proudly represents your college pride, making you stand out in the crowd.",
     highlights: ['BOLD design', '320 GSM PC Fleece', 'breathable fabric'],
-    size_chart: '/images/jacket-size.jpg',
+    size_chart: '/merch/varsity/jacket-size.jpg',
     google_form: 'https://forms.gle/draUaVxnEeJno5ma9',
     details:
       'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',

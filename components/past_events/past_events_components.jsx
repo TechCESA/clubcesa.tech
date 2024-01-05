@@ -4,13 +4,13 @@ import './style.css';
 
 export default function PastEventCard({ pastEvents }) {
   return (
-    <div className='relative inline-block h-[291.2px] w-[260px] rounded-xl'>
+    <div className='relative inline-block h-[280px] w-[300px] overflow-hidden rounded-xl max-lg:h-[260px] max-lg:w-[260px]'>
       <Image
         className='overflow-hidden rounded-xl object-cover object-center'
         alt='past event image'
-        src={pastEvents.image}
-        width={260}
-        height={280}
+        src={pastEvents.home_image}
+        width={400}
+        height={400}
       />
       <div
         id='caption'
