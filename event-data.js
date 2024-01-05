@@ -56,15 +56,6 @@ export const pastEventInformation = [
   {
     sku: 'farewell-2023',
     title: 'Farewell 2023',
-    images: [sih_pic_1, sih_pic_2, sih_pic_3, sih_pic_4, sih_pic_5, sih_pic_6],
-    home_image: home_farewell,
-    date: '20 Apr 2023',
-    description: `As the academic year draws to a close, celebrating the journey, achievements, and memories that our students have created during their time at Bharati Vidyapeeth College.`,
-    url: '/event/farewell-2023',
-  },
-  {
-    sku: 'sih-2023',
-    title: 'SIH 2023',
     images: [
       farewell_pic_1,
       farewell_pic_2,
@@ -73,6 +64,15 @@ export const pastEventInformation = [
       farewell_pic_5,
       farewell_pic_6,
     ],
+    home_image: home_farewell,
+    date: '20 Apr 2023',
+    description: `As the academic year draws to a close, celebrating the journey, achievements, and memories that our students have created during their time at Bharati Vidyapeeth College.`,
+    url: '/event/farewell-2023',
+  },
+  {
+    sku: 'sih-2023',
+    title: 'SIH 2023',
+    images: [sih_pic_1, sih_pic_2, sih_pic_3, sih_pic_4, sih_pic_5, sih_pic_6],
     home_image: home_sih,
     date: '26 Sep 2023',
     description: `Smart India Hackathon is an initiative by the Government of India aimed at promoting innovation and problem-solving among young minds. It is a platform for students to come together and work on real-world challenges faced by various industries. Participants collaborate in teams to develop innovative solutions, utilizing technology and creative thinking.`,
