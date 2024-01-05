@@ -1,11 +1,14 @@
 export default function About() {
   return (
-    <div className="relative mb-12 mt-28 h-screen w-full overflow-hidden bg-[url('/images/01.gif')] bg-cover bg-center">
+    <div
+      id='about'
+      className="relative mb-12 mt-28 h-screen w-full overflow-hidden bg-[url('/images/01.gif')] bg-cover bg-center"
+    >
       <div className='absolute -left-8 -top-10 z-10 h-[80px] w-[110%] bg-[#121212] blur-lg'></div>
       <div className='absolute -bottom-10 -left-8 z-10 h-[80px] w-[110%] bg-[#121212] blur-lg'></div>
       <div className='m-auto flex h-full max-w-[90vw] flex-col items-start justify-center sm:max-w-[75vw]'>
         <h1 className='pb-12 text-4xl font-black'>About</h1>
-        <p className='text-justify text-xl'>
+        <p className='text-justify text-xl font-semibold text-stone-300'>
           {`Welcome to the heart of innovation and collaboration at Bharati
             Vidyapeeth College of Engineering! The Computer Engineering Student
             Association (CESA) is the dynamic hub where brilliant minds

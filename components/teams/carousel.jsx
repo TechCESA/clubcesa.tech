@@ -29,18 +29,21 @@ export default function Carousel() {
             </div>
           </div>
         ))}
-        <div
-          className='min-w-0 flex-shrink-0 flex-grow-0 basis-full'
-          key={Math.random().toString()}
-        >
+        <div className='min-w-0 flex-shrink-0 flex-grow-0 basis-full'>
           <div className='m-auto flex w-[80%] flex-col items-center gap-12 py-12'>
-            <h1 className='text-2xl font-bold'>
-              {creative_team.team_name.replace(/[\s]/g, '\u00a0\u00a0')}
+            <h1 className='whitespace-normal text-2xl font-bold'>
+              {/* {creative_team.team_name.replace(/[\s]/g, '&npsp;')} */}
+              {creative_team.team_name}
             </h1>
-            <div className='flex w-full flex-col items-center justify-evenly gap-8 md:flex-row'>
+            <div className='hidden w-full flex-row items-center justify-evenly gap-8 md:flex'>
               <Profile {...creative_team.jt_lead_1} />
               <Profile {...creative_team.lead} />
               <Profile {...creative_team.jt_lead_2} />
+            </div>
+            <div className='flex w-full flex-col items-center justify-evenly gap-8 md:hidden'>
+              <Profile {...creative_team.lead} />
+              <Profile {...creative_team.jt_lead_2} />
+              <Profile {...creative_team.jt_lead_1} />
             </div>
           </div>
         </div>
