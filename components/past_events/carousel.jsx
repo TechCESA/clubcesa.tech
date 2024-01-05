@@ -23,7 +23,7 @@ export default function Carousel({ images }) {
               height={512}
               width={512}
               quality={100}
-              className='m-auto block h-full w-[70%] object-cover object-center'
+              className='m-auto block h-full w-[95%] object-cover object-center md:w-[70%]'
             />
           </div>
         ))}
