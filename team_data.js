@@ -1,4 +1,3 @@
-import profile_pic from '@/public/team/vwn4o.jpg';
 import president from '@/public/team/aakash_president.JPG';
 import vice_president from '@/public/team/sia_vp.jpg';
 import tech_lead from '@/public/team/pratik_tt_lead.jpg';
@@ -9,7 +8,7 @@ import pr_lead from '@/public/team/dewang_pr_lead.JPG';
 import jt_pr_lead from '@/public/team/mousin_pr_jt_lead.jpg';
 import cr_lead from '@/public/team/harsh_ct_lead.jpg';
 import jt_cr_lead_1 from '@/public/team/kasturi_ct_jt_lead.jpg';
-// import jt_cr_lead_2 from '@/public/team/nupur_ct_jt_lead.jpg';
+import jt_cr_lead_2 from '@/public/team/nupur_ct_jt_lead.jpg';
 import dt_lead from '@/public/team/siddhant_dt_lead.jpg';
 import jt_dt_lead from '@/public/team/shrusti_dt_jt_lead.jpg';
 import tr_lead_1 from '@/public/team/varun_tr_lead.jpg';
@@ -111,6 +110,6 @@ export const creative_team = {
   jt_lead_2: {
     name: 'Nupur Mirje',
     role: 'Jt. Creative Lead',
-    picture: profile_pic,
+    picture: jt_cr_lead_2,
   },
 };
