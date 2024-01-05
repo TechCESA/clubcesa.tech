@@ -117,12 +117,27 @@ export default function Page({ merch_info }) {
             {/* Sizes */}
             <div className='flex items-center justify-between'>
               <h3 className='text-sm font-medium text-gray-900'>Size</h3>
-              <Link
-                href='/images/size_chart_Jersey.jpg'
+              <button
+                popovertarget='size_chart'
                 className='text-sm font-medium text-indigo-600 hover:text-indigo-500'
               >
                 Size guide
-              </Link>
+              </button>
+            </div>
+
+            <div
+              id='size_chart'
+              popover='auto'
+              className='h-80 w-80 overflow-hidden rounded-lg border-2 border-gray-200 shadow-2xl shadow-black/30 md:h-[30rem] md:w-[30rem]'
+            >
+              <Image
+                src={product.size_chart}
+                alt=''
+                width={512}
+                height={512}
+                quality={100}
+                className='h-full w-full object-contain'
+              />
             </div>
 
             <Link href={product.google_form}>

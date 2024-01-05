@@ -9,7 +9,7 @@ import pr_lead from '@/public/team/dewang_pr_lead.JPG';
 import jt_pr_lead from '@/public/team/mousin_pr_jt_lead.jpg';
 import cr_lead from '@/public/team/harsh_ct_lead.jpg';
 import jt_cr_lead_1 from '@/public/team/kasturi_ct_jt_lead.jpg';
-// import jt_cr_lead_2 from '@/public/team/kasturi_ct_jt_lead.jpg';
+// import jt_cr_lead_2 from '@/public/team/nupur_ct_jt_lead.jpg';
 import dt_lead from '@/public/team/siddhant_dt_lead.jpg';
 import jt_dt_lead from '@/public/team/shrusti_dt_jt_lead.jpg';
 import tr_lead_1 from '@/public/team/varun_tr_lead.jpg';
@@ -43,9 +43,9 @@ export const CESA_TEAM = [
     },
   },
   {
-    team_name: 'Sponsorship and Marketing Team',
+    team_name: 'Marketing Team',
     lead: {
-      name: 'Yashvardhan',
+      name: 'Yashverdhan',
       role: 'Sponsorship Lead',
       picture: sp_lead,
     },
@@ -56,7 +56,7 @@ export const CESA_TEAM = [
     },
   },
   {
-    team_name: 'Public Representative Team',
+    team_name: 'Public Relations',
     lead: {
       name: 'Dewang Sawant',
       role: 'PR Lead',
@@ -86,12 +86,12 @@ export const CESA_TEAM = [
     lead: {
       name: 'Vipul Mane',
       role: 'Lead',
-      picture: tr_lead_1,
+      picture: tr_lead_2,
     },
     jt_lead: {
       name: 'Varun Pardeshi',
       role: 'Lead',
-      picture: tr_lead_2,
+      picture: tr_lead_1,
     },
   },
 ];
