@@ -1,13 +1,13 @@
 export const productInformation = [
   {
     sku: 'sport-jersey',
-    link: '/register/sport-jersey',
+    link: '/merch/sport-jersey',
     name: 'Sport Jersey',
     price: '₹ 300',
     href: '#',
     breadcrumbs: [
-      { id: 1, name: 'Merch', href: '/register' },
-      { id: 2, name: 'Sport Jersey', href: '/register/sport-jersey' },
+      { id: 1, name: 'Merch', href: '/merch' },
+      { id: 2, name: 'Sport Jersey', href: '/merch/sport-jersey' },
     ],
     images: [
       {
@@ -58,13 +58,13 @@ export const productInformation = [
   },
   {
     sku: 'varsity',
-    link: '/register/varsity',
+    link: '/merch/varsity',
     name: 'Varsity Jacket',
     price: '₹ 600',
     href: '#',
     breadcrumbs: [
-      { id: 1, name: 'Merch', href: '/register' },
-      { id: 2, name: 'Varsity Jacket', href: '/register/varsity' },
+      { id: 1, name: 'Merch', href: '/merch' },
+      { id: 2, name: 'Varsity Jacket', href: '/merch/varsity' },
     ],
     images: [
       {

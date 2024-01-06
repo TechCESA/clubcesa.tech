@@ -12,7 +12,7 @@ export default function NabBar() {
     },
     {
       name: 'Merch',
-      link: '/register',
+      link: '/merch',
     },
     {
       name: 'Events',

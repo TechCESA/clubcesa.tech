@@ -35,13 +35,13 @@ export default function Nav() {
           {/* <a href="/product/Varsity" className="text-sm font-semibold leading-6 text-gray-900">Varsity</a> */}
 
           <Link
-            href='/register/varsity'
+            href='/merch/varsity'
             className='text-sm font-semibold leading-6 text-gray-900'
           >
             Varsity
           </Link>
           <Link
-            href='/register/sport-jersey'
+            href='/merch/sport-jersey'
             className='text-sm font-semibold leading-6 text-gray-900'
           >
             Jersey
