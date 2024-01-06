@@ -137,19 +137,19 @@ export default function Page() {
           className='absolute bottom-0 z-10 mb-12 hidden w-full -scale-x-100 object-cover object-center min-[800px]:block'
         />
         <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-[#121212] blur-xl'></div>
-        <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-[#121212]/80 blur-2xl'></div>
-        <main className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
+        {/* <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-[#121212]/80 blur-2xl'></div> */}
+        <main className='mx-auto max-w-7xl'>
           <Navbar />
           <Hero />
         </main>
       </div>
-      <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
+      <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20'>
         {/* <Sponsors /> */} {/* not ready yet */}
         {/* <Events /> */} {/* not ready yet */}
         <PastEvents />
       </div>
       <About />
-      <div className='m-auto max-w-[90vw] sm:max-w-[75vw]'>
+      <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20'>
         <Teams />
       </div>
     </>

@@ -4,14 +4,14 @@ import './local.css';
 import { productInformation } from '@/product-data';
 import { notFound } from 'next/navigation';
 
-const findEvent = (slug) => {
-  return productInformation.find((event) => event.sku.toLowerCase() === slug);
+const findProduct = (slug) => {
+  return productInformation.find((product) => product.sku === slug);
 };
 
 export default function Page({ params }) {
-  let event = findEvent(params.slug);
+  const product = findProduct(params.slug);
 
-  if (!event) {
+  if (!product) {
     notFound();
   }
 
@@ -19,7 +19,7 @@ export default function Page({ params }) {
     <>
       <Nav />
       {/* <Banner /> */}
-      <Product merch_info={event} />
+      <Product product={product} />
     </>
   );
 }
