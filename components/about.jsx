@@ -6,7 +6,7 @@ export default function About() {
     >
       <div className='absolute -left-8 -top-10 z-10 h-[80px] w-[110%] bg-[#121212] blur-lg'></div>
       <div className='absolute -bottom-10 -left-8 z-10 h-[80px] w-[110%] bg-[#121212] blur-lg'></div>
-      <div className='m-auto flex h-full max-w-[90vw] flex-col items-start justify-center sm:max-w-[75vw]'>
+      <div className='mx-auto flex h-full max-w-7xl flex-col items-start justify-center px-4 sm:px-6 lg:px-8'>
         <h1 className='pb-12 text-4xl font-black'>About</h1>
         <p className='text-justify text-base font-semibold text-stone-300 md:text-xl'>
           {`Welcome to the heart of innovation and collaboration at Bharati

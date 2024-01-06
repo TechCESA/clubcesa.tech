@@ -16,14 +16,12 @@ export default function Page({ params }) {
   }
 
   return (
-    <div className='m-auto max-w-[90vw] animate-fadeIn sm:max-w-[75vw]'>
-      <div className='py-8 text-white'>
-        <h1 className='text-4xl font-black'>{event.title}</h1>
-        <p className='text-md font-semibold text-stone-500'>{event.date}</p>
-        <section className='pb-8 pt-4'>
-          <p>{event.description}</p>
-        </section>
-      </div>
+    <div className='mx-auto max-w-7xl animate-fadeIn px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-10'>
+      <h1 className='text-4xl font-black'>{event.title}</h1>
+      <p className='text-md font-semibold text-stone-500'>{event.date}</p>
+      <section className='pb-8 pt-4'>
+        <p>{event.description}</p>
+      </section>
       <Carousel images={event.images} />
     </div>
   );

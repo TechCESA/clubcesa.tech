@@ -6,7 +6,7 @@ export default function EventCard({ eventInformation }) {
   return (
     <div
       id='event_container'
-      className='relative max-w-[90vw] overflow-hidden rounded-xl bg-white md:w-[35vw] lg:w-[20vw]'
+      className='relative max-w-7xl overflow-hidden rounded-xl bg-white md:w-[35vw] lg:w-[20vw]'
     >
       <div
         id='event_date'
