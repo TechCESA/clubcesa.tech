@@ -55,7 +55,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <h3 className='font-bold sm:text-2xl' id='quote'>
+      <h3 className='font-bold text-stone-400 sm:text-2xl' id='quote'>
         Community <span id='text'></span>
         <span id='cursor' className='font-normal'>
           |

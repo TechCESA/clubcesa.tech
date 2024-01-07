@@ -1,5 +1,6 @@
 'use client';
-import { pastEventInformation } from '@/event-data';
+
+import { pastEventInformation } from '@/actions/event-data';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useEffect } from 'react';

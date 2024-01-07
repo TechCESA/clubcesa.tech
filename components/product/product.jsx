@@ -40,11 +40,11 @@ export default function Product({ product }) {
         </nav>
 
         {/* Image gallery */}
-        <div className='mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8'>
+        <div className='mx-auto mt-6 max-w-2xl px-4 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8'>
           <div className='aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block'>
             <Image
-              src={product.images[0].src}
-              alt={product.images[0].alt}
+              src={product.images[1].secure_url}
+              alt={product.images[1].public_id}
               className='h-full w-full object-cover object-center'
               width={1024}
               height={1024}
@@ -54,8 +54,8 @@ export default function Product({ product }) {
           <div className='hidden lg:grid lg:grid-cols-1 lg:gap-y-8'>
             <div className='aspect-h-2 aspect-w-3 overflow-hidden rounded-lg'>
               <Image
-                src={product.images[1].src}
-                alt={product.images[1].alt}
+                src={product.images[0].secure_url}
+                alt={product.images[0].public_id}
                 className='h-full w-full object-cover object-center'
                 width={1024}
                 height={1024}
@@ -64,8 +64,8 @@ export default function Product({ product }) {
             </div>
             <div className='aspect-h-2 aspect-w-3 overflow-hidden rounded-lg'>
               <Image
-                src={product.images[2].src}
-                alt={product.images[2].alt}
+                src={product.images[3].secure_url}
+                alt={product.images[3].public_id}
                 className='h-full w-full object-cover object-center'
                 width={1024}
                 height={1024}
@@ -73,10 +73,10 @@ export default function Product({ product }) {
               />
             </div>
           </div>
-          <div className='aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg'>
+          <div className='aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 overflow-hidden rounded-lg'>
             <Image
-              src={product.images[3].src}
-              alt={product.images[3].alt}
+              src={product.images[2].secure_url}
+              alt={product.images[2].public_id}
               className='h-full w-full object-cover object-center'
               width={1024}
               height={1024}
@@ -100,11 +100,6 @@ export default function Product({ product }) {
               {product.price}
             </p>
 
-            {/* Reviews */}
-            <div className='mt-6'>
-              <h3 className='sr-only'>Reviews</h3>
-            </div>
-
             {/* Sizes */}
             <div className='flex items-center justify-between'>
               <h3 className='text-sm font-medium text-gray-900'>Size</h3>
@@ -122,8 +117,8 @@ export default function Product({ product }) {
               className='h-80 w-80 overflow-hidden rounded-lg border-2 border-gray-200 shadow-2xl shadow-black/30 md:h-[30rem] md:w-[30rem]'
             >
               <Image
-                src={product.size_chart}
-                alt=''
+                src={product.size_chart.secure_url}
+                alt={product.size_chart.public_id}
                 width={512}
                 height={512}
                 quality={100}

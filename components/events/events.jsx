@@ -1,7 +1,5 @@
-'use client';
-
 import EventCard from './events_components';
-import { eventInformation } from '@/event-data';
+import { eventInformation } from '@/actions/event-data';
 
 export default function Events() {
   return (

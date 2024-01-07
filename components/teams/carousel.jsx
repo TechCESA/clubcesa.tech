@@ -3,7 +3,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Profile from '../profile';
-import { CESA_TEAM, creative_team } from '@/team_data';
+import { CESA_TEAM, creative_team } from '@/actions/teams';
 
 export default function Carousel() {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
