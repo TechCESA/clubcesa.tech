@@ -11,6 +11,10 @@ export default function NabBar() {
       link: '/',
     },
     {
+      name: 'Student Resources',
+      link: '/resources',
+    },
+    {
       name: 'Merch',
       link: '/merch',
     },
@@ -18,20 +22,7 @@ export default function NabBar() {
       name: 'Events',
       link: '#events',
     },
-    {
-      name: 'About',
-      link: '#about',
-    },
-    {
-      name: 'Team',
-      link: '#team',
-    },
-    {
-      name: 'Connect',
-      link: '#connect',
-    },
   ];
-  // 'Home', 'Events', 'About', 'Team', 'Connect'
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -68,7 +59,7 @@ export default function NabBar() {
           {nav.map((el, i) => {
             return (
               <Link key={i} href={el.link} className='p-2 hover:text-white'>
-                <h3>{el.name}</h3>
+                <h3>{el.name.replace(/[\s]/g, '\u00a0\u00a0')}</h3>
               </Link>
             );
           })}
@@ -106,7 +97,7 @@ export default function NabBar() {
                         key={i}
                         className='my-4 cursor-pointer px-4 py-2 hover:bg-zinc-950'
                       >
-                        <h3>{el.name}</h3>
+                        <h3>{el.name.replace(/[\s]/g, '\u00a0\u00a0')}</h3>
                       </li>
                     </Link>
                   );

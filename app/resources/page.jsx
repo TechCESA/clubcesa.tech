@@ -3,8 +3,7 @@ import { resources_data } from './resources_data';
 
 export default function Page() {
   return (
-    //TODO:  Remove h-screen
-    <div className='mx-auto  max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20'>
+    <div className='mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10'>
       {/* Announcement */}
       <div id='announce' className='text-md text-nowrap text-center'>
         <span className='rounded-xl border-2 border-dashed  border-purple-800/60 p-2 px-4 text-purple-400'>

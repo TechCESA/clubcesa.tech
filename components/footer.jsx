@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className='bg-[#1d1d1d] py-4' id='connect'>
+    <footer className='bg-[#1d1d1d] pb-2 pt-4' id='connect'>
       <div className='mx-auto flex max-w-7xl flex-col items-center justify-between px-4 sm:px-6 md:flex-row md:items-start lg:px-8'>
         <div className='address mb-8 flex flex-col items-center text-center text-white md:mb-0 md:block md:text-start'>
           <div className='flex flex-row items-center py-2 font-bold'>
@@ -62,6 +62,7 @@ export default function Footer() {
         </div>
       </div>
       <h3 className='my-1 mt-4 text-center text-sm font-semibold text-stone-500 md:mt-0'>{`Made with ❤️ by CESA Technical Team`}</h3>
+      <h3 className='my-1 mt-4 text-center text-sm font-semibold text-stone-500 md:mt-0'>{`@ 2023-24 CESA BVCOENM`}</h3>
     </footer>
   );
 }

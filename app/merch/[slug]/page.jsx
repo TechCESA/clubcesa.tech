@@ -1,11 +1,11 @@
 import Product from '@/components/product/product';
 import Nav from '@/components/product/nav';
 import './local.css';
-import { productInformation } from '@/product-data';
 import { notFound } from 'next/navigation';
+import { merchStoreData } from '@/actions/merch-store';
 
 const findProduct = (slug) => {
-  return productInformation.find((product) => product.sku === slug);
+  return merchStoreData.find((product) => product.slug === slug);
 };
 
 export default function Page({ params }) {
