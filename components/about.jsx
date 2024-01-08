@@ -13,6 +13,7 @@ export default function About() {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          opacity: '0.9',
         }}
       >
         <h1 class='mt-12 text-4xl font-black'>About</h1>
