@@ -1,0 +1,11 @@
+.hero {
+  background-image: url('/images/billboard.png');
+  height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    background-image: none;
+    height: fit-content;
+  }
+}
