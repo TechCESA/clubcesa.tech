@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 
 import About from '@/components/about.jsx';
-// import Events from '@/components/events/events';
+import Events from '@/components/events/events';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import PastEvents from '@/components/past_events/past_events';
@@ -145,7 +145,7 @@ export default function Page() {
       </div>
       <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20'>
         {/* <Sponsors /> */} {/* not ready yet */}
-        {/* <Events /> */} {/* not ready yet */}
+        <Events /> {/* not ready yet */}
         <PastEvents />
       </div>
       <About />

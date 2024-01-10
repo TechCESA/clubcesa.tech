@@ -14,7 +14,7 @@ export const pastEventInformation = [
       'https://res.cloudinary.com/omkardate/image/upload/v1704654204/cesa/event/home/farewell/home_l8urwj.webp',
     date: '20 Apr 2023',
     description: `As the academic year draws to a close, celebrating the journey, achievements, and memories that our students have created during their time at Bharati Vidyapeeth College.`,
-    url: '/event/farewell-2023',
+    url: '/events/past/farewell-2023',
   },
   {
     slug: 'sih-2023',
@@ -31,48 +31,51 @@ export const pastEventInformation = [
       'https://res.cloudinary.com/omkardate/image/upload/v1704654243/cesa/event/home/sih/home_xkn8aq.jpg',
     date: '26 Sep 2023',
     description: `Smart India Hackathon is an initiative by the Government of India aimed at promoting innovation and problem-solving among young minds. It is a platform for students to come together and work on real-world challenges faced by various industries. Participants collaborate in teams to develop innovative solutions, utilizing technology and creative thinking.`,
-    url: '/event/sih-2023',
+    url: '/events/past/sih-2023',
   },
 ];
 
 export const eventInformation = [
   {
+    slug: 'techfest-1',
     title: 'Techfest',
     image:
       'https://res.cloudinary.com/omkardate/image/upload/v1704654243/cesa/event/home/sih/home_xkn8aq.jpg',
-    date: '12',
+    date: '24',
     month: 'Jan',
     time: '12:00-13:10',
     location: 'Room 137',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     registerLink: 'https://www.example.com',
-    knowMoreLink: 'https://www.example.com',
+    knowMoreLink: '/events/ongoing/techfest-1',
   },
   {
-    title: 'Techfest2',
+    slug: 'techfest-2',
+    title: 'Techfest 2',
     image:
       'https://res.cloudinary.com/omkardate/image/upload/v1704654243/cesa/event/home/sih/home_xkn8aq.jpg',
-    date: '12',
+    date: '24',
     month: 'Jan',
     time: '12:00-13:10',
     location: 'Room 137',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     registerLink: 'https://www.example.com',
-    knowMoreLink: 'https://www.example.com',
+    knowMoreLink: '/events/ongoing/techfest-2',
   },
   {
-    title: 'Techfest2',
+    slug: 'techfest-3',
+    title: 'Techfest 3',
     image:
       'https://res.cloudinary.com/omkardate/image/upload/v1704654243/cesa/event/home/sih/home_xkn8aq.jpg',
-    date: '12',
+    date: '24',
     month: 'Jan',
     time: '12:00-13:10',
     location: 'Room 137',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     registerLink: 'https://www.example.com',
-    knowMoreLink: 'https://www.example.com',
+    knowMoreLink: '/events/ongoing/techfest-3',
   },
 ];
