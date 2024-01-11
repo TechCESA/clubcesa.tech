@@ -37,45 +37,103 @@ export const pastEvents = [
 
 export const ongoingEvents = [
   {
-    slug: 'techfest-1',
-    title: 'Techfest',
-    image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704654243/cesa/event/home/sih/home_xkn8aq.jpg',
+    slug: 'valo',
+    title: 'Valo Classic',
+    price: '₹ 500',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+    ],
     date: '24',
     month: 'Jan',
-    time: '12:00-13:10',
-    location: 'Room 137',
+    time: '11:00-14:00',
+    location: 'Room 107',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     registerLink: 'https://www.example.com',
-    knowMoreLink: '/events/ongoing/techfest-1',
+    knowMoreLink: '/events/ongoing/valo',
+    rules: [
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    ],
   },
   {
-    slug: 'techfest-2',
-    title: 'Techfest 2',
-    image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704654243/cesa/event/home/sih/home_xkn8aq.jpg',
+    slug: 'fifa',
+    title: 'FIFA',
+    price: '₹ 500',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+    ],
     date: '24',
     month: 'Jan',
-    time: '12:00-13:10',
-    location: 'Room 137',
+    time: '11:00-14:00',
+    location: 'Room 107',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     registerLink: 'https://www.example.com',
-    knowMoreLink: '/events/ongoing/techfest-2',
+    knowMoreLink: '/events/ongoing/fifa',
+    rules: [
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    ],
   },
   {
-    slug: 'techfest-3',
-    title: 'Techfest 3',
-    image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704654243/cesa/event/home/sih/home_xkn8aq.jpg',
+    slug: 'human-foosball',
+    title: 'Human Foosball',
+    price: '₹ 500',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+    ],
     date: '24',
     month: 'Jan',
-    time: '12:00-13:10',
-    location: 'Room 137',
+    time: '11:00-14:00',
+    location: 'Room 107',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
     registerLink: 'https://www.example.com',
-    knowMoreLink: '/events/ongoing/techfest-3',
+    knowMoreLink: '/events/ongoing/human-foosball',
+    rules: [
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    ],
+  },
+  {
+    slug: 'scavenger',
+    title: 'Scavenger Hunt',
+    price: '₹ 500',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+    ],
+    date: '24',
+    month: 'Jan',
+    time: '11:00-14:00',
+    location: 'Room 107',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
+    registerLink: 'https://www.example.com',
+    knowMoreLink: '/events/ongoing/scavenger',
+    rules: [
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    ],
   },
 ];
