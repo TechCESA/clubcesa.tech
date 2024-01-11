@@ -1,5 +1,5 @@
 import EventCard from './events_components';
-import { eventInformation } from '@/actions/event-data';
+import { ongoingEvents } from '@/actions/event-data';
 
 export default function Events() {
   let targetDate = new Date('2022-01-24').toLocaleDateString();
@@ -15,7 +15,7 @@ export default function Events() {
         </h1>
       )}{' '}
       <section className='mx-auto grid grid-cols-1 items-center justify-center justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3'>
-        {eventInformation.map((event, index) => (
+        {ongoingEvents.map((event, index) => (
           <EventCard event={event} key={index} />
         ))}
       </section>

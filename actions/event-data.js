@@ -1,4 +1,4 @@
-export const pastEventInformation = [
+export const pastEvents = [
   {
     slug: 'farewell-2023',
     title: 'Farewell 2023',
@@ -35,7 +35,7 @@ export const pastEventInformation = [
   },
 ];
 
-export const eventInformation = [
+export const ongoingEvents = [
   {
     slug: 'techfest-1',
     title: 'Techfest',

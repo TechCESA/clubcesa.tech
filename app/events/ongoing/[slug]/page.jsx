@@ -1,8 +1,8 @@
-import { eventInformation } from '@/actions/event-data';
+import { ongoingEvents } from '@/actions/event-data';
 import { notFound } from 'next/navigation';
 
 const findEvent = (slug) => {
-  return eventInformation.find((event) => event.slug === slug);
+  return ongoingEvents.find((event) => event.slug === slug);
 };
 
 export default function Page({ params }) {
