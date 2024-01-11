@@ -55,37 +55,37 @@ Sharpen your aim, strategize your plays, and prepare to dominate! The Land Valor
 
 <br/><br/><b>Format:</b><br/>
 
-<br/><b>Rounds 1 & 2:</b> Qualify online! Prove your skills in two intense online qualifiers and secure your spot amongst the elite. Only the top teams will advance to the ultimate test...
-<br/><b>Rounds 3, 4 & 5:</b> Live at Beyond Gaming Paller! The stakes rise as the final three rounds explode onto the live stage of Beyond Gaming Paller. Feel the energy of the crowd, adapt your strategies on the fly, and battle for VALORANT glory!
+<br/><b>Rounds 1 & 2:</b> Qualify online! Prove your skills in two intense online qualifiers and secure your spot amongst the elite. Only the top teams will advance to the ultimate test.
+<br/><b>Rounds 3, 4 & 5:</b> Live at Beyond Gaming Cafe! The stakes rise as the final three rounds explode onto the live stage of Beyond Gaming Cafe. Adapt your strategies on the fly, and battle for VALORANT glory!
+<br/><br/><b>Finals at:</b> Beyond Gaming Cafe! <br/> Anand CHS,Plot No. 31, Sector 4, Kharghar, Navi Mumbai, Maharashtra 410210
 
 <br/><br/><b>Prize:</b>
 <br/><b>1st Place:</b> Claim the grand prize of ₹ 10,000!
-<br/><b>Every Match:</b> Get rewarded! No matter your placement, every match guarantees in-game goodies to fuel your Valorant journey.
+<br/><b>Every Match:</b> Get rewarded! Every match guarantees in-game goodies for MVP to fuel their VALORANT journey.
 
 <br/><br/><b>Experience:</b>
 
 <br/><b>Thrilling Competition:</b> Clash against the best VALORANT talents from across the land.
-<br/><b>Live Atmosphere:</b> Immerse yourself in the heart-pounding energy of the live finals at Beyond Gaming Paller.
+<br/><b>Live Atmosphere:</b> Immerse yourself in the heart-pounding energy of the live finals at Beyond Gaming Cafe.
 <br/><b>Community Celebration:</b> Connect with fellow VALORANT enthusiasts, share strategies, and celebrate the love for the game.
-So, Agents, are you ready? Register now for the online qualifiers and prove your worth. Remember, only the finest will walk the hallowed halls of Beyond Gaming Paller and claim their Valorant legacy!
+So, Agents, are you ready? Register now for the online qualifiers and prove your worth. Remember, only the finest will walk the hallowed halls of Beyond Gaming Cafe and claim their Valorant legacy!
 
 Don't miss out on this epic showdown! Register now and let the VALORANT games begin!
 
 <br/><br/><b>Accounts:</b>
-<br/>1. 1 account per Valorant ID, no sharing.
-<br/>2. 5 main players + 1 substitute per team.
-<br/>3. Substitute must join before tournament starts.
-<br/>4. 5v5 gameplay only.
-<br/>5. One team per player.
-<br/>6. Must be 16+ years old.
+<br/>1. 1 player per Valorant ID, no sharing.
+<br/>2. 5 main players.
+<br/>3. 5v5 gameplay only.
 
 <br/><br/><b>Matches:</b>
 <br/><b>1. Map pool:</b> Bind, Haven, Split, Ascent, Icebox, Breeze, Fracture.
-<br/><b>2. Settings:</b> Map specific, Standard mode, Cheats off, Tournament on, OT win by 2.
+<br/><b>2. Settings:</b> Standard mode, Cheats off, Custom mode.
 
 <br/><br/><b>Fair Play:</b><br/>
 No cheating, exploits, or unfair third-party apps.
 Disqualification for banned players and teams.
+
+<br/><br/><b>For More:</b> Contact +91 7506660992 (Yashverdhan Bhatia)
 
 <br/><br/><b>Remember:</b><br/>
 Sportsmanship is key!<br/>
