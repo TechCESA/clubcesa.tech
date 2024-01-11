@@ -1,6 +1,6 @@
 'use client';
 
-import { pastEventInformation } from '@/actions/event-data';
+import { pastEvents } from '@/actions/event-data';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useEffect } from 'react';
@@ -77,7 +77,7 @@ export default function PastEvents() {
       <div className='mb-16 flex w-full flex-row justify-center overflow-hidden'>
         <div className='flex flex-col justify-between pr-[5%] max-sm:hidden'>
           <div className='left-cards my-5'>
-            <PastEventCard pastEvents={pastEventInformation[0]} />
+            <PastEventCard pastEvents={pastEvents[0]} />
           </div>
           <div className='shrink grow basis-auto'></div>
         </div>
@@ -85,15 +85,15 @@ export default function PastEvents() {
         <div className='flex flex-col justify-between pl-[5%] max-sm:hidden'>
           <div className='shrink grow basis-auto'></div>
           <div className='right-cards my-5'>
-            <PastEventCard pastEvents={pastEventInformation[1]} />
+            <PastEventCard pastEvents={pastEvents[1]} />
           </div>
         </div>
         <div className='flex flex-col pl-4 sm:hidden'>
           <div className='right-cards-2 my-5'>
-            <PastEventCard pastEvents={pastEventInformation[0]} />
+            <PastEventCard pastEvents={pastEvents[0]} />
           </div>
           <div className='right-cards-2 my-5'>
-            <PastEventCard pastEvents={pastEventInformation[1]} />
+            <PastEventCard pastEvents={pastEvents[1]} />
           </div>
         </div>
       </div>

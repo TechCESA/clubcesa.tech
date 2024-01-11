@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import EventImage from '@/public/event/event.avif';
 
-export default function EventCard({ eventInformation }) {
+export default function EventCard({ event }) {
   return (
     <div
       id='event_container'
@@ -12,12 +11,12 @@ export default function EventCard({ eventInformation }) {
         id='event_date'
         className='absolute right-2 top-2 z-10 rounded-xl from-[#001aff] to-[#ff005e] px-4 py-1 text-center font-semibold text-white backdrop-blur-md hover:bg-gradient-to-tr'
       >
-        <h1 className='text-2xl'>{eventInformation.date}</h1>
-        <h1 className='text-sm'>{eventInformation.month}</h1>
+        <h1 className='text-2xl'>{event.date}</h1>
+        <h1 className='text-sm'>{event.month}</h1>
       </div>
 
       <Image
-        src={EventImage}
+        src={event.main_image}
         alt='events_image'
         width={512}
         height={512}
@@ -28,8 +27,8 @@ export default function EventCard({ eventInformation }) {
         className='pointer-events-none h-full w-full object-cover object-center'
       />
       <div id='event_details' className='p-4 text-black'>
-        <h1 className='text-2xl font-bold'>{eventInformation.title}</h1>
-        <div className='flex flex-row items-center justify-between'>
+        <h1 className='text-2xl font-bold'>{event.title}</h1>
+        {/* <div className='flex flex-row items-center justify-between'>
           <div className='flex flex-row items-center'>
             <Image
               src='/icons/location.png'
@@ -38,18 +37,17 @@ export default function EventCard({ eventInformation }) {
               height={12}
               className='mr-1'
             />
-            <p className='text-xs text-stone-500'>
-              {eventInformation.location}
-            </p>
+            <p className='text-xs text-stone-500'>{event.location}</p>
           </div>
-          <p className='text-xs text-stone-500'>{eventInformation.time}</p>
-        </div>
-        <p className='mt-3 line-clamp-4 text-sm'>
-          {eventInformation.description}
-        </p>
-        <Link href={eventInformation.registerLink} target='_blank'>
+          <p className='text-xs text-stone-500'>{event.time}</p>
+        </div> */}
+        <p
+          className='mt-3 line-clamp-4 text-sm'
+          dangerouslySetInnerHTML={{ __html: event.description }}
+        ></p>
+        <Link href={event.knowMoreLink}>
           <button className='mt-4 w-full rounded-xl bg-gradient-to-tr from-[#001aff] to-[#ff005e] p-2 text-center font-semibold text-white transition-all duration-300 hover:bg-gradient-to-bl'>
-            Register
+            View
           </button>
         </Link>
       </div>

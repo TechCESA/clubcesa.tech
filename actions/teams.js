@@ -15,7 +15,7 @@ export const CESA_TEAM = [
     },
   },
   {
-    team_name: 'Teachnical Team',
+    team_name: 'Technical Team',
     lead: {
       name: 'Pratik Patil',
       role: 'Tech Lead',

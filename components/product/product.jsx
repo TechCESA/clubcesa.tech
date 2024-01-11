@@ -96,7 +96,7 @@ export default function Product({ product }) {
           {/* Options */}
           <div className='mt-4 lg:row-span-3 lg:mt-0'>
             <h2 className='sr-only'>Product information</h2>
-            <p className='text-3xl tracking-tight text-gray-900'>
+            <p className='text-2xl font-semibold tracking-tight text-gray-900'>
               {product.price}
             </p>
 
@@ -147,7 +147,9 @@ export default function Product({ product }) {
             </div>
 
             <div className='mt-10'>
-              <h3 className='text-sm font-medium text-gray-900'>Highlights</h3>
+              <h3 className='text-sm font-semibold text-gray-900'>
+                Highlights
+              </h3>
 
               <div className='mt-4'>
                 <ul role='list' className='list-disc space-y-2 pl-4 text-sm'>

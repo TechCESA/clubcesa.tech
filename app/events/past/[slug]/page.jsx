@@ -1,9 +1,9 @@
-import { pastEventInformation } from '@/actions/event-data';
+import { pastEvents } from '@/actions/event-data';
 import { notFound } from 'next/navigation';
 import Carousel from '@/components/past_events/carousel';
 
 const findEvent = (slug) => {
-  return pastEventInformation.find((event) => event.slug === slug);
+  return pastEvents.find((event) => event.slug === slug);
 };
 
 export default function Page({ params }) {

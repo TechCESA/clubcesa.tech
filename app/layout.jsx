@@ -16,9 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className='select-none scroll-smooth antialiased'>
-      <body className={`${font.className}`}>
-        {children}
-        <Footer />
+      <body className={`${font.className} flex min-h-screen flex-col`}>
+        <div className='flex-1'>{children}</div>
+        <div className='flex-shrink-0'>
+          <Footer />
+        </div>
       </body>
     </html>
   );
