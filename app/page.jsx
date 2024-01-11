@@ -10,7 +10,7 @@ import Events from '@/components/events/events';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import PastEvents from '@/components/past_events/past_events';
-import Sponsors from '@/components/sponsors';
+// import Sponsors from '@/components/sponsors';
 import Teams from '@/components/teams/teams';
 import Crowd from '@/public/images/crowd.png';
 import Cloud from '@/public/images/wcloud.png';
@@ -136,7 +136,7 @@ export default function Page() {
           id='crowd-back'
           className='absolute bottom-0 z-10 mb-12 hidden w-full -scale-x-100 object-cover object-center min-[800px]:block'
         />
-        <div className='absolute -bottom-10 -left-12 z-20 h-[120px] w-[120%] bg-[#121212] blur-xl'></div>
+        <div className='absolute -bottom-10 -left-12 z-20 h-[80px] w-[120%] bg-[#121212] blur-xl'></div>
         {/* <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-[#121212]/80 blur-2xl'></div> */}
         <main className='mx-auto max-w-7xl'>
           <Navbar />
@@ -145,7 +145,7 @@ export default function Page() {
       </div>
       <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20'>
         <Events /> {/* not ready yet */}
-        <Sponsors /> {/* not ready yet */}
+        {/* <Sponsors /> */} {/* not ready yet */}
         <PastEvents />
       </div>
       <About />

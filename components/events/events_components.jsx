@@ -16,7 +16,7 @@ export default function EventCard({ event }) {
       </div>
 
       <Image
-        src={event.image}
+        src={event.main_image}
         alt='events_image'
         width={512}
         height={512}
