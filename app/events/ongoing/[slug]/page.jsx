@@ -133,21 +133,10 @@ export default function Page({ params }) {
             <h3 className='sr-only'>Description</h3>
 
             <div className='space-y-6'>
-              <p className='text-base '>{event.description}</p>
-            </div>
-          </div>
-
-          <div className='mt-10'>
-            <h3 className='text-sm font-semibold'>Rules</h3>
-
-            <div className='mt-2'>
-              <ul role='list' className='list-disc space-y-2 pl-4 text-sm'>
-                {event.rules.map((highlight) => (
-                  <li key={highlight}>
-                    <span className='text-gray-600'>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
+              <p
+                className='text-base'
+                dangerouslySetInnerHTML={{ __html: event.description }}
+              ></p>
             </div>
           </div>
         </div>

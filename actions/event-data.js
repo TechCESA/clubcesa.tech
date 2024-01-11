@@ -50,115 +50,147 @@ export const ongoingEvents = [
     month: 'Jan',
     time: '11:00-14:00',
     location: 'Room 107',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-    registerLink: 'https://www.example.com',
+    description: `<b>Gear Up Agents! Land Valorant Showdown Awaits!</b><br/>
+Sharpen your aim, strategize your plays, and prepare to dominate! The Land Valorant Showdown is here, taking you from virtual battlefields to an electrifying live showdown!
+
+<br/><br/><b>Format:</b><br/>
+
+<br/><b>Rounds 1 & 2:</b> Qualify online! Prove your skills in two intense online qualifiers and secure your spot amongst the elite. Only the top teams will advance to the ultimate test...
+<br/><b>Rounds 3, 4 & 5:</b> Live at Beyond Gaming Paller! The stakes rise as the final three rounds explode onto the live stage of Beyond Gaming Paller. Feel the energy of the crowd, adapt your strategies on the fly, and battle for VALORANT glory!
+
+<br/><br/><b>Prize:</b>
+<br/><b>1st Place:</b> Claim the grand prize of $10,000!
+<br/><b>Every Match:</b> Get rewarded! No matter your placement, every match guarantees in-game goodies to fuel your Valorant journey.
+
+<br/><br/><b>Experience:</b>
+
+<br/><b>Thrilling Competition:</b> Clash against the best VALORANT talents from across the land.
+<br/><b>Live Atmosphere:</b> Immerse yourself in the heart-pounding energy of the live finals at Beyond Gaming Paller.
+<br/><b>Community Celebration:</b> Connect with fellow VALORANT enthusiasts, share strategies, and celebrate the love for the game.
+So, Agents, are you ready? Register now for the online qualifiers and prove your worth. Remember, only the finest will walk the hallowed halls of Beyond Gaming Paller and claim their Valorant legacy!
+
+Don't miss out on this epic showdown! Register now and let the VALORANT games begin!
+
+<br/><br/><b>Accounts:</b>
+<br/>1. 1 account per Valorant ID, no sharing.
+<br/>2. 5 main players + 1 substitute per team.
+<br/>3. Substitute must join before tournament starts.
+<br/>4. 5v5 gameplay only.
+<br/>5. One team per player.
+<br/>6. Must be 16+ years old.
+
+<br/><br/><b>Matches:</b>
+<br/><b>1. Map pool:</b> Bind, Haven, Split, Ascent, Icebox, Breeze, Fracture.
+<br/><b>2. Settings:</b> Map specific, Standard mode, Cheats off, Tournament on, OT win by 2.
+
+<br/><br/><b>Fair Play:</b><br/>
+No cheating, exploits, or unfair third-party apps.
+Disqualification for banned players and teams.
+
+<br/><br/><b>Remember:</b><br/>
+Sportsmanship is key!<br/>
+Have fun and frag out!`,
+    registerLink: 'https://forms.gle/kXtCwDgboorc2oot7',
     knowMoreLink: '/events/ongoing/valo',
-    rules: [
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    ],
   },
-  {
-    slug: 'fifa',
-    title: 'FIFA',
-    price: '₹ 500',
-    main_image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-    side_image: [
-      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-    ],
-    date: '24',
-    month: 'Jan',
-    time: '11:00-14:00',
-    location: 'Room 107',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-    registerLink: 'https://www.example.com',
-    knowMoreLink: '/events/ongoing/fifa',
-    rules: [
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    ],
-  },
-  {
-    slug: 'human-foosball',
-    title: 'Human Foosball',
-    price: '₹ 500',
-    main_image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-    side_image: [
-      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-    ],
-    date: '24',
-    month: 'Jan',
-    time: '11:00-14:00',
-    location: 'Room 107',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-    registerLink: 'https://www.example.com',
-    knowMoreLink: '/events/ongoing/human-foosball',
-    rules: [
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    ],
-  },
-  {
-    slug: 'scavenger',
-    title: 'Scavenger Hunt',
-    price: '₹ 500',
-    main_image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-    side_image: [
-      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-    ],
-    date: '24',
-    month: 'Jan',
-    time: '11:00-14:00',
-    location: 'Room 107',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-    registerLink: 'https://www.example.com',
-    knowMoreLink: '/events/ongoing/scavenger',
-    rules: [
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    ],
-  },
-  {
-    slug: 'build-it',
-    title: 'Build It',
-    price: '₹ 100',
-    main_image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-    side_image: [
-      'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-    ],
-    date: '24',
-    month: 'Jan',
-    time: '11:00-14:00',
-    location: 'Room 107',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-    registerLink: 'https://www.example.com',
-    knowMoreLink: '/events/ongoing/build-it',
-    rules: [
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    ],
-  },
+  // {
+  //   slug: 'fifa',
+  //   title: 'FIFA',
+  //   price: '₹ 500',
+  //   main_image:
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+  //   side_image: [
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+  //   ],
+  //   date: '24',
+  //   month: 'Jan',
+  //   time: '11:00-14:00',
+  //   location: 'Room 107',
+  //   description:
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
+  //   registerLink: 'https://www.example.com',
+  //   knowMoreLink: '/events/ongoing/fifa',
+  //   rules: [
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //   ],
+  // },
+  // {
+  //   slug: 'human-foosball',
+  //   title: 'Human Foosball',
+  //   price: '₹ 500',
+  //   main_image:
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+  //   side_image: [
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+  //   ],
+  //   date: '24',
+  //   month: 'Jan',
+  //   time: '11:00-14:00',
+  //   location: 'Room 107',
+  //   description:
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
+  //   registerLink: 'https://www.example.com',
+  //   knowMoreLink: '/events/ongoing/human-foosball',
+  //   rules: [
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //   ],
+  // },
+  // {
+  //   slug: 'scavenger',
+  //   title: 'Scavenger Hunt',
+  //   price: '₹ 500',
+  //   main_image:
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+  //   side_image: [
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+  //   ],
+  //   date: '24',
+  //   month: 'Jan',
+  //   time: '11:00-14:00',
+  //   location: 'Room 107',
+  //   description:
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
+  //   registerLink: 'https://www.example.com',
+  //   knowMoreLink: '/events/ongoing/scavenger',
+  //   rules: [
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //   ],
+  // },
+  // {
+  //   slug: 'build-it',
+  //   title: 'Build It',
+  //   price: '₹ 100',
+  //   main_image:
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+  //   side_image: [
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
+  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
+  //   ],
+  //   date: '24',
+  //   month: 'Jan',
+  //   time: '11:00-14:00',
+  //   location: 'Room 107',
+  //   description:
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
+  //   registerLink: 'https://www.example.com',
+  //   knowMoreLink: '/events/ongoing/build-it',
+  //   rules: [
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+  //   ],
+  // },
 ];

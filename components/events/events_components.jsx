@@ -28,7 +28,7 @@ export default function EventCard({ event }) {
       />
       <div id='event_details' className='p-4 text-black'>
         <h1 className='text-2xl font-bold'>{event.title}</h1>
-        <div className='flex flex-row items-center justify-between'>
+        {/* <div className='flex flex-row items-center justify-between'>
           <div className='flex flex-row items-center'>
             <Image
               src='/icons/location.png'
@@ -40,8 +40,11 @@ export default function EventCard({ event }) {
             <p className='text-xs text-stone-500'>{event.location}</p>
           </div>
           <p className='text-xs text-stone-500'>{event.time}</p>
-        </div>
-        <p className='mt-3 line-clamp-4 text-sm'>{event.description}</p>
+        </div> */}
+        <p
+          className='mt-3 line-clamp-4 text-sm'
+          dangerouslySetInnerHTML={{ __html: event.description }}
+        ></p>
         <Link href={event.knowMoreLink}>
           <button className='mt-4 w-full rounded-xl bg-gradient-to-tr from-[#001aff] to-[#ff005e] p-2 text-center font-semibold text-white transition-all duration-300 hover:bg-gradient-to-bl'>
             View
