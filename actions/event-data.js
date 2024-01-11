@@ -41,7 +41,7 @@ export const ongoingEvents = [
     title: 'Valo Classic',
     price: '₹ 500',
     main_image:
-      'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
+      'https://res.cloudinary.com/omkardate/image/upload/v1704981990/cesa/event/ongoing/valvo/main.jpg',
     side_image: [
       'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
       'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
