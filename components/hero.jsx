@@ -43,19 +43,14 @@ export default function Hero() {
       id='cesa'
       className='z-0 flex min-h-screen flex-col items-center justify-center pb-64 md:pb-48'
     >
-      <div className='container text-center'>
-        <div
-          className='glitch text-center text-8xl font-black leading-none tracking-wider sm:text-[12rem]'
-          data-text='CESA'
-        >
-          CESA
-        </div>
-        <div className='glow text-center text-8xl font-black leading-none tracking-wider sm:text-[12rem]'>
-          CESA
-        </div>
+      <div
+        className='glitch text-center text-8xl font-black leading-none tracking-wider sm:text-[12rem]'
+        data-text='CESA'
+      >
+        CESA
       </div>
 
-      <h3 className='font-bold text-stone-400 sm:text-2xl' id='quote'>
+      <h3 className='font-bold text-[#dfbfbf] sm:text-2xl' id='quote'>
         Community <span id='text'></span>
         <span id='cursor' className='font-normal'>
           |
