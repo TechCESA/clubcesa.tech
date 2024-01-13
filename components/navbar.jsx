@@ -14,10 +14,10 @@ export default function NabBar() {
       name: 'Student Resources',
       link: '/resources',
     },
-    {
-      name: 'Merch',
-      link: '/merch',
-    },
+    // {
+    //   name: 'Merch',
+    //   link: '/merch',
+    // },
     {
       name: 'Events',
       link: '#events',
