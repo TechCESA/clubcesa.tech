@@ -1,6 +1,15 @@
+const REFERRAL_OWNERS_URL =
+  'https://script.google.com/macros/s/AKfycbxuMT8v8sICVj-JCq99brTmVEDmipcgHY3rdrH-c-L0dU_D08CWKPGwOf6iLLrqTJd6Rg/exec';
+const VALO_REFERRALS_URL =
+  'https://script.google.com/macros/s/AKfycbzTCl2-fiAryHO9xjdsZPTc3FX0NC5zBJEIjqVE3EeLtq3CnAeX5hjLdGM2fxom2QFa/exec';
+
 const fetchData = async (url) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      next: {
+        revalidate: 60,
+      },
+    });
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
@@ -13,11 +22,11 @@ const fetchData = async (url) => {
 };
 
 function fetchReferralOwners() {
-  return fetchData(process.env.REFERRAL_OWNERS_URL);
+  return fetchData(REFERRAL_OWNERS_URL);
 }
 
 function fetchReferrals() {
-  return fetchData(process.env.REFERRALS_URL);
+  return fetchData(VALO_REFERRALS_URL);
 }
 
 export async function getReferralData() {
@@ -29,17 +38,23 @@ export async function getReferralData() {
 
     const referralCounts = referrals.reduce((acc, referral) => {
       const code = referral['Referral Code'];
-      acc[code] = (acc[code] || 0) + 1;
+      acc[code] = ((acc[code] || 0) + 1) * 5;
       return acc;
     }, {});
 
     const referralData = referralOwners.map((owner) => ({
-      ...owner,
-      referrals: referralCounts[owner['Referral Code']] || 0,
+      Rank: 0,
+      'Full Name': owner['Full Name'],
+      Points: referralCounts[owner['Referral Code']] || 0,
     }));
 
-    referralData.sort((a, b) => b.referrals - a.referrals);
-    return referralData.slice(0, 10);
+    referralData.sort((a, b) => b['Points'] - a['Points']);
+
+    referralData.forEach((data, index) => {
+      data['Rank'] = index + 1;
+    });
+
+    return referralData;
   } catch (error) {
     throw new Error(
       `Error with 'Promise.all' fetch operation of 'script.google.com': ${error.message}`

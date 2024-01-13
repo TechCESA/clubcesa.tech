@@ -46,7 +46,7 @@ export const ongoingEvents = [
       'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
       'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
     ],
-    date: '24',
+    date: '22',
     month: 'Jan',
     time: '11:00-14:00',
     location: 'Room 107',
@@ -85,7 +85,7 @@ Don't miss out on this epic showdown! Register now and let the VALORANT games be
 No cheating, exploits, or unfair third-party apps.
 Disqualification for banned players and teams.
 
-<br/><br/><b>For More:</b> Contact +91 7506660992 (Yashverdhan Bhatia)
+<br/><br/><b>For More:</b> Contact <i><b>Aditya Raut</b></i> (+91 9326762743)
 
 <br/><br/><b>Remember:</b><br/>
 Sportsmanship is key!<br/>

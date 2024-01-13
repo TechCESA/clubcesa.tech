@@ -22,6 +22,10 @@ export default function NabBar() {
       name: 'Events',
       link: '#events',
     },
+    {
+      name: 'Referral Points',
+      link: '/referrals',
+    },
   ];
   const [isOpen, setIsOpen] = useState(false);
 

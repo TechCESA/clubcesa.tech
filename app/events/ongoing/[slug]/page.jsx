@@ -1,5 +1,4 @@
 import { ongoingEvents } from '@/actions/event-data';
-import LeaderBoard from '@/components/leaderboard';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -126,9 +125,6 @@ export default function Page({ params }) {
               Fill the form
             </button>
           </Link>
-          <div className='hidden lg:block'>
-            <LeaderBoard />
-          </div>
         </div>
 
         <div className='py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6'>
@@ -143,9 +139,6 @@ export default function Page({ params }) {
               ></p>
             </div>
           </div>
-        </div>
-        <div className='lg:hidden'>
-          <LeaderBoard />
         </div>
       </div>
     </div>
