@@ -2,7 +2,7 @@ import EventCard from './events_components';
 import { ongoingEvents } from '@/actions/event-data';
 
 export default function Events() {
-  let targetDate = new Date('2022-01-24').toLocaleDateString();
+  let targetDate = new Date('2022-01-23').toLocaleDateString();
   let currentDate = new Date().toLocaleDateString();
 
   return (
