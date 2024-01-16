@@ -10,7 +10,6 @@ import Events from '@/components/events/events';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
 import PastEvents from '@/components/past_events/past_events';
-// import Sponsors from '@/components/sponsors';
 import Teams from '@/components/teams/teams';
 import Crowd from '@/public/images/crowd.png';
 import Cloud from '@/public/images/wcloud.png';
@@ -144,8 +143,7 @@ export default function Page() {
         </main>
       </div>
       <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20'>
-        <Events /> {/* not ready yet */}
-        {/* <Sponsors /> */} {/* not ready yet */}
+        <Events />
         <PastEvents />
       </div>
       <About />

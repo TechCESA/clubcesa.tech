@@ -18,7 +18,6 @@ export default function Page() {
         <h1 className=' bg-gradient-to-b from-amber-50 to-purple-500 bg-clip-text text-6xl font-bold text-transparent'>
           Student Resources
         </h1>
-        {/* <p>Add description</p> */}
       </div>
 
       {/* Resources */}

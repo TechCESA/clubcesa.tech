@@ -1,6 +1,6 @@
 import { Poppins } from 'next/font/google';
 import './globals.css';
-// import Footer from '@/components/footer';
+import Footer from '@/components/footer';
 
 const font = Poppins({
   subsets: ['devanagari'],
@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
     <html lang='en' className='select-none scroll-smooth antialiased'>
       <body className={`${font.className} flex min-h-screen flex-col`}>
         <div className='flex-1'>{children}</div>
-        {/* <div className='flex-shrink-0'>
+        <div className='flex-shrink-0'>
           <Footer />
-        </div> */}
+        </div>
       </body>
     </html>
   );
