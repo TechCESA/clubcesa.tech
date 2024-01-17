@@ -94,7 +94,7 @@ Have fun and frag out!`,
   {
     slug: 'scavenger',
     title: 'Scavenger Hunt',
-    price: '₹ 200',
+    price: '₹ 100',
     main_image:
       'https://res.cloudinary.com/omkardate/image/upload/v1705478530/cesa/event/ongoing/scavenger/main.jpg',
     side_image: [
