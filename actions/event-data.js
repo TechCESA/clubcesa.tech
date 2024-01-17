@@ -91,25 +91,29 @@ Have fun and frag out!`,
     registerLink: 'https://forms.gle/kXtCwDgboorc2oot7',
     knowMoreLink: '/events/ongoing/valo',
   },
-  // {
-  //   slug: 'fifa',
-  //   title: 'FIFA',
-  //   price: '₹ 500',
-  //   main_image:
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-  //   side_image: [
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-  //   ],
-  //   date: '23',
-  //   month: 'Jan',
-  //   time: '11:00-14:00',
-  //   location: 'Room 107',
-  //   description:
-  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-  //   registerLink: 'https://www.example.com',
-  //   knowMoreLink: '/events/ongoing/fifa',
-  // },
+  {
+    slug: 'scavenger',
+    title: 'Scavenger Hunt',
+    price: '₹ 200',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1705478530/cesa/event/ongoing/scavenger/main.jpg',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1705478530/cesa/event/ongoing/scavenger/side_1.png',
+      'https://res.cloudinary.com/omkardate/image/upload/v1705478529/cesa/event/ongoing/scavenger/side_2.png',
+    ],
+    date: '23',
+    month: 'Jan',
+    time: '11:00-14:00',
+    location: 'Room 107',
+    description: `<b>🌟 Get ready for an epic Scavenger Hunt!</b>
+    <br/>🎉 Exciting twists, mysterious clues, and hidden treasures await you on this thrilling journey!
+    <br/>🤔🔍 Can you decipher the clues and conquer the challenges?
+    <br/>🧩🔓 Let the hunt begin!🚀
+    <br/>#ScavengerHuntAdventure 🏆🗝️
+    <br/><b>1st PRIZE:  ₹ 2000</b>`,
+    registerLink: 'https://forms.gle/BaxXwp1L72h7sNN19',
+    knowMoreLink: '/events/ongoing/scavenger',
+  },
   // {
   //   slug: 'human-foosball',
   //   title: 'Human Foosball',
@@ -128,25 +132,6 @@ Have fun and frag out!`,
   //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
   //   registerLink: 'https://www.example.com',
   //   knowMoreLink: '/events/ongoing/human-foosball',
-  // },
-  // {
-  //   slug: 'scavenger',
-  //   title: 'Scavenger Hunt',
-  //   price: '₹ 500',
-  //   main_image:
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-  //   side_image: [
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-  //   ],
-  //   date: '23',
-  //   month: 'Jan',
-  //   time: '11:00-14:00',
-  //   location: 'Room 107',
-  //   description:
-  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-  //   registerLink: 'https://www.example.com',
-  //   knowMoreLink: '/events/ongoing/scavenger',
   // },
   // {
   //   slug: 'build-it',

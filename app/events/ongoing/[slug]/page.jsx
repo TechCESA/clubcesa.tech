@@ -41,12 +41,6 @@ export default function Page({ params }) {
             Valo Classic
           </Link>
           <Link
-            href='/events/ongoing/fifa'
-            className='text-sm font-semibold leading-6 text-gray-900'
-          >
-            FIFA
-          </Link>
-          <Link
             href='/events/ongoing/human-foosball'
             className='text-sm font-semibold leading-6 text-gray-900'
           >
@@ -57,6 +51,18 @@ export default function Page({ params }) {
             className='text-sm font-semibold leading-6 text-gray-900'
           >
             Scavenger Hunt
+          </Link>
+          <Link
+            href='/events/ongoing/figma-fusion'
+            className='text-sm font-semibold leading-6 text-gray-900'
+          >
+            Figma Fusion
+          </Link>
+          <Link
+            href='/events/ongoing/code-shots'
+            className='text-sm font-semibold leading-6 text-gray-900'
+          >
+            Code Shots
           </Link>
         </div>
         <div className='hidden lg:flex lg:flex-1 lg:justify-end'></div>
