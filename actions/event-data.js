@@ -114,42 +114,83 @@ Have fun and frag out!`,
     registerLink: 'https://forms.gle/BaxXwp1L72h7sNN19',
     knowMoreLink: '/events/ongoing/scavenger',
   },
-  // {
-  //   slug: 'human-foosball',
-  //   title: 'Human Foosball',
-  //   price: '₹ 500',
-  //   main_image:
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-  //   side_image: [
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-  //   ],
-  //   date: '23',
-  //   month: 'Jan',
-  //   time: '11:00-14:00',
-  //   location: 'Room 107',
-  //   description:
-  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-  //   registerLink: 'https://www.example.com',
-  //   knowMoreLink: '/events/ongoing/human-foosball',
-  // },
-  // {
-  //   slug: 'build-it',
-  //   title: 'Build It',
-  //   price: '₹ 100',
-  //   main_image:
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948943/cesa/event/ongoing/valvo/main.jpg',
-  //   side_image: [
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704949205/cesa/event/ongoing/valvo/side_1.jpg',
-  //     'https://res.cloudinary.com/omkardate/image/upload/v1704948941/cesa/event/ongoing/valvo/side_2.jpg',
-  //   ],
-  //   date: '23',
-  //   month: 'Jan',
-  //   time: '11:00-14:00',
-  //   location: 'Room 107',
-  //   description:
-  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptates, quas, voluptatibus, dolores voluptatem quibusdam voluptatum iusto quod quos doloribus! Quod, voluptates. Quisquam voluptate, voluptas quidem voluptatibus quia doloribus?',
-  //   registerLink: 'https://www.example.com',
-  //   knowMoreLink: '/events/ongoing/build-it',
-  // },
+  {
+    slug: 'human-foosball',
+    title: 'Human Foosball',
+    price: '₹ 200',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1705647331/cesa/event/ongoing/foosball/main.png',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1705647632/cesa/event/ongoing/foosball/side_1.jpg',
+      'https://res.cloudinary.com/omkardate/image/upload/v1705647630/cesa/event/ongoing/foosball/side_2.jpg',
+    ],
+    date: '23',
+    month: 'Jan',
+    time: '11:00-14:00',
+    location: 'Room 107',
+    description: `<b>🤖 Get ready for Human Foosball 2.0</b>
+<br/>The ultimate fusion of human awesomeness and foosball fun! 🚀⚽
+<br/><br/>🌐 Join us for an unforgettable gaming experience where YOU become the player in this upgraded version of the classic foosball game. 🕹️👫
+<br/><br/>🔥 Grab your squad, lace up those shoes, and let the epic match begin!
+<br/>🌟 Are you ready to kick it up a notch? 🚴‍♀️🚴‍♂️
+<br/>
+<br/>📅 Save the date and let the foosball frenzy take over!
+<br/>🗓️🎊 Don't miss out on the thrill of Human Foosball 2.0!
+<br/><br/>🤩 #FoosballMania #HumanFoosball2.0 #GameOn 🎮`,
+    registerLink: 'https://forms.gle/BcfvANh9AisYXHZC7',
+    knowMoreLink: '/events/ongoing/human-foosball',
+  },
+  {
+    slug: 'figma-fusion',
+    title: 'Figma Fusion',
+    price: '₹ 50',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1705648266/cesa/event/ongoing/figma/main.jpg',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1705648267/cesa/event/ongoing/figma/side_1.png',
+      'https://res.cloudinary.com/omkardate/image/upload/v1705648266/cesa/event/ongoing/figma/side_2.png',
+    ],
+    date: '23',
+    month: 'Jan',
+    time: '11:00-14:00',
+    location: 'Room 107',
+    description: `<b>🎨 Join us at Figma Fusion</b>
+    <br/>A thrilling UI/UX event showcasing the magic of FIGMA technology!
+    <br/>🌟 Unleash your creativity and craft stunning UIs for applications.
+    <br/>🖌️ Don't miss out on the design revolution!
+    <br/><br/>🚀 #FigmaFusion #UIUXMagic #DesignInnovation ✨`,
+    registerLink: 'https://forms.gle/dJjBqc7p6xykYhNk9',
+    knowMoreLink: '/events/ongoing/figma-fusion',
+  },
+  {
+    slug: 'code-shots',
+    title: 'Code Shots',
+    price: '₹ 50',
+    main_image:
+      'https://res.cloudinary.com/omkardate/image/upload/v1705649057/cesa/event/ongoing/code-shots/main.jpg',
+    side_image: [
+      'https://res.cloudinary.com/omkardate/image/upload/v1705649501/cesa/event/ongoing/code-shots/side_1.webp',
+      'https://res.cloudinary.com/omkardate/image/upload/v1705649500/cesa/event/ongoing/code-shots/side_2.jpg',
+    ],
+    date: '23',
+    month: 'Jan',
+    time: '11:00-14:00',
+    location: 'Room 107',
+    description: `<b>🎮 Welcome to Code Shots! 🚀</b>
+
+<br/><br/><b>Player:</b> Hey ChatGPT, what's the square root of 144?
+
+<br/><b>ChatGPT:</b> The square root of 144 is 12! 🎉
+
+<br/><br/><b>Player:</b> Bard, sing me a code-inspired song about loops.
+
+<br/><b>Bard:</b> 🎶 Loop-de-loop, we dance in code,
+        <br/>Iterating through lines, in a rhythmic ode.
+        <br/>For loops and while loops, a melody so sweet,
+        <br/>Our program's heartbeat, in every repeat. 🎵
+
+<br/><br/>Keep coding and asking, and let the Code Shots adventure continue! 🌟👾`,
+    registerLink: 'https://forms.gle/9q1Xc1yVT2yhyror5',
+    knowMoreLink: '/events/ongoing/code-shots',
+  },
 ];
