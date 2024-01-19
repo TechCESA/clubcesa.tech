@@ -20,7 +20,7 @@ export default function NabBar() {
     // },
     {
       name: 'Events',
-      link: '#events',
+      link: '/events',
     },
     {
       name: 'Referral Points',
