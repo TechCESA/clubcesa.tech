@@ -8,7 +8,7 @@ const font = Poppins({
 });
 
 export const metadata = {
-  title: 'Computer Engineering Student Association, BVCOENM',
+  title: 'Computer Engineering Students Association, BVCOENM',
   description:
     'This community is initiative taken by students of Computer Department of Bharati Vidyapeeth College of Engineering, Navi Mumbai',
 };
