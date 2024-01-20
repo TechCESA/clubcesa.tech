@@ -28,7 +28,9 @@ export default async function Events() {
                 <p className='text-2xl font-semibold tracking-tight'>
                   {event.price}
                 </p>
-                <p className='text-sm text-gray-600'>{`/team`}</p>
+                <p className='text-sm text-gray-600'>
+                  {event.isTeamGame ? '/team' : '/person'}
+                </p>
               </div>
             </div>
             <div className='flex flex-row justify-between gap-4'>
