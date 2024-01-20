@@ -40,6 +40,7 @@ export const ongoingEvents = [
     slug: 'valo',
     title: 'Valo Classic',
     price: '₹ 500',
+    isTeamGame: true,
     main_image:
       'https://res.cloudinary.com/omkardate/image/upload/v1704981990/cesa/event/ongoing/valvo/main.jpg',
     side_image: [
@@ -95,6 +96,7 @@ Have fun and frag out!`,
     slug: 'scavenger',
     title: 'Scavenger Hunt',
     price: '₹ 100',
+    isTeamGame: true,
     main_image:
       'https://res.cloudinary.com/omkardate/image/upload/v1705478530/cesa/event/ongoing/scavenger/main.jpg',
     side_image: [
@@ -118,6 +120,7 @@ Have fun and frag out!`,
     slug: 'human-foosball',
     title: 'Human Foosball',
     price: '₹ 200',
+    isTeamGame: true,
     main_image:
       'https://res.cloudinary.com/omkardate/image/upload/v1705647331/cesa/event/ongoing/foosball/main.png',
     side_image: [
@@ -144,6 +147,7 @@ Have fun and frag out!`,
     slug: 'figma-fusion',
     title: 'Figma Fusion',
     price: '₹ 50',
+    isTeamGame: false,
     main_image:
       'https://res.cloudinary.com/omkardate/image/upload/v1705648266/cesa/event/ongoing/figma/main.jpg',
     side_image: [
@@ -166,6 +170,7 @@ Have fun and frag out!`,
     slug: 'code-shots',
     title: 'Code Shots',
     price: '₹ 50',
+    isTeamGame: false,
     main_image:
       'https://res.cloudinary.com/omkardate/image/upload/v1705649057/cesa/event/ongoing/code-shots/main.jpg',
     side_image: [

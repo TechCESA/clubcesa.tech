@@ -120,7 +120,9 @@ export default function Page({ params }) {
             <p className='text-2xl font-semibold tracking-tight'>
               {event.price}
             </p>
-            <p className='text-sm text-gray-600'>{`/team`}</p>
+            <p className='text-sm text-gray-600'>
+              {event.isTeamGame ? '/team' : '/person'}
+            </p>
           </div>
 
           <Link href={event.registerLink}>
