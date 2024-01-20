@@ -8,9 +8,9 @@ const font = Poppins({
 });
 
 export const metadata = {
-  title: 'CESA',
+  title: 'Computer Engineering Student Association, BVCOENM',
   description:
-    'Official website of Computer Engineering Student Association, BVCOENM',
+    'This community is initiative taken by students of Computer Department of Bharati Vidyapeeth College of Engineering, Navi Mumbai',
 };
 
 export default function RootLayout({ children }) {
