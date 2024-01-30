@@ -31,15 +31,15 @@
   transition: all 0.3s ease-in;
 }
 
-#caption:hover > #footer,
-#caption:hover > #description,
-#caption:hover > #footer .img {
+#caption:hover>#footer,
+#caption:hover>#description,
+#caption:hover>#footer .img {
   transform: translate(0%, 0%);
   opacity: 1;
   visibility: visible;
 }
 
-#caption:hover > #title {
+#caption:hover>#title {
   margin: 0% auto;
   transform: translateY(0%);
 }

@@ -28,19 +28,6 @@ export default function EventCard({ event }) {
       />
       <div id='event_details' className='p-4 text-black'>
         <h1 className='text-2xl font-bold'>{event.title}</h1>
-        {/* <div className='flex flex-row items-center justify-between'>
-          <div className='flex flex-row items-center'>
-            <Image
-              src='/icons/location.png'
-              alt='CESA'
-              width={12}
-              height={12}
-              className='mr-1'
-            />
-            <p className='text-xs text-stone-500'>{event.location}</p>
-          </div>
-          <p className='text-xs text-stone-500'>{event.time}</p>
-        </div> */}
         <p
           className='mt-3 line-clamp-4 text-sm'
           dangerouslySetInnerHTML={{ __html: event.description }}

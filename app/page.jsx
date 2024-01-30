@@ -2,17 +2,17 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useEffect } from 'react';
 
 import About from '@/components/about.jsx';
-import Events from '@/components/events/events';
+import Events from '@/components/events/ongoing/events';
 import Hero from '@/components/hero.jsx';
 import Navbar from '@/components/navbar.jsx';
-import PastEvents from '@/components/past_events/past_events';
+import PastEvents from '@/components/events/past/events';
 import Teams from '@/components/teams/teams';
-import Crowd from '@/public/images/crowd.png';
-import Cloud from '@/public/images/wcloud.png';
+// import Crowd from '@/public/images/crowd.png';
+// import Cloud from '@/public/images/wcloud.png';
 
 gsap.registerPlugin(ScrollTrigger); // Register the TextPlugin
 
@@ -107,7 +107,7 @@ export default function Page() {
         id='background'
         className='relative min-h-screen overflow-hidden bg-[url("/images/background.png")] bg-cover bg-fixed bg-center bg-no-repeat md:bg-top'
       >
-        <Image
+        {/* <Image
           src={Cloud}
           alt='Cloud image'
           className='absolute -left-[30%] top-0 z-20 w-full rotate-0 scale-[6] md:scale-150'
@@ -134,8 +134,8 @@ export default function Page() {
           alt='Crowd'
           id='crowd-back'
           className='absolute bottom-0 z-10 mb-12 hidden w-full -scale-x-100 object-cover object-center min-[800px]:block'
-        />
-        <div className='absolute -bottom-10 -left-12 z-20 h-[80px] w-[120%] bg-[#121212] blur-xl'></div>
+        /> */}
+        {/* <div className='absolute -bottom-10 -left-12 z-20 h-[80px] w-[120%] bg-[#121212] blur-xl'></div> */}
         {/* <div className='absolute -left-12 -top-10 z-10 h-[120px] w-[120%] bg-[#121212]/80 blur-2xl'></div> */}
         <main className='mx-auto max-w-7xl'>
           <Navbar />

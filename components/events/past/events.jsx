@@ -4,8 +4,8 @@ import { pastEvents } from '@/actions/event-data';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useEffect } from 'react';
-import EventPath from './events_path';
-import PastEventCard from './past_events_components';
+import EventPath from './events-path';
+import PastEventCard from './events-card';
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -1,6 +1,5 @@
 import Product from '@/components/product/product';
 import Nav from '@/components/product/nav';
-import './local.css';
 import { notFound } from 'next/navigation';
 import { merchStoreData } from '@/actions/merch-store';
 
@@ -18,7 +17,6 @@ export default function Page({ params }) {
   return (
     <>
       <Nav />
-      {/* <Banner /> */}
       <Product product={product} />
     </>
   );

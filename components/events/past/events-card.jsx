@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import './style.css';
+import '@/css/events.css';
 
 export default function PastEventCard({ pastEvents }) {
   return (

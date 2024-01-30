@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Nav() {
   return (
-    <header>
+    <header className='bg-white'>
       <nav
         className='mx-auto flex max-w-7xl flex-row items-center p-6 lg:px-8'
         aria-label='Global'

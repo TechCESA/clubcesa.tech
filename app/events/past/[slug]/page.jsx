@@ -1,6 +1,6 @@
 import { pastEvents } from '@/actions/event-data';
 import { notFound } from 'next/navigation';
-import Carousel from '@/components/past_events/carousel';
+import Carousel from '@/components/events/past/carousel';
 
 const findEvent = (slug) => {
   return pastEvents.find((event) => event.slug === slug);

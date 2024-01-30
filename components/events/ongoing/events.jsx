@@ -1,4 +1,4 @@
-import EventCard from './events_components';
+import EventCard from './events-card';
 import { ongoingEvents } from '@/actions/event-data';
 
 export default function Events() {
