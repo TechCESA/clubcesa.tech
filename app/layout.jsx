@@ -9,6 +9,7 @@ const font = Poppins({
 
 export const metadata = {
   title: 'CESA | Cyber Carnival',
+
   description:
     'CESA community is initiative taken by students of Computer Department of Bharati Vidyapeeth College of Engineering, Navi Mumbai',
 };
