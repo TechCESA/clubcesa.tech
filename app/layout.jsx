@@ -8,9 +8,9 @@ const font = Poppins({
 });
 
 export const metadata = {
-  title: 'Computer Engineering Student Association, BVCOENM',
+  title: 'CESA | Cyber Carnival',
   description:
-    'This community is initiative taken by students of Computer Department of Bharati Vidyapeeth College of Engineering, Navi Mumbai',
+    'CESA community is initiative taken by students of Computer Department of Bharati Vidyapeeth College of Engineering, Navi Mumbai',
 };
 
 export default function RootLayout({ children }) {
