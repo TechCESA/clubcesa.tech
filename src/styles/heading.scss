@@ -1,5 +1,5 @@
 .glitch {
-  color: rgb(223, 191, 191);
+  color: var(--cesa-blue);
   position: relative;
   animation: glitch 5s 5s infinite;
 }
@@ -7,9 +7,7 @@
 .glitch::before {
   content: attr(data-text);
   position: absolute;
-  // left: -2px;
-  text-shadow: -5px 0 #fa3c7d;
-  // overflow: hidden;
+  text-shadow: -5px 0 white;
   top: 0;
   animation:
     noise-1 3s linear infinite alternate-reverse,
@@ -21,11 +19,9 @@
   position: absolute;
   left: 50.2%;
   transform: translate(-50%);
-  text-shadow: -5px 0 #3f50e3;
-  // overflow: hidden;
+  text-shadow: -5px 0 aliceblue;
   top: 0;
   animation: noise-2 3s linear infinite alternate-reverse;
-  // glitch 5s 5s infinite;
 }
 
 @keyframes glitch {
@@ -58,3 +54,55 @@
     }
   }
 }
+
+// .animated-text-left {
+//   transition: color 5s ease-in-out;
+
+//   animation:
+//     moveLeft 5s linear infinite,
+//     colorChange 5s linear infinite;
+// }
+
+// @keyframes moveLeft {
+//   0% {
+//     transform: translateX(0);
+//   }
+//   100% {
+//     transform: translateX(-100%);
+//   }
+// }
+
+// .animated-text-right {
+//   transition: color 5s ease-in-out;
+
+//   animation:
+//     moveRight 5s linear infinite,
+//     colorChange 5s linear infinite;
+// }
+
+// @keyframes moveRight {
+//   0% {
+//     transform: translateX(0);
+//   }
+//   100% {
+//     transform: translateX(100%);
+//   }
+// }
+
+// @keyframes colorChange {
+//   0% {
+//     color: rgba(0, 0, 0, 0.2);
+//   }
+//   25% {
+//     color: rgba(0, 0, 0, 0.4);
+//   }
+//   50% {
+//     color: rgba(0, 0, 0, 0.6);
+//   }
+//   75% {
+//     color: rgba(0, 0, 0, 0.4);
+//   }
+//   100% {
+//     color: rgba(0, 0, 0, 0.2);
+//   }
+// }

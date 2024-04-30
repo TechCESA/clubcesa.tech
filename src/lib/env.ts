@@ -1,10 +1,6 @@
 import { z } from 'zod';
 
-const envVariables = z.object({
-  CLOUDINARY_CLOUD_NAME: z.string(),
-  CLOUDINARY_API_KEY: z.string(),
-  CLOUDINARY_API_SECRET: z.string(),
-});
+const envVariables = z.object({});
 
 envVariables.parse(process.env);
 

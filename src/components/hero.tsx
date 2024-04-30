@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { useEffect } from 'react';
 import { TextPlugin } from 'gsap/all';
 import '@/styles/heading.scss';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(TextPlugin); // Register the TextPlugin
 
@@ -41,8 +42,23 @@ export default function Hero() {
   return (
     <div
       id='cesa'
-      className='z-0 flex min-h-screen flex-col items-center justify-center pb-64 md:pb-48'
+      className='z-10 flex min-h-screen flex-col items-center justify-center pb-12'
     >
+      <div className='pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center gap-8 pt-8 text-9xl font-extrabold opacity-20'>
+        <TextAnimation
+          className='translate-x-10 text-black/20'
+          text='Computer'
+        />
+        <TextAnimation
+          className='-translate-x-40 text-black/40'
+          text='Engineering'
+        />
+        <TextAnimation className='text-black/60' text='Students' />
+        <TextAnimation
+          className='-translate-x-40 text-black/40'
+          text='Association'
+        />
+      </div>
       <div
         className='glitch text-center text-8xl font-black leading-none tracking-wider sm:text-[12rem]'
         data-text='CESA'
@@ -50,13 +66,35 @@ export default function Hero() {
         CESA
       </div>
 
-      <h3 className='font-bold text-[#dfbfbf] sm:text-2xl' id='quote'>
+      <h3 className='font-bold text-cesa-blue sm:text-2xl' id='quote'>
         Community <span id='text'></span>
         <span id='cursor' className='font-normal'>
           |
         </span>{' '}
         Students
       </h3>
+    </div>
+  );
+}
+
+function TextAnimation({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        'flex flex-row justify-around gap-12 overflow-hidden whitespace-nowrap pb-6',
+        className,
+      )}
+    >
+      <span>{text}</span>
+      <span>{text}</span>
+      <span>{text}</span>
+      <span>{text}</span>
     </div>
   );
 }

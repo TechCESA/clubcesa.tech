@@ -17,12 +17,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      embla-carousel-autoplay:
-        specifier: ^8.0.2
-        version: 8.0.2(embla-carousel@8.0.2)
-      embla-carousel-react:
-        specifier: ^8.0.2
-        version: 8.0.2(react@18.3.0)
       gsap:
         specifier: ^3.12.5
         version: 3.12.5
@@ -38,9 +32,6 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.0(react@18.3.0)
-      react-scroll-percentage:
-        specifier: ^4.3.2
-        version: 4.3.2(react@18.3.0)
       sass:
         specifier: ^1.75.0
         version: 1.75.0
@@ -536,24 +527,6 @@ packages:
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
-
-  embla-carousel-autoplay@8.0.2:
-    resolution: {integrity: sha512-31lBigAkHeI4k1767uYcr9Gm2y12mzLpVsi+QRxIWQT8J4AtRoHLOhd8YJFiXf22DbI/j78+IaeJK4lZRlFxUw==}
-    peerDependencies:
-      embla-carousel: 8.0.2
-
-  embla-carousel-react@8.0.2:
-    resolution: {integrity: sha512-RHe1GKLulOW8EDN+cJgbFbVVfRXcaLT2/89dyVw3ONGgVpZjD19wB87I1LUZ1aCzOSrTccx0PFSQanK4OOfGPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.1 || ^18.0.0
-
-  embla-carousel-reactive-utils@8.0.2:
-    resolution: {integrity: sha512-nLZqDkQdO0hvOP49/dUwjkkepMnUXgIzhyRuDjwGqswpB4Ibnc5M+w7rSQQAM+uMj0cPaXnYOTlv8XD7I/zVNw==}
-    peerDependencies:
-      embla-carousel: 8.0.2
-
-  embla-carousel@8.0.2:
-    resolution: {integrity: sha512-bogsDO8xosuh/l3PxIvA5AMl3+BnRVAse9sDW/60amzj4MbGS5re4WH5eVEXiuH8G1/3G7QUAX2QNr3Yx8z5rA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1359,18 +1332,8 @@ packages:
     peerDependencies:
       react: ^18.3.0
 
-  react-intersection-observer@8.34.0:
-    resolution: {integrity: sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==}
-    peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
-
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-
-  react-scroll-percentage@4.3.2:
-    resolution: {integrity: sha512-6uEumDSvfzdiI4mFAMp/GhXXztW9ImG2Jwk2frP/SXwn9rMBBmP6Ta/+ZaIetBLnz1bNQoEGjaV6YvRoqT8ThQ==}
-    peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
 
   react@18.3.0:
     resolution: {integrity: sha512-RPutkJftSAldDibyrjuku7q11d3oy6wKOyPe5K1HA/HwwrXcEqBdHsLypkC2FFYjP7bPUa6gbzSBhw4sY2JcDg==}
@@ -2138,22 +2101,6 @@ snapshots:
       esutils: 2.0.3
 
   eastasianwidth@0.2.0: {}
-
-  embla-carousel-autoplay@8.0.2(embla-carousel@8.0.2):
-    dependencies:
-      embla-carousel: 8.0.2
-
-  embla-carousel-react@8.0.2(react@18.3.0):
-    dependencies:
-      embla-carousel: 8.0.2
-      embla-carousel-reactive-utils: 8.0.2(embla-carousel@8.0.2)
-      react: 18.3.0
-
-  embla-carousel-reactive-utils@8.0.2(embla-carousel@8.0.2):
-    dependencies:
-      embla-carousel: 8.0.2
-
-  embla-carousel@8.0.2: {}
 
   emoji-regex@8.0.0: {}
 
@@ -3053,17 +3000,7 @@ snapshots:
       react: 18.3.0
       scheduler: 0.23.1
 
-  react-intersection-observer@8.34.0(react@18.3.0):
-    dependencies:
-      react: 18.3.0
-
   react-is@16.13.1: {}
-
-  react-scroll-percentage@4.3.2(react@18.3.0):
-    dependencies:
-      '@babel/runtime': 7.24.4
-      react: 18.3.0
-      react-intersection-observer: 8.34.0(react@18.3.0)
 
   react@18.3.0:
     dependencies:
