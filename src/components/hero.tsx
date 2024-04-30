@@ -27,15 +27,8 @@ export default function Hero() {
       duration: 0.4,
     });
 
-    const quote = document.getElementById('quote');
-    gsap.set(quote, { opacity: 0 }); // Set initial opacity to 0 (completely hidden)
-    const quoteTimeout = setTimeout(() => {
-      gsap.to(quote, { opacity: 1, duration: 1, ease: 'power2.out' }); // Smoothly fade in the navbar over 1 second
-    }, 3000);
-
     return () => {
       textTl.kill();
-      clearTimeout(quoteTimeout);
     };
   });
 
@@ -66,7 +59,7 @@ export default function Hero() {
         CESA
       </div>
 
-      <h3 className='font-bold text-cesa-blue sm:text-2xl' id='quote'>
+      <h3 className='text-cesa-blue font-bold sm:text-2xl' id='quote'>
         Community <span id='text'></span>
         <span id='cursor' className='font-normal'>
           |
