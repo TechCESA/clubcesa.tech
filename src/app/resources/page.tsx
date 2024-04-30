@@ -2,10 +2,10 @@ import Card from './resource_card';
 import { resources_data } from './resources_data';
 
 export default function Page() {
-  return <h1 className='text-2xl font-bold text-cesa-blue'>Comming Soon...</h1>;
+  return <h1 className='text-cesa-blue text-2xl font-bold'>Comming Soon...</h1>;
 }
 
-export function WorkingOnPage() {
+function WorkingOnPage() {
   return (
     <div className='mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10'>
       {/* Announcement */}

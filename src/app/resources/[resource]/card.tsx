@@ -1,7 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Card({ title, description, link }) {
+export default function Card({
+  title,
+  description,
+  link,
+}: {
+  title: string;
+  description: string;
+  link: string;
+}) {
   return (
     <Link
       href={link}

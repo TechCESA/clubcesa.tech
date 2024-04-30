@@ -1,7 +1,7 @@
 import { resource_data } from '../resources_data';
 import Card from './card';
 
-export default function Page({ params }) {
+export default function Page({ params }: { params: { resource: string } }) {
   const { resource } = params;
   return (
     <div className='mx-auto  max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20 '>

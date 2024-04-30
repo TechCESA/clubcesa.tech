@@ -1,6 +1,14 @@
 import Link from 'next/link';
 
-export default function Card({ title, link, isNew }) {
+export default function Card({
+  title,
+  link,
+  isNew,
+}: {
+  title: string;
+  link: string;
+  isNew: boolean;
+}) {
   return (
     <Link href={link}>
       <div
