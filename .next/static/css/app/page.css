@@ -1,0 +1,222 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/next@14.2.3_react-dom@18.3.0_react@18.3.0__react@18.3.0_sass@1.75.0/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/.pnpm/next@14.2.3_react-dom@18.3.0_react@18.3.0__react@18.3.0_sass@1.75.0/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/.pnpm/next@14.2.3_react-dom@18.3.0_react@18.3.0__react@18.3.0_sass@1.75.0/node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/.pnpm/next@14.2.3_react-dom@18.3.0_react@18.3.0__react@18.3.0_sass@1.75.0/node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/styles/heading.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.glitch {
+  color: var(--cesa-blue);
+  position: relative;
+  animation: glitch 5s 5s infinite;
+}
+
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  text-shadow: -5px 0 white;
+  top: 0;
+  animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
+}
+
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 50.2%;
+  transform: translate(-50%);
+  text-shadow: -5px 0 aliceblue;
+  top: 0;
+  animation: noise-2 3s linear infinite alternate-reverse;
+}
+
+@keyframes glitch {
+  1% {
+    transform: rotateX(10deg) skewX(90deg);
+  }
+  2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+@keyframes noise-1 {
+  3.3333333333% {
+    clip-path: inset(68px 0 7px 0);
+  }
+  6.6666666667% {
+    clip-path: inset(26px 0 28px 0);
+  }
+  10% {
+    clip-path: inset(98px 0 2px 0);
+  }
+  13.3333333333% {
+    clip-path: inset(57px 0 29px 0);
+  }
+  16.6666666667% {
+    clip-path: inset(76px 0 18px 0);
+  }
+  20% {
+    clip-path: inset(38px 0 1px 0);
+  }
+  23.3333333333% {
+    clip-path: inset(98px 0 3px 0);
+  }
+  26.6666666667% {
+    clip-path: inset(16px 0 45px 0);
+  }
+  30% {
+    clip-path: inset(2px 0 29px 0);
+  }
+  33.3333333333% {
+    clip-path: inset(30px 0 55px 0);
+  }
+  36.6666666667% {
+    clip-path: inset(74px 0 24px 0);
+  }
+  40% {
+    clip-path: inset(87px 0 10px 0);
+  }
+  43.3333333333% {
+    clip-path: inset(38px 0 61px 0);
+  }
+  46.6666666667% {
+    clip-path: inset(93px 0 3px 0);
+  }
+  50% {
+    clip-path: inset(6px 0 4px 0);
+  }
+  53.3333333333% {
+    clip-path: inset(47px 0 4px 0);
+  }
+  56.6666666667% {
+    clip-path: inset(67px 0 27px 0);
+  }
+  60% {
+    clip-path: inset(72px 0 12px 0);
+  }
+  63.3333333333% {
+    clip-path: inset(18px 0 61px 0);
+  }
+  66.6666666667% {
+    clip-path: inset(24px 0 41px 0);
+  }
+  70% {
+    clip-path: inset(10px 0 35px 0);
+  }
+  73.3333333333% {
+    clip-path: inset(73px 0 7px 0);
+  }
+  76.6666666667% {
+    clip-path: inset(93px 0 6px 0);
+  }
+  80% {
+    clip-path: inset(9px 0 63px 0);
+  }
+  83.3333333333% {
+    clip-path: inset(74px 0 12px 0);
+  }
+  86.6666666667% {
+    clip-path: inset(42px 0 27px 0);
+  }
+  90% {
+    clip-path: inset(86px 0 13px 0);
+  }
+  93.3333333333% {
+    clip-path: inset(67px 0 13px 0);
+  }
+  96.6666666667% {
+    clip-path: inset(99px 0 1px 0);
+  }
+  100% {
+    clip-path: inset(56px 0 31px 0);
+  }
+}
+@keyframes noise-2 {
+  0% {
+    clip-path: inset(46px 0 19px 0);
+  }
+  3.3333333333% {
+    clip-path: inset(78px 0 16px 0);
+  }
+  6.6666666667% {
+    clip-path: inset(61px 0 2px 0);
+  }
+  10% {
+    clip-path: inset(91px 0 4px 0);
+  }
+  13.3333333333% {
+    clip-path: inset(62px 0 39px 0);
+  }
+  16.6666666667% {
+    clip-path: inset(1px 0 39px 0);
+  }
+  20% {
+    clip-path: inset(39px 0 55px 0);
+  }
+  23.3333333333% {
+    clip-path: inset(28px 0 10px 0);
+  }
+  26.6666666667% {
+    clip-path: inset(74px 0 23px 0);
+  }
+  30% {
+    clip-path: inset(38px 0 3px 0);
+  }
+  33.3333333333% {
+    clip-path: inset(47px 0 49px 0);
+  }
+  36.6666666667% {
+    clip-path: inset(24px 0 37px 0);
+  }
+  40% {
+    clip-path: inset(38px 0 36px 0);
+  }
+  43.3333333333% {
+    clip-path: inset(44px 0 53px 0);
+  }
+  46.6666666667% {
+    clip-path: inset(28px 0 18px 0);
+  }
+  50% {
+    clip-path: inset(84px 0 11px 0);
+  }
+  53.3333333333% {
+    clip-path: inset(68px 0 6px 0);
+  }
+  56.6666666667% {
+    clip-path: inset(89px 0 8px 0);
+  }
+  60% {
+    clip-path: inset(46px 0 51px 0);
+  }
+  63.3333333333% {
+    clip-path: inset(77px 0 10px 0);
+  }
+  66.6666666667% {
+    clip-path: inset(6px 0 4px 0);
+  }
+  70% {
+    clip-path: inset(52px 0 46px 0);
+  }
+  73.3333333333% {
+    clip-path: inset(24px 0 9px 0);
+  }
+  76.6666666667% {
+    clip-path: inset(97px 0 1px 0);
+  }
+  80% {
+    clip-path: inset(24px 0 60px 0);
+  }
+  83.3333333333% {
+    clip-path: inset(55px 0 7px 0);
+  }
+  86.6666666667% {
+    clip-path: inset(71px 0 6px 0);
+  }
+  90% {
+    clip-path: inset(64px 0 11px 0);
+  }
+  93.3333333333% {
+    clip-path: inset(71px 0 7px 0);
+  }
+  96.6666666667% {
+    clip-path: inset(33px 0 13px 0);
+  }
+  100% {
+    clip-path: inset(7px 0 58px 0);
+  }
+}

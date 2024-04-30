@@ -1,14 +1,11 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import '@/styles/globals.css';
-import { cn } from '@/lib/utils';
-import NabBar from '@/components/navbar';
 import Footer from '@/components/footer';
 
 const font = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
 });
 
 export const metadata: Metadata = {
@@ -35,15 +32,11 @@ export default function RootLayout({
       <head>
         <link rel='icon' href='/favicon.ico' sizes='any' />
       </head>
-      <body
-        className={cn(
-          'min-h-screen scroll-smooth bg-background font-poppins antialiased',
-          font.variable,
-        )}
-      >
-        <NabBar />
-        {children}
-        <Footer />
+      <body className={`${font.className} flex min-h-screen flex-col`}>
+        <div className='flex-1'>{children}</div>
+        <div className='flex-shrink-0'>
+          <Footer />
+        </div>
       </body>
     </html>
   );

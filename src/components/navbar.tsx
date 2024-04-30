@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function NabBar() {
   const nav = [
     {
-      name: '/',
+      name: 'Home',
       link: '/',
     },
     {
@@ -21,11 +21,14 @@ export default function NabBar() {
   ];
 
   return (
-    <nav className='fixed left-0 right-0 top-0 z-50 mx-auto py-4'>
-      <div className='container flex flex-row items-center gap-12 text-start font-bold text-cesa-blue'>
+    <nav
+      id='navbar'
+      className='fixed left-[50%] top-0 z-50 mx-auto max-w-7xl -translate-x-[50%] p-4'
+    >
+      <div className='text-cesa-blue flex flex-row items-center gap-8 font-bold'>
         {nav.map((el, i) => {
           return (
-            <Link key={i} href={el.link} className='hover:scale-125'>
+            <Link key={i} href={el.link} className='p-2 hover:animate-bounce'>
               <h3>{el.name.replace(/[\s]/g, '\u00a0\u00a0')}</h3>
             </Link>
           );

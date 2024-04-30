@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <div
       id='cesa'
-      className='relative z-10 flex min-h-screen flex-col items-center justify-center overflow-hidden pb-12'
+      className='z-10 flex min-h-screen flex-col items-center justify-center pb-12'
     >
       <div className='pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center gap-8 pt-8 text-9xl font-extrabold opacity-20'>
         <TextAnimation
@@ -59,7 +59,7 @@ export default function Hero() {
         CESA
       </div>
 
-      <h3 className='font-bold text-cesa-blue sm:text-2xl' id='quote'>
+      <h3 className='text-cesa-blue font-bold sm:text-2xl' id='quote'>
         Community <span id='text'></span>
         <span id='cursor' className='font-normal'>
           |
