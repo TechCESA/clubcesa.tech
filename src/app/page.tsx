@@ -1,13 +1,11 @@
 import Hero from '@/components/hero';
-import NabBar from '@/components/navbar';
+import Bento from '@/components/bento';
 
 export default function Page() {
   return (
-    <div className='relative min-h-screen overflow-hidden'>
-      <main className='mx-auto max-w-7xl'>
-        <NabBar />
-        <Hero />
-      </main>
-    </div>
+    <main className=''>
+      <Hero />
+      <Bento />
+    </main>
   );
 }
