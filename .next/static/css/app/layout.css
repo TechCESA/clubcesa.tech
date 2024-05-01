@@ -861,6 +861,15 @@ video {
 .h-full {
   height: 100%;
 }
+.h-\[60vh\] {
+  height: 60vh;
+}
+.h-\[20vh\] {
+  height: 20vh;
+}
+.h-\[50vh\] {
+  height: 50vh;
+}
 .max-h-40 {
   max-height: 10rem;
 }
@@ -1493,6 +1502,10 @@ img {
 
   .md\:block {
     display: block;
+  }
+
+  .md\:h-\[90vh\] {
+    height: 90vh;
   }
 
   .md\:grid-cols-2 {
