@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className='min-h-screen lg:p-8 p-4'>
+    <div className='min-h-screen lg:p-8 p-4 select-none'>
       <div className='grid grid-row-2 lg:grid-cols-2 h-full w-full gap-4'>
         <div className=' border-slate-100 border-2 rounded-2xl h-[50vh] md:h-[90vh]  flex justify-center items-center text-left p-8'>
           <h1 className="md:text-8xl text-6xl font-semibold  ">Chamber<br />of <span className="text-pink-500">Memories</span></h1>
