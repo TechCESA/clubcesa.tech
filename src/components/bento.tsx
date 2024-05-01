@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 
 export default function Bento() {
   return (
-    <div className='container mt-16 grid min-h-screen grid-cols-1 gap-4 md:grid-cols-3'>
+    <div className='container mt-8 grid min-h-screen grid-cols-1 gap-4 md:mt-16 md:grid-cols-3'>
       <Link href='/memories'>
         <div className='relative overflow-hidden'>
           <span className='absolute -bottom-3 left-2 text-5xl font-extrabold leading-none md:-bottom-10 md:left-6 md:text-8xl'>
