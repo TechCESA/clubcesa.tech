@@ -752,17 +752,14 @@ video {
 .left-4 {
   left: 1rem;
 }
+.left-6 {
+  left: 1.5rem;
+}
 .left-\[50\%\] {
   left: 50%;
 }
 .top-0 {
   top: 0px;
-}
-.left-6 {
-  left: 1.5rem;
-}
-.left-\[25\%\] {
-  left: 25%;
 }
 .z-0 {
   z-index: 0;
@@ -887,6 +884,9 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.w-screen {
+  width: 100vw;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -1029,10 +1029,6 @@ video {
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
 }
-.border-slate-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(226 232 240 / var(--tw-border-opacity));
-}
 .bg-\[\#1d1d1d\] {
   --tw-bg-opacity: 1;
   background-color: rgb(29 29 29 / var(--tw-bg-opacity));
@@ -1170,6 +1166,10 @@ video {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
@@ -1200,10 +1200,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 .font-black {
   font-weight: 900;
@@ -1328,10 +1324,6 @@ video {
 }
 .ring-offset-background {
   --tw-ring-offset-color: hsl(var(--background));
-}
-.blur-\[1\.2px\] {
-  --tw-blur: blur(1.2px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .blur-\[1px\] {
   --tw-blur: blur(1px);
@@ -1523,11 +1515,6 @@ img {
     text-align: start;
   }
 
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
   .md\:text-8xl {
     font-size: 6rem;
     line-height: 1;
@@ -1548,12 +1535,16 @@ img {
     display: flex;
   }
 
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .lg\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .lg\:p-8 {
+    padding: 2rem;
   }
 
   .lg\:px-8 {
@@ -1569,6 +1560,11 @@ img {
   .lg\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
+  }
+
+  .lg\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
   }
 }
 
