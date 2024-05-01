@@ -135,7 +135,7 @@ export default function Bento() {
         <Card className='anita row-span-1 flex h-full items-center justify-center hover:text-destructive'>
           <CardHeader className='flex flex-row items-center justify-center gap-8'>
             <Image
-              src='/icons/instagram.svg'
+              src='/icons/insta.svg'
               height={40}
               width={40}
               alt='Instagram'
