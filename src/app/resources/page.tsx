@@ -18,7 +18,7 @@ function WorkingOnPage() {
       <div id='announce' className='text-md text-nowrap text-center'>
         <span className='rounded-xl border-2 border-dashed  border-purple-800/60 p-2 px-4 text-purple-400'>
           <span className='font-semibold text-white'>NEW</span> Announcing
-          roadmaps and resources exclusively for students.{' '}
+          roadmaps and resources exclusively for students.
           <span className='hidden'>Learn more!</span>
         </span>
       </div>

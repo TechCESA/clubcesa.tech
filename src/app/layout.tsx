@@ -16,12 +16,27 @@ export const metadata: Metadata = {
   description:
     'This community is initiative taken by students of Computer Department of Bharati Vidyapeeth College of Engineering, Navi Mumbai',
   keywords: [
+    'CESA',
+    'clubcesa',
+    'Club Cesa',
+    'Tech Cesa',
+    'Cesa Tech Team',
+    'Tech Team',
+    'CESA Club',
+    'CESA Tech',
     'Computer Engineering',
     'BVCOENM',
     'CESABVCOENM',
     'Computer Department',
     'Computer Engineering Students Association',
     'Bharati Vidyapeeth College of Engineering, Navi Mumbai',
+    'Computer Engineering Students Association, BVCOENM',
+    'Computer Engineering Students Association',
+    'Computer Department, BVCOENM',
+    'Computer Department, Bharati Vidyapeeth College of Engineering, Navi Mumbai',
+    'Computer Department, Bharati Vidyapeeth College of Engineering',
+    'Computer Department, BVCOENM',
+    'Bharati Vidyapeeth College of Engineering',
   ],
 };
 
@@ -37,7 +52,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          'min-h-screen scroll-smooth bg-background font-poppins antialiased',
+          'min-h-screen scroll-smooth bg-background font-poppins text-primary antialiased',
           font.variable,
         )}
       >

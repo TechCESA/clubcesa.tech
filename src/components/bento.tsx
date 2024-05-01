@@ -25,41 +25,49 @@ export default function Bento() {
         </div>
       </Link>
 
-      <Card className='row-span-2 bg-[#FF5C00] p-2 text-accent'>
-        <CardHeader className='flex h-full flex-col items-center text-center'>
-          <div className='relative aspect-[6/2] h-auto w-full md:aspect-[6/1]'>
-            <Image
-              src='/images/members.svg'
-              fill
-              alt='Members'
-              className='object-contain object-center'
-            />
-          </div>
-          <div className='text-xl font-semibold'>Know More About</div>
-          <div className='text-5xl font-extrabold'>
-            <span className='hidden md:inline'>Our</span> Members
-          </div>
-        </CardHeader>
-      </Card>
+      <Link href='members' className='row-span-2'>
+        <Card className='bg-[#FF5C00] p-2 text-accent'>
+          <CardHeader className='flex h-full flex-col items-center text-center'>
+            <div className='relative aspect-[6/2] h-auto w-full md:aspect-[6/1]'>
+              <Image
+                src='/images/members.svg'
+                fill
+                alt='Members'
+                className='object-contain object-center'
+              />
+            </div>
+            <div className='text-xl font-semibold'>Know More About</div>
+            <div className='text-5xl font-extrabold'>
+              <span className='hidden md:inline'>Our</span> Members
+            </div>
+          </CardHeader>
+        </Card>
+      </Link>
 
-      <Card className='relative row-span-4 min-h-60 overflow-hidden bg-[#FFD338] text-accent'>
-        <div className='pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center pt-8 text-7xl font-extrabold leading-none md:gap-8 md:text-9xl'>
-          <span className='-rotate-12'>Follow</span>
-          <span className='-rotate-12'>Follow</span>
-          <span className='-rotate-12'>Follow</span>
-          <span className='-rotate-12'>Follow</span>
-          <span className='-rotate-12'>Follow</span>
-        </div>
-        <CardHeader className='flex items-center justify-center'>
-          <Image
-            src='/images/cesa-insta.svg'
-            height={200}
-            width={200}
-            alt='Members'
-            className='absolute -bottom-40 aspect-[4/5] w-full object-contain object-center'
-          />
-        </CardHeader>
-      </Card>
+      <Link
+        href='https://www.instagram.com/cesa.bvcoe'
+        className='row-span-4 min-h-60 overflow-hidden'
+        target='_blank'
+      >
+        <Card className='relative h-full bg-[#FFD338] text-accent'>
+          <div className='pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center pt-8 text-7xl font-extrabold leading-none md:gap-8 md:text-9xl'>
+            <span className='-rotate-12'>Follow</span>
+            <span className='-rotate-12'>Follow</span>
+            <span className='-rotate-12'>Follow</span>
+            <span className='-rotate-12'>Follow</span>
+            <span className='-rotate-12'>Follow</span>
+          </div>
+          <CardHeader className='flex items-center justify-center'>
+            <Image
+              src='/images/cesa-insta.svg'
+              height={200}
+              width={200}
+              alt='Insta Handle'
+              className='absolute -bottom-60 aspect-[4/5] w-full object-contain object-center'
+            />
+          </CardHeader>
+        </Card>
+      </Link>
 
       <div className='relative row-span-4'>
         <p className='absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] whitespace-nowrap text-2xl font-bold text-cesa-blue'>
@@ -71,7 +79,7 @@ export default function Bento() {
             loop
             muted
             playsInline
-            className='h-full w-auto rounded-lg border object-contain object-center shadow-sm'
+            className='h-full w-full rounded-lg border object-cover shadow-sm'
           >
             <source
               src='https://media4.giphy.com/media/rcFs59ww1R7yeFszmo/giphy.mp4'
@@ -101,7 +109,7 @@ export default function Bento() {
         <Image
           src='/images/bvcoe-map.png'
           fill
-          alt='Members'
+          alt='BVCOE Map'
           className='h-full w-full overflow-hidden rounded-lg border object-contain object-center shadow-sm'
         />
       </Link>
@@ -112,7 +120,7 @@ export default function Bento() {
             <Image
               src='/images/cesa-love.svg'
               fill
-              alt='CESA Love'
+              alt='Love CESA'
               className='object-contain object-center'
             />
           </div>
@@ -130,7 +138,7 @@ export default function Bento() {
               src='/icons/instagram.svg'
               height={40}
               width={40}
-              alt='Members'
+              alt='Instagram'
               className='object-contain object-center'
             />
             <CardTitle className='flex flex-col text-xl font-semibold md:text-3xl'>
@@ -150,7 +158,7 @@ export default function Bento() {
             </div>
             <Button
               variant='secondary'
-              className='bg-cesa-blue text-xl font-bold text-accent hover:text-accent-foreground'
+              className='bg-[#3399ff] text-xl font-bold text-accent hover:bg-cesa-blue'
               asChild
             >
               <Link

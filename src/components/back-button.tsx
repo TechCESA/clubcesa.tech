@@ -8,7 +8,12 @@ export function BackButton() {
   };
 
   return (
-    <Button type='submit' onClick={goBackHandler}>
+    <Button
+      type='submit'
+      className='font-semibold'
+      variant='outline'
+      onClick={goBackHandler}
+    >
       Back
     </Button>
   );
