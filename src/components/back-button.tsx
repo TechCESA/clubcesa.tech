@@ -2,7 +2,7 @@
 
 import { Button } from './ui/button';
 
-export async function BackButton() {
+export function BackButton() {
   const goBackHandler = () => {
     window.history.back();
   };
