@@ -1,4 +1,4 @@
-import { resource_data } from '../resources_data';
+import { resource_data, resources_data } from '../resources_data';
 import Card from './card';
 
 export default function Page({ params }: { params: { resource: string } }) {
@@ -6,15 +6,15 @@ export default function Page({ params }: { params: { resource: string } }) {
   return (
     <div className='mx-auto  max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20 '>
       <div className='container mx-auto my-12'>
-        <div id='resourses-header' className='my-8 text-center'>
-          <h1 className=' bg-gradient-to-b from-amber-50 to-purple-500 bg-clip-text text-5xl font-bold uppercase text-transparent'>
-            {resource}
+        <div id='resourses-header' className='my-8 text-left'>
+          <h1 className='text-black font-bold text-2xl text-wrap under'>
+            {resources_data.find((res) => res.id === parseInt(resource))?.title}
           </h1>
-          {/* <p>Add description</p> */}
+          <p className='text-md text-gray-600/60'>{resources_data.find((res) =>  res.id === parseInt(resource))?.desciption}</p>
         </div>
         <div
           id='resources-category'
-          className='mx-20 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'
+          className=' grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'
         >
           {resource_data.map((resource) => {
             return (
