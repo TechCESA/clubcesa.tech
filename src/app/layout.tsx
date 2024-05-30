@@ -56,7 +56,7 @@ export default function RootLayout({
           font.variable,
         )}
       >
-        <h1 className='my-10 bg-red-500/80 w-screen text-wrap text-white m-auto p-4 text-center'>🚨🚨 Remove "NEXT_PUBLIC" from .env file to secure data & also modify firebaseConfig.js. Add related data to vercel (don't name PUBLIC in setting of vercel) 🚨🚨</h1>
+        <h1 className='my-10 bg-red-500/80 w-screen text-wrap text-white m-auto p-4 text-center'> Remove "NEXT_PUBLIC" from .env file to secure data & also modify firebaseConfig.js. Add related data to vercel (don't name PUBLIC in setting of vercel)</h1>
         <NabBar />
         {children}
         <Footer />
