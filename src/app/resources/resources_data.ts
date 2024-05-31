@@ -1,27 +1,31 @@
 export const resources_data = [
   {
     id: 1,
-    title: 'Resource 1',
-    link: '/resources/frontend',
-    isNew: true,
+    title: 'Frontend',
+    link: '/resources/1',
+    isNew: false,
+    desciption: "Step by step guide to becoming a modern frontend developer in 2024"
   },
   {
     id: 2,
-    title: 'Resource 2',
-    link: '/resources/backend',
-    isNew: false,
+    title: 'Backend',
+    link: '/resources/2',
+    isNew: true,
+    desciption: "Step by step guide to becoming a modern backend developer in 2024"
   },
   {
     id: 3,
-    title: 'Resource 3',
-    link: '/resources/fullstack',
+    title: 'FullStack Development',
+    link: '/resources/3',
     isNew: true,
+    desciption: "Step by step guide to becoming a modern Fullstack developer in 2024"
   },
   {
     id: 4,
-    title: 'Resource 4',
-    link: '/resources/interview-prep',
+    title: 'Python',
+    link: '/resources/4',
     isNew: true,
+    desciption: "Step by step guide to becoming a modern Python developer in 2024"
   },
 ];
 
