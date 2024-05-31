@@ -1,6 +1,6 @@
 import { db } from '@/firebaseConfig';
 import { DocumentData, collection, getDocs } from '@firebase/firestore';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 export async function GET() {
   try {
