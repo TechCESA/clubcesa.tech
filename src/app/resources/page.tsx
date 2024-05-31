@@ -11,11 +11,11 @@ export default function Page() {
 function WorkingOnPage() {
   return (
     <div className='mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10'>
-      
       {/* Announcement */}
-      <div id='announce' className='mg:text-md text-sm text-nowrap text-center'>
+      <div id='announce' className='mg:text-md text-nowrap text-center text-sm'>
         <span className='rounded-xl border-2 border-dashed  border-purple-800/60 p-2 px-4 text-purple-400'>
-          <span className='font-semibold text-black'>NEW !</span> Resources exclusively for students.
+          <span className='font-semibold text-black'>NEW !</span> Resources
+          exclusively for students.
         </span>
       </div>
 

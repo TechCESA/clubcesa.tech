@@ -1,25 +1,25 @@
 'use client';
-import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Card from './card';
-import { DocumentData, collection, getDocs } from '@firebase/firestore';
-import { db } from '@/firebaseConfig';
+import { useEffect, useState } from 'react';
+import { DocumentData } from '@firebase/firestore';
 
 export default function Page({ params }: { params: { resource: string } }) {
   const { resource } = params;
   const [resourcesData, setResourcesData] = useState<DocumentData>([]);
+  const [loading, setLoading] = useState(true);
   async function getResources() {
-    const querySnapshot = await getDocs(collection(db, 'resources'));
-    const data: DocumentData[] = [];
-    querySnapshot.forEach((doc) => {
-      if (doc.id === resource) {
-        data.push(doc.data().data);
-      }
+    setLoading(true);
+    const response = await axios.post('/api/resource', {
+      resource: resource,
     });
-    setResourcesData(data[0]);
+    setResourcesData(response.data);
   }
-
   useEffect(() => {
     getResources();
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
   }, []);
   return (
     <div className='mx-auto  max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20 '>
@@ -33,19 +33,23 @@ export default function Page({ params }: { params: { resource: string } }) {
             {Date().split(' ')[3]}
           </p>
         </div>
-        <div
-          id='resources-category'
-          className=' grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'
-        >
-          {resourcesData.map((res: DocumentData, index: number) => (
-            <Card
-              key={index}
-              title={resourcesData[index].title}
-              link={resourcesData[index].link}
-              description={resourcesData[index].description}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <div className='flex justify-center'>loading...</div>
+        ) : (
+          <div
+            id='resources-category'
+            className=' grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'
+          >
+            {resourcesData.map((res: DocumentData, index: number) => (
+              <Card
+                key={index}
+                title={resourcesData[index].title}
+                link={resourcesData[index].link}
+                description={resourcesData[index].description}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
