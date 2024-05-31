@@ -1,12 +1,9 @@
-import Card from './resource_card';
-import { resources_data } from './resources_data';
-import { BackButton } from '@/components/back-button';
+import ResourceGrid from '@/components/resource_grid';
 
 export default function Page() {
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center gap-4'>
-      <h1 className='text-2xl font-bold text-cesa-blue'>Comming Soon...</h1>
-      <BackButton />
+    <div className='flex min-h-screen flex-col items-center justify-center'>
+      <WorkingOnPage />
     </div>
   );
 }
@@ -15,11 +12,10 @@ function WorkingOnPage() {
   return (
     <div className='mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10'>
       {/* Announcement */}
-      <div id='announce' className='text-md text-nowrap text-center'>
+      <div id='announce' className='mg:text-md text-nowrap text-center text-sm'>
         <span className='rounded-xl border-2 border-dashed  border-purple-800/60 p-2 px-4 text-purple-400'>
-          <span className='font-semibold text-white'>NEW</span> Announcing
-          roadmaps and resources exclusively for students.
-          <span className='hidden'>Learn more!</span>
+          <span className='font-semibold text-black'>NEW !</span> Resources
+          exclusively for students.
         </span>
       </div>
 
@@ -31,23 +27,7 @@ function WorkingOnPage() {
       </div>
 
       {/* Resources */}
-      <div className='container mx-auto my-12'>
-        <div
-          id='resources-category'
-          className='mx-16 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 xl:mx-0'
-        >
-          {resources_data.map((resource) => {
-            return (
-              <Card
-                key={resource.id}
-                title={resource.title}
-                link={resource.link}
-                isNew={resource.isNew}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <ResourceGrid />
     </div>
   );
 }
