@@ -1,5 +1,4 @@
-import Card from './resource_card';
-import { resources_data } from './resources_data';
+import ResourceGrid from '@/components/resource_grid';
 
 export default function Page() {
   return (
@@ -28,23 +27,7 @@ function WorkingOnPage() {
       </div>
 
       {/* Resources */}
-      <div className='container mx-auto my-12'>
-        <div
-          id='resources-categories'
-          className='mx-4 grid grid-cols-1 gap-2 md:grid-cols-3 xl:mx-0'
-        >
-          {resources_data.map((resource) => {
-            return (
-              <Card
-                key={resource.id}
-                title={resource.title}
-                link={resource.link}
-                isNew={resource.isNew}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <ResourceGrid />
     </div>
   );
 }

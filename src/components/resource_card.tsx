@@ -13,11 +13,11 @@ export default function Card({
     <Link href={link}>
       <div
         id='backend'
-        className='rounded-xl border border-white/90 bg-black/5 p-2 w-full mx-auto cursor-pointer hover:bg-black/10 transition duration-300 ease-in-out'
+        className='mx-auto w-full cursor-pointer rounded-xl border border-white/90 bg-black/5 p-2 transition duration-300 ease-in-out hover:bg-black/10'
       >
         <h1 className='flex justify-between   px-2 text-lg font-medium text-black/60'>
-          {title}
-           {/* Blink animation */}
+          {title.toUpperCase()}
+          {/* Blink animation */}
           {isNew && (
             <span className='ml-2 flex items-center rounded-br rounded-tl text-sm font-medium text-purple-300'>
               <span className='mr-1.5 flex h-2 w-2'>
