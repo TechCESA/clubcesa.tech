@@ -4,28 +4,32 @@ export const resources_data = [
     title: 'Frontend',
     link: '/resources/1',
     isNew: false,
-    desciption: "Step by step guide to becoming a modern frontend developer in 2024"
+    desciption:
+      'Step by step guide to becoming a modern frontend developer in 2024',
   },
   {
     id: 2,
     title: 'Backend',
     link: '/resources/2',
     isNew: true,
-    desciption: "Step by step guide to becoming a modern backend developer in 2024"
+    desciption:
+      'Step by step guide to becoming a modern backend developer in 2024',
   },
   {
     id: 3,
     title: 'FullStack Development',
     link: '/resources/3',
     isNew: true,
-    desciption: "Step by step guide to becoming a modern Fullstack developer in 2024"
+    desciption:
+      'Step by step guide to becoming a modern Fullstack developer in 2024',
   },
   {
     id: 4,
     title: 'Python',
     link: '/resources/4',
     isNew: true,
-    desciption: "Step by step guide to becoming a modern Python developer in 2024"
+    desciption:
+      'Step by step guide to becoming a modern Python developer in 2024',
   },
 ];
 

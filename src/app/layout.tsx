@@ -53,10 +53,15 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen scroll-smooth bg-background font-poppins text-primary antialiased',
-          font.variable, 
+          font.variable,
         )}
       >
-        <h1 className='my-10 bg-red-500/80 w-screen text-wrap text-white m-auto p-4 text-center'> Remove NEXT_PUBLIC from .env file to secure data & also modify firebaseConfig.js. Add related data to vercel (Do not name PUBLIC in setting of vercel)</h1>
+        <h1 className='m-auto my-10 w-screen text-wrap bg-red-500/80 p-4 text-center text-white'>
+          {' '}
+          Remove NEXT_PUBLIC from .env file to secure data & also modify
+          firebaseConfig.js. Add related data to vercel (Do not name PUBLIC in
+          setting of vercel)
+        </h1>
         <NabBar />
         {children}
         <Footer />

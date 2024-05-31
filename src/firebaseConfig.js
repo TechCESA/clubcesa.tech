@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.CMS_API_KEY,
@@ -8,7 +8,7 @@ const firebaseConfig = {
   storageBucket: process.env.CMS_STORAGE_BUCKET,
   messagingSenderId: process.env.CMS_MESSAGING_SENDER_ID,
   appId: process.env.CMS_APP_ID,
-  measurementId: process.env.CMS_MEASUREMENT_ID
+  measurementId: process.env.CMS_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
