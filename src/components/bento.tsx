@@ -31,6 +31,7 @@ export default function Bento() {
             <div className='relative aspect-[6/2] h-auto w-full md:aspect-[6/1]'>
               <Image
                 src='/images/members.svg'
+                placeholder='blur'
                 fill
                 alt='Members'
                 className='object-contain object-center'
@@ -60,6 +61,7 @@ export default function Bento() {
           <CardHeader className='flex items-center justify-center'>
             <Image
               src='/images/cesa-insta.svg'
+              placeholder='blur'
               height={200}
               width={200}
               alt='Insta Handle'
@@ -108,6 +110,7 @@ export default function Bento() {
       >
         <Image
           src='/images/bvcoe-map.png'
+          placeholder='blur'
           fill
           alt='BVCOE Map'
           className='h-full w-full overflow-hidden rounded-lg border object-contain object-center shadow-sm'
@@ -119,6 +122,7 @@ export default function Bento() {
           <div className='relative aspect-[6/3] h-auto w-full'>
             <Image
               src='/images/cesa-love.svg'
+              placeholder='blur'
               fill
               alt='Love CESA'
               className='object-contain object-center'
@@ -136,6 +140,7 @@ export default function Bento() {
           <CardHeader className='flex flex-row items-center justify-center gap-8'>
             <Image
               src='/icons/insta.svg'
+              placeholder='blur'
               height={40}
               width={40}
               alt='Instagram'
