@@ -1,24 +1,28 @@
 'use client';
-import { db } from '@/firebaseConfig';
-import { collection, getDocs } from '@firebase/firestore';
+
 import { useEffect, useState } from 'react';
 import Card from '@/components/resource_card';
-import { set } from 'zod';
-import axios from 'axios';
+import { getTypeOfResources } from '@/app/actions/resources';
 
 export default function ResourceGrid() {
-  const [resource, setResource] = useState<string[]>([]);
+  const [resource, setResource] = useState<[] | string[]>([]);
+  const [error, setError] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-  async function getResources() {
-    setLoading(true);
-    const response = await axios.get('/api/resource');
-    setResource(response.data);
-  }
+
   useEffect(() => {
-    getResources();
-    setTimeout(() => {
-      setLoading(false);
-    }, 200);
+    setLoading(true);
+    const fetchResourceType = async () => {
+      const response = await getTypeOfResources();
+      if (response.error) {
+        console.error('Error fetching resource types:', response.error);
+        setError(response.error);
+        return;
+      }
+      setResource(response.types);
+      return;
+    };
+    fetchResourceType();
+    setLoading(false);
   }, []);
 
   return (
@@ -29,10 +33,13 @@ export default function ResourceGrid() {
       >
         {loading ? (
           <div className='flex justify-center'>loading...</div>
+        ) : error.length > 0 ? (
+          <div className='flex justify-center font-medium text-red-400'>
+            {error}
+          </div>
         ) : (
           resource.map((res) => {
             return (
-              // <h1>{res}</h1>
               <Card
                 key={res}
                 title={res}

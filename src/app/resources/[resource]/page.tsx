@@ -3,24 +3,29 @@ import axios from 'axios';
 import Card from './card';
 import { useEffect, useState } from 'react';
 import { DocumentData } from '@firebase/firestore';
+import { getResources } from '@/app/actions/resources';
 
 export default function Page({ params }: { params: { resource: string } }) {
   const { resource } = params;
   const [resourcesData, setResourcesData] = useState<DocumentData>([]);
   const [loading, setLoading] = useState(true);
-  async function getResources() {
-    setLoading(true);
-    const response = await axios.post('/api/resource', {
-      resource: resource,
-    });
-    setResourcesData(response.data);
-  }
+  const [error, setError] = useState('');
+
   useEffect(() => {
-    getResources();
-    setTimeout(() => {
-      setLoading(false);
-    }, 200);
+    setLoading(true);
+    const fetchResources = async () => {
+      const response = await getResources(resource);
+      if (response.error) {
+        setError(response.error);
+        return;
+      }
+      setResourcesData(response.data);
+      return;
+    };
+    fetchResources();
+    setLoading(false);
   }, []);
+
   return (
     <div className='mx-auto  max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20 '>
       <div className='container mx-auto my-12'>
@@ -35,6 +40,10 @@ export default function Page({ params }: { params: { resource: string } }) {
         </div>
         {loading ? (
           <div className='flex justify-center'>loading...</div>
+        ) : error.length > 0 ? (
+          <div className='flex justify-center font-medium text-red-400'>
+            {error}
+          </div>
         ) : (
           <div
             id='resources-category'
