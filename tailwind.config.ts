@@ -19,6 +19,13 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'custom-pattern':
+          'linear-gradient(rgba(133, 137, 213, 0.1) 2.5px, transparent 2.5px), linear-gradient(to right, rgba(133, 137, 213, 0.1) 2.5px, rgba(255, 255, 255, 0.1) 2.5px)',
+      },
+      backgroundSize: {
+        'custom-size': '32px 32px',
+      },
       fontFamily: {
         poppins: ['var(--font-poppins)', ...fontFamily.sans],
       },

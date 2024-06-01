@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Card from '@/components/resource_card';
 import { getTypeOfResources } from '@/app/actions/resources';
+import Loader from './loader';
 
 export default function ResourceGrid() {
   const [resource, setResource] = useState<[] | string[]>([]);
@@ -27,18 +28,15 @@ export default function ResourceGrid() {
 
   return (
     <div className='container mx-auto my-12'>
-      <div
-        id='resources-categories'
-        className='mx-4 grid grid-cols-1 gap-2 md:grid-cols-3 xl:mx-0'
-      >
-        {loading ? (
-          <div className='flex justify-center'>loading...</div>
-        ) : error.length > 0 ? (
-          <div className='flex justify-center font-medium text-red-400'>
-            {error}
-          </div>
-        ) : (
-          resource.map((res) => {
+      {loading ? (
+        <Loader />
+      ) : error.length > 0 ? (
+        <div className='flex justify-center font-medium text-red-400'>
+          {error}
+        </div>
+      ) : (
+        <div className='mx-4 grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-3 xl:mx-0'>
+          {resource.map((res) => {
             return (
               <Card
                 key={res}
@@ -47,9 +45,9 @@ export default function ResourceGrid() {
                 isNew={true}
               />
             );
-          })
-        )}
-      </div>
+          })}
+        </div>
+      )}
     </div>
   );
 }
