@@ -3,13 +3,13 @@ import { getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_CMS_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_CMS_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_CMS_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_CMS_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_CMS_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_CMS_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_CMS_MEASUREMENT_ID,
+  apiKey: process.env.CMS_API_KEY,
+  authDomain: process.env.CMS_AUTH_DOMAIN,
+  projectId: process.env.CMS_PROJECT_ID,
+  storageBucket: process.env.CMS_STORAGE_BUCKET,
+  messagingSenderId: process.env.CMS_MESSAGING_SENDER_ID,
+  appId: process.env.CMS_APP_ID,
+  measurementId: process.env.CMS_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
