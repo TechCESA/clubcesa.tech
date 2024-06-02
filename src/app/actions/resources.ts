@@ -26,8 +26,8 @@ export async function getTypeOfResources() {
     querySnapshot.forEach((doc) => {
       data.push(doc.id);
     });
-    return { types: data };
+    return { types: data , error: []};
   } catch (error) {
-    return { error: ['Internal Server Error'] };
+    return { types :[], error: ['Internal Server Error'] };
   }
 }

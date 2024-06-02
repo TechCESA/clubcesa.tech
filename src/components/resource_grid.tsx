@@ -1,42 +1,18 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Card from '@/components/resource_card';
 import { getTypeOfResources } from '@/app/actions/resources';
-import Loader from './loader';
 
-export default function ResourceGrid() {
-  const [resource, setResource] = useState<[] | string[]>([]);
-  const [error, setError] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchResourceType = async () => {
-      const response = await getTypeOfResources();
-      if (response.error) {
-        console.error('Error fetching resource types:', response.error);
-        setError(response.error);
-        return;
-      }
-      setResource(response.types);
-      return;
-    };
-    fetchResourceType();
-    setLoading(false);
-  }, []);
+export default async function ResourceGrid() {
+  const response = await getTypeOfResources();
 
   return (
     <div className='container mx-auto my-12'>
-      {loading ? (
-        <Loader />
-      ) : error.length > 0 ? (
-        <div className='flex justify-center font-medium text-red-400'>
-          {error}
-        </div>
-      ) : (
-        <div className='mx-4 grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-3 xl:mx-0'>
-          {resource.map((res) => {
+      <div className='mx-4 grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-3 xl:mx-0'>
+        {response.types.length == 0 || response.error.length >= 1 ? (
+          <div className='flex justify-center text-2xl font-medium uppercase text-red-400'>
+            {response.error}
+          </div>
+        ) : (
+          response.types?.map((res) => {
             return (
               <Card
                 key={res}
@@ -45,9 +21,9 @@ export default function ResourceGrid() {
                 isNew={true}
               />
             );
-          })}
-        </div>
-      )}
+          })
+        )}
+      </div>
     </div>
   );
 }
