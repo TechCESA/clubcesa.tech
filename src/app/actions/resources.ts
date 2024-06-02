@@ -1,33 +1,44 @@
 'use server';
 
 import { db } from '@/firebaseConfig';
-import {  collection, getDocs, doc, getDoc } from '@firebase/firestore';
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  DocumentData,
+} from '@firebase/firestore';
 
-export async function getResources(resource: string) {
+interface Data {
+  data: any[];
+  error: string[];
+}
+
+export async function getResources(resource: string): Promise<Data> {
   try {
     if (!resource || typeof resource !== 'string' || resource.length === 0) {
-      return { error: 'Invalid resource identifier' };
+      return { error: ['Invalid resource identifier'], data: [] };
     }
     const resourceRef = doc(db, 'resources', resource);
     const docSnap = await getDoc(resourceRef);
     if (!docSnap.exists()) {
-      return { error: 'Resource not found' };
+      return { error: ['Resource not found'], data: [] };
     }
-    return { data: docSnap.data().data };
+    return { data: docSnap.data().data, error: [] };
   } catch (error) {
-    return { error: 'Internal Server Error' };
+    return { error: ['Internal Server Error'], data: [] };
   }
 }
 
-export async function getTypeOfResources() {
+export async function getTypeOfResources(): Promise<Data> {
   try {
     const querySnapshot = await getDocs(collection(db, 'resources'));
     const data: string[] = [];
     querySnapshot.forEach((doc) => {
       data.push(doc.id);
     });
-    return { types: data , error: []};
+    return { data: data, error: [] };
   } catch (error) {
-    return { types :[], error: ['Internal Server Error'] };
+    return { data: [], error: ['Internal Server Error'] };
   }
 }
