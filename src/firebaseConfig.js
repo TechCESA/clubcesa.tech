@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
-
 const firebaseConfig = {
   apiKey: process.env.CMS_API_KEY,
   authDomain: process.env.CMS_AUTH_DOMAIN,
@@ -16,4 +15,3 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export { db };
-

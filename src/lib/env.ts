@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
-const envVariables = z.object({});
+const envVariables = z.object({
+  NEXT_PUBLIC_JWT_SECRETE: z.string(),
+});
 
 envVariables.parse(process.env);
 
