@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function EditPage() {
-  return (
-    <div>EditPage</div>
-  )
+  return <div>EditPage</div>;
 }

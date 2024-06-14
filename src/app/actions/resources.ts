@@ -1,14 +1,8 @@
 'use server';
-import { unstable_noStore as noStore } from 'next/cache';
 
 import { db } from '@/firebaseConfig';
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  DocumentData,
-} from '@firebase/firestore';
+import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
+import { unstable_noStore as noStore } from 'next/cache';
 
 interface Data {
   data: any[];
@@ -16,7 +10,8 @@ interface Data {
 }
 
 export async function getResources(resource: string): Promise<Data> {
- noStore();
+  noStore();
+
   try {
     if (!resource || typeof resource !== 'string' || resource.length === 0) {
       return { error: ['Invalid resource identifier'], data: [] };
@@ -33,7 +28,8 @@ export async function getResources(resource: string): Promise<Data> {
 }
 
 export async function getTypeOfResources(): Promise<Data> {
-   noStore();
+  noStore();
+
   try {
     const querySnapshot = await getDocs(collection(db, 'resources'));
     const data: string[] = [];

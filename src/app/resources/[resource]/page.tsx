@@ -1,11 +1,13 @@
 import Card from './card';
 import { getResources } from '@/app/actions/resources';
+
 function capitalizeAndRemoveHyphen(str: string) {
   return str
     .replace(/-/g, ' ')
     .toLowerCase()
     .replace(/\b\w/g, (char) => char.toUpperCase());
 }
+
 export default async function Page({
   params,
 }: {
