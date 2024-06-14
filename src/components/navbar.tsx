@@ -33,7 +33,7 @@ export default function NabBar() {
       <div className='container hidden flex-row items-center gap-12 md:flex'>
         {nav.map((el, i) => {
           return (
-            <Link key={i} href={el.link} className='hover:scale-125'>
+            <Link key={i} href={el.link}>
               <h3>{el.name.replace(/[\s]/g, '\u00a0\u00a0')}</h3>
             </Link>
           );
