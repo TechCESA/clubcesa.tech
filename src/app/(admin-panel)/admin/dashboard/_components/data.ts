@@ -53,7 +53,7 @@ export const ResourceObject = [
     description:
       'Explore the world of data science with Python. This tutorial covers data analysis, visualization, and machine learning techniques using Python libraries like pandas and scikit-learn.',
     link: 'https://example.com',
-    tags: ['Data Science', 'Python', 'Machine Learning'],
+    tags: ['Data Science', 'Python', 'React.js', 'Machine Learning'],
   },
 ];
 

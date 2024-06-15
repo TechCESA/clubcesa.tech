@@ -7,7 +7,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -23,15 +22,22 @@ type ResourceObject = {
 };
 
 export default function Dashboard() {
-  const [searchError, setSearchError] = React.useState<string | null>(null);
-  const [resources, setResources] = React.useState<ResourceObject[] | null>(
-    null,
-  );
+  const [allResources, setAllResources] = React.useState<
+    ResourceObject[] | null
+  >(null);
+  const [filteredResources, setFilteredResources] = React.useState<
+    ResourceObject[] | null
+  >(null);
   const [tags, setTags] = React.useState<string[]>([]);
+  const [searchError, setSearchError] = React.useState<string | null>(null);
+  const [selectedTag, setSelectedTag] = React.useState<string>('all');
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     // get resources from the firebase
-    setResources(ResourceObject);
+    setAllResources(ResourceObject);
+    setFilteredResources(ResourceObject);
     setTags(Tags);
   }, []);
 
@@ -48,10 +54,19 @@ export default function Dashboard() {
 
     const query = serachQuery.toString().toLowerCase();
 
-    const searchedResources = resources!.filter((res) => {
+    if (allResources == null) {
+      setSearchError('No resources found');
+      return;
+    }
+
+    const searchedResources = allResources.filter((res) => {
+      const lowerCaseTags = res.tags.map((tag) => tag.toLowerCase());
+
       return (
         res.title.toLowerCase().includes(query) ||
-        res.tags.map((tag) => tag.toLowerCase()).includes(query)
+        lowerCaseTags.includes(query) ||
+        (lowerCaseTags.some((tag) => tag.includes(query)) &&
+          (lowerCaseTags.includes(selectedTag) || selectedTag === 'all'))
       );
     });
 
@@ -60,17 +75,28 @@ export default function Dashboard() {
       return;
     }
 
-    setResources(searchedResources);
+    setFilteredResources(searchedResources);
   };
 
   const onTagChange = (tag: string) => {
+    setSearchError(null);
+    inputRef.current!.value = '';
+
     if (tag === 'All') {
-      setResources(ResourceObject);
+      setFilteredResources(allResources);
+      setSelectedTag('all');
       return;
     }
 
-    setResources(
-      resources!.filter((res) => {
+    if (allResources == null) {
+      setSearchError('No resources found');
+      return;
+    }
+
+    setSelectedTag(tag.toLowerCase());
+
+    setFilteredResources(
+      allResources!.filter((res) => {
         return res.tags.map((t) => t.toLowerCase()).includes(tag.toLowerCase());
       }),
     );
@@ -89,8 +115,6 @@ export default function Dashboard() {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Tags</SelectLabel>
-
               <SelectItem key={'all' + getSixDigitNumber()} value='All'>
                 All
               </SelectItem>
@@ -115,6 +139,7 @@ export default function Dashboard() {
               type='search'
               name='search-query'
               placeholder='Search resource'
+              ref={inputRef}
             />
             <Button type='submit' className='bg-cesa-blue'>
               Search
@@ -127,13 +152,13 @@ export default function Dashboard() {
       </div>
 
       <div className='mx-4 my-6'>
-        {resources == null ? (
+        {filteredResources == null ? (
           <p className='text-center text-lg font-semibold text-destructive'>
             No resources found
           </p>
         ) : (
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-            {resources.map((res, i) => {
+            {filteredResources.map((res, i) => {
               return (
                 <ResourceCard
                   key={i + getSixDigitNumber()}
