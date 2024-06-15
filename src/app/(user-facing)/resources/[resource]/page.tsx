@@ -1,5 +1,5 @@
 import Card from './card';
-import { getResources } from '@/app/actions/resources';
+import { getResources } from '@/app/(user-facing)/_actions/resources';
 
 function capitalizeAndRemoveHyphen(str: string) {
   return str

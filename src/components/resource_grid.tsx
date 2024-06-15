@@ -1,5 +1,5 @@
 import Card from '@/components/resource_card';
-import { getTypeOfResources } from '@/app/actions/resources';
+import { getTypeOfResources } from '@/app/(user-facing)/_actions/resources';
 
 export default async function ResourceGrid() {
   const response = await getTypeOfResources();

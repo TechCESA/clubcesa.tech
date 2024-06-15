@@ -2,7 +2,7 @@
 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { loginFormAction } from '@/app/actions/admin';
+import { loginFormAction } from '@/app/(admin-panel)/_actions/admin';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 
