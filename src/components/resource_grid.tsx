@@ -6,7 +6,7 @@ export default async function ResourceGrid() {
 
   return (
     <div className='container mx-auto my-12'>
-      <div className='mx-4 grid grid-cols-1  gap-x-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 xl:mx-0'>
+      <div className='mx-4 grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 xl:mx-0'>
         {response.data.length == 0 || response.error.length >= 1 ? (
           <div className='flex justify-center text-2xl font-medium uppercase text-red-400'>
             {response.error}
