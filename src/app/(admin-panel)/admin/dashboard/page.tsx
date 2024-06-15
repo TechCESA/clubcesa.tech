@@ -63,10 +63,10 @@ export default function Dashboard() {
       const lowerCaseTags = res.tags.map((tag) => tag.toLowerCase());
 
       return (
-        res.title.toLowerCase().includes(query) ||
-        lowerCaseTags.includes(query) ||
-        (lowerCaseTags.some((tag) => tag.includes(query)) &&
-          (lowerCaseTags.includes(selectedTag) || selectedTag === 'all'))
+        (res.title.toLowerCase().includes(query) ||
+          lowerCaseTags.includes(query) ||
+          lowerCaseTags.some((tag) => tag.includes(query))) &&
+        (lowerCaseTags.includes(selectedTag) || selectedTag === 'all')
       );
     });
 
