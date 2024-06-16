@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { convertTags } from '@/lib/convert-tags';
 import Link from 'next/link';
 
 export default function ResourceCard({
@@ -18,6 +19,10 @@ export default function ResourceCard({
   link: string;
   tags: string[];
 }) {
+  const tagsLabel = convertTags(tags)
+    .map((tag) => tag.label)
+    .sort((a, b) => a.localeCompare(b));
+
   return (
     <Link href={link} target='_blank'>
       <Card>
@@ -32,7 +37,7 @@ export default function ResourceCard({
         <CardFooter>
           <p className='line-clamp-1'>
             <span className='font-semibold'>{'Tags: '}</span>
-            {tags.join(', ')}
+            {tagsLabel.join(', ')}
           </p>
         </CardFooter>
       </Card>

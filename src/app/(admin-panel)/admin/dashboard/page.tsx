@@ -13,6 +13,7 @@ import {
 import React from 'react';
 import ResourceCard from './_components/resource_card';
 import { ResourceObject, Tags } from './_components/data';
+import { convertTags } from '@/lib/convert-tags';
 
 type ResourceObject = {
   title: string;
@@ -38,7 +39,12 @@ export default function Dashboard() {
     // get resources from the firebase
     setAllResources(ResourceObject);
     setFilteredResources(ResourceObject);
-    setTags(Tags);
+
+    const tagsLabel = convertTags(Tags)
+      .map((tag) => tag.label)
+      .sort((a, b) => a.localeCompare(b));
+
+    setTags(tagsLabel);
   }, []);
 
   const onSearchSubmit = (formData: FormData) => {
@@ -140,6 +146,7 @@ export default function Dashboard() {
               name='search-query'
               placeholder='Search resource'
               ref={inputRef}
+              autoComplete='off'
             />
             <Button type='submit' className='bg-cesa-blue'>
               Search
