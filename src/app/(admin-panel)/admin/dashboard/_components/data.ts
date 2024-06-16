@@ -72,7 +72,6 @@ export const Tags = [
   'Mobile Development',
   'Flutter',
   'Dart',
-  'TypeScript',
   'Cybersecurity',
   'Ethical Hacking',
   'Data Science',
