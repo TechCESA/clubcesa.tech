@@ -13,7 +13,8 @@ import {
 import React from 'react';
 import ResourceCard from './_components/resource_card';
 import { ResourceObject, Tags } from './_components/data';
-import { convertTags } from '@/lib/convert-tags';
+import { convertTagsBtoF } from '@/lib/convert-tags';
+import { getSixDigitNumber } from '@/lib/get-six-digit-num';
 
 type ResourceObject = {
   title: string;
@@ -40,9 +41,7 @@ export default function Dashboard() {
     setAllResources(ResourceObject);
     setFilteredResources(ResourceObject);
 
-    const tagsLabel = convertTags(Tags)
-      .map((tag) => tag.label)
-      .sort((a, b) => a.localeCompare(b));
+    const tagsLabel = convertTagsBtoF(Tags).sort((a, b) => a.localeCompare(b));
 
     setTags(tagsLabel);
   }, []);
@@ -66,7 +65,9 @@ export default function Dashboard() {
     }
 
     const searchedResources = allResources.filter((res) => {
-      const lowerCaseTags = res.tags.map((tag) => tag.toLowerCase());
+      const lowerCaseTags = convertTagsBtoF(res.tags).map((tag) =>
+        tag.toLowerCase(),
+      );
 
       return (
         (res.title.toLowerCase().includes(query) ||
@@ -103,14 +104,12 @@ export default function Dashboard() {
 
     setFilteredResources(
       allResources!.filter((res) => {
-        return res.tags.map((t) => t.toLowerCase()).includes(tag.toLowerCase());
+        return convertTagsBtoF(res.tags)
+          .map((t) => t.toLowerCase())
+          .includes(tag.toLowerCase());
       }),
     );
   };
-
-  function getSixDigitNumber() {
-    return (Math.floor(Math.random() * 900000) + 100000).toString();
-  }
 
   return (
     <div className='container mt-4 min-h-screen'>

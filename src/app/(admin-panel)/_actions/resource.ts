@@ -1,6 +1,7 @@
 'use server';
 
 import { db } from '@/firebaseConfig';
+import { convertTagsFtoB } from '@/lib/convert-tags';
 import { FormField, FormState, TAGType } from '@/lib/types';
 import { doc, getDoc } from '@firebase/firestore';
 import { redirect } from 'next/navigation';
@@ -14,14 +15,14 @@ const ResourceSchema = z.object({
 });
 
 export async function addResourceAction(
-  selectedTags: TAGType[],
+  selectedTags: string[],
   prevState: FormState,
   formData: FormData,
 ): Promise<FormState> {
   const title = formData.get(FormField.Title) as string;
   const description = formData.get(FormField.Description) as string;
   const link = formData.get(FormField.Link) as string;
-  const tags = selectedTags.map((tag) => tag.value);
+  const tags = convertTagsFtoB(selectedTags);
 
   const result = ResourceSchema.safeParse({
     title,
@@ -53,6 +54,12 @@ export async function addResourceAction(
     /**
      * Add data to Firebase
      */
+    console.log({
+      title,
+      description,
+      link,
+      tags,
+    });
   } catch (error) {
     return {
       ...prevState,

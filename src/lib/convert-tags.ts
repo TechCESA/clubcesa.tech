@@ -1,10 +1,14 @@
-export function convertTags(tags: string[]) {
+export function convertTagsBtoF(tags: string[]) {
   return tags.map((tag) => {
-    const label = tag
+    return tag
       .split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
+  });
+}
 
-    return { value: tag, label: label };
+export function convertTagsFtoB(tags: string[]) {
+  return tags.map((tag) => {
+    return tag.toLowerCase().replace(/\s/g, '-');
   });
 }
