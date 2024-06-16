@@ -40,6 +40,10 @@ export default function AddPage() {
         action={formAction}
         className='my-8 flex w-full flex-col items-start gap-6 md:max-w-[70%]'
       >
+        <h1 className='w-full text-center text-2xl font-semibold'>
+          Add a new resource
+        </h1>
+
         <div className='flex w-full flex-col items-start gap-2'>
           <Label htmlFor='title' className='font-semibold'>
             Title of the resource
