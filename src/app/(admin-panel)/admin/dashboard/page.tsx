@@ -10,11 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import React from 'react';
-import ResourceCard from './_components/resource_card';
-import { ResourceObject, Tags } from './_components/data';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { getSixDigitNumber } from '@/lib/get-six-digit-num';
+import Link from 'next/link';
+import React from 'react';
+import { ResourceObject, Tags } from './_components/data';
+import ResourceCard from './_components/resource_card';
 
 type ResourceObject = {
   title: string;
@@ -112,8 +113,11 @@ export default function Dashboard() {
   };
 
   return (
-    <div className='container mt-4 min-h-screen'>
-      <div className='my-2 flex flex-row gap-4'>
+    <div className='container my-4 min-h-screen'>
+      <Button className='w-full bg-cesa-blue font-semibold' asChild>
+        <Link href='/admin/dashboard/add'>Add New Resource</Link>
+      </Button>
+      <div className='my-2 flex flex-col gap-4 md:flex-row'>
         <Select onValueChange={onTagChange}>
           <SelectTrigger className='flex-1'>
             <SelectValue placeholder='Select tag' />

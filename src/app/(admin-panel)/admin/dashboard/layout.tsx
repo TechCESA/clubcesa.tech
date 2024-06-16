@@ -13,9 +13,6 @@ export default function RootLayout({
           <li className='text-xl'>
             <Link href='/admin/dashboard'>CESA Dashboard</Link>
           </li>
-          <Button variant='ghost' className='font-semibold' asChild>
-            <Link href='/admin/dashboard/add'>Add</Link>
-          </Button>
         </ul>
       </nav>
       {children}

@@ -38,7 +38,7 @@ export default function AddPage() {
     <div className='container flex min-h-screen flex-col items-center'>
       <form
         action={formAction}
-        className='my-8 flex w-[70%] flex-col items-start gap-6'
+        className='my-8 flex w-full flex-col items-start gap-6 md:max-w-[70%]'
       >
         <div className='flex w-full flex-col items-start gap-2'>
           <Label htmlFor='title' className='font-semibold'>
