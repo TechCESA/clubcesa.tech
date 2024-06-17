@@ -9,6 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -53,27 +54,27 @@ export default function ResourceCard({
           </p>
         </CardFooter>
       </Link>
-      <div className='absolute bottom-1 right-0 flex justify-end gap-2 pr-3 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100'>
-        <div className='flex h-9 w-9 cursor-pointer items-center justify-center rounded-full hover:bg-gray-200'>
-          <Pencil size={18} strokeWidth={1.75} />
-        </div>
+      <div className='absolute bottom-2 right-0 flex justify-end gap-2 pr-3 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100'>
+        <Button size='icon' variant='outline'>
+          <Pencil size={18} />
+        </Button>
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <div className='flex h-9 w-9 cursor-pointer items-center justify-center rounded-full hover:bg-gray-200'>
-              <Trash2 size={18} strokeWidth={1.75} />
-            </div>
+            <Button size='icon' variant='outline'>
+              <Trash2 size={18} />
+            </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
               <AlertDialogDescription>
-                This will permanently delete these resources.
+                This will permanently delete these resource.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction
-                className='bg-red-600 text-white hover:bg-red-700'
+                className='bg-destructive'
                 onClick={handleDelete}
               >
                 Delete
