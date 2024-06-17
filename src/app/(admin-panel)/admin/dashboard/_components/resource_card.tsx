@@ -5,6 +5,19 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { Pencil, Trash2 } from 'lucide-react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+
 import Link from 'next/link';
 
 export default function ResourceCard({
@@ -18,9 +31,11 @@ export default function ResourceCard({
   link: string;
   tags: string[];
 }) {
+  const handleDelete = () => {};
+
   return (
-    <Link href={link} target='_blank'>
-      <Card>
+    <Card className='group relative pb-8'>
+      <Link href={link} target='_blank'>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           {/* If we are able to get image will display here */}
@@ -35,7 +50,36 @@ export default function ResourceCard({
             {tags.join(', ')}
           </p>
         </CardFooter>
-      </Card>
-    </Link>
+      </Link>
+      <div className='absolute bottom-1 right-0 flex justify-end gap-2 pr-3 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100'>
+        <div className='flex h-9 w-9 cursor-pointer items-center justify-center rounded-full hover:bg-gray-200'>
+          <Pencil size={18} strokeWidth={1.75} />
+        </div>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <div className='flex h-9 w-9 cursor-pointer items-center justify-center rounded-full hover:bg-gray-200'>
+              <Trash2 size={18} strokeWidth={1.75} />
+            </div>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This will permanently delete these resources.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                className='bg-red-600 text-white hover:bg-red-700'
+                onClick={handleDelete}
+              >
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
+    </Card>
   );
 }
