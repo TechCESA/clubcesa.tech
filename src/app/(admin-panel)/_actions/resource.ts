@@ -72,3 +72,28 @@ export async function addResourceAction(
 
   redirect('/admin/dashboard');
 }
+
+export async function editResourceAction(
+  selectedTags: string[],
+  id: string,
+  prevState: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  try {
+    /**
+     * fetch data from firebase and update
+     */
+
+    console.log({ action: id });
+  } catch (error) {
+    return {
+      ...prevState,
+      error: {
+        field: FormField.Button,
+        message: 'Failed to add resource',
+      },
+    };
+  }
+
+  redirect('/admin/dashboard');
+}
