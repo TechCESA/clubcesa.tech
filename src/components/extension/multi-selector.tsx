@@ -86,38 +86,56 @@ const MultiSelector = ({
         setActiveIndex(prevIndex < 0 ? value.length - 1 : prevIndex);
       };
 
-      if ((e.key === 'Backspace' || e.key === 'Delete') && value.length > 0) {
-        if (inputValue.length === 0) {
-          if (activeIndex !== -1 && activeIndex < value.length) {
-            onValueChange(value.filter((item) => item !== value[activeIndex]));
-            const newIndex = activeIndex - 1 < 0 ? 0 : activeIndex - 1;
-            setActiveIndex(newIndex);
-          } else {
-            onValueChange(
-              value.filter((item) => item !== value[value.length - 1]),
-            );
+      switch (e.key) {
+        case 'Backspace':
+        case 'Delete':
+          if (value.length > 0 && inputValue.length === 0) {
+            if (activeIndex !== -1 && activeIndex < value.length) {
+              onValueChange(
+                value.filter((item) => item !== value[activeIndex]),
+              );
+              const newIndex = activeIndex - 1 < 0 ? 0 : activeIndex - 1;
+              setActiveIndex(newIndex);
+            } else {
+              onValueChange(
+                value.filter((item) => item !== value[value.length - 1]),
+              );
+            }
           }
-        }
-      } else if (e.key === 'Enter') {
-        setOpen(true);
-      } else if (e.key === 'Escape') {
-        if (activeIndex !== -1) {
-          setActiveIndex(-1);
-        } else {
-          setOpen(false);
-        }
-      } else if (dir === 'rtl') {
-        if (e.key === 'ArrowRight') {
-          movePrev();
-        } else if (e.key === 'ArrowLeft' && (activeIndex !== -1 || loop)) {
-          moveNext();
-        }
-      } else {
-        if (e.key === 'ArrowLeft') {
-          movePrev();
-        } else if (e.key === 'ArrowRight' && (activeIndex !== -1 || loop)) {
-          moveNext();
-        }
+          break;
+
+        case 'Enter':
+          setOpen(true);
+          break;
+
+        case 'Escape':
+          if (activeIndex !== -1) {
+            setActiveIndex(-1);
+          } else {
+            setOpen(false);
+          }
+          break;
+
+        case 'ArrowRight':
+          if (dir === 'rtl') {
+            movePrev();
+          } else if (activeIndex !== -1 || loop) {
+            moveNext();
+          }
+          break;
+
+        case 'ArrowLeft':
+          if (dir === 'rtl') {
+            if (activeIndex !== -1 || loop) {
+              moveNext();
+            }
+          } else {
+            movePrev();
+          }
+          break;
+
+        default:
+          break;
       }
     },
     [value, dir, activeIndex, loop, inputValue.length, onValueChange],
@@ -285,7 +303,7 @@ const MultiSelectorItem = forwardRef<
         setInputValue('');
       }}
       className={cn(
-        'flex cursor-pointer justify-between rounded-md px-2 py-1 transition-colors ',
+        'flex cursor-pointer justify-between rounded-md px-2 py-1 transition-colors',
         className,
         isIncluded && 'cursor-default opacity-50',
         props.disabled && 'cursor-not-allowed opacity-50',
