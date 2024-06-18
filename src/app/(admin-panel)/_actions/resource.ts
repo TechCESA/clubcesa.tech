@@ -3,7 +3,14 @@
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { ResourceType } from '@/lib/types';
-import { addDoc, collection, getDocs } from '@firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+} from '@firebase/firestore';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -102,11 +109,13 @@ export async function editResourceAction(
   }
 
   try {
-    /**
-     * update data of given 'id' in firebase
-     */
-
-    console.log({ editAction: id });
+    const resourceRef = doc(db, ResourceStr, id);
+    await updateDoc(resourceRef, {
+      title,
+      description,
+      link,
+      tags,
+    });
   } catch (error) {
     return {
       message: 'Firebase Error: Failed to edit resource.',
@@ -137,15 +146,21 @@ export async function getResourceAction(
   id: string,
 ): Promise<ResourceType | null> {
   try {
-    /**
-     * get resource of given 'id' from firebase
-     */
+    const resourceRef = doc(db, ResourceStr, id);
+    const docSnap = await getDoc(resourceRef);
+    if (!docSnap.exists()) {
+      return null;
+    }
 
-    const resource = ResourceObject.find((res) => res.id === id);
+    const data = docSnap.data();
 
-    if (!resource) return null;
-
-    return resource;
+    return {
+      id: docSnap.id,
+      title: data['title'],
+      description: data['description'],
+      link: data['link'],
+      tags: data['tags'],
+    };
   } catch (error) {
     return null;
   }

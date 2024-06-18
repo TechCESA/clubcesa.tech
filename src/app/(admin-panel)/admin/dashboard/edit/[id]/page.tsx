@@ -43,7 +43,7 @@ export default function EditPage({
   );
 
   React.useEffect(() => {
-    (async function fetchData() {
+    (async function () {
       try {
         const response = await getResourceAction(id);
 
