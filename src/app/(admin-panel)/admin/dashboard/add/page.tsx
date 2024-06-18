@@ -15,7 +15,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { getSixDigitNumber } from '@/lib/get-six-digit-num';
-import { ErrorType, FormField, TAGType } from '@/lib/types';
 import React from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Tags } from '../_components/data';
@@ -27,10 +26,8 @@ export default function AddPage() {
   const [formState, formAction] = useFormState(
     addResourceAction.bind(null, selectedTags),
     {
-      error: {
-        field: 'button',
-        message: '',
-      } as ErrorType,
+      errors: {},
+      message: undefined,
     },
   );
 
@@ -56,8 +53,8 @@ export default function AddPage() {
             required
             autoFocus
           />
-          {formState.error && formState.error.field == FormField.Title && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          {formState.errors?.title && (
+            <p className='text-destructive'>{formState.errors.title}</p>
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
@@ -70,18 +67,17 @@ export default function AddPage() {
             placeholder='Description (minimum 50 words/ 300 characters)'
             required
           />
-          {formState.error &&
-            formState.error.field == FormField.Description && (
-              <p className='text-destructive'>{formState.error.message}</p>
-            )}
+          {formState.errors?.description && (
+            <p className='text-destructive'>{formState.errors.description}</p>
+          )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
           <Label htmlFor='link' className='font-semibold'>
             Link to the resource
           </Label>
           <Input type='url' id='link' name='link' placeholder='Link' required />
-          {formState.error && formState.error.field == FormField.Link && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          {formState.errors?.link && (
+            <p className='text-destructive'>{formState.errors.link}</p>
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
@@ -110,14 +106,14 @@ export default function AddPage() {
             </MultiSelectorContent>
           </MultiSelector>
 
-          {formState.error && formState.error.field == FormField.Tags && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          {formState.errors?.tags && (
+            <p className='text-destructive'>{formState.errors.tags}</p>
           )}
         </div>
 
         <div className='flex w-full flex-col gap-2'>
-          {formState.error && formState.error.field == FormField.Button && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          {formState.message && (
+            <p className='text-destructive'>{formState.message}</p>
           )}
           <SubmitButton />
         </div>

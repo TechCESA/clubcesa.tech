@@ -1,6 +1,9 @@
 'use client';
 
-import { editResourceAction } from '@/app/(admin-panel)/_actions/resource';
+import {
+  editResourceAction,
+  getResourceAction,
+} from '@/app/(admin-panel)/_actions/resource';
 import {
   MultiSelector,
   MultiSelectorContent,
@@ -9,13 +12,15 @@ import {
   MultiSelectorList,
   MultiSelectorTrigger,
 } from '@/components/extension/multi-selector';
+import Loader from '@/components/loader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { getSixDigitNumber } from '@/lib/get-six-digit-num';
-import { ErrorType, FormField, TAGType } from '@/lib/types';
+import { ResourceType } from '@/lib/types';
+import { notFound } from 'next/navigation';
 import React from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Tags } from '../../_components/data';
@@ -27,21 +32,40 @@ export default function EditPage({
 }) {
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const tags = convertTagsBtoF(Tags).sort((a, b) => a.localeCompare(b));
+  const [resource, setResource] = React.useState<ResourceType | null>(null);
 
   const [formState, formAction] = useFormState(
     editResourceAction.bind(null, selectedTags, id),
     {
-      error: {
-        field: 'button',
-        message: '',
-      } as ErrorType,
+      errors: {},
+      message: undefined,
     },
   );
 
-  /**
-   * Fetch data from firebase and show in form
-   */
-  console.log({ form: id });
+  React.useEffect(() => {
+    (async function fetchData() {
+      try {
+        const response = await getResourceAction(id);
+
+        if (!response) {
+          notFound();
+        }
+
+        setResource(response);
+        setSelectedTags(convertTagsBtoF(response.tags));
+      } catch (error) {
+        console.error('Error fetching resource:', error);
+      }
+    })();
+  }, [id]);
+
+  if (!resource) {
+    return (
+      <div className='flex min-h-96 items-center justify-center'>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className='container flex min-h-screen flex-col items-center'>
@@ -62,11 +86,12 @@ export default function EditPage({
             id='title'
             name='title'
             placeholder='Title (minimum 30 characters)'
+            defaultValue={resource.title}
             required
             autoFocus
           />
-          {formState.error && formState.error.field == FormField.Title && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          {formState.errors?.title && (
+            <p className='text-destructive'>{formState.errors.title}</p>
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
@@ -77,20 +102,27 @@ export default function EditPage({
             id='description'
             name='description'
             placeholder='Description (minimum 50 words/ 300 characters)'
+            defaultValue={resource.description}
             required
           />
-          {formState.error &&
-            formState.error.field == FormField.Description && (
-              <p className='text-destructive'>{formState.error.message}</p>
-            )}
+          {formState.errors?.description && (
+            <p className='text-destructive'>{formState.errors.description}</p>
+          )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
           <Label htmlFor='link' className='font-semibold'>
             Link to the resource
           </Label>
-          <Input type='url' id='link' name='link' placeholder='Link' required />
-          {formState.error && formState.error.field == FormField.Link && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          <Input
+            type='url'
+            id='link'
+            name='link'
+            defaultValue={resource.link}
+            placeholder='Link'
+            required
+          />
+          {formState.errors?.link && (
+            <p className='text-destructive'>{formState.errors.link}</p>
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
@@ -118,15 +150,14 @@ export default function EditPage({
               </MultiSelectorList>
             </MultiSelectorContent>
           </MultiSelector>
-
-          {formState.error && formState.error.field == FormField.Tags && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          {formState.errors?.tags && (
+            <p className='text-destructive'>{formState.errors.tags}</p>
           )}
         </div>
 
         <div className='flex w-full flex-col gap-2'>
-          {formState.error && formState.error.field == FormField.Button && (
-            <p className='text-destructive'>{formState.error.message}</p>
+          {formState.message && (
+            <p className='text-destructive'>{formState.message}</p>
           )}
           <ChangeButton />
         </div>

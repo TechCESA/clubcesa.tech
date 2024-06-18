@@ -2,10 +2,12 @@
 
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
-import { FormField, FormState, TAGType } from '@/lib/types';
+import { ResourceType } from '@/lib/types';
 import { doc, getDoc } from '@firebase/firestore';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
+import { ResourceObject } from '../admin/dashboard/_components/data';
 
 const ResourceSchema = z.object({
   title: z.string().min(30, 'Minimum 30 characters required'),
@@ -14,14 +16,32 @@ const ResourceSchema = z.object({
   tags: z.array(z.string()).nonempty('At least one tag is required'),
 });
 
+enum FormFields {
+  Button = 'button',
+  Title = 'title',
+  Description = 'description',
+  Link = 'link',
+  Tags = 'tags',
+}
+
+type State = {
+  errors?: {
+    link?: string[];
+    title?: string[];
+    description?: string[];
+    tags?: string[];
+  };
+  message?: string;
+};
+
 export async function addResourceAction(
   selectedTags: string[],
-  prevState: FormState,
+  prevState: State,
   formData: FormData,
-): Promise<FormState> {
-  const title = formData.get(FormField.Title) as string;
-  const description = formData.get(FormField.Description) as string;
-  const link = formData.get(FormField.Link) as string;
+): Promise<State> {
+  const title = formData.get(FormFields.Title) as string;
+  const description = formData.get(FormFields.Description) as string;
+  const link = formData.get(FormFields.Link) as string;
   const tags = convertTagsFtoB(selectedTags);
 
   const result = ResourceSchema.safeParse({
@@ -32,21 +52,8 @@ export async function addResourceAction(
   });
 
   if (!result.success) {
-    const errorField = result.error.errors[0].path[0];
-
-    let field: FormField;
-    if (Object.values(FormField).includes(errorField as FormField)) {
-      field = errorField as FormField;
-    } else {
-      field = FormField.Button;
-    }
-
     return {
-      ...prevState,
-      error: {
-        field,
-        message: result.error.errors[0].message,
-      },
+      errors: result.error.flatten().fieldErrors,
     };
   }
 
@@ -54,6 +61,7 @@ export async function addResourceAction(
     /**
      * Add data to Firebase
      */
+
     console.log({
       title,
       description,
@@ -62,38 +70,84 @@ export async function addResourceAction(
     });
   } catch (error) {
     return {
-      ...prevState,
-      error: {
-        field: FormField.Button,
-        message: 'Failed to add resource',
-      },
+      message: 'Firebase Error: Failed to add resource.',
     };
   }
 
+  revalidatePath('/admin/dashboard');
   redirect('/admin/dashboard');
 }
 
 export async function editResourceAction(
   selectedTags: string[],
   id: string,
-  prevState: FormState,
+  prevState: State,
   formData: FormData,
-): Promise<FormState> {
-  try {
-    /**
-     * fetch data from firebase and update
-     */
+): Promise<State> {
+  const title = formData.get(FormFields.Title) as string;
+  const description = formData.get(FormFields.Description) as string;
+  const link = formData.get(FormFields.Link) as string;
+  const tags = convertTagsFtoB(selectedTags);
 
-    console.log({ action: id });
-  } catch (error) {
+  const result = ResourceSchema.safeParse({
+    title,
+    description,
+    link,
+    tags,
+  });
+
+  if (!result.success) {
     return {
-      ...prevState,
-      error: {
-        field: FormField.Button,
-        message: 'Failed to add resource',
-      },
+      errors: result.error.flatten().fieldErrors,
     };
   }
 
+  try {
+    /**
+     * update data of given 'id' in firebase
+     */
+
+    console.log({ editAction: id });
+  } catch (error) {
+    return {
+      message: 'Firebase Error: Failed to edit resource.',
+    };
+  }
+
+  revalidatePath('/admin/dashboard');
   redirect('/admin/dashboard');
+}
+
+export async function deleteResourceAction(id: string) {
+  try {
+    /**
+     * delete resource of given 'id' in firebase
+     */
+
+    console.log({ deleteAction: id });
+  } catch (error) {
+    return {
+      error: 'Failed to delete resource',
+    };
+  }
+
+  revalidatePath('/admin/dashboard');
+}
+
+export async function getResourceAction(
+  id: string,
+): Promise<ResourceType | null> {
+  try {
+    /**
+     * get resource of given 'id' from firebase
+     */
+
+    const resource = ResourceObject.find((res) => res.id === id);
+
+    if (!resource) return null;
+
+    return resource;
+  } catch (error) {
+    return null;
+  }
 }
