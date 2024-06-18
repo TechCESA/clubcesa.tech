@@ -1,5 +1,6 @@
 'use client';
 
+import Loader from '@/components/loader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -12,24 +13,19 @@ import {
 } from '@/components/ui/select';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { getSixDigitNumber } from '@/lib/get-six-digit-num';
+import { ResourceType } from '@/lib/types';
+import { SearchIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { ResourceObject, Tags } from './_components/data';
 import ResourceCard from './_components/resource_card';
 
-type ResourceObject = {
-  title: string;
-  description: string;
-  link: string;
-  tags: string[];
-};
-
 export default function Dashboard() {
-  const [allResources, setAllResources] = React.useState<
-    ResourceObject[] | null
-  >(null);
+  const [allResources, setAllResources] = React.useState<ResourceType[] | null>(
+    null,
+  );
   const [filteredResources, setFilteredResources] = React.useState<
-    ResourceObject[] | null
+    ResourceType[] | null
   >(null);
   const [tags, setTags] = React.useState<string[]>([]);
   const [searchError, setSearchError] = React.useState<string | null>(null);
@@ -38,32 +34,34 @@ export default function Dashboard() {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    // get resources from the firebase
+    /**
+     * get resources from the firebase
+     */
     setAllResources(ResourceObject);
     setFilteredResources(ResourceObject);
 
+    /**
+     * Note: If possible =>
+     * here when you fetch tags from firebase
+     * convert them as pair of {value: "web-development", label: "Web Development"}
+     * and get rid of "convertTagsBtoF" and "convertTagsFtoB" functions
+     */
     const tagsLabel = convertTagsBtoF(Tags).sort((a, b) => a.localeCompare(b));
-
     setTags(tagsLabel);
   }, []);
 
-  const onSearchSubmit = (formData: FormData) => {
-    const serachQuery = formData.get('search-query') as string;
-    if (serachQuery === null) return;
+  if (!allResources) {
+    return (
+      <div className='flex min-h-96 items-center justify-center'>
+        <Loader />
+      </div>
+    );
+  }
 
-    if (serachQuery.length < 3) {
-      setSearchError('Search query must be at least 3 characters long');
-      return;
-    }
-
-    setSearchError(null);
+  const onSearchSubmit = () => {
+    const serachQuery = inputRef.current?.value ?? '';
 
     const query = serachQuery.toString().toLowerCase();
-
-    if (allResources == null) {
-      setSearchError('No resources found');
-      return;
-    }
 
     const searchedResources = allResources.filter((res) => {
       const lowerCaseTags = convertTagsBtoF(res.tags).map((tag) =>
@@ -84,6 +82,7 @@ export default function Dashboard() {
     }
 
     setFilteredResources(searchedResources);
+    setSearchError(null);
   };
 
   const onTagChange = (tag: string) => {
@@ -143,18 +142,23 @@ export default function Dashboard() {
         </Select>
 
         <div className='flex flex-1 flex-col gap-1'>
-          <form action={onSearchSubmit} className='flex flex-row gap-4'>
+          <div className='relative'>
             <Input
               type='search'
               name='search-query'
               placeholder='Search resource'
               ref={inputRef}
               autoComplete='off'
+              onChange={onSearchSubmit}
+              className='peer'
             />
-            <Button type='submit' className='bg-cesa-blue'>
-              Search
-            </Button>
-          </form>
+            <SearchIcon
+              strokeOpacity='.5'
+              strokeWidth='1.3'
+              className='pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 transform peer-focus:hidden'
+            />
+          </div>
+
           {searchError ? (
             <span className='text-sm text-destructive'>{searchError}</span>
           ) : null}
@@ -171,7 +175,8 @@ export default function Dashboard() {
             {filteredResources.map((res, i) => {
               return (
                 <ResourceCard
-                  key={i + getSixDigitNumber()}
+                  key={res.id}
+                  id={res.id}
                   title={res.title}
                   description={res.description}
                   link={res.link}
