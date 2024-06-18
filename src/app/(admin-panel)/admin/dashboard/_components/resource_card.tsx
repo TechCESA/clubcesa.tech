@@ -1,3 +1,4 @@
+import { deleteResourceAction } from '@/app/(admin-panel)/_actions/resource';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,11 +23,13 @@ import { Pencil, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ResourceCard({
+  id,
   title,
   description,
   link,
   tags,
 }: {
+  id: string;
   title: string;
   description: string;
   link: string;
@@ -34,7 +37,9 @@ export default function ResourceCard({
 }) {
   const tagsLabel = convertTagsBtoF(tags).sort((a, b) => a.localeCompare(b));
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    deleteResourceAction(id);
+  };
 
   return (
     <Card className='group relative pb-8'>
@@ -55,8 +60,10 @@ export default function ResourceCard({
         </CardFooter>
       </Link>
       <div className='absolute bottom-2 right-0 flex justify-end gap-2 pr-3 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100'>
-        <Button size='icon' variant='outline'>
-          <Pencil size={18} />
+        <Button size='icon' variant='outline' asChild>
+          <Link href={`/admin/dashboard/edit/${id}`}>
+            <Pencil size={18} />
+          </Link>
         </Button>
         <AlertDialog>
           <AlertDialogTrigger asChild>
