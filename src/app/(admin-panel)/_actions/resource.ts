@@ -3,7 +3,7 @@
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { ResourceType } from '@/lib/types';
-import { addDoc, collection } from '@firebase/firestore';
+import { addDoc, collection, getDocs } from '@firebase/firestore';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -23,6 +23,9 @@ enum FormFields {
   Link = 'link',
   Tags = 'tags',
 }
+
+const ResourceStr = 'resources';
+const TagStr = 'tags';
 
 type State = {
   errors?: {
@@ -145,5 +148,52 @@ export async function getResourceAction(
     return resource;
   } catch (error) {
     return null;
+  }
+}
+
+export async function getAllResources() {
+  try {
+    const querySnapshot = await getDocs(collection(db, ResourceStr));
+
+    if (querySnapshot.empty) {
+      return null;
+    }
+
+    const resources: ResourceType[] = [];
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      resources.push({
+        id: doc.id,
+        title: data['title'] as string,
+        description: data['description'] as string,
+        link: data['link'] as string,
+        tags: data['tags'] as string[],
+      });
+    });
+
+    return resources;
+  } catch (error) {
+    if (error instanceof Error) throw new Error(error.message);
+  }
+}
+
+export async function getAllTags() {
+  try {
+    const querySnapshot = await getDocs(collection(db, TagStr));
+
+    if (querySnapshot.empty) {
+      return null;
+    }
+
+    const tags: string[] = [];
+
+    querySnapshot.forEach((doc) => {
+      tags.push(doc.id);
+    });
+
+    return tags;
+  } catch (error) {
+    if (error instanceof Error) throw new Error(error.message);
   }
 }

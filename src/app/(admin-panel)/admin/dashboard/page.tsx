@@ -17,7 +17,7 @@ import { ResourceType } from '@/lib/types';
 import { SearchIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import { ResourceObject, Tags } from './_components/data';
+import { getAllResources, getAllTags } from '../../_actions/resource';
 import ResourceCard from './_components/resource_card';
 
 export default function Dashboard() {
@@ -34,23 +34,40 @@ export default function Dashboard() {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    /**
-     * get resources from the firebase
-     */
-    setAllResources(ResourceObject);
-    setFilteredResources(ResourceObject);
+    (async function () {
+      try {
+        const resourcesData = await getAllResources();
+        const tagsData = await getAllTags();
 
-    /**
-     * Note: If possible =>
-     * here when you fetch tags from firebase
-     * convert them as pair of {value: "web-development", label: "Web Development"}
-     * and get rid of "convertTagsBtoF" and "convertTagsFtoB" functions
-     */
-    const tagsLabel = convertTagsBtoF(Tags).sort((a, b) => a.localeCompare(b));
-    setTags(tagsLabel);
+        if (!resourcesData) {
+          setFilteredResources(null);
+          return;
+        }
+
+        if (!tagsData) {
+          setTags([]);
+        } else {
+          /**
+           * Note: If possible =>
+           * here when you fetch tags from firebase
+           * convert them as pair of {value: "web-development", label: "Web Development"}
+           * and get rid of "convertTagsBtoF" and "convertTagsFtoB" functions
+           */
+          const tagsLabel = convertTagsBtoF(tagsData).sort((a, b) =>
+            a.localeCompare(b),
+          );
+          setTags(tagsLabel);
+        }
+
+        setAllResources(resourcesData);
+        setFilteredResources(resourcesData);
+      } catch (error) {
+        console.error('Error fetching resource:', error);
+      }
+    })();
   }, []);
 
-  if (!allResources) {
+  if (!allResources || !filteredResources) {
     return (
       <div className='flex min-h-96 items-center justify-center'>
         <Loader />
@@ -58,21 +75,28 @@ export default function Dashboard() {
     );
   }
 
-  const onSearchSubmit = () => {
+  const onInputChange = () => {
     const serachQuery = inputRef.current?.value ?? '';
 
     const query = serachQuery.toString().toLowerCase();
 
-    const searchedResources = allResources.filter((res) => {
+    const filteredForSearch = allResources.filter((res) => {
+      return (
+        convertTagsBtoF(res.tags)
+          .map((t) => t.toLowerCase())
+          .includes(selectedTag) || selectedTag === 'all'
+      );
+    });
+
+    const searchedResources = filteredForSearch.filter((res) => {
       const lowerCaseTags = convertTagsBtoF(res.tags).map((tag) =>
         tag.toLowerCase(),
       );
 
       return (
-        (res.title.toLowerCase().includes(query) ||
-          lowerCaseTags.includes(query) ||
-          lowerCaseTags.some((tag) => tag.includes(query))) &&
-        (lowerCaseTags.includes(selectedTag) || selectedTag === 'all')
+        res.title.toLowerCase().includes(query) ||
+        lowerCaseTags.includes(query) ||
+        lowerCaseTags.some((tag) => tag.includes(query))
       );
     });
 
@@ -95,15 +119,10 @@ export default function Dashboard() {
       return;
     }
 
-    if (allResources == null) {
-      setSearchError('No resources found');
-      return;
-    }
-
     setSelectedTag(tag.toLowerCase());
 
     setFilteredResources(
-      allResources!.filter((res) => {
+      allResources.filter((res) => {
         return convertTagsBtoF(res.tags)
           .map((t) => t.toLowerCase())
           .includes(tag.toLowerCase());
@@ -149,7 +168,7 @@ export default function Dashboard() {
               placeholder='Search resource'
               ref={inputRef}
               autoComplete='off'
-              onChange={onSearchSubmit}
+              onChange={onInputChange}
               className='peer'
             />
             <SearchIcon
