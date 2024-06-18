@@ -3,7 +3,7 @@
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { ResourceType } from '@/lib/types';
-import { doc, getDoc } from '@firebase/firestore';
+import { addDoc, collection } from '@firebase/firestore';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -58,11 +58,7 @@ export async function addResourceAction(
   }
 
   try {
-    /**
-     * Add data to Firebase
-     */
-
-    console.log({
+    await addDoc(collection(db, 'resources'), {
       title,
       description,
       link,
