@@ -27,9 +27,10 @@ export default function Dashboard() {
   const [filteredResources, setFilteredResources] = React.useState<
     ResourceType[] | null
   >(null);
-  const [tags, setTags] = React.useState<string[]>([]);
+  const [allTags, setAllTags] = React.useState<string[]>([]);
   const [searchError, setSearchError] = React.useState<string | null>(null);
   const [selectedTag, setSelectedTag] = React.useState<string>('all');
+  const [loading, setLoading] = React.useState(true);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -40,15 +41,13 @@ export default function Dashboard() {
         const tagsData = await getAllTags();
 
         if (!resourcesData) {
-          /**
-           * When resourcesData is null, continuesly shows the loader
-           */
           setFilteredResources(null);
+          setLoading(false);
           return;
         }
 
         if (!tagsData) {
-          setTags([]);
+          setAllTags([]);
         } else {
           /**
            * Note: If possible =>
@@ -59,31 +58,25 @@ export default function Dashboard() {
           const tagsLabel = convertTagsBtoF(tagsData).sort((a, b) =>
             a.localeCompare(b),
           );
-          setTags(tagsLabel);
+          setAllTags(tagsLabel);
         }
 
         setAllResources(resourcesData);
         setFilteredResources(resourcesData);
+
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching resource:', error);
       }
     })();
   }, []);
 
-  if (!allResources || !filteredResources) {
-    return (
-      <div className='flex min-h-96 items-center justify-center'>
-        <Loader />
-      </div>
-    );
-  }
-
   const onInputChange = () => {
     const serachQuery = inputRef.current?.value ?? '';
 
     const query = serachQuery.toString().toLowerCase();
 
-    const filteredForSearch = allResources.filter((res) => {
+    const filteredForSearch = allResources!.filter((res) => {
       return (
         convertTagsBtoF(res.tags)
           .map((t) => t.toLowerCase())
@@ -125,13 +118,21 @@ export default function Dashboard() {
     setSelectedTag(tag.toLowerCase());
 
     setFilteredResources(
-      allResources.filter((res) => {
+      allResources!.filter((res) => {
         return convertTagsBtoF(res.tags)
           .map((t) => t.toLowerCase())
           .includes(tag.toLowerCase());
       }),
     );
   };
+
+  if (loading) {
+    return (
+      <div className='flex min-h-96 items-center justify-center'>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className='container my-4 min-h-screen'>
@@ -149,7 +150,7 @@ export default function Dashboard() {
                 All
               </SelectItem>
 
-              {tags.map((tag) => {
+              {allTags.map((tag) => {
                 return (
                   <SelectItem
                     key={tag.toLowerCase() + getSixDigitNumber()}
@@ -188,7 +189,7 @@ export default function Dashboard() {
       </div>
 
       <div className='mx-4 my-6'>
-        {filteredResources == null ? (
+        {!allResources || !filteredResources ? (
           <p className='text-center text-lg font-semibold text-destructive'>
             No resources found
           </p>
