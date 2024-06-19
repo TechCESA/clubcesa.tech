@@ -32,13 +32,15 @@ export default function Dashboard() {
   const [selectedTag, setSelectedTag] = React.useState<string>('all');
   const [loading, setLoading] = React.useState(true);
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const searchInputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     (async function () {
       try {
-        const resourcesData = await getAllResources();
-        const tagsData = await getAllTags();
+        const [resourcesData, tagsData] = await Promise.all([
+          getAllResources(),
+          getAllTags(),
+        ]);
 
         if (!resourcesData) {
           setFilteredResources(null);
@@ -72,7 +74,7 @@ export default function Dashboard() {
   }, []);
 
   const onInputChange = () => {
-    const serachQuery = inputRef.current?.value ?? '';
+    const serachQuery = searchInputRef.current?.value ?? '';
 
     const query = serachQuery.toString().toLowerCase();
 
@@ -107,7 +109,7 @@ export default function Dashboard() {
 
   const onTagChange = (tag: string) => {
     setSearchError(null);
-    inputRef.current!.value = '';
+    searchInputRef.current!.value = '';
 
     if (tag === 'All') {
       setFilteredResources(allResources);
@@ -170,7 +172,7 @@ export default function Dashboard() {
               type='search'
               name='search-query'
               placeholder='Search resource'
-              ref={inputRef}
+              ref={searchInputRef}
               autoComplete='off'
               onChange={onInputChange}
               className='peer'
