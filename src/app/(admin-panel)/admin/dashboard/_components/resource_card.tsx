@@ -59,7 +59,7 @@ export default function ResourceCard({
           </p>
         </CardFooter>
       </Link>
-      <div className='absolute bottom-2 right-0 flex justify-end gap-2 pr-3 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100'>
+      <div className='absolute bottom-3 right-3 flex justify-end gap-2 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100'>
         <Button size='icon' variant='outline' asChild>
           <Link href={`/admin/dashboard/edit/${id}`}>
             <Pencil size={18} />
