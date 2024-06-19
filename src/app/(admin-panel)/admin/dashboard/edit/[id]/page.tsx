@@ -2,6 +2,7 @@
 
 import {
   editResourceAction,
+  getAllTags,
   getResourceAction,
 } from '@/app/(admin-panel)/_actions/resource';
 import {
@@ -23,7 +24,6 @@ import { ResourceType } from '@/lib/types';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
-import { Tags } from '../../_components/data';
 
 export default function EditPage({
   params: { id },
@@ -31,7 +31,7 @@ export default function EditPage({
   params: { id: string };
 }) {
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
-  const tags = convertTagsBtoF(Tags).sort((a, b) => a.localeCompare(b));
+  const [allTags, setAllTags] = React.useState<string[]>([]);
   const [resource, setResource] = React.useState<ResourceType | null>(null);
 
   const [formState, formAction] = useFormState(
@@ -45,14 +45,32 @@ export default function EditPage({
   React.useEffect(() => {
     (async function () {
       try {
-        const response = await getResourceAction(id);
+        const [resourceData, tagsData] = await Promise.all([
+          getResourceAction(id),
+          getAllTags(),
+        ]);
 
-        if (!response) {
+        if (!resourceData) {
           notFound();
         }
 
-        setResource(response);
-        setSelectedTags(convertTagsBtoF(response.tags));
+        if (!tagsData) {
+          setAllTags([]);
+        } else {
+          /**
+           * Note: If possible =>
+           * here when you fetch tags from firebase
+           * convert them as pair of {value: "web-development", label: "Web Development"}
+           * and get rid of "convertTagsBtoF" and "convertTagsFtoB" functions
+           */
+          const tagsLabel = convertTagsBtoF(tagsData).sort((a, b) =>
+            a.localeCompare(b),
+          );
+          setAllTags(tagsLabel);
+        }
+
+        setResource(resourceData);
+        setSelectedTags(convertTagsBtoF(resourceData.tags));
       } catch (error) {
         console.error('Error fetching resource:', error);
       }
@@ -139,7 +157,7 @@ export default function EditPage({
             </MultiSelectorTrigger>
             <MultiSelectorContent>
               <MultiSelectorList>
-                {tags.map((tag) => (
+                {allTags.map((tag) => (
                   <MultiSelectorItem
                     key={tag + getSixDigitNumber()}
                     value={tag}

@@ -1,6 +1,9 @@
 'use client';
 
-import { addResourceAction } from '@/app/(admin-panel)/_actions/resource';
+import {
+  addResourceAction,
+  getAllTags,
+} from '@/app/(admin-panel)/_actions/resource';
 import {
   MultiSelector,
   MultiSelectorContent,
@@ -17,11 +20,10 @@ import { convertTagsBtoF } from '@/lib/convert-tags';
 import { getSixDigitNumber } from '@/lib/get-six-digit-num';
 import React from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
-import { Tags } from '../_components/data';
 
 export default function AddPage() {
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
-  const tags = convertTagsBtoF(Tags).sort((a, b) => a.localeCompare(b));
+  const [allTags, setAllTags] = React.useState<string[]>([]);
 
   const [formState, formAction] = useFormState(
     addResourceAction.bind(null, selectedTags),
@@ -30,6 +32,31 @@ export default function AddPage() {
       message: undefined,
     },
   );
+
+  React.useEffect(() => {
+    (async function () {
+      try {
+        const tagsData = await getAllTags();
+
+        if (!tagsData) {
+          setAllTags([]);
+        } else {
+          /**
+           * Note: If possible =>
+           * here when you fetch tags from firebase
+           * convert them as pair of {value: "web-development", label: "Web Development"}
+           * and get rid of "convertTagsBtoF" and "convertTagsFtoB" functions
+           */
+          const tagsLabel = convertTagsBtoF(tagsData).sort((a, b) =>
+            a.localeCompare(b),
+          );
+          setAllTags(tagsLabel);
+        }
+      } catch (error) {
+        console.error('Error fetching tags:', error);
+      }
+    })();
+  }, []);
 
   return (
     <div className='container flex min-h-screen flex-col items-center'>
@@ -94,7 +121,7 @@ export default function AddPage() {
             </MultiSelectorTrigger>
             <MultiSelectorContent>
               <MultiSelectorList>
-                {tags.map((tag) => (
+                {allTags.map((tag) => (
                   <MultiSelectorItem
                     key={tag + getSixDigitNumber()}
                     value={tag}
