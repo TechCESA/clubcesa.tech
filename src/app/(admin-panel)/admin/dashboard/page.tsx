@@ -40,6 +40,9 @@ export default function Dashboard() {
         const tagsData = await getAllTags();
 
         if (!resourcesData) {
+          /**
+           * When resourcesData is null, continuesly shows the loader
+           */
           setFilteredResources(null);
           return;
         }

@@ -6,6 +6,7 @@ import { ResourceType } from '@/lib/types';
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -14,7 +15,6 @@ import {
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { ResourceObject } from '../admin/dashboard/_components/data';
 
 const ResourceSchema = z.object({
   title: z.string().min(30, 'Minimum 30 characters required'),
@@ -68,12 +68,21 @@ export async function addResourceAction(
   }
 
   try {
+    /**
+     * For more secure tags add validation that tags are valid,
+     * by comparing those with tags in firestore
+     */
+
     await addDoc(collection(db, 'resources'), {
       title,
       description,
       link,
       tags,
     });
+
+    /**
+     * Here add the id/ref returned from resource to their corresponding tags collection
+     */
   } catch (error) {
     return {
       message: 'Firebase Error: Failed to add resource.',
@@ -109,6 +118,11 @@ export async function editResourceAction(
   }
 
   try {
+    /**
+     * For more secure tags add validation that tags are valid,
+     * by comparing those with tags in firestore
+     */
+
     const resourceRef = doc(db, ResourceStr, id);
     await updateDoc(resourceRef, {
       title,
@@ -116,6 +130,10 @@ export async function editResourceAction(
       link,
       tags,
     });
+
+    /**
+     * Here add given resource id or resource ref to their corresponding tags collection
+     */
   } catch (error) {
     return {
       message: 'Firebase Error: Failed to edit resource.',
@@ -128,18 +146,19 @@ export async function editResourceAction(
 
 export async function deleteResourceAction(id: string) {
   try {
-    /**
-     * delete resource of given 'id' in firebase
-     */
-
-    console.log({ deleteAction: id });
+    const resourceRef = doc(db, ResourceStr, id);
+    await deleteDoc(resourceRef);
   } catch (error) {
     return {
       error: 'Failed to delete resource',
     };
   }
 
+  /**
+   * Dashboard is not revalidating properly
+   */
   revalidatePath('/admin/dashboard');
+  redirect('/admin/dashboard');
 }
 
 export async function getResourceAction(
