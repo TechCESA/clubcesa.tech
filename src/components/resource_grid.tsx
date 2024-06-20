@@ -5,14 +5,14 @@ export default async function ResourceGrid() {
   const response = await getTypeOfResources();
 
   return (
-    <div className='container mx-auto my-12'>
-      <div className='mx-4 grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 xl:mx-0'>
-        {response.data.length == 0 || response.error.length >= 1 ? (
-          <div className='flex justify-center text-2xl font-medium uppercase text-red-400'>
-            {response.error}
-          </div>
-        ) : (
-          response.data?.map((res) => {
+    <div className='mx-0 my-4 w-full md:container md:mx-auto'>
+      {!response.data || response.error ? (
+        <div className='text-center text-xl font-bold uppercase text-destructive'>
+          {response.error}
+        </div>
+      ) : (
+        <div className='grid w-full grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
+          {response.data.map((res) => {
             return (
               <Card
                 key={res}
@@ -21,9 +21,9 @@ export default async function ResourceGrid() {
                 isNew={true}
               />
             );
-          })
-        )}
-      </div>
+          })}
+        </div>
+      )}
     </div>
   );
 }
