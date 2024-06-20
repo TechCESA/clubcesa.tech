@@ -1,4 +1,4 @@
-import ResourceGrid from '@/components/resource_grid';
+import TagsGrid from '@/components/resource_grid';
 
 export default function Page() {
   return (
@@ -17,7 +17,7 @@ export default function Page() {
       </h1>
 
       {/* Resources */}
-      <ResourceGrid />
+      <TagsGrid />
     </div>
   );
 }

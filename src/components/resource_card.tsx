@@ -1,3 +1,4 @@
+import { convertTagBtoF } from '@/lib/convert-tags';
 import Link from 'next/link';
 
 export default function Card({
@@ -9,18 +10,11 @@ export default function Card({
   link: string;
   isNew: boolean;
 }) {
-  function capitalizeAndRemoveHyphen(str: string) {
-    return str
-      .replace(/-/g, ' ')
-      .toLowerCase()
-      .replace(/\b\w/g, (char) => char.toUpperCase());
-  }
-
   return (
     <Link href={link}>
       <div className='mx-auto w-full rounded-xl border bg-gray-100 p-2 transition duration-300 ease-in-out hover:border-purple-800/60 hover:bg-purple-50'>
         <h1 className='flex flex-row items-center justify-between px-2 text-sm font-medium text-primary md:text-base'>
-          <span className='truncate'>{capitalizeAndRemoveHyphen(title)}</span>
+          <span className='truncate'>{convertTagBtoF(title)}</span>
 
           {/* Blink animation */}
           {isNew && (

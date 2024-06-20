@@ -1,25 +1,20 @@
 import Card from '@/components/resource_card';
-import { getTypeOfResources } from '@/app/(user-facing)/_actions/resources';
+import { getAllTags } from '@/app/(user-facing)/_actions/resources';
 
-export default async function ResourceGrid() {
-  const response = await getTypeOfResources();
+export default async function TagsGrid() {
+  const tags = await getAllTags({ all: false });
 
   return (
     <div className='mx-0 my-4 w-full md:container md:mx-auto'>
-      {!response.data || response.error ? (
+      {!tags.data || tags.error ? (
         <div className='text-center text-xl font-bold uppercase text-destructive'>
-          {response.error}
+          {tags.error}
         </div>
       ) : (
         <div className='grid w-full grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
-          {response.data.map((res) => {
+          {tags.data.map((tg) => {
             return (
-              <Card
-                key={res}
-                title={res}
-                link={`/resources/${res}`}
-                isNew={true}
-              />
+              <Card key={tg} title={tg} link={`/learn/${tg}`} isNew={true} />
             );
           })}
         </div>
