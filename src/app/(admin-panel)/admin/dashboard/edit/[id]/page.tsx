@@ -57,12 +57,6 @@ export default function EditPage({
         if (!tagsData) {
           setAllTags([]);
         } else {
-          /**
-           * Note: If possible =>
-           * here when you fetch tags from firebase
-           * convert them as pair of {value: "web-development", label: "Web Development"}
-           * and get rid of "convertTagsBtoF" and "convertTagsFtoB" functions
-           */
           const tagsLabel = convertTagsBtoF(tagsData).sort((a, b) =>
             a.localeCompare(b),
           );
@@ -109,7 +103,7 @@ export default function EditPage({
             autoFocus
           />
           {formState.errors?.title && (
-            <p className='text-destructive'>{formState.errors.title}</p>
+            <p className='text-sm text-destructive'>{formState.errors.title}</p>
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
@@ -124,7 +118,9 @@ export default function EditPage({
             required
           />
           {formState.errors?.description && (
-            <p className='text-destructive'>{formState.errors.description}</p>
+            <p className='text-sm text-destructive'>
+              {formState.errors.description}
+            </p>
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
@@ -140,7 +136,7 @@ export default function EditPage({
             required
           />
           {formState.errors?.link && (
-            <p className='text-destructive'>{formState.errors.link}</p>
+            <p className='text-sm text-destructive'>{formState.errors.link}</p>
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
@@ -169,13 +165,13 @@ export default function EditPage({
             </MultiSelectorContent>
           </MultiSelector>
           {formState.errors?.tags && (
-            <p className='text-destructive'>{formState.errors.tags}</p>
+            <p className='text-sm text-destructive'>{formState.errors.tags}</p>
           )}
         </div>
 
         <div className='flex w-full flex-col gap-2'>
           {formState.message && (
-            <p className='text-destructive'>{formState.message}</p>
+            <p className='text-sm text-destructive'>{formState.message}</p>
           )}
           <ChangeButton />
         </div>

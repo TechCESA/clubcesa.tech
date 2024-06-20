@@ -20,8 +20,14 @@ import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 const ResourceSchema = z.object({
-  title: z.string().min(30, 'Minimum 30 characters required'),
-  description: z.string().min(300, 'Minimum 300 characters required'),
+  title: z
+    .string()
+    .min(30, 'Minimum 30 characters required')
+    .max(40, 'Title length is more than maximum'),
+  description: z
+    .string()
+    .min(300, 'Minimum 300 characters required')
+    .max(350, 'Description length is more than maximum'),
   link: z.string().url('Invalid URL format'),
   tags: z.array(z.string()).nonempty('At least one tag is required'),
 });
