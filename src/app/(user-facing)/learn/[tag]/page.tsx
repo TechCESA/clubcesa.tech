@@ -9,11 +9,10 @@ function capitalizeAndRemoveHyphen(str: string) {
 }
 
 export default async function Page({
-  params,
+  params: { tag },
 }: {
-  params: { resource: string };
+  params: { tag: string };
 }) {
-  const { resource } = params;
   // const response = await getResources(resource);
 
   return (

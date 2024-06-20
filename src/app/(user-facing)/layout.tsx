@@ -52,7 +52,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          'min-h-screen scroll-smooth bg-background font-poppins text-primary antialiased',
+          'min-h-screen scroll-smooth bg-background font-poppins text-primary antialiased selection:bg-cesa-blue selection:text-primary-foreground',
           font.variable,
         )}
       >

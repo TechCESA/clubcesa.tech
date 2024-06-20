@@ -14,8 +14,8 @@ export default function NabBar() {
       link: '/',
     },
     {
-      name: 'Student Resources',
-      link: '/resources',
+      name: 'Learn',
+      link: '/learn',
     },
     {
       name: 'Events',
