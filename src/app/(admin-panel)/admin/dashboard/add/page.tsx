@@ -36,7 +36,7 @@ export default function AddPage() {
   React.useEffect(() => {
     (async function () {
       try {
-        const tagsData = await getAllTags();
+        const tagsData = await getAllTags({ all: true });
 
         if (!tagsData) {
           setAllTags([]);

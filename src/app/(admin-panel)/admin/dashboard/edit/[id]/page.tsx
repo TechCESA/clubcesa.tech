@@ -47,7 +47,7 @@ export default function EditPage({
       try {
         const [resourceData, tagsData] = await Promise.all([
           getResourceAction(id),
-          getAllTags(),
+          getAllTags({ all: true }),
         ]);
 
         if (!resourceData) {

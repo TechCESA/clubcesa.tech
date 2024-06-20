@@ -39,7 +39,7 @@ export default function Dashboard() {
       try {
         const [resourcesData, tagsData] = await Promise.all([
           getAllResources(),
-          getAllTags(),
+          getAllTags({ all: false }),
         ]);
 
         if (!resourcesData) {
