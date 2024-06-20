@@ -1,7 +1,7 @@
 import { convertTagBtoF } from '@/lib/convert-tags';
 import Link from 'next/link';
 
-export default function Card({
+export default function ResCard({
   title,
   link,
   isNew,

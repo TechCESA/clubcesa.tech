@@ -11,7 +11,7 @@ export default async function TagsGrid() {
           {tags.error}
         </div>
       ) : (
-        <div className='grid w-full grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
           {tags.data.map((tg) => {
             return (
               <Card key={tg} title={tg} link={`/learn/${tg}`} isNew={true} />
