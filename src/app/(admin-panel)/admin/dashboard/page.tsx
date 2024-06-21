@@ -1,214 +1,108 @@
-'use client';
-
-import Loader from '@/components/loader';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { convertTagsBtoF } from '@/lib/convert-tags';
-import { getSixDigitNumber } from '@/lib/get-six-digit-num';
+import { memoize } from '@/lib/memoize';
 import { ResourceType } from '@/lib/types';
-import { SearchIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { getAllResources, getAllTags } from '../../actions/resource';
 import ResourceCard from '../components/resource_card';
+import ResourceSearch from '../components/resource_search';
+import SelectTag from '../components/select_tag';
 
-export default function Dashboard() {
-  const [allResources, setAllResources] = React.useState<ResourceType[] | null>(
-    null,
-  );
-  const [filteredResources, setFilteredResources] = React.useState<
-    ResourceType[] | null
-  >(null);
-  const [allTags, setAllTags] = React.useState<string[]>([]);
-  const [searchError, setSearchError] = React.useState<string | null>(null);
-  const [selectedTag, setSelectedTag] = React.useState<string>('all');
-  const [loading, setLoading] = React.useState(true);
+/* We can filter directly from the firestore */
+const filterResources = ({
+  resources,
+  query,
+  tag,
+}: {
+  resources: ResourceType[];
+  query: string | null;
+  tag: string | null;
+}) => {
+  let filteredResources = resources;
 
-  const searchInputRef = React.useRef<HTMLInputElement>(null);
-
-  React.useEffect(() => {
-    (async function () {
-      try {
-        const [resourcesData, tagsData] = await Promise.all([
-          getAllResources(),
-          getAllTags({ all: false }),
-        ]);
-
-        if (!resourcesData) {
-          setFilteredResources(null);
-          setLoading(false);
-          return;
-        }
-
-        if (!tagsData) {
-          setAllTags([]);
-        } else {
-          /**
-           * Note: If possible =>
-           * here when you fetch tags from firebase
-           * convert them as pair of {value: "web-development", label: "Web Development"}
-           * and get rid of "convertTagsBtoF" and "convertTagsFtoB" functions
-           */
-          const tagsLabel = convertTagsBtoF(tagsData).sort((a, b) =>
-            a.localeCompare(b),
-          );
-          setAllTags(tagsLabel);
-        }
-
-        setAllResources(resourcesData);
-        setFilteredResources(resourcesData);
-
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching resource:', error);
-      }
-    })();
-  }, []);
-
-  const onInputChange = () => {
-    const serachQuery = searchInputRef.current?.value ?? '';
-
-    const query = serachQuery.toString().toLowerCase();
-
-    const filteredForSearch = allResources!.filter((res) => {
-      return (
-        convertTagsBtoF(res.tags)
-          .map((t) => t.toLowerCase())
-          .includes(selectedTag) || selectedTag === 'all'
-      );
-    });
-
-    const searchedResources = filteredForSearch.filter((res) => {
-      const lowerCaseTags = convertTagsBtoF(res.tags).map((tag) =>
-        tag.toLowerCase(),
-      );
-
-      return (
-        res.title.toLowerCase().includes(query) ||
-        lowerCaseTags.includes(query) ||
-        lowerCaseTags.some((tag) => tag.includes(query))
-      );
-    });
-
-    if (searchedResources.length === 0) {
-      setSearchError('No resources found');
-      return;
-    }
-
-    setFilteredResources(searchedResources);
-    setSearchError(null);
-  };
-
-  const onTagChange = (tag: string) => {
-    setSearchError(null);
-    searchInputRef.current!.value = '';
-
-    if (tag === 'All') {
-      setFilteredResources(allResources);
-      setSelectedTag('all');
-      return;
-    }
-
-    setSelectedTag(tag.toLowerCase());
-
-    setFilteredResources(
-      allResources!.filter((res) => {
-        return convertTagsBtoF(res.tags)
-          .map((t) => t.toLowerCase())
-          .includes(tag.toLowerCase());
-      }),
+  if (tag && tag !== 'all') {
+    filteredResources = filteredResources.filter((res) =>
+      res.tags.includes(tag),
     );
-  };
+  }
 
-  if (loading) {
+  if (query) {
+    filteredResources = filteredResources.filter(
+      (res) =>
+        res.title.toLowerCase().includes(query) ||
+        res.tags.includes(query) ||
+        res.tags.some((tag) => tag.includes(query)),
+    );
+  }
+
+  return filteredResources;
+};
+
+export default async function Dashboard({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] };
+}) {
+  const searchQuery =
+    typeof searchParams.search === 'string' ? searchParams.search : null;
+  const selectedTag =
+    typeof searchParams.tag === 'string' ? searchParams.tag : null;
+
+  const [allResources, allTags] = await Promise.all([
+    getAllResources(),
+    getAllTags({ all: false }),
+  ]);
+
+  if (!allResources || !allTags) {
     return (
-      <div className='flex min-h-96 items-center justify-center'>
-        <Loader />
+      <div className='pt-12 text-center text-4xl font-bold'>
+        Error fetching Resources or Tags
       </div>
     );
   }
+
+  const convertTagsBtoFMemo = memoize(convertTagsBtoF);
+  const formattedTags = convertTagsBtoFMemo(allTags);
+
+  const filteredResources = filterResources({
+    resources: allResources,
+    query: searchQuery,
+    tag: selectedTag,
+  });
 
   return (
     <div className='container my-4 min-h-screen'>
       <Button className='w-full bg-cesa-blue font-semibold' asChild>
         <Link href='/admin/dashboard/add'>Add New Resource</Link>
       </Button>
+
       <div className='my-2 flex flex-col gap-4 md:flex-row'>
-        <Select onValueChange={onTagChange}>
-          <SelectTrigger className='flex-1'>
-            <SelectValue placeholder='Select tag' />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem key={'all' + getSixDigitNumber()} value='All'>
-                All
-              </SelectItem>
+        <SelectTag tags={formattedTags} defaultValue={selectedTag ?? ''} />
 
-              {allTags.map((tag) => {
-                return (
-                  <SelectItem
-                    key={tag.toLowerCase() + getSixDigitNumber()}
-                    value={tag}
-                  >
-                    {tag}
-                  </SelectItem>
-                );
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-
-        <div className='flex flex-1 flex-col gap-1'>
-          <div className='relative'>
-            <Input
-              type='search'
-              name='search-query'
-              placeholder='Search resource'
-              ref={searchInputRef}
-              autoComplete='off'
-              onChange={onInputChange}
-              className='peer'
-            />
-            <SearchIcon
-              strokeOpacity='.5'
-              strokeWidth='1.3'
-              className='pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 transform peer-focus:hidden'
-            />
-          </div>
-
-          {searchError ? (
-            <span className='text-sm text-destructive'>{searchError}</span>
-          ) : null}
-        </div>
+        <ResourceSearch
+          placeholder='Search resource'
+          defaultValue={searchQuery ?? ''}
+        />
       </div>
 
       <div className='mx-4 my-6'>
-        {!allResources || !filteredResources ? (
+        {filteredResources.length === 0 ? (
           <p className='text-center text-lg font-semibold text-destructive'>
             No resources found
           </p>
         ) : (
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-            {filteredResources.map((res, i) => {
-              return (
-                <ResourceCard
-                  key={res.id}
-                  id={res.id}
-                  title={res.title}
-                  description={res.description}
-                  link={res.link}
-                  tags={res.tags}
-                />
-              );
-            })}
+            {filteredResources.map((res) => (
+              <ResourceCard
+                key={res.id}
+                id={res.id}
+                title={res.title}
+                description={res.description}
+                link={res.link}
+                tags={res.tags}
+              />
+            ))}
           </div>
         )}
       </div>

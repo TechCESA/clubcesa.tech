@@ -1,3 +1,5 @@
+'use client';
+
 import { deleteResourceAction } from '@/app/(admin-panel)/actions/resource';
 import {
   AlertDialog,
