@@ -77,6 +77,8 @@ export async function getAllTags({
 }: {
   all: boolean;
 }): Promise<TagsReturnType> {
+  noStore();
+
   try {
     let querySnapshot: QuerySnapshot<DocumentData, DocumentData>;
 

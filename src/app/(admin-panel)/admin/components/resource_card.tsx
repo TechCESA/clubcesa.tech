@@ -1,4 +1,4 @@
-import { deleteResourceAction } from '@/app/(admin-panel)/_actions/resource';
+import { deleteResourceAction } from '@/app/(admin-panel)/actions/resource';
 import {
   AlertDialog,
   AlertDialogAction,

@@ -17,8 +17,8 @@ import { ResourceType } from '@/lib/types';
 import { SearchIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import { getAllResources, getAllTags } from '../../_actions/resource';
-import ResourceCard from './_components/resource_card';
+import { getAllResources, getAllTags } from '../../actions/resource';
+import ResourceCard from '../components/resource_card';
 
 export default function Dashboard() {
   const [allResources, setAllResources] = React.useState<ResourceType[] | null>(

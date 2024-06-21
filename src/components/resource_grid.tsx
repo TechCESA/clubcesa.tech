@@ -1,5 +1,5 @@
 import Card from '@/components/resource_card';
-import { getAllTags } from '@/app/(user-facing)/_actions/resources';
+import { getAllTags } from '@/app/(user-facing)/actions/resources';
 
 export default async function TagsGrid() {
   const tags = await getAllTags({ all: false });

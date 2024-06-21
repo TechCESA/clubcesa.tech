@@ -4,7 +4,7 @@ import {
   editResourceAction,
   getAllTags,
   getResourceAction,
-} from '@/app/(admin-panel)/_actions/resource';
+} from '@/app/(admin-panel)/actions/resource';
 import {
   MultiSelector,
   MultiSelectorContent,

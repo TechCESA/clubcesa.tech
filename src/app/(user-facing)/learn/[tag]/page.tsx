@@ -3,7 +3,7 @@ import Card from './card';
 import {
   getAllTags,
   getResources,
-} from '@/app/(user-facing)/_actions/resources';
+} from '@/app/(user-facing)/actions/resources';
 
 export default async function Page({
   params: { tag },
