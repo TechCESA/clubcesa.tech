@@ -65,7 +65,7 @@ export default async function Dashboard({
   const convertTagsBtoFMemo = memoize(convertTagsBtoF);
   const formattedTags = convertTagsBtoFMemo(allTags);
 
-  const filteredResources = filterResources({
+  const filteredResources = memoize(filterResources)({
     resources: allResources,
     query: searchQuery,
     tag: selectedTag,
