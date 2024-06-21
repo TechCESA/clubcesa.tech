@@ -1,9 +1,8 @@
+import { getResources } from '@/app/(user-facing)/actions/resources';
 import { convertTagBtoF } from '@/lib/convert-tags';
+import { MoveLeftIcon } from 'lucide-react';
+import Link from 'next/link';
 import Card from './card';
-import {
-  getAllTags,
-  getResources,
-} from '@/app/(user-facing)/actions/resources';
 
 export default async function Page({
   params: { tag },
@@ -15,13 +14,21 @@ export default async function Page({
   return (
     <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8'>
       <div className='container mx-auto'>
-        <div className='mb-6 text-left'>
-          <h1 className='under text-wrap text-2xl font-bold text-black'>
-            {convertTagBtoF(tag)}
-          </h1>
-          <p className='text-sm text-gray-600/60'>
-            {`Navigating the World of ${convertTagBtoF(tag)} in ${Date().split(' ')[3]}`}
-          </p>
+        <div className='mb-6 flex flex-row items-center justify-start gap-4'>
+          <Link href='/learn' className='inline-block'>
+            <MoveLeftIcon
+              strokeWidth='2.4'
+              className='scale-125 rounded-full bg-cesa-blue stroke-primary-foreground p-1'
+            />
+          </Link>
+          <div className='text-left'>
+            <h1 className='under text-wrap text-2xl font-bold text-black'>
+              {convertTagBtoF(tag)}
+            </h1>
+            <p className='text-sm text-gray-400'>
+              {`Navigating the World of ${convertTagBtoF(tag)} in ${Date().split(' ')[3]}`}
+            </p>
+          </div>
         </div>
         {!response.data || response.error ? (
           <div className='text-center text-xl font-bold uppercase text-destructive'>
