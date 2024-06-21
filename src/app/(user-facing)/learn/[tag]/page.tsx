@@ -1,8 +1,21 @@
-import { getResources } from '@/app/(user-facing)/actions/resources';
+import {
+  getResources,
+  getAllTags,
+} from '@/app/(user-facing)/actions/resources';
 import { convertTagBtoF } from '@/lib/convert-tags';
 import { MoveLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import Card from './card';
+
+export async function generateStaticParams() {
+  const tags = await getAllTags({ all: false });
+
+  if (tags.error || !tags.data) {
+    return [{ tag: '' }];
+  }
+
+  return tags.data.map((tag) => ({ tag }));
+}
 
 export default async function Page({
   params: { tag },
