@@ -16,6 +16,7 @@ import {
   where,
   writeBatch,
 } from '@firebase/firestore';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
@@ -23,11 +24,11 @@ const ResourceSchema = z.object({
   title: z
     .string()
     .min(30, 'Minimum 30 characters required')
-    .max(40, 'Title length is more than maximum'),
+    .max(50, 'Title length is more than maximum'),
   description: z
     .string()
     .min(300, 'Minimum 300 characters required')
-    .max(350, 'Description length is more than maximum'),
+    .max(400, 'Description length is more than maximum'),
   link: z.string().url('Invalid URL format'),
   tags: z.array(z.string()).nonempty('At least one tag is required'),
 });
@@ -192,9 +193,7 @@ export async function deleteResourceAction(id: string) {
     return { error: 'Failed to delete resource' };
   }
 
-  /**
-   * Dashboard is not revalidating properly
-   */
+  revalidatePath('/admin/dashboard');
 }
 
 export async function getResourceAction(

@@ -41,7 +41,6 @@ export default function ResourceCard({
 
   const handleDelete = () => {
     deleteResourceAction(id);
-    window.location.reload(); // try to remove this if you can and ensure revalidation in dashoboard
   };
 
   return (
