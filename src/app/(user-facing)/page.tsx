@@ -6,6 +6,7 @@ export default function Page() {
   return (
     <main className=''>
       <Hero />
+      <Separator />
       <Bento />
     </main>
   );

@@ -1,29 +1,24 @@
 import Card from '@/components/resource_card';
-import { getTypeOfResources } from '@/app/actions/resources';
+import { getAllTags } from '@/app/(user-facing)/actions/resources';
 
-export default async function ResourceGrid() {
-  const response = await getTypeOfResources();
+export default async function TagsGrid() {
+  const tags = await getAllTags({ all: false });
 
   return (
-    <div className='container mx-auto my-12'>
-      <div className='mx-4 grid grid-cols-1  gap-x-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 xl:mx-0'>
-        {response.data.length == 0 || response.error.length >= 1 ? (
-          <div className='flex justify-center text-2xl font-medium uppercase text-red-400'>
-            {response.error}
-          </div>
-        ) : (
-          response.data?.map((res) => {
+    <div className='mx-0 my-4 w-full md:container md:mx-auto'>
+      {!tags.data || tags.error ? (
+        <div className='text-center text-xl font-bold uppercase text-destructive'>
+          {tags.error}
+        </div>
+      ) : (
+        <div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
+          {tags.data.map((tg) => {
             return (
-              <Card
-                key={res}
-                title={res}
-                link={`/resources/${res}`}
-                isNew={true}
-              />
+              <Card key={tg} title={tg} link={`/learn/${tg}`} isNew={true} />
             );
-          })
-        )}
-      </div>
+          })}
+        </div>
+      )}
     </div>
   );
 }
