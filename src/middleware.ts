@@ -12,36 +12,46 @@ export async function middleware(req: NextRequest) {
   const isAdminPath =
     path === ADMIN.DASHBOARD || path.startsWith(ADMIN.DASHBOARD);
 
-  const token = req.cookies.get('cesa_admin_token')?.value as string;
+  const admin_token = req.cookies.get('cesa_admin_token')?.value as string;
 
-  // If the path is not an admin path and there's no token, allow the request
-  if (!isAdminPath && !token) {
+  const user_token = req.cookies.get('user_verify_token')?.value as string;
+
+  if (path.startsWith('/learn/contribute') && !user_token) {
+    return NextResponse.redirect(new URL('/learn/user-verify', req.url));
+  }
+
+  if (path.startsWith('/learn/user-verify') && user_token) {
+    return NextResponse.redirect(new URL('/learn/contribute', req.url));
+  }
+
+  // If the path is not an admin path and there's no admin_token, allow the request
+  if (!isAdminPath && !admin_token) {
     return NextResponse.next();
   }
 
-  // If the path is an admin path and there's no token, redirect to login
-  if (isAdminPath && !token) {
+  // If the path is an admin path and there's no admin_token, redirect to login
+  if (isAdminPath && !admin_token) {
     return NextResponse.redirect(new URL(ADMIN.LOGIN, req.url));
   }
 
-  // If the path is the login page and there's a token, redirect to dashboard
-  if (path === ADMIN.LOGIN && token) {
+  // If the path is the login page and there's a admin_token, redirect to dashboard
+  if (path === ADMIN.LOGIN && admin_token) {
     return NextResponse.redirect(new URL(ADMIN.DASHBOARD, req.url));
   }
 
-  // If the path is not an admin path and there's a token, allow the request
-  if (!isAdminPath && token) {
+  // If the path is not an admin path and there's a admin_token, allow the request
+  if (!isAdminPath && admin_token) {
     return NextResponse.next();
   }
 
   try {
-    // Verify the admin token
-    await verifyAdmin(token);
+    // Verify the admin admin_token
+    await verifyAdmin(admin_token);
 
-    // If token is valid, allow the request
+    // If admin_token is valid, allow the request
     return NextResponse.next();
   } catch (err) {
-    // If token is invalid, redirect to login
+    // If admin_token is invalid, redirect to login
     return NextResponse.redirect(new URL(ADMIN.LOGIN, req.url));
   }
 }
