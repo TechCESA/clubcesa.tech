@@ -4,4 +4,5 @@ export type ResourceType = {
   description: string;
   link: string;
   tags: string[];
+  isVerified: boolean;
 };
