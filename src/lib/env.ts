@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
-const envVariables = z.object({});
+const envVariables = z.object({
+  JWT_SECRETE: z.string(),
+});
 
 envVariables.parse(process.env);
 

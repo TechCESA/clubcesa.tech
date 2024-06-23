@@ -1,11 +1,11 @@
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import {
-  DropdownMenuLabel,
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
-import { Menu } from 'lucide-react';
 
 export default function NabBar() {
   const nav = [
@@ -14,8 +14,8 @@ export default function NabBar() {
       link: '/',
     },
     {
-      name: 'Student Resources',
-      link: '/resources',
+      name: 'Learn',
+      link: '/learn',
     },
     {
       name: 'Events',
@@ -33,7 +33,7 @@ export default function NabBar() {
       <div className='container hidden flex-row items-center gap-12 md:flex'>
         {nav.map((el, i) => {
           return (
-            <Link key={i} href={el.link} className='hover:scale-125'>
+            <Link key={i} href={el.link}>
               <h3>{el.name.replace(/[\s]/g, '\u00a0\u00a0')}</h3>
             </Link>
           );
@@ -49,11 +49,11 @@ export default function NabBar() {
           <DropdownMenuContent className='mr-2 text-cesa-blue'>
             {nav.map((el) => {
               return (
-                <DropdownMenuLabel key={el.link}>
+                <DropdownMenuItem key={el.link} asChild>
                   <Link href={el.link}>
                     {el.name.replace(/[\s]/g, '\u00a0\u00a0')}
                   </Link>
-                </DropdownMenuLabel>
+                </DropdownMenuItem>
               );
             })}
           </DropdownMenuContent>
