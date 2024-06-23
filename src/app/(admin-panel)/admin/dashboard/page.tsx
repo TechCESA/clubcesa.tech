@@ -1,13 +1,14 @@
 import { Button } from '@/components/ui/button';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { memoize } from '@/lib/memoize';
-import { ResourceType } from '@/lib/types';
+import { FilterOptions, ResourceType } from '@/lib/types';
 import Link from 'next/link';
 import React from 'react';
 import { getAllResources, getAllTags } from '../../actions/resource';
 import ResourceCard from '../components/resource_card';
 import ResourceSearch from '../components/resource_search';
 import SelectTag from '../components/select_tag';
+import RadioButton from '../components/radio_button';
 
 /* We can filter directly from the firestore */
 const filterResources = ({
@@ -48,9 +49,11 @@ export default async function Dashboard({
     typeof searchParams.search === 'string' ? searchParams.search : null;
   const selectedTag =
     typeof searchParams.tag === 'string' ? searchParams.tag : null;
+  const filter =
+    typeof searchParams.filter === 'string' ? searchParams.filter : 'all';
 
   const [allResources, allTags] = await Promise.all([
-    getAllResources(),
+    getAllResources(filter as FilterOptions),
     getAllTags({ all: false }),
   ]);
 
@@ -76,6 +79,8 @@ export default async function Dashboard({
       <Button className='w-full bg-cesa-blue font-semibold' asChild>
         <Link href='/admin/dashboard/add'>Add New Resource</Link>
       </Button>
+
+      <RadioButton />
 
       <div className='my-2 flex flex-col gap-4 md:flex-row'>
         <SelectTag tags={formattedTags} defaultValue={selectedTag ?? ''} />

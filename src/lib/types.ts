@@ -6,3 +6,9 @@ export type ResourceType = {
   tags: string[];
   isVerified: boolean;
 };
+
+export enum FilterOptions {
+  All = 'all',
+  Verified = 'true',
+  Unverified = 'false',
+}

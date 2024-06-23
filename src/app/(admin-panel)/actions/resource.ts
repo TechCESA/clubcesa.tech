@@ -2,7 +2,7 @@
 // Add Author field to the resource schema
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
-import { ResourceType } from '@/lib/types';
+import { FilterOptions, ResourceType } from '@/lib/types';
 import {
   DocumentData,
   QuerySnapshot,
@@ -19,8 +19,6 @@ import {
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { cookies } from 'next/headers';
-
 
 const ResourceSchema = z.object({
   title: z
@@ -34,6 +32,12 @@ const ResourceSchema = z.object({
   link: z.string().url('Invalid URL format'),
   tags: z.array(z.string()).nonempty('At least one tag is required'),
   isVerified: z.boolean().default(false),
+  author: z.string().min(3, 'Minimum 3 characters required'),
+  email: z.string().email('Invalid Valid Gmail Address').endsWith('@gmail.com'),
+  linkedin: z
+    .string()
+    .url('Invalid LinkedIn Profile URL')
+    .startsWith('https://www.linkedin.com/in/'),
 });
 
 enum FormFields {
@@ -43,6 +47,9 @@ enum FormFields {
   Link = 'link',
   Tags = 'tags',
   IsVerified = 'isVerified',
+  Author = 'author',
+  Email = 'email',
+  Linkedin = 'linkedin',
 }
 
 const ResourceStr = 'resources';
@@ -54,7 +61,9 @@ type State = {
     title?: string[];
     description?: string[];
     tags?: string[];
-
+    author?: string[];
+    email?: string[];
+    linkedin?: string[];
   };
   message?: string;
 };
@@ -64,19 +73,22 @@ export async function addResourceAction(
   prevState: State,
   formData: FormData,
 ): Promise<State> {
+  const author = formData.get(FormFields.Author) as string;
+  const email = formData.get(FormFields.Email) as string;
+  const linkedin = formData.get(FormFields.Linkedin) as string;
   const title = formData.get(FormFields.Title) as string;
   const description = formData.get(FormFields.Description) as string;
   const link = formData.get(FormFields.Link) as string;
   const tags = convertTagsFtoB(selectedTags);
-
-  const cookieStore = cookies()
-
 
   const result = ResourceSchema.safeParse({
     title,
     description,
     link,
     tags,
+    author,
+    email,
+    linkedin,
   });
 
   if (!result.success) {
@@ -87,9 +99,6 @@ export async function addResourceAction(
 
   try {
     const resourceRef = doc(collection(db, ResourceStr));
-    if (cookieStore.get('username') === null || cookieStore.get('email') === null || cookieStore.get('linkedin') === null) {
-      return { message: 'Please Re-verify to add a resource' };
-    }
     batch.set(resourceRef, {
       title,
       description,
@@ -97,10 +106,10 @@ export async function addResourceAction(
       tags,
       isVerified: false,
       author: {
-        username: cookieStore.get('username') ?? null,
-        email: cookieStore.get('email') ?? null,
-        linkedin: cookieStore.get('linkedin') ?? null,
-     }
+        name: author,
+        email: email,
+        linkedin: linkedin,
+      },
     });
 
     for (const tg of tags) {
@@ -127,7 +136,7 @@ export async function editResourceAction(
   const description = formData.get(FormFields.Description) as string;
   const link = formData.get(FormFields.Link) as string;
   const newTags = convertTagsFtoB(selectedTags);
-  const isVerified = formData.get(FormFields.IsVerified) 
+  const isVerified = formData.get(FormFields.IsVerified);
 
   const result = ResourceSchema.safeParse({
     title,
@@ -241,10 +250,19 @@ export async function getResourceAction(
   }
 }
 
-export async function getAllResources() {
+export async function getAllResources(
+  filter: FilterOptions = FilterOptions.All,
+) {
   try {
-    const querySnapshot = await getDocs(collection(db, ResourceStr));
-
+    let querySnapshot;
+    filter === FilterOptions.All
+      ? (querySnapshot = await getDocs(collection(db, ResourceStr)))
+      : (querySnapshot = await getDocs(
+          query(
+            collection(db, ResourceStr),
+            where('isVerified', '==', filter === FilterOptions.Verified),
+          ),
+        ));
     if (querySnapshot.empty) {
       return null;
     }
