@@ -1,5 +1,5 @@
 'use server';
-// Auther
+// Add Author field to the resource schema
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { ResourceType } from '@/lib/types';
@@ -97,9 +97,9 @@ export async function addResourceAction(
       tags,
       isVerified: false,
       author: {
-        username: cookieStore.get('username'),
-        email: cookieStore.get('email'),
-        linkedin: cookieStore.get('linkedin'),
+        username: cookieStore.get('username') ?? null,
+        email: cookieStore.get('email') ?? null,
+        linkedin: cookieStore.get('linkedin') ?? null,
      }
     });
 
@@ -235,7 +235,6 @@ export async function getResourceAction(
       link: data['link'],
       tags: data['tags'],
       isVerified: data['isVerified'],
-      author: data['author'],
     };
   } catch (error) {
     return null;
@@ -244,8 +243,7 @@ export async function getResourceAction(
 
 export async function getAllResources() {
   try {
-    const q = query(collection(db, ResourceStr), where('isVerified', '==', true));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(collection(db, ResourceStr));
 
     if (querySnapshot.empty) {
       return null;
@@ -262,11 +260,6 @@ export async function getAllResources() {
         link: data['link'] as string,
         tags: data['tags'] as string[],
         isVerified: data['isVerified'] as boolean,
-        author: data['author'] as {
-          username: string;
-          email: string;
-          linkedin: string;
-        }
       });
     });
 
