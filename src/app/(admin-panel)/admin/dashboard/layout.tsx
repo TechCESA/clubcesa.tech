@@ -6,11 +6,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className=''>
+    <main>
       <nav className='bg-cesa-blue p-2'>
-        <ul className='container flex flex-row items-center justify-between gap-4 font-semibold text-white'>
+        <ul className='container flex flex-row items-center justify-between font-semibold text-white'>
           <li className='text-xl'>
             <Link href='/admin/dashboard'>CESA Dashboard</Link>
+          </li>
+          <li className='text-lg'>
+            <Link href='/learn'>Learn</Link>
           </li>
         </ul>
       </nav>

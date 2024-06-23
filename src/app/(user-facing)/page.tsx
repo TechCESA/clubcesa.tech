@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 
 export default function Page() {
   return (
-    <main className=''>
+    <main className='mb-24'>
       <Hero />
       <Separator />
       <Bento />
