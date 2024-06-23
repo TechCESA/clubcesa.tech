@@ -1,5 +1,5 @@
 'use server';
-
+// Auther
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { ResourceType } from '@/lib/types';
@@ -19,6 +19,8 @@ import {
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
+import { cookies } from 'next/headers';
+
 
 const ResourceSchema = z.object({
   title: z
@@ -31,6 +33,7 @@ const ResourceSchema = z.object({
     .max(300, 'Description length is more than maximum'),
   link: z.string().url('Invalid URL format'),
   tags: z.array(z.string()).nonempty('At least one tag is required'),
+  isVerified: z.boolean().default(false),
 });
 
 enum FormFields {
@@ -39,6 +42,7 @@ enum FormFields {
   Description = 'description',
   Link = 'link',
   Tags = 'tags',
+  IsVerified = 'isVerified',
 }
 
 const ResourceStr = 'resources';
@@ -50,6 +54,7 @@ type State = {
     title?: string[];
     description?: string[];
     tags?: string[];
+
   };
   message?: string;
 };
@@ -63,6 +68,9 @@ export async function addResourceAction(
   const description = formData.get(FormFields.Description) as string;
   const link = formData.get(FormFields.Link) as string;
   const tags = convertTagsFtoB(selectedTags);
+
+  const cookieStore = cookies()
+
 
   const result = ResourceSchema.safeParse({
     title,
@@ -79,11 +87,20 @@ export async function addResourceAction(
 
   try {
     const resourceRef = doc(collection(db, ResourceStr));
+    if (cookieStore.get('username') === null || cookieStore.get('email') === null || cookieStore.get('linkedin') === null) {
+      return { message: 'Please Re-verify to add a resource' };
+    }
     batch.set(resourceRef, {
       title,
       description,
       link,
       tags,
+      isVerified: false,
+      author: {
+        username: cookieStore.get('username'),
+        email: cookieStore.get('email'),
+        linkedin: cookieStore.get('linkedin'),
+     }
     });
 
     for (const tg of tags) {
@@ -110,12 +127,14 @@ export async function editResourceAction(
   const description = formData.get(FormFields.Description) as string;
   const link = formData.get(FormFields.Link) as string;
   const newTags = convertTagsFtoB(selectedTags);
+  const isVerified = formData.get(FormFields.IsVerified) 
 
   const result = ResourceSchema.safeParse({
     title,
     description,
     link,
     tags: newTags,
+    isVerified: isVerified,
   });
 
   if (!result.success) {
@@ -138,6 +157,7 @@ export async function editResourceAction(
       description,
       link,
       tags: newTags,
+      isVerified: isVerified,
     });
 
     const removedTags = difference(prevRes.tags, newTags);
@@ -166,7 +186,7 @@ function difference(a: string[], b: string[]) {
   const setB = new Set(b);
   return a.filter((x) => !setB.has(x));
   /**
-   * Above code has complexity O(1) that arr.inludes() which has O(n)
+   * Above code has complexity O(1) then arr.inludes() which has O(n)
    */
 }
 
@@ -214,6 +234,8 @@ export async function getResourceAction(
       description: data['description'],
       link: data['link'],
       tags: data['tags'],
+      isVerified: data['isVerified'],
+      author: data['author'],
     };
   } catch (error) {
     return null;
@@ -222,7 +244,8 @@ export async function getResourceAction(
 
 export async function getAllResources() {
   try {
-    const querySnapshot = await getDocs(collection(db, ResourceStr));
+    const q = query(collection(db, ResourceStr), where('isVerified', '==', true));
+    const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
       return null;
@@ -238,6 +261,12 @@ export async function getAllResources() {
         description: data['description'] as string,
         link: data['link'] as string,
         tags: data['tags'] as string[],
+        isVerified: data['isVerified'] as boolean,
+        author: data['author'] as {
+          username: string;
+          email: string;
+          linkedin: string;
+        }
       });
     });
 
