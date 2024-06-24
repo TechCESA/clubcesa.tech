@@ -60,7 +60,7 @@ export default async function Dashboard({
   if (!allResources || !allTags) {
     return (
       <div className='pt-12 text-center text-4xl font-bold'>
-        Error fetching Resources or Tags
+        Resources or Tags not found!
       </div>
     );
   }
