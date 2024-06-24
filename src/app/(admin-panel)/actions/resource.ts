@@ -244,6 +244,12 @@ export async function getResourceAction(
       link: data['link'],
       tags: data['tags'],
       isVerified: data['isVerified'],
+      author: {
+        name: data['author']['name'],
+        email: data['author']['email'],
+        github: data['author']['github'],
+        avatar: data['author']['avatar'],
+      },
     };
   } catch (error) {
     return null;
@@ -278,6 +284,12 @@ export async function getAllResources(
         link: data['link'] as string,
         tags: data['tags'] as string[],
         isVerified: data['isVerified'] as boolean,
+        author: {
+          name: data['author']['name'] as string,
+          email: data['author']['email'] as string,
+          github: data['author']['github'] as string,
+          avatar: data['author']['avatar'] as string,
+        },
       });
     });
 

@@ -20,6 +20,11 @@ interface ResourceReturnType {
   error?: string;
 }
 
+interface BackTagType {
+  resourceRef: DocumentReference;
+  isVerified: boolean;
+}
+
 const TagStr = 'tags';
 
 export async function getResources(tag: string): Promise<ResourceReturnType> {
@@ -33,31 +38,45 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
       return { error: 'Resource not found' };
     }
 
-    const resArr = docSnap.data()['docId'] as DocumentReference[];
+    const resArr = docSnap.data()['docId'] as BackTagType[];
 
     if (resArr.length === 0) {
       return { error: 'Resources Not Found!' };
     }
 
-    const resourcePromises = resArr.map(async (ref) => {
-      const resourceSnap = await getDoc(ref);
+    const resourcePromises = resArr.map(async (tag) => {
+      if (!tag.isVerified) return null;
+
+      const resourceSnap = await getDoc(tag.resourceRef);
+
       if (!resourceSnap.exists()) {
         return null;
       }
+
       const data = resourceSnap.data();
-      return {
-        id: resourceSnap.id,
-        title: data['title'] as string,
-        description: data['description'] as string,
-        link: data['link'] as string,
-        tags: data['tags'] as string[],
-      };
+
+      if ((data['isVerified'] as boolean) == true) {
+        return {
+          id: resourceSnap.id,
+          title: data['title'] as string,
+          description: data['description'] as string,
+          link: data['link'] as string,
+          tags: data['tags'] as string[],
+          isVerified: data['isVerified'] as boolean,
+          author: {
+            name: data['author']['name'] as string,
+            email: data['author']['email'] as string,
+            github: data['author']['github'] as string,
+            avatar: data['author']['avatar'] as string,
+          },
+        };
+      }
     });
 
     const resources = await Promise.all(resourcePromises);
 
     const formattedResources = resources.filter(
-      (doc): doc is ResourceType => doc !== null,
+      (doc): doc is ResourceType => doc !== null && doc !== undefined,
     );
 
     return { data: formattedResources };
@@ -99,6 +118,16 @@ export async function getAllTags({
     const tags: string[] = [];
 
     querySnapshot.forEach((doc) => {
+      const data: BackTagType[] = doc.data()['docId'];
+
+      if (
+        Object.values(data).every((value) => {
+          return value.isVerified === undefined || !value.isVerified;
+        })
+      ) {
+        return;
+      }
+
       tags.push(doc.id);
     });
 

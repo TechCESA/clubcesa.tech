@@ -1,6 +1,6 @@
 import {
-  getResources,
   getAllTags,
+  getResources,
 } from '@/app/(user-facing)/actions/resources';
 import { convertTagBtoF } from '@/lib/convert-tags';
 import { MoveLeftIcon } from 'lucide-react';
@@ -43,9 +43,9 @@ export default async function Page({
             </p>
           </div>
         </div>
-        {!response.data || response.error ? (
+        {!response.data || response.data.length == 0 || response.error ? (
           <div className='text-center text-xl font-bold uppercase text-destructive'>
-            {response.error}
+            {response.error ? response.error : 'Resources not found!'}
           </div>
         ) : (
           <div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
@@ -56,6 +56,7 @@ export default async function Page({
                   title={res.title}
                   link={res.link}
                   description={res.description}
+                  author={res.author}
                 />
               );
             })}

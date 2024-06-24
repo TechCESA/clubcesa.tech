@@ -5,6 +5,12 @@ export type ResourceType = {
   link: string;
   tags: string[];
   isVerified: boolean;
+  author: {
+    name: string;
+    email: string;
+    github: string;
+    avatar: string;
+  };
 };
 
 export enum FilterOptions {

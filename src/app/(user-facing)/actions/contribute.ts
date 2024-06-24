@@ -70,8 +70,6 @@ export async function contributeResourceAction(
 
     if (!session) throw new Error();
 
-    console.log({ session });
-
     const resourceRef = doc(collection(db, ResourceStr));
 
     batch.set(resourceRef, {
@@ -90,7 +88,9 @@ export async function contributeResourceAction(
 
     for (const tg of tags) {
       const tagDocRef = doc(db, TagStr, tg);
-      batch.update(tagDocRef, { docId: arrayUnion(resourceRef) });
+      batch.update(tagDocRef, {
+        docId: arrayUnion({ resourceRef, isVerified: false }),
+      });
     }
 
     await batch.commit();
