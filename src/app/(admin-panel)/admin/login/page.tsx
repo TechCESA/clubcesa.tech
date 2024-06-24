@@ -43,7 +43,9 @@ export default function LoginPage() {
           />
         </div>
         <div className='flex w-full flex-col gap-2'>
-          {state.error && <p className='text-destructive text-sm'>{state.error}</p>}
+          {state.error && (
+            <p className='text-sm text-destructive'>{state.error}</p>
+          )}
           <LoginButton />
         </div>
       </form>
