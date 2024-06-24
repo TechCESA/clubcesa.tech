@@ -1,7 +1,7 @@
 'use server';
 
 import { db } from '@/firebaseConfig';
-import { ResourceType } from '@/lib/types';
+import { ResourceType } from '@/types/resource';
 import {
   DocumentData,
   DocumentReference,

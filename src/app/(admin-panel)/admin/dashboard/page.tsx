@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { memoize } from '@/lib/memoize';
-import { FilterOptions, ResourceType } from '@/lib/types';
+import { FilterOptions, ResourceType } from '@/types/resource';
 import Link from 'next/link';
 import React from 'react';
 import { getAllResources, getAllTags } from '../../actions/resource';

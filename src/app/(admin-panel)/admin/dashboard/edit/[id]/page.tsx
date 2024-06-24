@@ -20,7 +20,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { getSixDigitNumber } from '@/lib/get-six-digit-num';
-import { ResourceType } from '@/lib/types';
+import { ResourceType } from '@/types/resource';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { useFormState, useFormStatus } from 'react-dom';

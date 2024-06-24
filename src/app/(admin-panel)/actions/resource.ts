@@ -2,7 +2,7 @@
 
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
-import { FilterOptions, ResourceType } from '@/lib/types';
+import { FilterOptions, ResourceType } from '@/types/resource';
 import {
   DocumentData,
   QuerySnapshot,
