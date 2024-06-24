@@ -17,10 +17,10 @@ export async function middleware(req: NextRequest) {
   const user_token = req.cookies.get('user_verify_token')?.value as string;
 
   if (path.startsWith('/learn/contribute') && !user_token) {
-    return NextResponse.redirect(new URL('/learn/user-verify', req.url));
+    return NextResponse.redirect(new URL('/learn/verification', req.url));
   }
 
-  if (path.startsWith('/learn/user-verify') && user_token) {
+  if (path.startsWith('/learn/verification') && user_token) {
     return NextResponse.redirect(new URL('/learn/contribute', req.url));
   }
 
