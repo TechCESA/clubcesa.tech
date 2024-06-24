@@ -14,16 +14,6 @@ export async function middleware(req: NextRequest) {
 
   const admin_token = req.cookies.get('cesa_admin_token')?.value as string;
 
-  const user_token = req.cookies.get('user_verify_token')?.value as string;
-
-  if (path.startsWith('/learn/contribute') && !user_token) {
-    return NextResponse.redirect(new URL('/learn/verification', req.url));
-  }
-
-  if (path.startsWith('/learn/verification') && user_token) {
-    return NextResponse.redirect(new URL('/learn/contribute', req.url));
-  }
-
   // If the path is not an admin path and there's no admin_token, allow the request
   if (!isAdminPath && !admin_token) {
     return NextResponse.next();

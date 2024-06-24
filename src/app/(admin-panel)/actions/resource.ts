@@ -1,5 +1,5 @@
 'use server';
-// Add Author field to the resource schema
+
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { FilterOptions, ResourceType } from '@/lib/types';
@@ -34,10 +34,10 @@ const ResourceSchema = z.object({
   isVerified: z.boolean().default(false),
   author: z.string().min(3, 'Minimum 3 characters required'),
   email: z.string().email('Invalid Valid Gmail Address').endsWith('@gmail.com'),
-  linkedin: z
+  github: z
     .string()
-    .url('Invalid LinkedIn Profile URL')
-    .startsWith('https://www.linkedin.com/in/'),
+    .url('Invalid Github Profile URL')
+    .startsWith('https://www.github.com/'),
 });
 
 enum FormFields {
@@ -49,7 +49,7 @@ enum FormFields {
   IsVerified = 'isVerified',
   Author = 'author',
   Email = 'email',
-  Linkedin = 'linkedin',
+  Github = 'github',
 }
 
 const ResourceStr = 'resources';
@@ -63,7 +63,7 @@ type State = {
     tags?: string[];
     author?: string[];
     email?: string[];
-    linkedin?: string[];
+    github?: string[];
   };
   message?: string;
 };
@@ -75,7 +75,7 @@ export async function addResourceAction(
 ): Promise<State> {
   const author = formData.get(FormFields.Author) as string;
   const email = formData.get(FormFields.Email) as string;
-  const linkedin = formData.get(FormFields.Linkedin) as string;
+  const github = formData.get(FormFields.Github) as string;
   const title = formData.get(FormFields.Title) as string;
   const description = formData.get(FormFields.Description) as string;
   const link = formData.get(FormFields.Link) as string;
@@ -88,7 +88,7 @@ export async function addResourceAction(
     tags,
     author,
     email,
-    linkedin,
+    github,
   });
 
   if (!result.success) {
@@ -108,7 +108,7 @@ export async function addResourceAction(
       author: {
         name: author,
         email: email,
-        linkedin: linkedin,
+        github: github,
       },
     });
 

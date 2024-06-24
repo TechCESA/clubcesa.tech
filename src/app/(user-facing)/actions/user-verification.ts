@@ -1,3 +1,7 @@
+/**
+ * This is unused code
+ */
+
 'use server';
 
 import { redirect } from 'next/navigation';
@@ -17,10 +21,10 @@ const UserSchema = z.object({
   otp: z
     .string({ message: 'Verify your email first' })
     .min(6, 'Enter complete OTP'),
-  linkedin: z
+  github: z
     .string()
-    .url('Please provide correct Linkedin Profile URL')
-    .startsWith('https://www.linkedin.com/in/'),
+    .url('Please provide correct Github Profile URL')
+    .startsWith('https://www.github.com/in/'),
 });
 
 type State = {
@@ -28,7 +32,7 @@ type State = {
     name?: string[];
     email?: string[];
     otp?: string[];
-    linkedin?: string[];
+    github?: string[];
   };
   message?: string;
 };
@@ -42,13 +46,13 @@ export async function verifyUserAction(
   const name = formData.get('name');
   const email = formData.get('email');
   const otp = formData.get('otp');
-  const linkedin = formData.get('linkedin');
+  const github = formData.get('github');
 
   const result = UserSchema.safeParse({
     name,
     email,
     otp,
-    linkedin,
+    github,
   });
 
   if (!result.success) {
@@ -63,7 +67,7 @@ export async function verifyUserAction(
     const token = await new jose.SignJWT({
       name: result.data.name,
       email: result.data.email,
-      linkedin: result.data.linkedin,
+      github: result.data.github,
     })
       .setProtectedHeader({ alg: 'HS256' })
       .setIssuedAt()

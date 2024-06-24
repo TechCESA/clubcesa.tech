@@ -96,19 +96,19 @@ export default function AddPage() {
           )}
         </div>
         <div className='flex w-full flex-col items-start gap-2'>
-          <Label htmlFor='linkedin' className='font-semibold'>
-            LinkedIn Profile
+          <Label htmlFor='github' className='font-semibold'>
+            Github Profile
           </Label>
           <Input
             type='text'
-            id='linkedin'
-            name='linkedin'
-            placeholder='LinkedIn Profile URL'
+            id='github'
+            name='github'
+            placeholder='Github Profile URL'
             required
           />
-          {formState.errors?.linkedin && (
+          {formState.errors?.github && (
             <p className='text-sm text-destructive'>
-              {formState.errors.linkedin}
+              {formState.errors.github}
             </p>
           )}
         </div>

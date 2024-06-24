@@ -4,6 +4,8 @@ import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
 import NabBar from '@/components/navbar';
 import Footer from '@/components/footer';
+import SessionProvider from '@/components/auth-session-provider';
+import { getServerSession } from 'next-auth';
 
 const font = Poppins({
   subsets: ['latin'],
@@ -40,11 +42,13 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
+
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
@@ -57,7 +61,7 @@ export default function RootLayout({
         )}
       >
         <NabBar />
-        {children}
+        <SessionProvider session={session}>{children}</SessionProvider>
         <Footer />
       </body>
     </html>

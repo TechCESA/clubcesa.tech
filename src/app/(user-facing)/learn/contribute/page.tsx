@@ -8,21 +8,23 @@ import {
   MultiSelectorList,
   MultiSelectorTrigger,
 } from '@/components/extension/multi-selector';
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { getAllTags } from '../../actions/resources';
-import { getSixDigitNumber } from '@/lib/get-six-digit-num';
-import { useEffect, useState } from 'react';
-import { useFormState } from 'react-dom';
 import { convertTagsBtoF } from '@/lib/convert-tags';
-import { useFormStatus } from 'react-dom';
-import { Button } from '@/components/ui/button';
+import { getSixDigitNumber } from '@/lib/get-six-digit-num';
+import { signIn, useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
 import { contributeResourceAction } from '../../actions/contribute';
+import { getAllTags } from '../../actions/resources';
 
 export default function ContributePage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
+
+  const { data: session } = useSession();
 
   const [formState, formAction] = useFormState(
     contributeResourceAction.bind(null, selectedTags),
@@ -50,6 +52,23 @@ export default function ContributePage() {
       }
     })();
   }, []);
+
+  if (!session) {
+    return (
+      <div className='container flex min-h-[70vh] flex-col items-center justify-center'>
+        <h3 className='py-4 text-2xl font-bold'>Sign In First.</h3>
+        <Button
+          onClick={() => {
+            signIn();
+          }}
+        >
+          Sign In
+        </Button>
+      </div>
+    );
+  }
+
+  console.log({ session });
 
   return (
     <div className='container flex min-h-screen flex-col items-center'>

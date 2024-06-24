@@ -1,13 +1,12 @@
 'use server';
 
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { arrayUnion, collection, doc, writeBatch } from '@firebase/firestore';
-import { cookies } from 'next/headers';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import * as jose from 'jose';
-import { encodedJWTSecrete } from '@/lib/encoded_JWT_secrete';
 
 const ResourceSchema = z.object({
   title: z
@@ -67,8 +66,11 @@ export async function contributeResourceAction(
   const batch = writeBatch(db);
 
   try {
-    const userToken = cookies().get('user_verify_token')?.value as string;
-    const { payload } = await jose.jwtVerify(userToken, encodedJWTSecrete());
+    const session = await getServerSession(authOptions);
+
+    if (!session) throw new Error();
+
+    console.log({ session });
 
     const resourceRef = doc(collection(db, ResourceStr));
 
@@ -78,9 +80,10 @@ export async function contributeResourceAction(
       link,
       tags,
       author: {
-        name: payload['name'],
-        email: payload['email'],
-        linkedin: payload['linkedin'],
+        name: session.user.name,
+        email: session.user.email,
+        avatar: session.user.avatar,
+        github: session.user.github,
       },
       isVerified: false,
     });
