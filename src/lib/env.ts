@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const envVariables = z.object({
-  JWT_SECRETE: z.string(),
+  JWT_SECRET: z.string(),
   NODEMAILER_EMAIL: z.string(),
   NODEMAILER_PASS: z.string(),
   GITHUB_ID: z.string(),
