@@ -63,6 +63,57 @@ export default function AddPage() {
         </h1>
 
         <div className='flex w-full flex-col items-start gap-2'>
+          <Label htmlFor='author' className='font-semibold'>
+            Author Name
+          </Label>
+          <Input
+            type='text'
+            id='author'
+            name='author'
+            placeholder='Author Name'
+            required
+            autoFocus
+          />
+          {formState.errors?.author && (
+            <p className='text-sm text-destructive'>
+              {formState.errors.author}
+            </p>
+          )}
+        </div>
+        <div className='flex w-full flex-col items-start gap-2'>
+          <Label htmlFor='email' className='font-semibold'>
+            Email
+          </Label>
+          <Input
+            type='email'
+            id='email'
+            name='email'
+            placeholder='Email Address'
+            required
+          />
+          {formState.errors?.email && (
+            <p className='text-sm text-destructive'>{formState.errors.email}</p>
+          )}
+        </div>
+        <div className='flex w-full flex-col items-start gap-2'>
+          <Label htmlFor='linkedin' className='font-semibold'>
+            LinkedIn Profile
+          </Label>
+          <Input
+            type='text'
+            id='linkedin'
+            name='linkedin'
+            placeholder='LinkedIn Profile URL'
+            required
+          />
+          {formState.errors?.linkedin && (
+            <p className='text-sm text-destructive'>
+              {formState.errors.linkedin}
+            </p>
+          )}
+        </div>
+
+        <div className='flex w-full flex-col items-start gap-2'>
           <Label htmlFor='title' className='font-semibold'>
             Title of the resource
           </Label>
@@ -72,7 +123,6 @@ export default function AddPage() {
             name='title'
             placeholder='Title (minimum 30 characters)'
             required
-            autoFocus
           />
           {formState.errors?.title && (
             <p className='text-sm text-destructive'>{formState.errors.title}</p>
