@@ -117,19 +117,25 @@ export async function getAllTags({
 
     const tags: string[] = [];
 
-    querySnapshot.forEach((doc) => {
-      const data: BackTagType[] = doc.data()['docId'];
+    if (all === false) {
+      querySnapshot.forEach((doc) => {
+        const data: BackTagType[] = doc.data()['docId'];
 
-      if (
-        Object.values(data).every((value) => {
-          return value.isVerified === undefined || !value.isVerified;
-        })
-      ) {
-        return;
-      }
+        if (
+          Object.values(data).every((value) => {
+            return value.isVerified === undefined || !value.isVerified;
+          })
+        ) {
+          return;
+        }
 
-      tags.push(doc.id);
-    });
+        tags.push(doc.id);
+      });
+    } else {
+      querySnapshot.forEach((doc) => {
+        tags.push(doc.id);
+      });
+    }
 
     return { data: tags };
   } catch (error) {
