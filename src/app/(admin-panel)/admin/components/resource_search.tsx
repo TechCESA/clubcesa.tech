@@ -20,7 +20,7 @@ export default function ResourceSearch({
     const params = new URLSearchParams(searchParams);
 
     if (query) {
-      params.set('search', query.toLowerCase());
+      params.set('search', query.toLowerCase().trim());
     } else {
       params.delete('search');
     }

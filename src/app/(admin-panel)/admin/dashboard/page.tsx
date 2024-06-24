@@ -29,12 +29,17 @@ const filterResources = ({
   }
 
   if (query) {
-    filteredResources = filteredResources.filter(
-      (res) =>
+    filteredResources = filteredResources.filter((res) => {
+      const formattedTags = convertTagsBtoF(res.tags).map((tag) =>
+        tag.toLowerCase(),
+      );
+
+      return (
         res.title.toLowerCase().includes(query) ||
-        res.tags.includes(query) ||
-        res.tags.some((tag) => tag.includes(query)),
-    );
+        formattedTags.includes(query) ||
+        formattedTags.some((tag) => tag.includes(query))
+      );
+    });
   }
 
   return filteredResources;
