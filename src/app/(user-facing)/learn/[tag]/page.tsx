@@ -35,9 +35,9 @@ export default async function Page({
             />
           </Link>
           <div className='text-left'>
-            <h1 className='under text-wrap text-2xl font-bold text-black'>
+            <h3 className='under text-wrap text-lg font-bold text-black'>
               {convertTagBtoF(tag)}
-            </h1>
+            </h3>
             <p className='text-sm text-gray-400'>
               {`Navigating the World of ${convertTagBtoF(tag)} in ${Date().split(' ')[3]}`}
             </p>

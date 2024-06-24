@@ -21,16 +21,16 @@ export default function ResCard({
 }) {
   return (
     <Card className='group border transition duration-300 ease-in-out hover:border-purple-800/60 hover:bg-purple-50'>
-      <CardHeader>
+      <CardHeader className='pb-2'>
         <Link
           href={link}
           target='_blank'
           className='group-hover:underline group-hover:underline-offset-4'
         >
-          <CardTitle className='text-lg'>{title}</CardTitle>
+          <CardTitle className='p-0 text-lg'>{title}</CardTitle>
         </Link>
       </CardHeader>
-      <CardContent>
+      <CardContent className='pb-3'>
         <p className='line-clamp-3 text-sm'>{description}</p>
       </CardContent>
       <CardFooter>
