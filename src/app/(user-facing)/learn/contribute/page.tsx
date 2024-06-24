@@ -106,7 +106,7 @@ export default function ContributePage() {
             <p className='text-sm text-destructive'>{formState.errors.link}</p>
           )}
         </div>
-        <div className='flex w-full flex-col items-start gap-2'>
+        <div className='flex w-full flex-col items-start'>
           <Label htmlFor='link' className='font-semibold'>
             Select the tag
           </Label>
