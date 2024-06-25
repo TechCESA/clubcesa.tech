@@ -27,7 +27,7 @@ export default function RadioButton() {
   return (
     <RadioGroup
       defaultValue={options[0].value.toLowerCase()}
-      className=' my-3 flex flex-row items-center justify-end gap-4'
+      className='my-3 flex flex-row items-center justify-end gap-4'
     >
       {options.map((option) => (
         <div className='flex items-center space-x-2' key={option.name}>
