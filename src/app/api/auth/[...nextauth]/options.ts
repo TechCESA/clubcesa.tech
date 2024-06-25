@@ -9,8 +9,8 @@ export const authOptions = {
       profile(profile) {
         return {
           ...profile,
-          github: `https://github.com/${profile.login}`,
-          avatar: profile.avatar_url,
+          github: profile.html_url,
+          image: profile.avatar_url,
         };
       },
     }),
@@ -19,14 +19,14 @@ export const authOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.github = user.github;
-        token.avatar = user.avatar;
+        token.picture = user.image;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.github = token.github;
-        session.user.avatar = token.avatar;
+        session.user.image = token.picture;
       }
       return session;
     },

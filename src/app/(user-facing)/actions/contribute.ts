@@ -5,6 +5,7 @@ import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { arrayUnion, collection, doc, writeBatch } from '@firebase/firestore';
 import { getServerSession } from 'next-auth';
+import { getToken } from 'next-auth/jwt';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
@@ -80,7 +81,7 @@ export async function contributeResourceAction(
       author: {
         name: session.user.name,
         email: session.user.email,
-        avatar: session.user.avatar,
+        avatar: session.user.image,
         github: session.user.github,
       },
       isVerified: false,
