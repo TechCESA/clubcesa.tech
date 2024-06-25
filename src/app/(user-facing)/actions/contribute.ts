@@ -85,6 +85,7 @@ export async function contributeResourceAction(
         github: session.user.github,
       },
       isVerified: false,
+      createdAt: Date.now(),
     });
 
     for (const tg of tags) {

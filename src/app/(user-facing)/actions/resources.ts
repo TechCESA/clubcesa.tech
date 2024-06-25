@@ -69,6 +69,7 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
             github: data['author']['github'] as string,
             avatar: data['author']['avatar'] as string,
           },
+          createdAt: data['createdAt'],
         };
       }
     });

@@ -110,6 +110,7 @@ export async function addResourceAction(
         email: email,
         github: github,
       },
+      createdAt: Date.now(),
     });
 
     for (const tg of tags) {
@@ -250,6 +251,7 @@ export async function getResourceAction(
         github: data['author']['github'],
         avatar: data['author']['avatar'],
       },
+      createdAt: data['createdAt'],
     };
   } catch (error) {
     return null;
@@ -290,6 +292,7 @@ export async function getAllResources(
           github: data['author']['github'] as string,
           avatar: data['author']['avatar'] as string,
         },
+        createdAt: data['createdAt'],
       });
     });
 

@@ -11,6 +11,7 @@ export type ResourceType = {
     github: string;
     avatar: string;
   };
+  createdAt: Date;
 };
 
 export enum FilterOptions {
