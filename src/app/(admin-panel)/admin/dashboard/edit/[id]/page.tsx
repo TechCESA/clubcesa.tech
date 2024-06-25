@@ -19,7 +19,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { convertTagsBtoF } from '@/lib/convert-tags';
-import { getSixDigitNumber } from '@/lib/get-six-digit-num';
 import { ResourceType } from '@/types/resource';
 import { notFound } from 'next/navigation';
 import React from 'react';
@@ -154,10 +153,7 @@ export default function EditPage({
             <MultiSelectorContent>
               <MultiSelectorList>
                 {allTags.map((tag) => (
-                  <MultiSelectorItem
-                    key={tag + getSixDigitNumber()}
-                    value={tag}
-                  >
+                  <MultiSelectorItem key={tag} value={tag}>
                     {tag}
                   </MultiSelectorItem>
                 ))}

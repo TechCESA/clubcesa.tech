@@ -17,7 +17,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { convertTagsBtoF } from '@/lib/convert-tags';
-import { getSixDigitNumber } from '@/lib/get-six-digit-num';
 import React from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 
@@ -168,10 +167,7 @@ export default function AddPage() {
             <MultiSelectorContent>
               <MultiSelectorList>
                 {allTags.map((tag) => (
-                  <MultiSelectorItem
-                    key={tag + getSixDigitNumber()}
-                    value={tag}
-                  >
+                  <MultiSelectorItem key={tag} value={tag}>
                     {tag}
                   </MultiSelectorItem>
                 ))}

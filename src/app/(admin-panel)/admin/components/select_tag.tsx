@@ -9,7 +9,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { convertTagBtoF, convertTagFtoB } from '@/lib/convert-tags';
-import { getSixDigitNumber } from '@/lib/get-six-digit-num';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export default function SelectTag({
@@ -45,16 +44,13 @@ export default function SelectTag({
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem key={'all' + getSixDigitNumber()} value='All'>
+          <SelectItem key={'all'} value='All'>
             All
           </SelectItem>
 
           {tags.map((tag) => {
             return (
-              <SelectItem
-                key={tag.toLowerCase() + getSixDigitNumber()}
-                value={tag}
-              >
+              <SelectItem key={tag.toLowerCase()} value={tag}>
                 {tag}
               </SelectItem>
             );
