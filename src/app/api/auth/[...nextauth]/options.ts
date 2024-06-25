@@ -31,4 +31,8 @@ export const authOptions = {
       return session;
     },
   },
+  theme: {
+    logo: '/cesa_logo.png',
+    colorScheme: 'light',
+  },
 } satisfies NextAuthOptions;

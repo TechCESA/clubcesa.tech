@@ -13,8 +13,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { convertTagsBtoF } from '@/lib/convert-tags';
-import { getSixDigitNumber } from '@/lib/get-six-digit-num';
-import { signIn, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { contributeResourceAction } from '../../actions/contribute';
@@ -23,6 +23,7 @@ import { getAllTags } from '../../actions/resources';
 export default function ContributePage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
+  const router = useRouter();
 
   const { data: session } = useSession();
 
@@ -53,19 +54,9 @@ export default function ContributePage() {
     })();
   }, []);
 
-  if (!session) {
-    return (
-      <div className='container flex min-h-[70vh] flex-col items-center justify-center'>
-        <h3 className='py-4 text-2xl font-bold'>Sign In First.</h3>
-        <Button
-          onClick={() => {
-            signIn();
-          }}
-        >
-          Sign In
-        </Button>
-      </div>
-    );
+  if (typeof window !== 'undefined' && !session) {
+    router.push(`/api/auth/signin?callbackUrl=${window.location.href}`);
+    return;
   }
 
   return (
@@ -138,10 +129,7 @@ export default function ContributePage() {
             <MultiSelectorContent>
               <MultiSelectorList>
                 {allTags.map((tag) => (
-                  <MultiSelectorItem
-                    key={tag + getSixDigitNumber()}
-                    value={tag}
-                  >
+                  <MultiSelectorItem key={tag} value={tag}>
                     {tag}
                   </MultiSelectorItem>
                 ))}
