@@ -7,7 +7,7 @@ export default function Page() {
     <div className='mx-auto flex max-w-7xl flex-col items-center px-4 py-12 sm:px-6 md:py-14 lg:px-8'>
       {/* Announcement */}
       <div className='cursor-default text-nowrap text-center text-xs md:text-sm'>
-        <span className='rounded-lg border-2 border-dashed border-purple-800/60 px-4 py-1 text-purple-500'>
+        <span className='rounded-xl border-2 border-dashed border-purple-800/60 px-4 py-1 text-purple-500'>
           <span className='font-semibold text-black'>NEW!</span>
           {` Exclusively By Students, For Students`}
         </span>
@@ -31,6 +31,7 @@ export default function Page() {
             variant='link'
             size='sm'
             className='h-auto rounded-[calc(0.5rem-2px)] bg-white px-3 py-2 text-xs font-bold uppercase tracking-wider hover:no-underline'
+            asChild
           >
             <Link href='/learn/contribute'>Contribute</Link>
           </Button>

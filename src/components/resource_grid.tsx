@@ -1,4 +1,4 @@
-import Card from '@/components/resource_card';
+import ResTagCard from '@/components/tag_card';
 import { getAllTags } from '@/app/(user-facing)/actions/resources';
 
 export default async function TagsGrid() {
@@ -13,9 +13,7 @@ export default async function TagsGrid() {
       ) : (
         <div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
           {tags.data.map((tg) => {
-            return (
-              <Card key={tg} title={tg} link={`/learn/${tg}`} isNew={true} />
-            );
+            return <ResTagCard key={tg} title={tg} link={`/learn/${tg}`} />;
           })}
         </div>
       )}

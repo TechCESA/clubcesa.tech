@@ -5,7 +5,7 @@ import {
 import { convertTagBtoF } from '@/lib/convert-tags';
 import { MoveLeftIcon } from 'lucide-react';
 import Link from 'next/link';
-import Card from './card';
+import ResourceCard from '../../../../components/resource_card';
 
 export async function generateStaticParams() {
   const tags = await getAllTags({ all: false });
@@ -51,7 +51,7 @@ export default async function Page({
           <div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
             {response.data.map((res) => {
               return (
-                <Card
+                <ResourceCard
                   key={res.id}
                   title={res.title}
                   link={res.link}

@@ -1,34 +1,54 @@
-import { convertTagBtoF } from '@/lib/convert-tags';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import Link from 'next/link';
-import { Card, CardHeader } from './ui/card';
 
-export default function ResCard({
+export default function ResourceCard({
   title,
+  description,
   link,
-  isNew,
+  author,
 }: {
   title: string;
+  description: string;
   link: string;
-  isNew: boolean;
+  author: { name: string; avatar: string; github: string };
 }) {
   return (
-    <Link href={link}>
-      <Card className='rounded-xl border transition duration-300 ease-in-out hover:border-purple-800/60 hover:bg-purple-50'>
-        <CardHeader className='flex flex-row items-center justify-between py-2 text-sm font-medium text-primary md:text-base'>
-          <span className='truncate'>{convertTagBtoF(title)}</span>
+    <Card className='group border transition duration-300 ease-in-out hover:border-purple-800/60 hover:bg-purple-50'>
+      <CardHeader className='pb-2'>
+        <Link
+          href={link}
+          target='_blank'
+          className='group-hover:underline group-hover:underline-offset-4'
+        >
+          <CardTitle className='p-0 text-lg'>{title}</CardTitle>
+        </Link>
+      </CardHeader>
+      <CardContent className='pb-3'>
+        <p className='line-clamp-3 text-sm'>{description}</p>
+      </CardContent>
+      <CardFooter>
+        <Link
+          href={author.github}
+          target='_blank'
+          className='flex flex-row items-center gap-2 group-hover:underline group-hover:underline-offset-4'
+        >
+          <Avatar className='size-6'>
+            <AvatarImage src={author.avatar} alt={author.name} />
+            <AvatarFallback className='font-bold text-cesa-blue'>
+              {author.name.charAt(0)}
+            </AvatarFallback>
+          </Avatar>
 
-          {/* Blink animation */}
-          {isNew && (
-            <div className='flex flex-row items-center gap-1 text-xs text-purple-300'>
-              <span className='relative flex size-2'>
-                <span className='absolute inline-flex h-2 w-2 animate-ping rounded-full bg-purple-400 opacity-75'></span>
-                <span className='relative inline-flex h-2 w-2 rounded-full bg-purple-500'></span>
-              </span>
-              New
-            </div>
-          )}
-        </CardHeader>
-      </Card>
-    </Link>
+          <span className='text-xs font-normal'>{author.name}</span>
+        </Link>
+      </CardFooter>
+    </Card>
   );
 }
