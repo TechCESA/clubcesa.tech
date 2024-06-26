@@ -7,7 +7,6 @@
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import * as nodemailer from 'nodemailer';
-import { getSixDigitNumber } from '@/lib/get-six-digit-num';
 import { cookies } from 'next/headers';
 import * as jose from 'jose';
 import { encodedJWTSecrete } from '@/lib/encoded_JWT_secrete';
@@ -37,7 +36,7 @@ type State = {
   message?: string;
 };
 
-const OTPGenerated = getSixDigitNumber();
+const OTPGenerated = (Math.floor(Math.random() * 900000) + 100000).toString();
 
 export async function verifyUserAction(
   prevState: State,
