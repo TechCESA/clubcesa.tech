@@ -9,25 +9,35 @@ export const authOptions = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
       async profile(profile) {
-        const usersData = await getDoc(doc(db, 'admin', 'emails'));
+        try {
+          const usersData = await getDoc(doc(db, 'admin', 'emails'));
 
-        if (!usersData.exists()) {
+          if (usersData.exists()) {
+            const usersEmail = usersData.data()['data'] as string[];
+
+            if (usersEmail.includes(profile.email)) {
+              return {
+                ...profile,
+                github: profile.html_url,
+                image: profile.avatar_url,
+                role: 'admin',
+              };
+            }
+          }
+
           return {
             ...profile,
             github: profile.html_url,
             image: profile.avatar_url,
             role: 'user',
           };
-        }
-
-        const userEmails = usersData.data()['data'] as string[];
-
-        if (userEmails.includes(profile.email)) {
+        } catch (error) {
+          console.error('Error validating admin:', error);
           return {
             ...profile,
             github: profile.html_url,
             image: profile.avatar_url,
-            role: 'admin',
+            role: 'user',
           };
         }
       },

@@ -13,8 +13,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { convertTagsBtoF } from '@/lib/convert-tags';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { contributeResourceAction } from '../../actions/contribute';
@@ -23,9 +21,6 @@ import { getAllTags } from '../../actions/resources';
 export default function ContributePage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
-  const router = useRouter();
-
-  const { data: session } = useSession({ required: true });
 
   const [formState, formAction] = useFormState(
     contributeResourceAction.bind(null, selectedTags),
@@ -53,11 +48,6 @@ export default function ContributePage() {
       }
     })();
   }, []);
-
-  if (typeof window !== 'undefined' && !session) {
-    router.push(`/api/auth/signin?callbackUrl=${window.location.href}`);
-    return;
-  }
 
   return (
     <div className='container flex min-h-screen flex-col items-center'>
