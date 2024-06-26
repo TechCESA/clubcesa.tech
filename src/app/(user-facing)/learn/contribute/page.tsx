@@ -25,7 +25,7 @@ export default function ContributePage() {
   const [allTags, setAllTags] = useState<string[]>([]);
   const router = useRouter();
 
-  const { data: session } = useSession();
+  const { data: session } = useSession({ required: true });
 
   const [formState, formAction] = useFormState(
     contributeResourceAction.bind(null, selectedTags),
