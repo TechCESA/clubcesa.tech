@@ -1,3 +1,5 @@
+import { db } from '@/firebaseConfig';
+import { doc, getDoc } from '@firebase/firestore';
 import type { NextAuthOptions } from 'next-auth';
 import Github from 'next-auth/providers/github';
 
@@ -6,12 +8,28 @@ export const authOptions = {
     Github({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-      profile(profile) {
-        return {
-          ...profile,
-          github: profile.html_url,
-          image: profile.avatar_url,
-        };
+      async profile(profile) {
+        const usersData = await getDoc(doc(db, 'admin', 'emails'));
+
+        if (!usersData.exists()) {
+          return {
+            ...profile,
+            github: profile.html_url,
+            image: profile.avatar_url,
+            role: 'user',
+          };
+        }
+
+        const userEmails = usersData.data()['data'] as string[];
+
+        if (userEmails.includes(profile.email)) {
+          return {
+            ...profile,
+            github: profile.html_url,
+            image: profile.avatar_url,
+            role: 'admin',
+          };
+        }
       },
     }),
   ],
@@ -20,6 +38,7 @@ export const authOptions = {
       if (user) {
         token.github = user.github;
         token.picture = user.image;
+        token.role = user.role;
       }
       return token;
     },
@@ -27,6 +46,7 @@ export const authOptions = {
       if (session.user) {
         session.user.github = token.github;
         session.user.image = token.picture;
+        session.user.role = token.role;
       }
       return session;
     },
