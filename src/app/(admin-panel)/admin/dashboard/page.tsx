@@ -8,41 +8,7 @@ import ResourceSearch from '../components/resource_search';
 import SelectTag from '../components/select_tag';
 import RadioButton from '../components/radio_button';
 import NotFoundComponent from '@/components/not-found';
-
-/* We can filter directly from the firestore */
-const filterResources = ({
-  resources,
-  query,
-  tag,
-}: {
-  resources: ResourceType[];
-  query: string | null;
-  tag: string | null;
-}) => {
-  let filteredResources = resources;
-
-  if (tag && tag !== 'all') {
-    filteredResources = filteredResources.filter((res) =>
-      res.tags.includes(tag),
-    );
-  }
-
-  if (query) {
-    filteredResources = filteredResources.filter((res) => {
-      const formattedTags = convertTagsBtoF(res.tags).map((tag) =>
-        tag.toLowerCase(),
-      );
-
-      return (
-        res.title.toLowerCase().includes(query) ||
-        formattedTags.includes(query) ||
-        formattedTags.some((tag) => tag.includes(query))
-      );
-    });
-  }
-
-  return filteredResources;
-};
+import { filterResources } from '../../lib/filter-resource';
 
 export default async function Dashboard({
   searchParams,
