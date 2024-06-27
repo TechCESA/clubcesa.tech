@@ -15,6 +15,7 @@ import {
 } from '@/components/extension/multi-selector';
 import Loader from '@/components/loader';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -162,6 +163,20 @@ export default function EditPage({
           </MultiSelector>
           {formState.errors?.tags && (
             <p className='text-sm text-destructive'>{formState.errors.tags}</p>
+          )}
+        </div>
+
+        <div className='flex w-full flex-col gap-2'>
+          <div className='flex w-full flex-row items-center gap-2'>
+            <Checkbox name='isVerified' defaultChecked={resource.isVerified} />
+            <Label htmlFor='isVerified' className='font-semibold'>
+              Verified
+            </Label>
+          </div>
+          {formState.errors?.isVerified && (
+            <p className='text-sm text-destructive'>
+              {formState.errors.isVerified}
+            </p>
           )}
         </div>
 

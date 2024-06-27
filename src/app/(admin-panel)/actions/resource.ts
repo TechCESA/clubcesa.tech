@@ -2,12 +2,11 @@
 
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
-import { FilterOptions, ResourceType } from '@/types/resource';
+import { BackTagType, FilterOptions, ResourceType } from '@/types/resource';
 import {
   DocumentData,
   QuerySnapshot,
   arrayRemove,
-  arrayUnion,
   collection,
   doc,
   getDoc,
@@ -32,38 +31,18 @@ const ResourceSchema = z.object({
   link: z.string().url('Invalid URL format'),
   tags: z.array(z.string()).nonempty('At least one tag is required'),
   isVerified: z.boolean().default(false),
-  author: z.string().min(3, 'Minimum 3 characters required'),
-  email: z.string().email('Invalid Valid Gmail Address').endsWith('@gmail.com'),
-  github: z
-    .string()
-    .url('Invalid Github Profile URL')
-    .startsWith('https://www.github.com/'),
 });
-
-enum FormFields {
-  Button = 'button',
-  Title = 'title',
-  Description = 'description',
-  Link = 'link',
-  Tags = 'tags',
-  IsVerified = 'isVerified',
-  Author = 'author',
-  Email = 'email',
-  Github = 'github',
-}
 
 const ResourceStr = 'resources';
 const TagStr = 'tags';
 
 type State = {
   errors?: {
-    link?: string[];
     title?: string[];
     description?: string[];
+    link?: string[];
     tags?: string[];
-    author?: string[];
-    email?: string[];
-    github?: string[];
+    isVerified?: string[];
   };
   message?: string;
 };
@@ -74,25 +53,20 @@ export async function editResourceAction(
   prevState: State,
   formData: FormData,
 ): Promise<State> {
-  const title = formData.get(FormFields.Title) as string;
-  const description = formData.get(FormFields.Description) as string;
-  const link = formData.get(FormFields.Link) as string;
+  const { title, description, link, isVerified } = Object.fromEntries(formData);
   const newTags = convertTagsFtoB(selectedTags);
-  const isVerified = formData.get(FormFields.IsVerified);
 
   const result = ResourceSchema.safeParse({
     title,
     description,
     link,
     tags: newTags,
-    isVerified: isVerified,
+    isVerified: isVerified === null ? false : true,
   });
 
   if (!result.success) {
     return { errors: result.error.flatten().fieldErrors };
   }
-
-  const batch = writeBatch(db);
 
   try {
     const prevRes = await getResourceAction(id);
@@ -101,14 +75,15 @@ export async function editResourceAction(
       return { message: 'Edit: No specified document found' };
     }
 
+    const batch = writeBatch(db);
     const resourceRef = doc(db, ResourceStr, id);
 
     batch.update(resourceRef, {
-      title,
-      description,
-      link,
-      tags: newTags,
-      isVerified: isVerified,
+      title: result.data.title,
+      description: result.data.description,
+      link: result.data.link,
+      tags: result.data.tags,
+      isVerified: result.data.isVerified,
     });
 
     const removedTags = difference(prevRes.tags, newTags);
@@ -116,12 +91,70 @@ export async function editResourceAction(
 
     for (const tag of removedTags) {
       const tagDocRef = doc(db, TagStr, tag);
-      batch.update(tagDocRef, { docId: arrayRemove(resourceRef) });
+      const tagDocData = await getDoc(tagDocRef);
+
+      if (tagDocData.exists()) {
+        const data: BackTagType[] = tagDocData.data()['docId'];
+
+        const updatedArray = data.filter((item) => {
+          return item.id !== resourceRef.id;
+        });
+
+        batch.update(tagDocRef, {
+          docId: [...updatedArray],
+        });
+      }
     }
 
     for (const tag of addedTags) {
       const tagDocRef = doc(db, TagStr, tag);
-      batch.update(tagDocRef, { docId: arrayUnion(resourceRef) });
+      const tagDocData = await getDoc(tagDocRef);
+
+      if (tagDocData.exists()) {
+        const data: BackTagType[] = tagDocData.data()['docId'];
+
+        if (!data) {
+          batch.update(tagDocRef, {
+            docId: [
+              {
+                id: resourceRef.id,
+                isVerified: result.data.isVerified,
+              },
+            ],
+          });
+        } else {
+          batch.update(tagDocRef, {
+            docId: [
+              ...data,
+              {
+                id: resourceRef.id,
+                isVerified: result.data.isVerified,
+              },
+            ],
+          });
+        }
+      }
+    }
+
+    for (const tag of result.data.tags) {
+      const tagDocRef = doc(db, TagStr, tag);
+      const tagDocData = await getDoc(tagDocRef);
+
+      if (tagDocData.exists()) {
+        const data: BackTagType[] = tagDocData.data()['docId'];
+
+        const updatedArray = data.map((item) => {
+          if (item.id === resourceRef.id) {
+            return { ...item, isVerified: result.data.isVerified };
+          }
+
+          return item;
+        });
+
+        batch.update(tagDocRef, {
+          docId: [...updatedArray],
+        });
+      }
     }
 
     await batch.commit();
@@ -154,6 +187,7 @@ export async function deleteResourceAction(id: string) {
 
     for (const tg of res.tags) {
       const tagDocRef = doc(db, TagStr, tg);
+      // change this one also
       batch.update(tagDocRef, { docId: arrayRemove(resourceRef) });
     }
 
