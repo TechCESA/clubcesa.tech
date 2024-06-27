@@ -1,14 +1,13 @@
-import { Button } from '@/components/ui/button';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { memoize } from '@/lib/memoize';
 import { FilterOptions, ResourceType } from '@/types/resource';
-import Link from 'next/link';
 import React from 'react';
 import { getAllResources, getAllTags } from '../../actions/resource';
 import ResourceCard from '../components/resource_card';
 import ResourceSearch from '../components/resource_search';
 import SelectTag from '../components/select_tag';
 import RadioButton from '../components/radio_button';
+import NotFoundComponent from '@/components/not-found';
 
 /* We can filter directly from the firestore */
 const filterResources = ({
@@ -62,14 +61,6 @@ export default async function Dashboard({
     getAllTags({ all: false }),
   ]);
 
-  if (!allResources || !allTags) {
-    return (
-      <div className='pt-12 text-center text-4xl font-bold'>
-        Resources or Tags not found!
-      </div>
-    );
-  }
-
   const convertTagsBtoFMemo = memoize(convertTagsBtoF);
   const formattedTags = convertTagsBtoFMemo(allTags);
 
@@ -81,12 +72,6 @@ export default async function Dashboard({
 
   return (
     <div className='container my-4 min-h-screen'>
-      <Button className='w-full bg-cesa-blue font-semibold' asChild>
-        <Link href='/admin/dashboard/add'>Add New Resource</Link>
-      </Button>
-
-      <RadioButton />
-
       <div className='my-2 flex flex-col gap-4 md:flex-row'>
         <SelectTag tags={formattedTags} defaultValue={selectedTag ?? ''} />
 
@@ -96,11 +81,11 @@ export default async function Dashboard({
         />
       </div>
 
+      <RadioButton defaultValue={filter ?? ''} />
+
       <div className='mx-4 my-6'>
         {filteredResources.length === 0 ? (
-          <p className='text-center text-lg font-semibold text-destructive'>
-            No resources found
-          </p>
+          <NotFoundComponent />
         ) : (
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
             {filteredResources.map((res) => (

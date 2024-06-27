@@ -1,10 +1,15 @@
 'use client';
+
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
-export default function RadioButton() {
+export default function RadioButton({
+  defaultValue,
+}: {
+  defaultValue: string;
+}) {
   const options = [
     { name: 'All', value: 'all' },
     { name: 'Verified', value: 'true' },
@@ -16,17 +21,19 @@ export default function RadioButton() {
 
   const handleChange = (value: string) => {
     const params = new URLSearchParams(searchParams);
+
     if (value) {
       params.set('filter', value);
     } else {
       params.delete('filter');
     }
+
     router.replace(`${pathname}?${params.toString()}`);
   };
 
   return (
     <RadioGroup
-      defaultValue={options[0].value.toLowerCase()}
+      defaultValue={defaultValue ?? options[0].value.toLowerCase()}
       className='my-3 flex flex-row items-center justify-end gap-4'
     >
       {options.map((option) => (
@@ -38,7 +45,7 @@ export default function RadioButton() {
               handleChange(option.value.toLowerCase());
             }}
           />
-          <Label htmlFor='option-two'>{option.name}</Label>
+          <Label htmlFor={option.name}>{option.name}</Label>
         </div>
       ))}
     </RadioGroup>
