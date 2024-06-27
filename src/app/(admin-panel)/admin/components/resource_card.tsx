@@ -1,17 +1,3 @@
-'use client';
-
-import { deleteResourceAction } from '@/app/(admin-panel)/actions/resource';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -23,8 +9,9 @@ import {
 } from '@/components/ui/card';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { cn } from '@/lib/utils';
-import { Pencil, Trash2 } from 'lucide-react';
+import { Pencil } from 'lucide-react';
 import Link from 'next/link';
+import DeleteAlertBtn from './delete-alert-btn';
 
 export default function ResourceCard({
   id,
@@ -44,10 +31,6 @@ export default function ResourceCard({
   verified: boolean;
 }) {
   const tagsLabel = convertTagsBtoF(tags).sort((a, b) => a.localeCompare(b));
-
-  const handleDelete = () => {
-    deleteResourceAction(id);
-  };
 
   return (
     <Card className='group relative'>
@@ -93,30 +76,7 @@ export default function ResourceCard({
             <Pencil size={18} />
           </Link>
         </Button>
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button size='icon' variant='outline'>
-              <Trash2 size={18} />
-            </Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This will permanently delete these resource.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction
-                className='bg-destructive'
-                onClick={handleDelete}
-              >
-                Delete
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <DeleteAlertBtn id={id} />
       </div>
 
       <span
