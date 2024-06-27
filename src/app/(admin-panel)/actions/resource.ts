@@ -2,11 +2,12 @@
 
 import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
-import { BackTagType, FilterOptions, ResourceType } from '@/types/resource';
+import { FilterOptions, ResourceType } from '@/types/resource';
 import {
   DocumentData,
   QuerySnapshot,
   arrayRemove,
+  arrayUnion,
   collection,
   doc,
   getDoc,
@@ -61,7 +62,7 @@ export async function editResourceAction(
     description,
     link,
     tags: newTags,
-    isVerified: isVerified === null ? false : true,
+    isVerified: isVerified === 'on',
   });
 
   if (!result.success) {
@@ -87,75 +88,26 @@ export async function editResourceAction(
     });
 
     const removedTags = difference(prevRes.tags, newTags);
-    const addedTags = difference(newTags, prevRes.tags);
 
-    for (const tag of removedTags) {
-      const tagDocRef = doc(db, TagStr, tag);
-      const tagDocData = await getDoc(tagDocRef);
+    removedTags.forEach((tag) => {
+      const tagRef = doc(db, TagStr, tag);
 
-      if (tagDocData.exists()) {
-        const data: BackTagType[] = tagDocData.data()['docId'];
+      batch.update(tagRef, {
+        docId: arrayRemove({ id, isVerified: prevRes.isVerified }),
+      });
+    });
 
-        const updatedArray = data.filter((item) => {
-          return item.id !== resourceRef.id;
-        });
+    result.data.tags.forEach((tag) => {
+      const tagRef = doc(db, TagStr, tag);
 
-        batch.update(tagDocRef, {
-          docId: [...updatedArray],
-        });
-      }
-    }
+      batch.update(tagRef, {
+        docId: arrayRemove({ id, isVerified: prevRes.isVerified }),
+      });
 
-    for (const tag of addedTags) {
-      const tagDocRef = doc(db, TagStr, tag);
-      const tagDocData = await getDoc(tagDocRef);
-
-      if (tagDocData.exists()) {
-        const data: BackTagType[] = tagDocData.data()['docId'];
-
-        if (!data) {
-          batch.update(tagDocRef, {
-            docId: [
-              {
-                id: resourceRef.id,
-                isVerified: result.data.isVerified,
-              },
-            ],
-          });
-        } else {
-          batch.update(tagDocRef, {
-            docId: [
-              ...data,
-              {
-                id: resourceRef.id,
-                isVerified: result.data.isVerified,
-              },
-            ],
-          });
-        }
-      }
-    }
-
-    for (const tag of result.data.tags) {
-      const tagDocRef = doc(db, TagStr, tag);
-      const tagDocData = await getDoc(tagDocRef);
-
-      if (tagDocData.exists()) {
-        const data: BackTagType[] = tagDocData.data()['docId'];
-
-        const updatedArray = data.map((item) => {
-          if (item.id === resourceRef.id) {
-            return { ...item, isVerified: result.data.isVerified };
-          }
-
-          return item;
-        });
-
-        batch.update(tagDocRef, {
-          docId: [...updatedArray],
-        });
-      }
-    }
+      batch.update(tagRef, {
+        docId: arrayUnion({ id, isVerified: result.data.isVerified }),
+      });
+    });
 
     await batch.commit();
   } catch (error) {
@@ -175,9 +127,9 @@ function difference(a: string[], b: string[]) {
 }
 
 export async function deleteResourceAction(id: string) {
-  const batch = writeBatch(db);
-
   try {
+    const batch = writeBatch(db);
+
     const resourceRef = doc(db, ResourceStr, id);
     const res = await getResourceAction(id);
 
@@ -187,8 +139,9 @@ export async function deleteResourceAction(id: string) {
 
     for (const tg of res.tags) {
       const tagDocRef = doc(db, TagStr, tg);
-      // change this one also
-      batch.update(tagDocRef, { docId: arrayRemove(resourceRef) });
+      batch.update(tagDocRef, {
+        docId: arrayRemove({ id, isVerified: res.isVerified }),
+      });
     }
 
     batch.delete(resourceRef);
@@ -215,18 +168,7 @@ export async function getResourceAction(
 
     return {
       id: docSnap.id,
-      title: data['title'],
-      description: data['description'],
-      link: data['link'],
-      tags: data['tags'],
-      isVerified: data['isVerified'],
-      author: {
-        name: data['author']['name'],
-        email: data['author']['email'],
-        github: data['author']['github'],
-        avatar: data['author']['avatar'],
-      },
-      createdAt: data['createdAt'],
+      ...(data as Omit<ResourceType, 'id'>),
     };
   } catch (error) {
     return null;
@@ -257,18 +199,7 @@ export async function getAllResources(
       const data = doc.data();
       resources.push({
         id: doc.id,
-        title: data['title'] as string,
-        description: data['description'] as string,
-        link: data['link'] as string,
-        tags: data['tags'] as string[],
-        isVerified: data['isVerified'] as boolean,
-        author: {
-          name: data['author']['name'] as string,
-          email: data['author']['email'] as string,
-          github: data['author']['github'] as string,
-          avatar: data['author']['avatar'] as string,
-        },
-        createdAt: data['createdAt'],
+        ...(data as Omit<ResourceType, 'id'>),
       });
     });
 
