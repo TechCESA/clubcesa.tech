@@ -1,10 +1,9 @@
 'use server';
 
 import { db } from '@/firebaseConfig';
-import { ResourceType } from '@/types/resource';
+import { BackTagType, ResourceType } from '@/types/resource';
 import {
   DocumentData,
-  DocumentReference,
   QuerySnapshot,
   collection,
   doc,
@@ -20,12 +19,8 @@ interface ResourceReturnType {
   error?: string;
 }
 
-interface BackTagType {
-  resourceRef: DocumentReference;
-  isVerified: boolean;
-}
-
 const TagStr = 'tags';
+const ResourceStr = 'resources';
 
 export async function getResources(tag: string): Promise<ResourceReturnType> {
   noStore();
@@ -47,7 +42,7 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
     const resourcePromises = resArr.map(async (tag) => {
       if (!tag.isVerified) return null;
 
-      const resourceSnap = await getDoc(tag.resourceRef);
+      const resourceSnap = await getDoc(doc(db, ResourceStr, tag.id));
 
       if (!resourceSnap.exists()) {
         return null;

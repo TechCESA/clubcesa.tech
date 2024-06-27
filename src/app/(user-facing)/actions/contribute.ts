@@ -5,7 +5,6 @@ import { db } from '@/firebaseConfig';
 import { convertTagsFtoB } from '@/lib/convert-tags';
 import { arrayUnion, collection, doc, writeBatch } from '@firebase/firestore';
 import { getServerSession } from 'next-auth';
-import { getToken } from 'next-auth/jwt';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
@@ -91,7 +90,7 @@ export async function contributeResourceAction(
     for (const tg of tags) {
       const tagDocRef = doc(db, TagStr, tg);
       batch.update(tagDocRef, {
-        docId: arrayUnion({ resourceRef, isVerified: false }),
+        docId: arrayUnion({ id: resourceRef.id, isVerified: false }),
       });
     }
 
