@@ -1,3 +1,5 @@
+import SignOutBtn from '@/components/signout-btn';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function RootLayout({
@@ -12,9 +14,12 @@ export default function RootLayout({
           <li className='text-xl'>
             <Link href='/admin/dashboard'>CESA Dashboard</Link>
           </li>
-          <li className='text-lg'>
-            <Link href='/learn'>Learn</Link>
-          </li>
+          <div className='space-x-2'>
+            <Button variant='ghost' className='text-base' asChild>
+              <Link href='/learn'>Go to Learn</Link>
+            </Button>
+            <SignOutBtn />
+          </div>
         </ul>
       </nav>
       {children}

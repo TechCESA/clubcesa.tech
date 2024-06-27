@@ -1,6 +1,6 @@
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { memoize } from '@/lib/memoize';
-import { FilterOptions, ResourceType } from '@/types/resource';
+import { FilterOptions } from '@/types/resource';
 import React from 'react';
 import { getAllResources, getAllTags } from '../../actions/resource';
 import ResourceCard from '../components/resource_card';

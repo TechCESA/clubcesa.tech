@@ -60,9 +60,11 @@ export default async function RootLayout({
           font.variable,
         )}
       >
-        <NabBar />
-        <SessionProvider session={session}>{children}</SessionProvider>
-        <Footer />
+        <SessionProvider session={session}>
+          <NabBar />
+          {children}
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );
