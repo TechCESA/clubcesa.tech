@@ -9,7 +9,6 @@ import { z } from 'zod';
 import * as nodemailer from 'nodemailer';
 import { cookies } from 'next/headers';
 import * as jose from 'jose';
-import { encodedJWTSecrete } from '@/lib/encoded_JWT_secrete';
 
 const UserSchema = z.object({
   name: z
@@ -71,7 +70,7 @@ export async function verifyUserAction(
       .setProtectedHeader({ alg: 'HS256' })
       .setIssuedAt()
       .setExpirationTime('1h')
-      .sign(encodedJWTSecrete());
+      .sign(new TextEncoder().encode(process.env.JWT_SECRET));
 
     cookies().set('user_verify_token', token, { maxAge: 3600 });
   } catch (error) {
