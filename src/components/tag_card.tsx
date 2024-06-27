@@ -11,7 +11,7 @@ export default function ResTagCard({
 }) {
   return (
     <Link href={link}>
-      <Card className='rounded-xl border-2 border-purple-600 transition duration-200 ease-in-out hover:bg-purple-50'>
+      <Card className='rounded-xl border-2 transition duration-200 ease-in-out hover:border-purple-200 hover:bg-purple-50'>
         <CardHeader className='py-2 text-center text-sm font-medium text-primary md:text-base'>
           <p className='truncate'>{convertTagBtoF(title)}</p>
         </CardHeader>

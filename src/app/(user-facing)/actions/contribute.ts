@@ -53,12 +53,12 @@ export async function contributeResourceAction(
     return { errors: result.error.flatten().fieldErrors };
   }
 
-  const batch = writeBatch(db);
-
   try {
     const session = await getServerSession(authOptions);
 
     if (!session) throw new Error();
+
+    const batch = writeBatch(db);
 
     const resourceRef = doc(collection(db, ResourceStr));
 

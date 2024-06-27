@@ -53,18 +53,7 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
       if ((data['isVerified'] as boolean) == true) {
         return {
           id: resourceSnap.id,
-          title: data['title'] as string,
-          description: data['description'] as string,
-          link: data['link'] as string,
-          tags: data['tags'] as string[],
-          isVerified: data['isVerified'] as boolean,
-          author: {
-            name: data['author']['name'] as string,
-            email: data['author']['email'] as string,
-            github: data['author']['github'] as string,
-            avatar: data['author']['avatar'] as string,
-          },
-          createdAt: data['createdAt'],
+          ...(data as Omit<ResourceType, 'id'>),
         };
       }
     });
