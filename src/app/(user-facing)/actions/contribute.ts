@@ -21,14 +21,6 @@ const ResourceSchema = z.object({
   tags: z.array(z.string()).nonempty('At least one tag is required'),
 });
 
-enum FormFields {
-  Button = 'button',
-  Title = 'title',
-  Description = 'description',
-  Link = 'link',
-  Tags = 'tags',
-}
-
 const ResourceStr = 'resources';
 const TagStr = 'tags';
 
@@ -47,9 +39,7 @@ export async function contributeResourceAction(
   prevState: State,
   formData: FormData,
 ): Promise<State> {
-  const title = formData.get(FormFields.Title) as string;
-  const description = formData.get(FormFields.Description) as string;
-  const link = formData.get(FormFields.Link) as string;
+  const { title, description, link } = Object.fromEntries(formData);
   const tags = convertTagsFtoB(selectedTags);
 
   const result = ResourceSchema.safeParse({
