@@ -68,65 +68,6 @@ type State = {
   message?: string;
 };
 
-export async function addResourceAction(
-  selectedTags: string[],
-  prevState: State,
-  formData: FormData,
-): Promise<State> {
-  const author = formData.get(FormFields.Author) as string;
-  const email = formData.get(FormFields.Email) as string;
-  const github = formData.get(FormFields.Github) as string;
-  const title = formData.get(FormFields.Title) as string;
-  const description = formData.get(FormFields.Description) as string;
-  const link = formData.get(FormFields.Link) as string;
-  const tags = convertTagsFtoB(selectedTags);
-
-  const result = ResourceSchema.safeParse({
-    title,
-    description,
-    link,
-    tags,
-    author,
-    email,
-    github,
-  });
-
-  if (!result.success) {
-    return { errors: result.error.flatten().fieldErrors };
-  }
-
-  const batch = writeBatch(db);
-
-  try {
-    const resourceRef = doc(collection(db, ResourceStr));
-    batch.set(resourceRef, {
-      title,
-      description,
-      link,
-      tags,
-      isVerified: false,
-      author: {
-        name: author,
-        email: email,
-        github: github,
-      },
-      createdAt: Date.now(),
-    });
-
-    for (const tg of tags) {
-      const tagDocRef = doc(db, TagStr, tg);
-      batch.update(tagDocRef, { docId: arrayUnion(resourceRef) });
-    }
-
-    await batch.commit();
-  } catch (error) {
-    console.error('Firebase Error:', error);
-    return { message: 'Firebase Error: Failed to add resource.' };
-  }
-
-  redirect('/admin/dashboard');
-}
-
 export async function editResourceAction(
   selectedTags: string[],
   id: string,
@@ -260,19 +201,20 @@ export async function getResourceAction(
 
 export async function getAllResources(
   filter: FilterOptions = FilterOptions.All,
-) {
+): Promise<ResourceType[]> {
   try {
-    let querySnapshot;
-    filter === FilterOptions.All
-      ? (querySnapshot = await getDocs(collection(db, ResourceStr)))
-      : (querySnapshot = await getDocs(
-          query(
-            collection(db, ResourceStr),
-            where('isVerified', '==', filter === FilterOptions.Verified),
-          ),
-        ));
+    const querySnapshot =
+      filter === FilterOptions.All
+        ? await getDocs(collection(db, ResourceStr))
+        : await getDocs(
+            query(
+              collection(db, ResourceStr),
+              where('isVerified', '==', filter === FilterOptions.Verified),
+            ),
+          );
+
     if (querySnapshot.empty) {
-      return null;
+      return [];
     }
 
     const resources: ResourceType[] = [];
@@ -299,10 +241,11 @@ export async function getAllResources(
     return resources;
   } catch (error) {
     if (error instanceof Error) throw new Error(error.message);
+    return [];
   }
 }
 
-export async function getAllTags({ all }: { all: boolean }) {
+export async function getAllTags({ all }: { all: boolean }): Promise<string[]> {
   try {
     let querySnapshot: QuerySnapshot<DocumentData, DocumentData>;
 
@@ -317,7 +260,7 @@ export async function getAllTags({ all }: { all: boolean }) {
     }
 
     if (querySnapshot.empty) {
-      return null;
+      return [];
     }
 
     const tags: string[] = [];
@@ -329,5 +272,6 @@ export async function getAllTags({ all }: { all: boolean }) {
     return tags;
   } catch (error) {
     if (error instanceof Error) throw new Error(error.message);
+    return [];
   }
 }

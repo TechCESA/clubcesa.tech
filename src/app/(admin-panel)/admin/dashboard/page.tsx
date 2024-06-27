@@ -62,6 +62,8 @@ export default async function Dashboard({
                 description={res.description}
                 link={res.link}
                 tags={res.tags}
+                author={res.author}
+                verified={res.isVerified}
               />
             ))}
           </div>
