@@ -6,6 +6,7 @@ import NabBar from '@/components/navbar';
 import Footer from '@/components/footer';
 import SessionProvider from '@/components/auth-session-provider';
 import { getServerSession } from 'next-auth';
+import Transition from './template';
 
 const font = Poppins({
   subsets: ['latin'],
@@ -62,7 +63,7 @@ export default async function RootLayout({
       >
         <SessionProvider session={session}>
           <NabBar />
-          {children}
+          <Transition>{children}</Transition>
           <Footer />
         </SessionProvider>
       </body>
