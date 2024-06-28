@@ -14,6 +14,17 @@ import {
   MultiSelectorTrigger,
 } from '@/components/extension/multi-selector';
 import Loader from '@/components/loader';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
@@ -33,6 +44,7 @@ export default function EditPage({
   const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
   const [allTags, setAllTags] = React.useState<string[]>([]);
   const [resource, setResource] = React.useState<ResourceType | null>(null);
+  const formRef = React.useRef<HTMLFormElement>(null);
 
   const [formState, formAction] = useFormState(
     editResourceAction.bind(null, selectedTags, id),
@@ -82,6 +94,7 @@ export default function EditPage({
   return (
     <div className='container flex min-h-screen flex-col items-center'>
       <form
+        ref={formRef}
         action={formAction}
         className='my-8 flex w-full flex-col items-start gap-6 md:max-w-[70%]'
       >
@@ -168,7 +181,11 @@ export default function EditPage({
 
         <div className='flex w-full flex-col gap-2'>
           <div className='flex w-full flex-row items-center gap-2'>
-            <Checkbox name='isVerified' defaultChecked={resource.isVerified} />
+            <Checkbox
+              name='isVerified'
+              id='isVerified'
+              defaultChecked={resource.isVerified}
+            />
             <Label htmlFor='isVerified' className='font-semibold'>
               Verified
             </Label>
@@ -184,27 +201,50 @@ export default function EditPage({
           {formState.message && (
             <p className='text-sm text-destructive'>{formState.message}</p>
           )}
-          <ChangeButton />
+          <ChangeButton formRef={formRef} />
         </div>
       </form>
     </div>
   );
 }
 
-function ChangeButton() {
+function ChangeButton({
+  formRef,
+}: {
+  formRef: React.RefObject<HTMLFormElement>;
+}) {
   const { pending } = useFormStatus();
 
   return (
-    <Button
-      type='submit'
-      disabled={pending}
-      className='flex w-full items-center justify-center bg-cesa-blue'
-    >
-      {pending ? (
-        <span className='animate-bounce text-3xl'>...</span>
-      ) : (
-        'Change'
-      )}
-    </Button>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button className='bg-cesa-blue'>
+          {pending ? (
+            <span className='animate-bounce text-3xl'>...</span>
+          ) : (
+            'Change'
+          )}
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This will permanently change the resource.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction className='bg-destructive' asChild>
+            <Button
+              className='bg-cesa-blue'
+              onClick={() => formRef.current?.requestSubmit()}
+            >
+              Change
+            </Button>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
