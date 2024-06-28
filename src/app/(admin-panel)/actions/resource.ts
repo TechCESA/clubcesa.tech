@@ -58,9 +58,9 @@ export async function editResourceAction(
   const newTags = convertTagsFtoB(selectedTags);
 
   const result = ResourceSchema.safeParse({
-    title,
-    description,
-    link,
+    title: (title as string).trim(),
+    description: (description as string).trim(),
+    link: (link as string).trim(),
     tags: newTags,
     isVerified: isVerified === 'on',
   });

@@ -43,9 +43,9 @@ export async function contributeResourceAction(
   const tags = convertTagsFtoB(selectedTags);
 
   const result = ResourceSchema.safeParse({
-    title,
-    description,
-    link,
+    title: (title as string).trim(),
+    description: (description as string).trim(),
+    link: (link as string).trim(),
     tags,
   });
 
