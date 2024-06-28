@@ -93,7 +93,7 @@ export async function editResourceAction(
       const tagRef = doc(db, TagStr, tag);
 
       batch.update(tagRef, {
-        docId: arrayRemove({ id, isVerified: prevRes.isVerified }),
+        resources: arrayRemove({ id, isVerified: prevRes.isVerified }),
       });
     });
 
@@ -101,11 +101,11 @@ export async function editResourceAction(
       const tagRef = doc(db, TagStr, tag);
 
       batch.update(tagRef, {
-        docId: arrayRemove({ id, isVerified: prevRes.isVerified }),
+        resources: arrayRemove({ id, isVerified: prevRes.isVerified }),
       });
 
       batch.update(tagRef, {
-        docId: arrayUnion({ id, isVerified: result.data.isVerified }),
+        resources: arrayUnion({ id, isVerified: result.data.isVerified }),
       });
     });
 
@@ -140,7 +140,7 @@ export async function deleteResourceAction(id: string) {
     for (const tg of res.tags) {
       const tagDocRef = doc(db, TagStr, tg);
       batch.update(tagDocRef, {
-        docId: arrayRemove({ id, isVerified: res.isVerified }),
+        resources: arrayRemove({ id, isVerified: res.isVerified }),
       });
     }
 
@@ -217,7 +217,7 @@ export async function getAllTags({ all }: { all: boolean }): Promise<string[]> {
     if (all === false) {
       const q = query(
         collection(db, TagStr),
-        where('docId', '!=', [] || null || 0 || ''),
+        where('resources', '!=', [] || null || 0 || ''),
       );
       querySnapshot = await getDocs(q);
     } else {

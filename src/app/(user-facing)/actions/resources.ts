@@ -33,7 +33,7 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
       return { error: 'Resource not found' };
     }
 
-    const resArr = docSnap.data()['docId'] as BackTagType[];
+    const resArr = docSnap.data()['resources'] as BackTagType[];
 
     if (resArr.length === 0) {
       return { error: 'Resources Not Found!' };
@@ -89,7 +89,7 @@ export async function getAllTags({
     if (all === false) {
       const q = query(
         collection(db, TagStr),
-        where('docId', '!=', [] || null || 0 || ''),
+        where('resources', '!=', [] || null || 0 || ''),
       );
       querySnapshot = await getDocs(q);
     } else {
@@ -104,7 +104,7 @@ export async function getAllTags({
 
     if (all === false) {
       querySnapshot.forEach((doc) => {
-        const data: BackTagType[] = doc.data()['docId'];
+        const data: BackTagType[] = doc.data()['resources'];
 
         if (
           Object.values(data).every((value) => {

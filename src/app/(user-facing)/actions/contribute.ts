@@ -80,7 +80,7 @@ export async function contributeResourceAction(
     for (const tg of tags) {
       const tagDocRef = doc(db, TagStr, tg);
       batch.update(tagDocRef, {
-        docId: arrayUnion({ id: resourceRef.id, isVerified: false }),
+        resources: arrayUnion({ id: resourceRef.id, isVerified: false }),
       });
     }
 
