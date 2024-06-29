@@ -8,7 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { useSession } from 'next-auth/react';
@@ -16,7 +15,7 @@ import SignOutBtn from './signout-btn';
 
 export default function NabBar() {
   const pathname = usePathname();
-  const { data: session } = useSession({ required: true });
+  const { data: session } = useSession({ required: false });
 
   const nav = [
     {
