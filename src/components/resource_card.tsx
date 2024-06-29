@@ -6,9 +6,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { db } from '@/firebaseConfig';
+import { UserType } from '@/types/user';
+import { doc, getDoc } from '@firebase/firestore';
 import Link from 'next/link';
 
-export default function ResourceCard({
+export default async function ResourceCard({
   title,
   description,
   link,
@@ -17,8 +20,11 @@ export default function ResourceCard({
   title: string;
   description: string;
   link: string;
-  author: { name: string; avatar: string; github: string };
+  author: string;
 }) {
+  const authorRef = await getDoc(doc(db, 'authors', author.toString()));
+  const authorData = authorRef.data() as UserType;
+
   return (
     <Card className='group border transition duration-300 ease-in-out hover:border-purple-800/60 hover:bg-purple-50'>
       <CardHeader className='pb-2'>
@@ -35,18 +41,18 @@ export default function ResourceCard({
       </CardContent>
       <CardFooter>
         <Link
-          href={author.github}
+          href={authorData.github}
           target='_blank'
           className='flex flex-row items-center gap-2 group-hover:underline group-hover:underline-offset-4'
         >
           <Avatar className='size-6'>
-            <AvatarImage src={author.avatar} alt={author.name} />
+            <AvatarImage src={authorData.avatar} alt={authorData.name} />
             <AvatarFallback className='font-bold text-cesa-blue'>
-              {author.name.charAt(0)}
+              {authorData.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
 
-          <span className='text-xs font-normal'>{author.name}</span>
+          <span className='text-xs font-normal'>{authorData.name}</span>
         </Link>
       </CardFooter>
     </Card>

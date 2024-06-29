@@ -7,13 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { db } from '@/firebaseConfig';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { cn } from '@/lib/utils';
+import { UserType } from '@/types/user';
+import { doc, getDoc } from '@firebase/firestore';
 import { Pencil } from 'lucide-react';
 import Link from 'next/link';
 import DeleteAlertBtn from './delete-alert-btn';
 
-export default function ResourceCard({
+export default async function ResourceCard({
   id,
   title,
   description,
@@ -27,10 +30,13 @@ export default function ResourceCard({
   description: string;
   link: string;
   tags: string[];
-  author: { name: string; avatar: string; github: string };
+  author: string;
   verified: boolean;
 }) {
   const tagsLabel = convertTagsBtoF(tags).sort((a, b) => a.localeCompare(b));
+
+  const authorRef = await getDoc(doc(db, 'authors', author.toString()));
+  const authorData = authorRef.data() as UserType;
 
   return (
     <Card className='group relative'>
@@ -55,18 +61,18 @@ export default function ResourceCard({
         </p>
 
         <Link
-          href={author.github}
+          href={authorData.github}
           target='_blank'
           className='flex flex-row items-center gap-2 group-hover:underline group-hover:underline-offset-4'
         >
           <Avatar className='size-6'>
-            <AvatarImage src={author.avatar} alt={author.name} />
+            <AvatarImage src={authorData.avatar} alt={authorData.name} />
             <AvatarFallback className='font-bold text-cesa-blue'>
-              {author.name.charAt(0)}
+              {authorData.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
 
-          <span className='text-xs font-normal'>{author.name}</span>
+          <span className='text-xs font-normal'>{authorData.name}</span>
         </Link>
       </CardFooter>
 

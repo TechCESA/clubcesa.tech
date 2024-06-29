@@ -62,19 +62,20 @@ export async function contributeResourceAction(
 
     const resourceRef = doc(collection(db, ResourceStr));
 
+    const authorRef = doc(db, 'authors', `${session.user.id}`);
+
     batch.set(resourceRef, {
       title,
       description,
       link,
       tags,
-      author: {
-        name: session.user.name,
-        email: session.user.email,
-        avatar: session.user.image,
-        github: session.user.github,
-      },
+      author: session.user.id,
       isVerified: false,
       createdAt: Date.now(),
+    });
+
+    batch.update(authorRef, {
+      resources: arrayUnion(resourceRef.id),
     });
 
     for (const tg of tags) {

@@ -5,6 +5,7 @@
   "scripts": {
     "clean": "rm -rf .next node_modules",
     "dev": "next dev --turbo",
+    "emails": "email dev --dir src/emails --port 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -23,6 +24,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@react-email/components": "^0.0.19",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -38,6 +40,7 @@
     "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
+    "react-email": "^2.1.4",
     "sass": "^1.75.0",
     "sharp": "^0.33.3",
     "tailwind-merge": "^2.3.0",

@@ -1,7 +1,4 @@
-import {
-  getAllTags,
-  getResourceAction,
-} from '@/app/(admin)/actions/resource';
+import { getAllTags, getResourceAction } from '@/app/(admin)/actions/resource';
 import Loader from '@/components/loader';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import React from 'react';
