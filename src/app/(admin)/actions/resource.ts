@@ -19,6 +19,7 @@ import {
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
+import { sendVerifyEmail } from './verify-email';
 
 const ResourceSchema = z.object({
   title: z
@@ -110,6 +111,10 @@ export async function editResourceAction(
     });
 
     await batch.commit();
+
+    if (result.data.isVerified && !prevRes.isVerified) {
+      sendVerifyEmail({ userId: prevRes.author, resourceId: prevRes.id });
+    }
   } catch (error) {
     console.error('Firebase Error:', error);
     return { message: 'Firebase Error: Failed to edit resource.' };
