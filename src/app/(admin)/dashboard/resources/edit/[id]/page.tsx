@@ -1,11 +1,11 @@
 import {
   getAllTags,
   getResourceAction,
-} from '@/app/(admin-panel)/actions/resource';
+} from '@/app/(admin)/actions/resource';
 import Loader from '@/components/loader';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import React from 'react';
-import EditForm from '../../../components/edit-form';
+import EditForm from '../../../../components/edit-form';
 
 export default async function EditPage({
   params: { id },

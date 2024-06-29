@@ -40,7 +40,7 @@ export default function NabBar() {
     <nav
       className={cn(
         'fixed right-4 top-0 z-50 mx-auto py-4 font-bold text-cesa-blue md:left-0 md:right-0',
-        { hidden: pathname.startsWith('/admin') },
+        { hidden: pathname.startsWith('/dashboard') },
       )}
     >
       {/* Desktop view */}

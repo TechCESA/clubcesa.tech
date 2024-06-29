@@ -1,6 +1,6 @@
 'use client';
 
-import { contributeResourceAction } from '@/app/(user-facing)/actions/contribute';
+import { contributeResourceAction } from '@/app/(user)/actions/contribute';
 import {
   MultiSelector,
   MultiSelectorContent,

@@ -115,7 +115,7 @@ export async function editResourceAction(
     return { message: 'Firebase Error: Failed to edit resource.' };
   }
 
-  redirect('/admin/dashboard');
+  redirect('/dashboard/resources');
 }
 
 function difference(a: string[], b: string[]) {
@@ -151,7 +151,7 @@ export async function deleteResourceAction(id: string) {
     return { error: 'Failed to delete resource' };
   }
 
-  revalidatePath('/admin/dashboard');
+  redirect('/dashboard/resources');
 }
 
 export async function getResourceAction(
