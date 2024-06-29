@@ -1,3 +1,117 @@
-export default function Dashboard() {
-  return <div>Dashboard</div>;
+/**
+ * v0 by Vercel.
+ * @see https://v0.dev/t/CTJGuZUInvq
+ * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
+ */
+
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from '@/components/ui/card';
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from '@/components/ui/table';
+import StatsComponent from './components/stats-component';
+import AdminStats from './components/admin-stats';
+import { getStats } from '../actions/dashboard';
+import TagStats from './components/tags-stats';
+
+export default async function Component() {
+  const [data] = await Promise.all([await getStats()]);
+
+  return (
+    <div className='my-10 flex min-h-screen w-full flex-col bg-muted/40'>
+      <main className='grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8'>
+        <StatsComponent data={data.stats} />
+        <div className='grid gap-4 md:grid-cols-2'>
+          <TagStats data={data.tags.tags} />
+          <AdminStats data={data.admins} />
+        </div>
+        <Card className='w-full'>
+          <CardHeader>
+            <CardTitle>Authors</CardTitle>
+            <CardDescription>
+              List of authors and their associated details.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Name</TableHead>
+                  <TableHead>Email</TableHead>
+                  <TableHead>Resources</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <div className='font-medium'>John Doe</div>
+                  </TableCell>
+                  <TableCell>
+                    <div className='text-sm text-muted-foreground'>
+                      john@example.com
+                    </div>
+                  </TableCell>
+                  <TableCell className='text-right'>125</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <div className='font-medium'>Jane Smith</div>
+                  </TableCell>
+                  <TableCell>
+                    <div className='text-sm text-muted-foreground'>
+                      jane@example.com
+                    </div>
+                  </TableCell>
+                  <TableCell className='text-right'>89</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <div className='font-medium'>Michael Johnson</div>
+                  </TableCell>
+                  <TableCell>
+                    <div className='text-sm text-muted-foreground'>
+                      michael@example.com
+                    </div>
+                  </TableCell>
+                  <TableCell className='text-right'>72</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <div className='font-medium'>Emily Davis</div>
+                  </TableCell>
+                  <TableCell>
+                    <div className='text-sm text-muted-foreground'>
+                      emily@example.com
+                    </div>
+                  </TableCell>
+                  <TableCell className='text-right'>58</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <div className='font-medium'>David Wilson</div>
+                  </TableCell>
+                  <TableCell>
+                    <div className='text-sm text-muted-foreground'>
+                      david@example.com
+                    </div>
+                  </TableCell>
+                  <TableCell className='text-right'>47</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </main>
+    </div>
+  );
 }
