@@ -10,7 +10,7 @@ import RadioButton from '../../components/radio_button';
 import NotFoundComponent from '@/components/not-found';
 import { filterResources } from '../../lib/filter-resource';
 
-export default async function Dashboard({
+export default async function Resources({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] };
