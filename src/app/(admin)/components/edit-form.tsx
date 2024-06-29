@@ -139,11 +139,7 @@ export default function EditForm({
 
       <div className='flex w-full flex-col gap-2'>
         <div className='flex w-full flex-row items-center gap-2'>
-          <Checkbox
-            name='isVerified'
-            id='isVerified'
-            defaultChecked={resource.isVerified}
-          />
+          <VerifyAlertCheckbox defaultChecked={resource.isVerified} />
           <Label htmlFor='isVerified' className='font-semibold'>
             Verified
           </Label>
@@ -192,6 +188,37 @@ function ChangeButton({
             <Button
               className='bg-cesa-blue'
               onClick={() => formRef.current?.requestSubmit()}
+            >
+              Change
+            </Button>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+
+function VerifyAlertCheckbox({ defaultChecked }: { defaultChecked: boolean }) {
+  const [checked, setChecked] = React.useState<boolean>(defaultChecked);
+
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Checkbox name='isVerified' id='isVerified' checked={checked} />
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This will change the verification status.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction className='bg-destructive' asChild>
+            <Button
+              className='bg-cesa-blue'
+              onClick={() => setChecked(!checked)}
             >
               Change
             </Button>

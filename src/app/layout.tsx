@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
-import '@/styles/globals.css';
-import { cn } from '@/lib/utils';
-import NabBar from '@/components/navbar';
-import Footer from '@/components/footer';
 import SessionProvider from '@/components/auth-session-provider';
+import Footer from '@/components/footer';
+import NabBar from '@/components/navbar';
+import { cn } from '@/lib/utils';
+import '@/styles/globals.css';
+import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
+import { Poppins } from 'next/font/google';
+import { authOptions } from './api/auth/[...nextauth]/options';
 import Transition from './template';
 
 const font = Poppins({
@@ -48,7 +49,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   return (
     <html lang='en' suppressHydrationWarning>
