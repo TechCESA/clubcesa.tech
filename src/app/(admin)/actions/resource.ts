@@ -151,7 +151,7 @@ export async function deleteResourceAction(id: string) {
     return { error: 'Failed to delete resource' };
   }
 
-  redirect('/dashboard/resources');
+  revalidatePath('/dashboard/resources');
 }
 
 export async function getResourceAction(
