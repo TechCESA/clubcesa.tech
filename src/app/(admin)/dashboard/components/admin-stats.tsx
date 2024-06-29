@@ -13,7 +13,7 @@ import {
   TableCell,
   Table,
 } from '@/components/ui/table';
-import { AdminType } from '../../actions/dashboard';
+import { AdminType } from '../../types/dashboard';
 
 export default async function AdminStats({ data }: { data: AdminType }) {
   return (
