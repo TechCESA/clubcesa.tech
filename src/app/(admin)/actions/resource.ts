@@ -32,38 +32,18 @@ const ResourceSchema = z.object({
   link: z.string().url('Invalid URL format'),
   tags: z.array(z.string()).nonempty('At least one tag is required'),
   isVerified: z.boolean().default(false),
-  author: z.string().min(3, 'Minimum 3 characters required'),
-  email: z.string().email('Invalid Valid Gmail Address').endsWith('@gmail.com'),
-  github: z
-    .string()
-    .url('Invalid Github Profile URL')
-    .startsWith('https://www.github.com/'),
 });
-
-enum FormFields {
-  Button = 'button',
-  Title = 'title',
-  Description = 'description',
-  Link = 'link',
-  Tags = 'tags',
-  IsVerified = 'isVerified',
-  Author = 'author',
-  Email = 'email',
-  Github = 'github',
-}
 
 const ResourceStr = 'resources';
 const TagStr = 'tags';
 
 type State = {
   errors?: {
-    link?: string[];
     title?: string[];
     description?: string[];
+    link?: string[];
     tags?: string[];
-    author?: string[];
-    email?: string[];
-    github?: string[];
+    isVerified?: string[];
   };
   message?: string;
 };
@@ -74,25 +54,20 @@ export async function editResourceAction(
   prevState: State,
   formData: FormData,
 ): Promise<State> {
-  const title = formData.get(FormFields.Title) as string;
-  const description = formData.get(FormFields.Description) as string;
-  const link = formData.get(FormFields.Link) as string;
+  const { title, description, link, isVerified } = Object.fromEntries(formData);
   const newTags = convertTagsFtoB(selectedTags);
-  const isVerified = formData.get(FormFields.IsVerified);
 
   const result = ResourceSchema.safeParse({
-    title,
-    description,
-    link,
+    title: (title as string).trim(),
+    description: (description as string).trim(),
+    link: (link as string).trim(),
     tags: newTags,
-    isVerified: isVerified,
+    isVerified: isVerified === 'on',
   });
 
   if (!result.success) {
     return { errors: result.error.flatten().fieldErrors };
   }
-
-  const batch = writeBatch(db);
 
   try {
     const prevRes = await getResourceAction(id);
@@ -101,28 +76,38 @@ export async function editResourceAction(
       return { message: 'Edit: No specified document found' };
     }
 
+    const batch = writeBatch(db);
     const resourceRef = doc(db, ResourceStr, id);
 
     batch.update(resourceRef, {
-      title,
-      description,
-      link,
-      tags: newTags,
-      isVerified: isVerified,
+      title: result.data.title,
+      description: result.data.description,
+      link: result.data.link,
+      tags: result.data.tags,
+      isVerified: result.data.isVerified,
     });
 
     const removedTags = difference(prevRes.tags, newTags);
-    const addedTags = difference(newTags, prevRes.tags);
 
-    for (const tag of removedTags) {
-      const tagDocRef = doc(db, TagStr, tag);
-      batch.update(tagDocRef, { docId: arrayRemove(resourceRef) });
-    }
+    removedTags.forEach((tag) => {
+      const tagRef = doc(db, TagStr, tag);
 
-    for (const tag of addedTags) {
-      const tagDocRef = doc(db, TagStr, tag);
-      batch.update(tagDocRef, { docId: arrayUnion(resourceRef) });
-    }
+      batch.update(tagRef, {
+        resources: arrayRemove({ id, isVerified: prevRes.isVerified }),
+      });
+    });
+
+    result.data.tags.forEach((tag) => {
+      const tagRef = doc(db, TagStr, tag);
+
+      batch.update(tagRef, {
+        resources: arrayRemove({ id, isVerified: prevRes.isVerified }),
+      });
+
+      batch.update(tagRef, {
+        resources: arrayUnion({ id, isVerified: result.data.isVerified }),
+      });
+    });
 
     await batch.commit();
   } catch (error) {
@@ -130,7 +115,7 @@ export async function editResourceAction(
     return { message: 'Firebase Error: Failed to edit resource.' };
   }
 
-  redirect('/admin/dashboard');
+  redirect('/dashboard/resources');
 }
 
 function difference(a: string[], b: string[]) {
@@ -142,9 +127,9 @@ function difference(a: string[], b: string[]) {
 }
 
 export async function deleteResourceAction(id: string) {
-  const batch = writeBatch(db);
-
   try {
+    const batch = writeBatch(db);
+
     const resourceRef = doc(db, ResourceStr, id);
     const res = await getResourceAction(id);
 
@@ -154,7 +139,9 @@ export async function deleteResourceAction(id: string) {
 
     for (const tg of res.tags) {
       const tagDocRef = doc(db, TagStr, tg);
-      batch.update(tagDocRef, { docId: arrayRemove(resourceRef) });
+      batch.update(tagDocRef, {
+        resources: arrayRemove({ id, isVerified: res.isVerified }),
+      });
     }
 
     batch.delete(resourceRef);
@@ -164,7 +151,7 @@ export async function deleteResourceAction(id: string) {
     return { error: 'Failed to delete resource' };
   }
 
-  revalidatePath('/admin/dashboard');
+  revalidatePath('/dashboard/resources');
 }
 
 export async function getResourceAction(
@@ -181,18 +168,7 @@ export async function getResourceAction(
 
     return {
       id: docSnap.id,
-      title: data['title'],
-      description: data['description'],
-      link: data['link'],
-      tags: data['tags'],
-      isVerified: data['isVerified'],
-      author: {
-        name: data['author']['name'],
-        email: data['author']['email'],
-        github: data['author']['github'],
-        avatar: data['author']['avatar'],
-      },
-      createdAt: data['createdAt'],
+      ...(data as Omit<ResourceType, 'id'>),
     };
   } catch (error) {
     return null;
@@ -223,18 +199,7 @@ export async function getAllResources(
       const data = doc.data();
       resources.push({
         id: doc.id,
-        title: data['title'] as string,
-        description: data['description'] as string,
-        link: data['link'] as string,
-        tags: data['tags'] as string[],
-        isVerified: data['isVerified'] as boolean,
-        author: {
-          name: data['author']['name'] as string,
-          email: data['author']['email'] as string,
-          github: data['author']['github'] as string,
-          avatar: data['author']['avatar'] as string,
-        },
-        createdAt: data['createdAt'],
+        ...(data as Omit<ResourceType, 'id'>),
       });
     });
 
@@ -252,7 +217,7 @@ export async function getAllTags({ all }: { all: boolean }): Promise<string[]> {
     if (all === false) {
       const q = query(
         collection(db, TagStr),
-        where('docId', '!=', [] || null || 0 || ''),
+        where('resources', '!=', [] || null || 0 || ''),
       );
       querySnapshot = await getDocs(q);
     } else {

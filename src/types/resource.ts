@@ -19,3 +19,8 @@ export enum FilterOptions {
   Verified = 'true',
   Unverified = 'false',
 }
+
+export interface BackTagType {
+  id: string;
+  isVerified: boolean;
+}

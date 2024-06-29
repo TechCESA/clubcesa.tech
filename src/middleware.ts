@@ -11,21 +11,21 @@ export async function middleware(req: NextRequest) {
     );
   }
 
-  if (pathname.startsWith('/admin/login') && !token) {
+  if (pathname.startsWith('/dashboard/login') && !token) {
     return NextResponse.redirect(
-      new URL('/api/auth/signin?callbackUrl=/admin', req.url),
+      new URL('/api/auth/signin?callbackUrl=/dashboard', req.url),
     );
   }
 
-  if (pathname.startsWith('/admin/login') && token) {
-    return NextResponse.redirect(new URL('/admin', req.url));
+  if (pathname.startsWith('/dashboard/login') && token) {
+    return NextResponse.redirect(new URL('/dashboard', req.url));
   }
 
-  if (pathname.startsWith('/admin') && (!token || token.role !== 'admin')) {
+  if (pathname.startsWith('/dashboard') && (!token || token.role !== 'admin')) {
     return NextResponse.redirect(new URL('/not-found', req.url));
   }
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/learn/contribute'],
+  matcher: ['/dashboard/:path*', '/learn/contribute'],
 };

@@ -8,7 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { useSession } from 'next-auth/react';
@@ -16,7 +15,7 @@ import SignOutBtn from './signout-btn';
 
 export default function NabBar() {
   const pathname = usePathname();
-  const { data: session } = useSession({ required: true });
+  const { data: session } = useSession({ required: false });
 
   const nav = [
     {
@@ -41,7 +40,7 @@ export default function NabBar() {
     <nav
       className={cn(
         'fixed right-4 top-0 z-50 mx-auto py-4 font-bold text-cesa-blue md:left-0 md:right-0',
-        { hidden: pathname.startsWith('/admin') },
+        { hidden: pathname.startsWith('/dashboard') },
       )}
     >
       {/* Desktop view */}

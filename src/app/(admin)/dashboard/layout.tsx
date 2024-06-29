@@ -12,7 +12,7 @@ export default function RootLayout({
       <nav className='bg-cesa-blue p-2'>
         <ul className='container flex flex-row items-center justify-between font-semibold text-white'>
           <li className='text-xl'>
-            <Link href='/admin/dashboard'>CESA Dashboard</Link>
+            <Link href='/dashboard'>CESA Dashboard</Link>
           </li>
           <div className='space-x-2'>
             <Button variant='ghost' className='text-base' asChild>

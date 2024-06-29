@@ -1,7 +1,7 @@
 import {
   getAllTags,
   getResources,
-} from '@/app/(user-facing)/actions/resources';
+} from '@/app/(user)/actions/resources';
 import { convertTagBtoF } from '@/lib/convert-tags';
 import { MoveLeftIcon } from 'lucide-react';
 import Link from 'next/link';

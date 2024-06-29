@@ -1,10 +1,9 @@
 'use server';
 
 import { db } from '@/firebaseConfig';
-import { ResourceType } from '@/types/resource';
+import { BackTagType, ResourceType } from '@/types/resource';
 import {
   DocumentData,
-  DocumentReference,
   QuerySnapshot,
   collection,
   doc,
@@ -20,12 +19,8 @@ interface ResourceReturnType {
   error?: string;
 }
 
-interface BackTagType {
-  resourceRef: DocumentReference;
-  isVerified: boolean;
-}
-
 const TagStr = 'tags';
+const ResourceStr = 'resources';
 
 export async function getResources(tag: string): Promise<ResourceReturnType> {
   noStore();
@@ -38,7 +33,7 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
       return { error: 'Resource not found' };
     }
 
-    const resArr = docSnap.data()['docId'] as BackTagType[];
+    const resArr = docSnap.data()['resources'] as BackTagType[];
 
     if (resArr.length === 0) {
       return { error: 'Resources Not Found!' };
@@ -47,7 +42,7 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
     const resourcePromises = resArr.map(async (tag) => {
       if (!tag.isVerified) return null;
 
-      const resourceSnap = await getDoc(tag.resourceRef);
+      const resourceSnap = await getDoc(doc(db, ResourceStr, tag.id));
 
       if (!resourceSnap.exists()) {
         return null;
@@ -58,18 +53,7 @@ export async function getResources(tag: string): Promise<ResourceReturnType> {
       if ((data['isVerified'] as boolean) == true) {
         return {
           id: resourceSnap.id,
-          title: data['title'] as string,
-          description: data['description'] as string,
-          link: data['link'] as string,
-          tags: data['tags'] as string[],
-          isVerified: data['isVerified'] as boolean,
-          author: {
-            name: data['author']['name'] as string,
-            email: data['author']['email'] as string,
-            github: data['author']['github'] as string,
-            avatar: data['author']['avatar'] as string,
-          },
-          createdAt: data['createdAt'],
+          ...(data as Omit<ResourceType, 'id'>),
         };
       }
     });
@@ -105,7 +89,7 @@ export async function getAllTags({
     if (all === false) {
       const q = query(
         collection(db, TagStr),
-        where('docId', '!=', [] || null || 0 || ''),
+        where('resources', '!=', [] || null || 0 || ''),
       );
       querySnapshot = await getDocs(q);
     } else {
@@ -120,7 +104,7 @@ export async function getAllTags({
 
     if (all === false) {
       querySnapshot.forEach((doc) => {
-        const data: BackTagType[] = doc.data()['docId'];
+        const data: BackTagType[] = doc.data()['resources'];
 
         if (
           Object.values(data).every((value) => {

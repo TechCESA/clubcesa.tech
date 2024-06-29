@@ -3,10 +3,10 @@ import { memoize } from '@/lib/memoize';
 import { FilterOptions } from '@/types/resource';
 import React from 'react';
 import { getAllResources, getAllTags } from '../../actions/resource';
-import ResourceCard from '../components/resource_card';
-import ResourceSearch from '../components/resource_search';
-import SelectTag from '../components/select_tag';
-import RadioButton from '../components/radio_button';
+import ResourceCard from '../../components/resource_card';
+import ResourceSearch from '../../components/resource_search';
+import SelectTag from '../../components/select_tag';
+import RadioButton from '../../components/radio_button';
 import NotFoundComponent from '@/components/not-found';
 import { filterResources } from '../../lib/filter-resource';
 
