@@ -1,5 +1,5 @@
 import { db } from '@/firebaseConfig';
-import { doc, getDoc } from '@firebase/firestore';
+import { doc, getDoc, setDoc } from '@firebase/firestore';
 import type { NextAuthOptions } from 'next-auth';
 import Github from 'next-auth/providers/github';
 
@@ -49,6 +49,7 @@ export const authOptions = {
         token.github = user.github;
         token.picture = user.image;
         token.role = user.role;
+        token.id = user.id;
       }
       return token;
     },
@@ -57,8 +58,34 @@ export const authOptions = {
         session.user.github = token.github;
         session.user.image = token.picture;
         session.user.role = token.role;
+        session.user.id = token.id;
       }
       return session;
+    },
+    async signIn({ user }) {
+      try {
+        const authorRef = doc(db, 'authors', user.id.toString());
+
+        const authorSnap = await getDoc(authorRef);
+
+        if (authorSnap.exists()) {
+          return true;
+        }
+
+        await setDoc(authorRef, {
+          name: user.name,
+          email: user.email,
+          github: user.github,
+          avatar: user.image,
+          resources: [],
+          createdAt: Date.now(),
+        });
+
+        return true;
+      } catch (error) {
+        console.log({ error });
+        throw new Error('Error: Adding author to firestore');
+      }
     },
   },
   theme: {
