@@ -19,14 +19,11 @@ import { convertTagBtoF } from '@/lib/convert-tags';
 import { Button } from '@/components/ui/button';
 import { ArrowDownCircle, ArrowUpCircle } from 'lucide-react';
 import { sortTags } from '../../lib/sort';
+import { TagType } from '../../types/dashboard';
 
 const ITEMS_PER_PAGE = 5;
 
-export default function TagStats({
-  data,
-}: {
-  data: { id: string; data: number }[];
-}) {
+export default function TagStats({ data }: { data: TagType[] }) {
   const [tagSort, setTagSort] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;

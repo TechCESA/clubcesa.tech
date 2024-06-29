@@ -13,9 +13,9 @@ import {
   TableCell,
   Table,
 } from '@/components/ui/table';
-import { AuthorType } from '../../actions/dashboard';
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { AuthorType } from '../../types/dashboard';
 
 export default function AuthorStats({ data }: { data: AuthorType[] }) {
   return (

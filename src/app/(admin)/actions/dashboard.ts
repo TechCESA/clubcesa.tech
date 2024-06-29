@@ -1,41 +1,12 @@
 'use server';
 import { db } from '@/firebaseConfig';
 import { collection, getDocs, getDoc, doc } from '@firebase/firestore';
+import { AuthorType, AdminType, StatsType } from '../types/dashboard';
 
 const ResourceStr = 'resources';
 const TagStr = 'tags';
 const AdminStr = 'admin';
 const AuthorsStr = 'authors';
-
-/*
-Total resources ✅
-Total tags ✅
-Authors 
-Admins ✅
-
-Admins with Resources (email)
-Tags with Resources (Number of resources associated with each tag)
-Authors with Resources (name, email, and number of resources)
-*/
-
-export interface StatsType {
-  adminsLen: number;
-  tagsLen: number;
-  authorsLen: number;
-  resourcesLen: number;
-}
-export interface AdminType {
-  email: string[];
-}
-
-export interface AuthorType {
-  avatar: string;
-  createdAt: string;
-  email: string;
-  github: string;
-  name: string;
-  resources: number;
-}
 
 export async function getStats() {
   const resourcesData = await getDocs(collection(db, ResourceStr));

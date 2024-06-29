@@ -1,24 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/CTJGuZUInvq
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui/card';
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from '@/components/ui/table';
 import StatsComponent from './components/stats-component';
 import AdminStats from './components/admin-stats';
 import { getStats } from '../actions/dashboard';
