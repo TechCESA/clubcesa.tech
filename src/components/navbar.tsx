@@ -1,13 +1,22 @@
+'use client';
+
+import { cn } from '@/lib/utils';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
+import { useSession } from 'next-auth/react';
+import SignOutBtn from './signout-btn';
 
 export default function NabBar() {
+  const pathname = usePathname();
+  const { data: session } = useSession({ required: false });
+
   const nav = [
     {
       name: '/',
@@ -28,16 +37,24 @@ export default function NabBar() {
   ];
 
   return (
-    <nav className='fixed right-4 top-0 z-50 mx-auto py-4 font-bold text-cesa-blue md:left-0 md:right-0'>
+    <nav
+      className={cn(
+        'fixed right-4 top-0 z-50 mx-auto py-4 font-bold text-cesa-blue md:left-0 md:right-0',
+        { hidden: pathname.startsWith('/dashboard') },
+      )}
+    >
       {/* Desktop view */}
-      <div className='container hidden flex-row items-center gap-12 md:flex'>
-        {nav.map((el, i) => {
-          return (
-            <Link key={i} href={el.link}>
-              <h3>{el.name.replace(/[\s]/g, '\u00a0\u00a0')}</h3>
-            </Link>
-          );
-        })}
+      <div className='container hidden flex-row justify-between md:flex'>
+        <div className='flex flex-row items-center gap-12'>
+          {nav.map((el, i) => {
+            return (
+              <Link key={i} href={el.link}>
+                <h3>{el.name.replace(/[\s]/g, '\u00a0\u00a0')}</h3>
+              </Link>
+            );
+          })}
+        </div>
+        {session && <SignOutBtn />}
       </div>
 
       {/* Mobile view */}
@@ -56,6 +73,11 @@ export default function NabBar() {
                 </DropdownMenuItem>
               );
             })}
+            {session && (
+              <DropdownMenuItem asChild>
+                <SignOutBtn variant='link' className='font-normal' />
+              </DropdownMenuItem>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

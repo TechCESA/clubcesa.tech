@@ -194,7 +194,7 @@ const MultiSelectorTrigger = forwardRef<
           key={item}
           className={cn(
             'flex items-center gap-1 rounded-xl px-1',
-            activeIndex === index && 'ring-2 ring-muted-foreground ',
+            activeIndex === index && 'ring-2 ring-muted-foreground',
           )}
           variant={'secondary'}
         >
