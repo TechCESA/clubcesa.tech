@@ -5,7 +5,6 @@ import {
   Container,
   Font,
   Head,
-  Heading,
   Html,
   Link,
   Preview,
@@ -35,11 +34,11 @@ export default function VerificationEmail({
         </Head>
         <Body className='bg-white'>
           <Container className='container'>
-            <Text className='text-lg font-bold'>{`Hello, ${'user.name'},`}</Text>
+            <Text className='text-lg font-bold'>{`Hello, ${user.name},`}</Text>
             <Text>
               {`We just wanted to say a quick thanks for sharing your awesome
               resource, `}
-              <span className='font-bold'>{'resource?.title' ?? ''}</span>
+              <span className='font-bold'>{resource?.title ?? ''}</span>
               {`. It's clear you put a lot of thought
               and effort into it, and we know it'll be incredibly helpful to our
               dev community.`}
@@ -70,7 +69,7 @@ export default function VerificationEmail({
 
             <Text>Keep sharing your wisdom!</Text>
 
-            <Text>
+            <Text className='font-bold'>
               Best,
               <br />
               CESA Community
