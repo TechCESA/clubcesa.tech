@@ -1,8 +1,22 @@
-import { getAllTags, getResourceAction } from '@/app/(admin)/actions/resource';
+import {
+  getAllResources,
+  getAllTags,
+  getResourceAction,
+} from '@/app/(admin)/actions/resource';
 import Loader from '@/components/loader';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import React from 'react';
 import EditForm from '../../../../components/edit-form';
+
+export async function generateStaticParams() {
+  const resources = await getAllResources();
+
+  if (!resources) {
+    return [{ id: '' }];
+  }
+
+  return resources.map((res) => ({ id: res.id }));
+}
 
 export default async function EditPage({
   params: { id },
