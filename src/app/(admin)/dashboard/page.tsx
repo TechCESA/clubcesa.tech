@@ -23,6 +23,7 @@ import StatsComponent from './components/stats-component';
 import AdminStats from './components/admin-stats';
 import { getStats } from '../actions/dashboard';
 import TagStats from './components/tags-stats';
+import AuthorStats from './components/authors-stats';
 
 export default async function Component() {
   const [data] = await Promise.all([await getStats()]);
@@ -35,82 +36,7 @@ export default async function Component() {
           <TagStats data={data.tags.tags} />
           <AdminStats data={data.admins} />
         </div>
-        <Card className='w-full'>
-          <CardHeader>
-            <CardTitle>Authors</CardTitle>
-            <CardDescription>
-              List of authors and their associated details.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Resources</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>
-                    <div className='font-medium'>John Doe</div>
-                  </TableCell>
-                  <TableCell>
-                    <div className='text-sm text-muted-foreground'>
-                      john@example.com
-                    </div>
-                  </TableCell>
-                  <TableCell className='text-right'>125</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className='font-medium'>Jane Smith</div>
-                  </TableCell>
-                  <TableCell>
-                    <div className='text-sm text-muted-foreground'>
-                      jane@example.com
-                    </div>
-                  </TableCell>
-                  <TableCell className='text-right'>89</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className='font-medium'>Michael Johnson</div>
-                  </TableCell>
-                  <TableCell>
-                    <div className='text-sm text-muted-foreground'>
-                      michael@example.com
-                    </div>
-                  </TableCell>
-                  <TableCell className='text-right'>72</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className='font-medium'>Emily Davis</div>
-                  </TableCell>
-                  <TableCell>
-                    <div className='text-sm text-muted-foreground'>
-                      emily@example.com
-                    </div>
-                  </TableCell>
-                  <TableCell className='text-right'>58</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <div className='font-medium'>David Wilson</div>
-                  </TableCell>
-                  <TableCell>
-                    <div className='text-sm text-muted-foreground'>
-                      david@example.com
-                    </div>
-                  </TableCell>
-                  <TableCell className='text-right'>47</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+        <AuthorStats data={data.authors} />
       </main>
     </div>
   );
