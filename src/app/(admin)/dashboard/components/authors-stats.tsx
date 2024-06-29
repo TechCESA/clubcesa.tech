@@ -38,7 +38,7 @@ export default function AuthorStats({ data }: { data: AuthorType[] }) {
           <TableBody>
             {data.map((p) => {
               return (
-                <TableRow>
+                <TableRow key={p.email + p.createdAt}>
                   <TableCell className='flex flex-row items-center gap-2'>
                     <Avatar className='size-6'>
                       <AvatarImage src={p.avatar} alt={p.name} />
