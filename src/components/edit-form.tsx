@@ -1,6 +1,6 @@
 'use client';
 
-import { editResourceAction } from '@/app/(admin)/actions/resource';
+import { editResourceAction } from '@/actions/admin-resources';
 import {
   MultiSelector,
   MultiSelectorContent,

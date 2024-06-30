@@ -1,9 +1,9 @@
 'use client';
 
 import { Input } from '@/components/ui/input';
-import { SearchIcon } from 'lucide-react';
 import { debounce } from '@/lib/debounce';
-import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { SearchIcon } from 'lucide-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export default function ResourceSearch({
   placeholder,

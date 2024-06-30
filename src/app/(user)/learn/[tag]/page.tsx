@@ -1,8 +1,8 @@
-import { getAllTags, getResources } from '@/app/(user)/actions/resources';
+import { getAllTags, getResources } from '@/actions/user-resources';
+import LearnResourceCard from '@/components/learn_resource_card';
 import { convertTagBtoF } from '@/lib/convert-tags';
 import { MoveLeftIcon } from 'lucide-react';
 import Link from 'next/link';
-import ResourceCard from '../../../../components/resource_card';
 
 export async function generateStaticParams() {
   const tags = await getAllTags({ all: false });
@@ -48,7 +48,7 @@ export default async function Page({
           <div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3'>
             {response.data.map((res) => {
               return (
-                <ResourceCard
+                <LearnResourceCard
                   key={res.id}
                   title={res.title}
                   link={res.link}

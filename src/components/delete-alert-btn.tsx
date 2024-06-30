@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteResourceAction } from '@/app/(admin)/actions/resource';
+import { deleteResourceAction } from '@/actions/admin-resources';
 import {
   AlertDialog,
   AlertDialogAction,

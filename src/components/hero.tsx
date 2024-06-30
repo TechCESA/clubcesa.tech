@@ -1,10 +1,10 @@
 'use client';
 
-import { gsap } from 'gsap';
-import { useEffect } from 'react';
-import { TextPlugin } from 'gsap/all';
-import '@/styles/heading.scss';
 import { cn } from '@/lib/utils';
+import '@/styles/heading.scss';
+import { gsap } from 'gsap';
+import { TextPlugin } from 'gsap/all';
+import { useEffect } from 'react';
 
 gsap.registerPlugin(TextPlugin); // Register the TextPlugin
 

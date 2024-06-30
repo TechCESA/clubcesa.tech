@@ -1,3 +1,6 @@
+'use server';
+
+import { getResourceAction } from '@/actions/admin-resources';
 import VerificationEmail from '@/emails/resource-verification';
 import { db } from '@/firebaseConfig';
 import { UserType } from '@/types/user';
@@ -5,7 +8,6 @@ import { doc, getDoc } from '@firebase/firestore';
 import { render } from '@react-email/components';
 import * as nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
-import { getResourceAction } from './resource';
 
 export async function sendVerifyEmail({
   userId,

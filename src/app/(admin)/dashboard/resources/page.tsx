@@ -1,14 +1,14 @@
+import { getAllResources, getAllTags } from '@/actions/admin-resources';
+import AdminResourceCard from '@/components/admin_resource_card';
+import NotFoundComponent from '@/components/not-found';
+import RadioButton from '@/components/radio_button';
+import ResourceSearch from '@/components/resource_search';
+import SelectTag from '@/components/select_tag';
 import { convertTagsBtoF } from '@/lib/convert-tags';
+import { filterResources } from '@/lib/filter-resource';
 import { memoize } from '@/lib/memoize';
 import { FilterOptions } from '@/types/resource';
 import React from 'react';
-import { getAllResources, getAllTags } from '../../actions/resource';
-import ResourceCard from '../../components/resource_card';
-import ResourceSearch from '../../components/resource_search';
-import SelectTag from '../../components/select_tag';
-import RadioButton from '../../components/radio_button';
-import NotFoundComponent from '@/components/not-found';
-import { filterResources } from '../../lib/filter-resource';
 
 export default async function Resources({
   searchParams,
@@ -55,7 +55,7 @@ export default async function Resources({
         ) : (
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
             {filteredResources.map((res) => (
-              <ResourceCard
+              <AdminResourceCard
                 key={res.id}
                 id={res.id}
                 title={res.title}

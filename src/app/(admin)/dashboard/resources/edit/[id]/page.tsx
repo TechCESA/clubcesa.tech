@@ -2,11 +2,11 @@ import {
   getAllResources,
   getAllTags,
   getResourceAction,
-} from '@/app/(admin)/actions/resource';
+} from '@/actions/admin-resources';
+import EditForm from '@/components/edit-form';
 import Loader from '@/components/loader';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import React from 'react';
-import EditForm from '../../../../components/edit-form';
 
 export async function generateStaticParams() {
   const resources = await getAllResources();

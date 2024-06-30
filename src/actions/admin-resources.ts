@@ -19,7 +19,7 @@ import {
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { sendVerifyEmail } from './verify-email';
+import { sendVerifyEmail } from '@/lib/verify-email';
 
 const ResourceSchema = z.object({
   title: z

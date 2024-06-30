@@ -1,6 +1,6 @@
+import { getAllTags } from '@/actions/user-resources';
 import ContributeForm from '@/components/contribute-form';
 import { convertTagsBtoF } from '@/lib/convert-tags';
-import { getAllTags } from '../../actions/resources';
 
 export default async function ContributePage() {
   const tagsData = await getAllTags({ all: true });
