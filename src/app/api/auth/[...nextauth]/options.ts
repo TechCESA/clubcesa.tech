@@ -76,6 +76,7 @@ export const authOptions = {
           name: user.name,
           email: user.email,
           github: user.github,
+          role: user.role,
           avatar: user.image,
           resources: [],
           createdAt: Date.now(),
