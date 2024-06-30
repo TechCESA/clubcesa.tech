@@ -17,9 +17,9 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { convertTagBtoF } from '@/lib/convert-tags';
-import { sortTags } from '@/lib/sort';
+import { sortTagByName, sortTagByResource } from '@/lib/sort';
 import { TagType } from '@/types/dashboard';
-import { ArrowDownCircle, ArrowUpCircle } from 'lucide-react';
+import { ArrowDownUpIcon } from 'lucide-react';
 import { useState } from 'react';
 
 const ITEMS_PER_PAGE = 5;
@@ -36,38 +36,35 @@ export default function TagStats({ data }: { data: TagType[] }) {
     <Card>
       <CardHeader>
         <CardTitle>Tags with Resources</CardTitle>
-        <CardDescription>
-          Resources categorized by their associated tags.
-        </CardDescription>
+        <CardDescription>List of tags with no. of resources.</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
-            <TableRow className='text-md'>
-              <TableHead className='flex flex-row items-center space-x-2'>
-                <p>Tags</p>
-                {tagSort ? (
-                  <ArrowDownCircle
-                    size={16}
-                    onClick={() => {
-                      if (!tagSort) return;
-                      sortTags(data, false);
-                      setTagSort(false);
-                    }}
-                  />
-                ) : (
-                  <ArrowUpCircle
-                    size={16}
-                    onClick={() => {
-                      if (tagSort) return;
-                      sortTags(data, true);
-                      setTagSort(true);
-                    }}
-                  />
-                )}
+            <TableRow>
+              <TableHead className='space-x-2'>
+                <span>Tags</span>
+                <ArrowDownUpIcon
+                  className='inline cursor-pointer'
+                  size={16}
+                  onClick={() => {
+                    sortTagByName({ data, desc: tagSort });
+                    setTagSort(!tagSort);
+                  }}
+                />
               </TableHead>
 
-              <TableHead className='text-right'>Resources</TableHead>
+              <TableHead className='space-x-2 text-right'>
+                <span>Resources</span>
+                <ArrowDownUpIcon
+                  className='inline cursor-pointer'
+                  size={16}
+                  onClick={() => {
+                    sortTagByResource({ data, desc: tagSort });
+                    setTagSort(!tagSort);
+                  }}
+                />
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
