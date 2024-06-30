@@ -49,7 +49,9 @@ export default function SignOutBtn({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className='bg-destructive'
-            onClick={() => signOut()}
+            onClick={() => {
+              signOut({ redirect: true, callbackUrl: '/' });
+            }}
           >
             Sign Out
           </AlertDialogAction>

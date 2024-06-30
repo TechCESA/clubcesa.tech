@@ -28,9 +28,11 @@ export default function UserStats({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Authors</CardTitle>
+        <CardTitle>{isAdmin ? 'Admins' : 'Authors'}</CardTitle>
         <CardDescription>
-          List of authors and their associated details.
+          {isAdmin
+            ? 'List of admins and their associated details.'
+            : 'List of authors and their associated details.'}
         </CardDescription>
       </CardHeader>
       <CardContent>

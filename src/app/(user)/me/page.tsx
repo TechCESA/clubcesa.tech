@@ -1,16 +1,24 @@
-import { getAllResources, getAllTags } from '@/actions/admin-resources';
+import { authOptions } from '@/app/api/auth/[...nextauth]/options';
 import ResourceCard from '@/components/resource_card';
 import NotFoundComponent from '@/components/not-found';
 import RadioButton from '@/components/radio_button';
 import ResourceSearch from '@/components/resource_search';
 import SelectTag from '@/components/select_tag';
-import { convertTagsBtoF } from '@/lib/convert-tags';
-import { filterResources } from '@/lib/filter-resource';
-import { memoize } from '@/lib/memoize';
-import { FilterOptions } from '@/types/resource';
-import React from 'react';
+import { db } from '@/firebaseConfig';
+import { ResourceType } from '@/types/resource';
+import { UserType } from '@/types/user';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from '@firebase/firestore';
+import { getServerSession } from 'next-auth';
+import { notFound } from 'next/navigation';
 
-export default async function Resources({
+export default async function UserPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] };
@@ -22,24 +30,34 @@ export default async function Resources({
   const filter =
     typeof searchParams.filter === 'string' ? searchParams.filter : 'all';
 
-  const [allResources, allTags] = await Promise.all([
-    getAllResources(filter as FilterOptions),
-    getAllTags({ all: false }),
-  ]);
+  const userSession = await getServerSession(authOptions);
+  if (!userSession) notFound();
 
-  const convertTagsBtoFMemo = memoize(convertTagsBtoF);
-  const formattedTags = convertTagsBtoFMemo(allTags);
+  const userRef = await getDoc(doc(db, 'authors', `${userSession.user.id}`));
+  const userData = { ...(userRef.data() as UserType), id: userRef.id };
 
-  const filteredResources = memoize(filterResources)({
-    resources: allResources,
-    query: searchQuery,
-    tag: selectedTag,
+  const userResourcesRef = await getDocs(
+    query(collection(db, 'resources'), where('author', '==', +userData.id)),
+  );
+  /**
+   * Trick to convert string to number `+userData.id`
+   */
+
+  const userResources: ResourceType[] = [];
+  const tags = new Set<string>();
+
+  userResourcesRef.forEach((doc) => {
+    const res = doc.data() as ResourceType;
+
+    res.tags.forEach((el) => tags.add(el));
+
+    userResources.push({ ...res, id: doc.id });
   });
 
   return (
-    <div className='container my-4 min-h-screen'>
+    <div className='container my-4 mt-16 min-h-screen'>
       <div className='my-2 flex flex-col gap-4 md:flex-row'>
-        <SelectTag tags={formattedTags} defaultValue={selectedTag ?? ''} />
+        <SelectTag tags={Array.from(tags)} defaultValue={selectedTag ?? ''} />
 
         <ResourceSearch
           placeholder='Search resource'
@@ -49,12 +67,12 @@ export default async function Resources({
 
       <RadioButton defaultValue={filter ?? ''} />
 
-      <div className='mx-4 my-6'>
-        {filteredResources.length === 0 ? (
+      <div className='my-6 md:mx-4'>
+        {userResources.length === 0 ? (
           <NotFoundComponent />
         ) : (
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-            {filteredResources.map((res) => (
+            {userResources.map((res) => (
               <ResourceCard
                 key={res.id}
                 id={res.id}
@@ -64,7 +82,7 @@ export default async function Resources({
                 tags={res.tags}
                 author={res.author}
                 verified={res.isVerified}
-                isAdmin={true}
+                isAdmin={false}
               />
             ))}
           </div>
