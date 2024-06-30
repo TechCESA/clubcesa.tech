@@ -15,8 +15,14 @@ import { doc, getDoc } from '@firebase/firestore';
 import { Pencil } from 'lucide-react';
 import Link from 'next/link';
 import DeleteAlertBtn from './delete-alert-btn';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './ui/tooltip';
 
-export default async function AdminResourceCard({
+export default async function ResourceCard({
   id,
   title,
   description,
@@ -24,6 +30,7 @@ export default async function AdminResourceCard({
   tags,
   author,
   verified,
+  isAdmin = false,
 }: {
   id: string;
   title: string;
@@ -32,6 +39,7 @@ export default async function AdminResourceCard({
   tags: string[];
   author: string;
   verified: boolean;
+  isAdmin?: boolean;
 }) {
   const tagsLabel = convertTagsBtoF(tags).sort((a, b) => a.localeCompare(b));
 
@@ -60,37 +68,50 @@ export default async function AdminResourceCard({
           {tagsLabel.join(', ')}
         </p>
 
-        <Link
-          href={authorData.github}
-          target='_blank'
-          className='flex flex-row items-center gap-2 group-hover:underline group-hover:underline-offset-4'
-        >
-          <Avatar className='size-6'>
-            <AvatarImage src={authorData.avatar} alt={authorData.name} />
-            <AvatarFallback className='font-bold text-cesa-blue'>
-              {authorData.name.charAt(0)}
-            </AvatarFallback>
-          </Avatar>
+        {isAdmin ? (
+          <Link
+            href={authorData.github}
+            target='_blank'
+            className='flex flex-row items-center gap-2 group-hover:underline group-hover:underline-offset-4'
+          >
+            <Avatar className='size-6'>
+              <AvatarImage src={authorData.avatar} alt={authorData.name} />
+              <AvatarFallback className='font-bold text-cesa-blue'>
+                {authorData.name.charAt(0)}
+              </AvatarFallback>
+            </Avatar>
 
-          <span className='text-xs font-normal'>{authorData.name}</span>
-        </Link>
+            <span className='text-xs font-normal'>{authorData.name}</span>
+          </Link>
+        ) : null}
       </CardFooter>
 
       <div className='absolute bottom-3 right-3 space-x-2 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100'>
-        <Button size='icon' variant='outline' asChild>
-          <Link href={`/dashboard/resources/edit/${id}`}>
-            <Pencil size={18} />
-          </Link>
-        </Button>
+        {isAdmin ? (
+          <Button size='icon' variant='outline' asChild>
+            <Link href={`/dashboard/resources/edit/${id}`}>
+              <Pencil size={18} />
+            </Link>
+          </Button>
+        ) : null}
         <DeleteAlertBtn id={id} />
       </div>
 
-      <span
-        className={cn(
-          'absolute right-4 top-4 size-2 rounded-full',
-          verified ? 'bg-green-600' : 'bg-red-600',
-        )}
-      ></span>
+      <TooltipProvider delayDuration={100}>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span
+              className={cn(
+                'absolute right-2 top-2 m-2 size-2 cursor-pointer rounded-full',
+                verified ? 'bg-green-600' : 'bg-red-600',
+              )}
+            ></span>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{verified ? 'Verified' : 'Unverified'}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </Card>
   );
 }

@@ -2,39 +2,30 @@
 
 import { cn } from '@/lib/utils';
 import { Menu } from 'lucide-react';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import SignOutBtn from './signout-btn';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
+import UserProfileDropDown from './user-profile-dropdown';
 
 export default function NabBar() {
   const pathname = usePathname();
   const { data: session } = useSession({ required: false });
 
-  const nav = [
-    {
-      name: '/',
-      link: '/',
-    },
-    {
-      name: 'Learn',
-      link: '/learn',
-    },
-    {
-      name: 'Events',
-      link: '/events',
-    },
-    {
-      name: 'Memories',
-      link: '/memories',
-    },
+  const navLinks = [
+    { name: '/', link: '/' },
+    { name: 'Learn', link: '/learn' },
+    { name: 'Events', link: '/events' },
+    { name: 'Memories', link: '/memories' },
+    { name: 'Profile', link: '/me', condition: session ? true : false },
   ];
+
+  const nav = session ? navLinks : navLinks.filter((link) => !link.condition);
 
   return (
     <nav
@@ -54,7 +45,7 @@ export default function NabBar() {
             );
           })}
         </div>
-        {session && <SignOutBtn />}
+        {session && <UserProfileDropDown />}
       </div>
 
       {/* Mobile view */}
@@ -74,8 +65,13 @@ export default function NabBar() {
               );
             })}
             {session && (
-              <DropdownMenuItem asChild>
-                <SignOutBtn variant='link' className='font-normal' />
+              <DropdownMenuItem
+                className='cursor-pointer'
+                onClick={() => {
+                  signOut({ redirect: true, callbackUrl: '/' });
+                }}
+              >
+                Sign Out
               </DropdownMenuItem>
             )}
           </DropdownMenuContent>

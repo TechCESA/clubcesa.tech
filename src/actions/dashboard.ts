@@ -3,7 +3,7 @@
 import { db } from '@/firebaseConfig';
 import { StatsType } from '@/types/dashboard';
 import { UserType } from '@/types/user';
-import { collection, getDocs, query } from '@firebase/firestore';
+import { collection, getDocs, query, where } from '@firebase/firestore';
 
 const ResourceStr = 'resources';
 const TagStr = 'tags';
@@ -14,7 +14,7 @@ export async function getStats() {
   const tagsData = await getDocs(collection(db, TagStr));
 
   const querySnapshotForAdmins = await getDocs(
-    query(collection(db, 'authors')),
+    query(collection(db, 'authors'), where('role', '==', 'admin')),
   );
   const adminData: UserType[] = [];
   querySnapshotForAdmins.forEach((adm) => {
