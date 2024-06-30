@@ -1,25 +1,26 @@
 'use client';
-import { useState } from 'react';
+
+import { Button } from '@/components/ui/button';
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
 } from '@/components/ui/card';
 import {
-  TableHeader,
-  TableRow,
-  TableHead,
+  Table,
   TableBody,
   TableCell,
-  Table,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from '@/components/ui/table';
 import { convertTagBtoF } from '@/lib/convert-tags';
-import { Button } from '@/components/ui/button';
+import { sortTags } from '@/lib/sort';
+import { TagType } from '@/types/dashboard';
 import { ArrowDownCircle, ArrowUpCircle } from 'lucide-react';
-import { sortTags } from '../../lib/sort';
-import { TagType } from '../../types/dashboard';
+import { useState } from 'react';
 
 const ITEMS_PER_PAGE = 5;
 

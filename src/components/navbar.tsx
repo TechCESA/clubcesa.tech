@@ -2,16 +2,16 @@
 
 import { cn } from '@/lib/utils';
 import { Menu } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import SignOutBtn from './signout-btn';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
-import { useSession } from 'next-auth/react';
-import SignOutBtn from './signout-btn';
 
 export default function NabBar() {
   const pathname = usePathname();

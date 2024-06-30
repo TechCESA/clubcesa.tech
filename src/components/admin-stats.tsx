@@ -1,19 +1,19 @@
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
 } from '@/components/ui/card';
 import {
-  TableHeader,
-  TableRow,
-  TableHead,
+  Table,
   TableBody,
   TableCell,
-  Table,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from '@/components/ui/table';
-import { AdminType } from '../../types/dashboard';
+import { AdminType } from '@/types/dashboard';
 
 export default async function AdminStats({ data }: { data: AdminType }) {
   return (

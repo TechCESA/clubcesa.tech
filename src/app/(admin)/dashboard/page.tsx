@@ -1,8 +1,8 @@
-import StatsComponent from './components/stats-component';
-import AdminStats from './components/admin-stats';
-import { getStats } from '../actions/dashboard';
-import TagStats from './components/tags-stats';
-import AuthorStats from './components/authors-stats';
+import { getStats } from '@/actions/dashboard';
+import AdminStats from '@/components/admin-stats';
+import AuthorStats from '@/components/authors-stats';
+import StatsComponent from '@/components/stats-component';
+import TagStats from '@/components/tags-stats';
 
 export default async function Component() {
   const [data] = await Promise.all([await getStats()]);

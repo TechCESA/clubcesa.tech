@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
-import { StatsType } from '../../types/dashboard';
+import { StatsType } from '@/types/dashboard';
 
 export default async function StatsComponent({ data }: { data: StatsType }) {
   return (

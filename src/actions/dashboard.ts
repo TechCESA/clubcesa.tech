@@ -1,7 +1,8 @@
 'use server';
+
 import { db } from '@/firebaseConfig';
-import { collection, getDocs, getDoc, doc } from '@firebase/firestore';
-import { AuthorType, AdminType, StatsType } from '../types/dashboard';
+import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
+import { AdminType, AuthorType, StatsType } from '@/types/dashboard';
 
 const ResourceStr = 'resources';
 const TagStr = 'tags';
