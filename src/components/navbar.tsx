@@ -17,15 +17,12 @@ export default function NabBar() {
   const pathname = usePathname();
   const { data: session } = useSession({ required: false });
 
-  const navLinks = [
+  const nav = [
     { name: '/', link: '/' },
     { name: 'Learn', link: '/learn' },
     { name: 'Events', link: '/events' },
     { name: 'Memories', link: '/memories' },
-    { name: 'Profile', link: '/me', condition: session ? true : false },
   ];
-
-  const nav = session ? navLinks : navLinks.filter((link) => !link.condition);
 
   return (
     <nav
@@ -64,6 +61,9 @@ export default function NabBar() {
                 </DropdownMenuItem>
               );
             })}
+            <DropdownMenuItem>
+              <Link href='/me'>Profile</Link>
+            </DropdownMenuItem>
             {session && (
               <DropdownMenuItem
                 className='cursor-pointer'

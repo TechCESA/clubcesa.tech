@@ -113,7 +113,7 @@ export async function editResourceAction(
     await batch.commit();
 
     if (result.data.isVerified && !prevRes.isVerified) {
-      sendVerifyEmail({ userId: prevRes.author, resourceId: prevRes.id });
+     await sendVerifyEmail({ userId: prevRes.author, resourceId: prevRes.id });
     }
   } catch (error) {
     console.error('Firebase Error:', error);
