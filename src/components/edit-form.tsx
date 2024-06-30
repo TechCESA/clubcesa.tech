@@ -58,7 +58,7 @@ export default function EditForm({
       action={formAction}
       className='my-8 flex w-full flex-col items-start gap-6 md:max-w-[70%]'
     >
-      <h1 className='w-full text-center text-2xl font-semibold'>
+      <h1 className='w-full text-center text-xl font-semibold'>
         Edit a resource
       </h1>
 
