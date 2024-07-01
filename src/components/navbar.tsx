@@ -61,18 +61,20 @@ export default function NabBar() {
                 </DropdownMenuItem>
               );
             })}
-            <DropdownMenuItem>
-              <Link href='/me'>Profile</Link>
-            </DropdownMenuItem>
             {session && (
-              <DropdownMenuItem
-                className='cursor-pointer'
-                onClick={() => {
-                  signOut({ redirect: true, callbackUrl: '/' });
-                }}
-              >
-                Sign Out
-              </DropdownMenuItem>
+              <>
+                <DropdownMenuItem asChild>
+                  <Link href='/me'>Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className='cursor-pointer text-destructive'
+                  onClick={() => {
+                    signOut({ redirect: true, callbackUrl: '/' });
+                  }}
+                >
+                  Sign Out
+                </DropdownMenuItem>
+              </>
             )}
           </DropdownMenuContent>
         </DropdownMenu>

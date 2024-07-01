@@ -38,7 +38,7 @@ export default function UserProfileDropDown() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem
-          className='cursor-pointer'
+          className='cursor-pointer text-destructive'
           onClick={() => {
             signOut({ redirect: true, callbackUrl: '/' });
           }}
