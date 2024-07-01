@@ -9,9 +9,9 @@ export function sortTagByName({
 }) {
   return data.sort((a, b) => {
     if (desc) {
-      return a.id.charAt(0).localeCompare(b.id.charAt(0));
+      return b.id.localeCompare(a.id);
     } else {
-      return b.id.charAt(0).localeCompare(a.id.charAt(0));
+      return a.id.localeCompare(b.id);
     }
   });
 }
