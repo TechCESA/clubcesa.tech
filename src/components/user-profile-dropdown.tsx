@@ -37,8 +37,15 @@ export default function UserProfileDropDown() {
             Profile
           </Link>
         </DropdownMenuItem>
+        {session.user.role === 'admin' ? (
+          <DropdownMenuItem asChild>
+            <Link href='/dashboard' className='cursor-pointer'>
+              Dashboard
+            </Link>
+          </DropdownMenuItem>
+        ) : null}
         <DropdownMenuItem
-          className='cursor-pointer'
+          className='cursor-pointer text-destructive hover:bg-destructive hover:text-white'
           onClick={() => {
             signOut({ redirect: true, callbackUrl: '/' });
           }}

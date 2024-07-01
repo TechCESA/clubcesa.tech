@@ -1,10 +1,14 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/options';
-import ResourceCard from '@/components/resource_card';
 import NotFoundComponent from '@/components/not-found';
 import RadioButton from '@/components/radio_button';
+import ResourceCard from '@/components/resource_card';
 import ResourceSearch from '@/components/resource_search';
 import SelectTag from '@/components/select_tag';
+import { Card } from '@/components/ui/card';
 import { db } from '@/firebaseConfig';
+import { convertTagsBtoF } from '@/lib/convert-tags';
+import { filterResources } from '@/lib/filter-resource';
+import { memoize } from '@/lib/memoize';
 import { ResourceType } from '@/types/resource';
 import { UserType } from '@/types/user';
 import {
@@ -15,7 +19,9 @@ import {
   query,
   where,
 } from '@firebase/firestore';
+import { PlusIcon } from 'lucide-react';
 import { getServerSession } from 'next-auth';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export default async function UserPage({
@@ -36,12 +42,11 @@ export default async function UserPage({
   const userRef = await getDoc(doc(db, 'authors', `${userSession.user.id}`));
   const userData = { ...(userRef.data() as UserType), id: userRef.id };
 
-  const userResourcesRef = await getDocs(
-    query(collection(db, 'resources'), where('author', '==', +userData.id)),
+  const userResourcesQuery = query(
+    collection(db, 'resources'),
+    where('author', '==', +userData.id),
   );
-  /**
-   * Trick to convert string to number `+userData.id`
-   */
+  const userResourcesRef = await getDocs(userResourcesQuery);
 
   const userResources: ResourceType[] = [];
   const tags = new Set<string>();
@@ -54,10 +59,22 @@ export default async function UserPage({
     userResources.push({ ...res, id: doc.id });
   });
 
+  const convertTagsBtoFMemo = memoize(convertTagsBtoF);
+  const formattedTags = convertTagsBtoFMemo(Array.from(tags));
+
+  console.log(filter == 'all' ? null : filter === 'true');
+
+  const filteredResources = memoize(filterResources)({
+    resources: userResources,
+    query: searchQuery,
+    tag: selectedTag,
+    isVerified: filter == 'all' ? null : filter === 'true',
+  });
+
   return (
     <div className='container my-4 mt-16 min-h-screen'>
       <div className='my-2 flex flex-col gap-4 md:flex-row'>
-        <SelectTag tags={Array.from(tags)} defaultValue={selectedTag ?? ''} />
+        <SelectTag tags={formattedTags} defaultValue={selectedTag ?? ''} />
 
         <ResourceSearch
           placeholder='Search resource'
@@ -65,14 +82,26 @@ export default async function UserPage({
         />
       </div>
 
-      <RadioButton defaultValue={filter ?? ''} />
+      <div className='flex flex-row items-center justify-between'>
+        <span>{`${filteredResources.length} of ${userResources.length}`}</span>
+        <RadioButton defaultValue={filter ?? ''} />
+      </div>
 
       <div className='my-6 md:mx-4'>
-        {userResources.length === 0 ? (
+        {filteredResources.length === 0 ? (
           <NotFoundComponent />
         ) : (
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-            {userResources.map((res) => (
+            <Card>
+              <Link
+                href='/learn/contribute'
+                className='flex h-full w-full flex-col items-center justify-center text-gray-400'
+              >
+                <PlusIcon className='size-12' strokeWidth='1.2' />
+                <span className='text-primary'>Add more</span>
+              </Link>
+            </Card>
+            {filteredResources.map((res) => (
               <ResourceCard
                 key={res.id}
                 id={res.id}

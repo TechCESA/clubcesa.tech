@@ -7,7 +7,6 @@ import SelectTag from '@/components/select_tag';
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { filterResources } from '@/lib/filter-resource';
 import { memoize } from '@/lib/memoize';
-import { FilterOptions } from '@/types/resource';
 import React from 'react';
 
 export default async function Resources({
@@ -23,7 +22,7 @@ export default async function Resources({
     typeof searchParams.filter === 'string' ? searchParams.filter : 'all';
 
   const [allResources, allTags] = await Promise.all([
-    getAllResources(filter as FilterOptions),
+    getAllResources(),
     getAllTags({ all: false }),
   ]);
 
@@ -34,6 +33,7 @@ export default async function Resources({
     resources: allResources,
     query: searchQuery,
     tag: selectedTag,
+    isVerified: filter == 'all' ? null : filter === 'true',
   });
 
   return (

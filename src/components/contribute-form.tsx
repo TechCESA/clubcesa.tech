@@ -24,6 +24,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 
@@ -53,6 +54,7 @@ export default function ContributeForm({ tags }: { tags: string[] }) {
           Your Contribution Will Be the Missing Piece Someone Needs.
         </h4>
       </div>
+
       <div className='flex w-full flex-col items-start gap-2'>
         <Label htmlFor='title' className='font-semibold'>
           Title of the resource
@@ -69,6 +71,7 @@ export default function ContributeForm({ tags }: { tags: string[] }) {
           <p className='text-sm text-destructive'>{formState.errors.title}</p>
         )}
       </div>
+
       <div className='flex w-full flex-col items-start gap-2'>
         <Label htmlFor='description' className='font-semibold'>
           Description
@@ -85,6 +88,7 @@ export default function ContributeForm({ tags }: { tags: string[] }) {
           </p>
         )}
       </div>
+
       <div className='flex w-full flex-col items-start gap-2'>
         <Label htmlFor='link' className='font-semibold'>
           Link to the resource
@@ -94,14 +98,16 @@ export default function ContributeForm({ tags }: { tags: string[] }) {
           <p className='text-sm text-destructive'>{formState.errors.link}</p>
         )}
       </div>
+
       <div className='flex w-full flex-col items-start'>
-        <Label htmlFor='link' className='font-semibold'>
+        <Label htmlFor='multi-selector' className='font-semibold'>
           Select the tag
         </Label>
         <MultiSelector
           values={selectedTags}
           onValuesChange={(val) => setSelectedTags(val)}
           loop
+          id='multi-selector'
         >
           <MultiSelectorTrigger>
             <MultiSelectorInput placeholder='Select tags' />
@@ -119,7 +125,17 @@ export default function ContributeForm({ tags }: { tags: string[] }) {
         {formState.errors?.tags && (
           <p className='text-sm text-destructive'>{formState.errors.tags}</p>
         )}
+        <p className='text-xs text-gray-400'>
+          {`If you don't find any relevant tags you can email us at `}
+          <Link
+            href='mailto:connect.cesaofficial@gmail.com'
+            className='text-blue-500'
+          >
+            connect.cesaofficial@gmail.com
+          </Link>
+        </p>
       </div>
+
       <div className='flex w-full flex-col gap-2'>
         {formState.message && (
           <p className='text-sm text-destructive'>{formState.message}</p>

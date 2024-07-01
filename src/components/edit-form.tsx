@@ -111,13 +111,14 @@ export default function EditForm({
         )}
       </div>
       <div className='flex w-full flex-col items-start gap-2'>
-        <Label htmlFor='link' className='font-semibold'>
+        <Label htmlFor='multi-selector' className='font-semibold'>
           Select the tag
         </Label>
         <MultiSelector
           values={selectedTags}
           onValuesChange={(val) => setSelectedTags(val)}
           loop
+          id='multi-selector'
         >
           <MultiSelectorTrigger>
             <MultiSelectorInput placeholder='Select tags' />

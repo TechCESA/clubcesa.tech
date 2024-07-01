@@ -7,5 +7,5 @@ export interface StatsType {
 
 export interface TagType {
   id: string;
-  data: number;
+  numberOfRes: number;
 }

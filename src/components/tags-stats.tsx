@@ -21,6 +21,7 @@ import { sortTagByName, sortTagByResource } from '@/lib/sort';
 import { TagType } from '@/types/dashboard';
 import { ArrowDownUpIcon } from 'lucide-react';
 import { useState } from 'react';
+import AddTagDialog from './add-tag-dialog';
 
 const ITEMS_PER_PAGE = 5;
 
@@ -35,7 +36,10 @@ export default function TagStats({ data }: { data: TagType[] }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tags with Resources</CardTitle>
+        <CardTitle className='flex flex-row items-start justify-between'>
+          <span>Tags with Resources</span>
+          <AddTagDialog prevTags={data} />
+        </CardTitle>
         <CardDescription>List of tags with no. of resources.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -74,7 +78,9 @@ export default function TagStats({ data }: { data: TagType[] }) {
                   <TableCell className='px-3 py-1'>
                     {convertTagBtoF(tag.id)}
                   </TableCell>
-                  <TableCell className='text-right'>{tag.data}</TableCell>
+                  <TableCell className='text-right'>
+                    {tag.numberOfRes}
+                  </TableCell>
                 </TableRow>
               );
             })}

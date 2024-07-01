@@ -63,7 +63,7 @@ export default async function ResourceCard({
       </CardContent>
 
       <CardFooter className='flex flex-col items-start gap-4'>
-        <p className='line-clamp-1'>
+        <p className='line-clamp-1 text-sm'>
           <span className='font-semibold'>{'Tags: '}</span>
           {tagsLabel.join(', ')}
         </p>
@@ -108,7 +108,9 @@ export default async function ResourceCard({
             ></span>
           </TooltipTrigger>
           <TooltipContent>
-            <p>{verified ? 'Verified' : 'Unverified'}</p>
+            <p className={cn(verified ? 'text-green-600' : 'text-red-600')}>
+              {verified ? 'Verified' : 'Unverified'}
+            </p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
