@@ -3,11 +3,9 @@ import { UserType } from '@/types/user';
 import {
   Body,
   Container,
-  Font,
   Head,
   Html,
   Link,
-  Preview,
   Tailwind,
   Text,
 } from '@react-email/components';
@@ -22,19 +20,11 @@ export default function VerificationEmail({
 }) {
   return (
     <Html>
-      <Preview>Confirmation about contribution</Preview>
       <Tailwind config={{}}>
-        <Head>
-          <Font
-            fontFamily='Verdana'
-            fallbackFontFamily='cursive'
-            fontWeight={400}
-            fontStyle='normal'
-          />
-        </Head>
+        <Head />
         <Body className='bg-white'>
           <Container className='container'>
-            <Text className='text-lg font-bold'>{`Hello, ${user.name},`}</Text>
+            <Text className='text-base font-bold'>{`Hello, ${user.name},`}</Text>
             <Text>
               {`We just wanted to say a quick thanks for sharing your awesome
               resource, `}
@@ -42,6 +32,15 @@ export default function VerificationEmail({
               {`. It's clear you put a lot of thought
               and effort into it, and we know it'll be incredibly helpful to our
               dev community.`}
+            </Text>
+
+            <Text>
+              Now you can see your verified resource at{' '}
+              <Link href='https://www.clubcesa.tech/learn'>
+                clubcesa.tech/learn{' '}
+              </Link>
+              or at your profile{' '}
+              <Link href='https://www.clubcesa.tech/me'>clubcesa.tech/me</Link>
             </Text>
 
             <Text className='text-base font-bold'>Maintaining Accuracy:</Text>
@@ -69,10 +68,10 @@ export default function VerificationEmail({
 
             <Text>Keep sharing your wisdom!</Text>
 
-            <Text className='font-bold'>
+            <Text className='text-base font-bold'>
               Best,
               <br />
-              CESA Community
+              CESA Official
             </Text>
           </Container>
         </Body>
