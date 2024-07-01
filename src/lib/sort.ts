@@ -1,8 +1,10 @@
+import { TagType } from '@/types/dashboard';
+
 export function sortTagByName({
   data,
   desc,
 }: {
-  data: { id: string; data: number }[];
+  data: TagType[];
   desc: boolean;
 }) {
   return data.sort((a, b) => {
@@ -18,14 +20,14 @@ export function sortTagByResource({
   data,
   desc,
 }: {
-  data: { id: string; data: number }[];
+  data: TagType[];
   desc: boolean;
 }) {
   return data.sort((a, b) => {
     if (desc) {
-      return a.data - b.data;
+      return a.numberOfRes - b.numberOfRes;
     } else {
-      return b.data - a.data;
+      return b.numberOfRes - a.numberOfRes;
     }
   });
 }

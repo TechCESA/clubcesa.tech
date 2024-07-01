@@ -1,7 +1,7 @@
 'use server';
 
 import { db } from '@/firebaseConfig';
-import { StatsType } from '@/types/dashboard';
+import { StatsType, TagType } from '@/types/dashboard';
 import { UserType } from '@/types/user';
 import { collection, getDocs, query, where } from '@firebase/firestore';
 
@@ -28,12 +28,13 @@ export async function getStats() {
   const adminLength = adminData.length ?? 0;
   const authorLength = authorsData.size ?? 0;
 
-  const tags = [] as { id: string; data: number }[];
+  const tags: TagType[] = [];
   tagsData.forEach((doc) => {
     !!doc.data()['resources']
-      ? tags.push({ id: doc.id, data: doc.data()['resources'].length })
-      : tags.push({ id: doc.id, data: 0 });
+      ? tags.push({ id: doc.id, numberOfRes: doc.data()['resources'].length })
+      : tags.push({ id: doc.id, numberOfRes: 0 });
   });
+  tags.sort((a, b) => b.numberOfRes - a.numberOfRes);
 
   const authors = authorsData.docs
     .map((doc) => {

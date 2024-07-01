@@ -74,7 +74,9 @@ export default function TagStats({ data }: { data: TagType[] }) {
                   <TableCell className='px-3 py-1'>
                     {convertTagBtoF(tag.id)}
                   </TableCell>
-                  <TableCell className='text-right'>{tag.data}</TableCell>
+                  <TableCell className='text-right'>
+                    {tag.numberOfRes}
+                  </TableCell>
                 </TableRow>
               );
             })}
