@@ -11,7 +11,16 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'img.playbook.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
     ],
+  },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 };
 

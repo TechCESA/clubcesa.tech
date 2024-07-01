@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { Card, CardHeader, CardTitle, CardDescription } from './ui/card';
 import Link from 'next/link';
 import { Button } from './ui/button';
+import { Card, CardDescription, CardHeader, CardTitle } from './ui/card';
 
 export default function Bento() {
   return (

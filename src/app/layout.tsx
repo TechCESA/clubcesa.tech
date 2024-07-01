@@ -1,9 +1,13 @@
-import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
-import '@/styles/globals.css';
-import { cn } from '@/lib/utils';
-import NabBar from '@/components/navbar';
+import SessionProvider from '@/components/auth-session-provider';
 import Footer from '@/components/footer';
+import NabBar from '@/components/navbar';
+import { cn } from '@/lib/utils';
+import '@/styles/globals.css';
+import type { Metadata } from 'next';
+import { getServerSession } from 'next-auth';
+import { Poppins } from 'next/font/google';
+import { authOptions } from './api/auth/[...nextauth]/options';
+import Transition from './template';
 
 const font = Poppins({
   subsets: ['latin'],
@@ -40,11 +44,13 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang='en' suppressHydrationWarning>
       <head>
@@ -52,13 +58,15 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          'min-h-screen scroll-smooth bg-background font-poppins text-primary antialiased',
+          'min-h-screen scroll-smooth bg-background font-poppins text-primary antialiased selection:bg-cesa-blue selection:text-primary-foreground',
           font.variable,
         )}
       >
-        <NabBar />
-        {children}
-        <Footer />
+        <SessionProvider session={session}>
+          <NabBar />
+          <Transition>{children}</Transition>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );
