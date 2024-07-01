@@ -53,7 +53,7 @@ export default function UserStats({
                   <Link href={usr.github} target='_blank'>
                     <Avatar className='size-6'>
                       <AvatarImage src={usr.avatar} alt={usr.name} />
-                      <AvatarFallback>{usr.name.charAt(0)}</AvatarFallback>
+                      <AvatarFallback>{usr.name}</AvatarFallback>
                     </Avatar>
                   </Link>
                 </TableCell>
