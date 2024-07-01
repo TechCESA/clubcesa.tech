@@ -1,9 +1,19 @@
 'use server';
 
 import { db } from '@/firebaseConfig';
+import { convertTagFtoB } from '@/lib/convert-tags';
 import { StatsType, TagType } from '@/types/dashboard';
 import { UserType } from '@/types/user';
-import { collection, getDocs, query, where } from '@firebase/firestore';
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from '@firebase/firestore';
+import { revalidatePath } from 'next/cache';
+import { z } from 'zod';
 
 const ResourceStr = 'resources';
 const TagStr = 'tags';
@@ -53,4 +63,56 @@ export async function getStats() {
     tags: tags,
     authors: authors,
   };
+}
+
+type State =
+  | {
+      error?: string;
+      message?: string;
+    }
+  | undefined;
+
+export async function addTagAction(
+  prevTags: TagType[],
+  prevState: State,
+  formData: FormData,
+): Promise<State> {
+  let { tag } = Object.fromEntries(formData);
+
+  tag = typeof tag === 'string' ? tag.trim() : tag;
+
+  const tagSchema = z
+    .string()
+    .regex(/^[a-zA-Z\s]+$/, {
+      message: 'Only alphabetic characters and spaces are allowed',
+    })
+    .min(6, 'Minimum 6 characters required');
+
+  const res = tagSchema.safeParse(tag);
+
+  if (!res.success) {
+    const errors = res.error.issues.map((issue) => issue.message);
+    return { error: `${errors[0]}\n${errors[1] ?? ''}` };
+  }
+
+  const formattedTag = convertTagFtoB(res.data);
+
+  const prevTagsIds = prevTags.map((tag) => tag.id);
+
+  if (prevTagsIds.includes(formattedTag)) {
+    return { message: 'Tags already exists.' };
+  }
+
+  try {
+    const docRef = doc(db, 'tags', formattedTag);
+
+    await setDoc(docRef, {
+      resources: [],
+    });
+  } catch (error) {
+    console.error('Firebase Error:', error);
+    return { message: 'Firebase Error: Failed to add tag.' };
+  }
+
+  revalidatePath('/dashboard');
 }
