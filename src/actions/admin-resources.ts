@@ -113,7 +113,7 @@ export async function editResourceAction(
     await batch.commit();
 
     if (result.data.isVerified && !prevRes.isVerified) {
-     await sendVerifyEmail({ userId: prevRes.author, resourceId: prevRes.id });
+      await sendVerifyEmail({ userId: prevRes.author, resourceId: prevRes.id });
     }
   } catch (error) {
     console.error('Firebase Error:', error);
@@ -180,19 +180,9 @@ export async function getResourceAction(
   }
 }
 
-export async function getAllResources(
-  filter: FilterOptions = FilterOptions.All,
-): Promise<ResourceType[]> {
+export async function getAllResources(): Promise<ResourceType[]> {
   try {
-    const querySnapshot =
-      filter === FilterOptions.All
-        ? await getDocs(collection(db, ResourceStr))
-        : await getDocs(
-            query(
-              collection(db, ResourceStr),
-              where('isVerified', '==', filter === FilterOptions.Verified),
-            ),
-          );
+    const querySnapshot = await getDocs(collection(db, ResourceStr));
 
     if (querySnapshot.empty) {
       return [];

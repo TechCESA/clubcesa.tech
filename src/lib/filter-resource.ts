@@ -1,17 +1,28 @@
 import { convertTagsBtoF } from '@/lib/convert-tags';
 import { ResourceType } from '@/types/resource';
 
-/* We can filter directly from the firestore */
 export const filterResources = ({
   resources,
   query,
   tag,
+  isVerified = null,
 }: {
   resources: ResourceType[];
   query: string | null;
   tag: string | null;
+  isVerified?: boolean | null;
 }) => {
   let filteredResources = resources;
+
+  if (isVerified === false) {
+    filteredResources = filteredResources.filter(
+      (res) => res.isVerified === false,
+    );
+  } else if (isVerified === true) {
+    filteredResources = filteredResources.filter(
+      (res) => res.isVerified === true,
+    );
+  }
 
   if (tag && tag !== 'all') {
     filteredResources = filteredResources.filter((res) =>
