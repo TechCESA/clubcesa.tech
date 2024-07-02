@@ -41,18 +41,6 @@ export async function sendVerifyEmail({
     to: author.email,
     subject: `Thanks for sharing "${resource?.title ?? 'resource'}" on CESA Community!`,
     html: emailHtml,
-    attachments: [
-      {
-        filename: 'mail-header.webp',
-        path: `${serverRuntimeConfig.rootDir}/public/images/mail-header.webp`,
-        cid: 'mail-header',
-      },
-      {
-        filename: 'mail-footer.webp',
-        path: `${serverRuntimeConfig.rootDir}/public/images/mail-footer.webp`,
-        cid: 'mail-footer',
-      },
-    ],
   } satisfies Mail.Options;
 
   try {
