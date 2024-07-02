@@ -25,11 +25,14 @@ export default function VerificationEmail({
         <Head />
         <Body className='bg-white'>
           <Container className='container'>
-            <Img
-              src='/images/mail-header.png'
-              alt='CESA Community'
-              className='h-auto w-full object-cover'
-            />
+            <Link href='https://www.clubcesa.tech/me' className='mb-1'>
+              <Img
+                src='cid:mail-header'
+                alt='CESA Community'
+                className='pointer-events-none h-auto w-full cursor-pointer select-none object-cover'
+                loading='eager'
+              />
+            </Link>
             <Text className='text-lg font-bold'>{`Hello, ${user.name},`}</Text>
             <Text>
               {`We just wanted to say a quick thanks for sharing your awesome
@@ -79,6 +82,14 @@ export default function VerificationEmail({
               <br />
               CESA Official
             </Text>
+            <Link href='https://www.clubcesa.tech/me' className='mt-2'>
+              <Img
+                src='cid:mail-footer'
+                alt='CESA Community'
+                className='pointer-events-none h-auto w-full cursor-pointer select-none object-cover'
+                loading='eager'
+              />
+            </Link>
           </Container>
         </Body>
       </Tailwind>
