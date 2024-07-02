@@ -9,7 +9,7 @@ import { render } from '@react-email/components';
 import * as nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
 import getConfig from 'next/config'
-const {ServerRuntimeConfig} = getConfig();
+const { serverRuntimeConfig } = getConfig();
 export async function sendVerifyEmail({
   userId,
   resourceId,
@@ -43,12 +43,12 @@ export async function sendVerifyEmail({
     html: emailHtml,
     attachments: [{
       filename: 'mail-header.webp',
-      path: `${ServerRuntimeConfig.ROOT_DIR}/public/images/mail-header.webp`,
+      path: `${serverRuntimeConfig.rootDir}/public/images/mail-header.webp`,
       cid: 'mail-header',
     },
       {
         filename: "mail-footer.webp",
-        path: `${ServerRuntimeConfig.ROOT_DIR}/public/images/mail-footer.webp`,
+        path: `${serverRuntimeConfig.rootDir}/public/images/mail-footer.webp`,
         cid: 'mail-footer'
     }
     ]
