@@ -8,7 +8,8 @@ import { doc, getDoc } from '@firebase/firestore';
 import { render } from '@react-email/components';
 import * as nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
-
+import getConfig from 'next/config';
+const { serverRuntimeConfig } = getConfig();
 export async function sendVerifyEmail({
   userId,
   resourceId,
@@ -40,6 +41,18 @@ export async function sendVerifyEmail({
     to: author.email,
     subject: `Thanks for sharing "${resource?.title ?? 'resource'}" on CESA Community!`,
     html: emailHtml,
+    attachments: [
+      {
+        filename: 'mail-header.webp',
+        path: `${serverRuntimeConfig.rootDir}/public/images/mail-header.webp`,
+        cid: 'mail-header',
+      },
+      {
+        filename: 'mail-footer.webp',
+        path: `${serverRuntimeConfig.rootDir}/public/images/mail-footer.webp`,
+        cid: 'mail-footer',
+      },
+    ],
   } satisfies Mail.Options;
 
   try {
