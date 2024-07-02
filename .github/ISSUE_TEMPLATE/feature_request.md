@@ -4,7 +4,6 @@ about: Suggest an idea for this project
 title: 'req:'
 labels: enhancement, feature, help wanted, question
 assignees: ''
-
 ---
 
 **Is your feature request related to a problem? Please describe.**
