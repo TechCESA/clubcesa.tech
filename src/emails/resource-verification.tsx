@@ -8,6 +8,7 @@ import {
   Link,
   Tailwind,
   Text,
+  Img,
 } from '@react-email/components';
 import * as React from 'react';
 
@@ -24,7 +25,12 @@ export default function VerificationEmail({
         <Head />
         <Body className='bg-white'>
           <Container className='container'>
-            <Text className='text-base font-bold'>{`Hello, ${user.name},`}</Text>
+            <Img
+              src='/images/mail-header.png'
+              alt='CESA Community'
+              className='h-auto w-full object-cover'
+            />
+            <Text className='text-lg font-bold'>{`Hello, ${user.name},`}</Text>
             <Text>
               {`We just wanted to say a quick thanks for sharing your awesome
               resource, `}
