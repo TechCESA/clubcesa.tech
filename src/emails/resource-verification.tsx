@@ -25,12 +25,16 @@ export default function VerificationEmail({
         <Head />
         <Body className='bg-white'>
           <Container className='container'>
-            <Link href='https://www.clubcesa.tech/me' className='mb-1'>
+            <Link
+              href='https://www.clubcesa.tech/me'
+              id='header'
+              className='mb-1'
+            >
               <Img
-                src='cid:mail-header'
+                src='https://firebasestorage.googleapis.com/v0/b/clubcesa-cms.appspot.com/o/emails%2Fmail-header.webp?alt=media&token=21a532f8-15d6-4937-ad26-3ee72b32d787'
                 alt='CESA Community'
-                className='pointer-events-none h-auto w-full cursor-pointer select-none object-cover'
                 loading='eager'
+                className='pointer-events-none h-auto w-full cursor-pointer select-none object-cover'
               />
             </Link>
             <Text className='text-lg font-bold'>{`Hello, ${user.name},`}</Text>
@@ -82,12 +86,16 @@ export default function VerificationEmail({
               <br />
               CESA Official
             </Text>
-            <Link href='https://www.clubcesa.tech/me' className='mt-2'>
+            <Link
+              href='https://www.clubcesa.tech/me'
+              id='footer'
+              className='mt-2'
+            >
               <Img
-                src='cid:mail-footer'
+                src='https://firebasestorage.googleapis.com/v0/b/clubcesa-cms.appspot.com/o/emails%2Fmail-footer.webp?alt=media&token=916638aa-ab72-4a0a-9000-447da0ff8d6a'
                 alt='CESA Community'
-                className='pointer-events-none h-auto w-full cursor-pointer select-none object-cover'
                 loading='eager'
+                className='pointer-events-none h-auto w-full cursor-pointer select-none object-cover'
               />
             </Link>
           </Container>

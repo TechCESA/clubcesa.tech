@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig = {
   reactStrictMode: true,
-  serverRuntimeConfig: {
-    rootDir: __dirname,
-  },
   images: {
     remotePatterns: [
       {
@@ -21,6 +15,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
       },
+      {
+        protocol: "https",
+        hostname:"firebasestorage.googleapis.com"
+      }
     ],
   },
   logging: {
