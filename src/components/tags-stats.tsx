@@ -34,7 +34,7 @@ export default function TagStats({ data }: { data: TagType[] }) {
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
 
   return (
-    <Card>
+    <Card className='mx-4 md:mx-0'>
       <CardHeader>
         <CardTitle className='flex flex-row items-start justify-between'>
           <span>Tags with Resources</span>
