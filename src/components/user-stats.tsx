@@ -26,7 +26,7 @@ export default function UserStats({
   isAdmin?: boolean;
 }) {
   return (
-    <Card>
+    <Card className='w-screen md:w-auto'>
       <CardHeader>
         <CardTitle>{isAdmin ? 'Admins' : 'Authors'}</CardTitle>
         <CardDescription>
