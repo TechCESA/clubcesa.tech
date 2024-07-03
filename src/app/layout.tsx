@@ -8,7 +8,7 @@ import { getServerSession } from 'next-auth';
 import { Poppins } from 'next/font/google';
 import { authOptions } from './api/auth/[...nextauth]/options';
 import Transition from './template';
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const font = Poppins({
