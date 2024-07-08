@@ -62,8 +62,6 @@ export default async function UserPage({
   const convertTagsBtoFMemo = memoize(convertTagsBtoF);
   const formattedTags = convertTagsBtoFMemo(Array.from(tags));
 
-  console.log(filter == 'all' ? null : filter === 'true');
-
   const filteredResources = memoize(filterResources)({
     resources: userResources,
     query: searchQuery,
