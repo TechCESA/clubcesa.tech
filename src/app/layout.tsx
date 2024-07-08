@@ -8,6 +8,8 @@ import { getServerSession } from 'next-auth';
 import { Poppins } from 'next/font/google';
 import { authOptions } from './api/auth/[...nextauth]/options';
 import Transition from './template';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const font = Poppins({
   subsets: ['latin'],
@@ -67,6 +69,8 @@ export default async function RootLayout({
           <Transition>{children}</Transition>
           <Footer />
         </SessionProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import { StatsType } from '@/types/dashboard';
 
 export default function StatsComponent({ data }: { data: StatsType }) {
   return (
-    <div className='col-span-1 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+    <div className='mx-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       <Link href='/dashboard/resources'>
         <Card className='flex flex-col items-center justify-center gap-2 p-6 hover:bg-slate-50'>
           <div className='text-4xl font-bold'>{data.resourcesLen}</div>

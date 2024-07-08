@@ -8,7 +8,8 @@ import { doc, getDoc } from '@firebase/firestore';
 import { render } from '@react-email/components';
 import * as nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
-
+import getConfig from 'next/config';
+const { serverRuntimeConfig } = getConfig();
 export async function sendVerifyEmail({
   userId,
   resourceId,
