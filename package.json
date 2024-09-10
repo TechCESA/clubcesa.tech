@@ -33,7 +33,6 @@
     "cmdk": "^1.0.0",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.12",
-    "input-otp": "^1.2.4",
     "lucide-react": "^0.373.0",
     "next": "14.2.4",
     "next-auth": "^4.24.7",
