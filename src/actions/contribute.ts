@@ -15,8 +15,11 @@ const ResourceSchema = z.object({
     .max(50, 'Title length is more than maximum'),
   description: z
     .string()
-    .min(200, 'Minimum 300 characters required')
-    .max(300, 'Description length is more than maximum'),
+    .min(200, 'Minimum 200 characters required')
+    .max(
+      300,
+      'Description length is more than maximum, it should be less than 300 characters',
+    ),
   link: z.string().url('Invalid URL format'),
   tags: z.array(z.string()).nonempty('At least one tag is required'),
 });
