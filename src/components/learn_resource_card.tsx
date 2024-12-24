@@ -48,7 +48,7 @@ export default async function LearnResourceCard({
           <Avatar className='size-6'>
             <AvatarImage src={authorData.avatar} alt={authorData.name} />
             <AvatarFallback className='font-bold text-cesa-blue'>
-              {authorData.name.charAt(0)}
+              {authorData.name.charAt(0) ?? ''}
             </AvatarFallback>
           </Avatar>
 

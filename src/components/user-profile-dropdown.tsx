@@ -22,10 +22,10 @@ export default function UserProfileDropDown() {
       <DropdownMenuTrigger>
         <Avatar className='size-8'>
           <AvatarImage
-            src={session.user?.image || ''}
-            alt={session.user.name?.charAt(0)}
+            src={session.user?.image ?? ''}
+            alt={session.user.name?.charAt(0) ?? ''}
           />
-          <AvatarFallback>{session.user.name?.charAt(0)}</AvatarFallback>
+          <AvatarFallback>{session.user.name?.charAt(0) ?? ''}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
