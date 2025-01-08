@@ -20,6 +20,7 @@ export const authOptions = {
                 ...profile,
                 github: profile.html_url,
                 image: profile.avatar_url,
+                login: profile.login,
                 role: 'admin',
               };
             }
@@ -29,6 +30,7 @@ export const authOptions = {
             ...profile,
             github: profile.html_url,
             image: profile.avatar_url,
+            login: profile.login,
             role: 'user',
           };
         } catch (error) {
@@ -73,7 +75,7 @@ export const authOptions = {
         }
 
         await setDoc(authorRef, {
-          name: user.name,
+          name: user.name ?? user.login,
           email: user.email,
           github: user.github,
           role: user.role,

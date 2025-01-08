@@ -5,6 +5,7 @@ declare module 'next-auth' {
   interface User {
     github?: string;
     role?: string;
+    login?: string;
   }
   interface Session {
     user: {
