@@ -16,9 +16,13 @@ const nextConfig = {
         hostname: 'avatars.githubusercontent.com',
       },
       {
-        protocol: "https",
-        hostname:"firebasestorage.googleapis.com"
-      }
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fakeimg.pl',
+      },
     ],
   },
   logging: {
