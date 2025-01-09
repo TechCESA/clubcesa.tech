@@ -12,7 +12,7 @@ export const MerchList = [
     description:
       'Introducing our Sweatshirts - the epitome of style, comfort, and college spirit. Elevate your presence at campus events with our vibrant designs that seamlessly blend tradition.',
     price: '₹ 600',
-    link: '/merch/varsity',
+    link: '/merch/sweatshirt',
     image: 'https://fakeimg.pl/640x480',
   },
 ];
