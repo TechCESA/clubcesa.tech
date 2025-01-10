@@ -1,5 +1,7 @@
-import NotFoundComponent from '@/components/not-found';
+import {SlideComponent} from '@/components/Slides';
 
-export default function NotFound() {
-  return <NotFoundComponent />;
+export default function Members() {
+  return <SlideComponent />;
 }
+
+

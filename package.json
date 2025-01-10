@@ -31,6 +31,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.12",
     "lucide-react": "^0.373.0",
