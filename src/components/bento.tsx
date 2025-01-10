@@ -131,23 +131,49 @@ export default function Bento() {
         </CardHeader>
       </Card>
 
-      <Link href='https://www.instagram.com/cesa.bvcoe' target='_blank'>
-        <Card className='anita row-span-1 flex h-full items-center justify-center hover:text-destructive'>
-          <CardHeader className='flex flex-row items-center justify-center gap-8'>
-            <Image
-              src='/icons/insta.svg'
-              height={40}
-              width={40}
-              alt='Instagram'
-              className='object-contain object-center'
-            />
-            <CardTitle className='flex flex-col text-xl font-semibold md:text-3xl'>
-              <p>@cesa.bvcoe</p>
-              <p>Instagram</p>
-            </CardTitle>
-          </CardHeader>
-        </Card>
-      </Link>
+      <div className='flex w-full flex-row gap-4'>
+        <Link
+          href='https://www.instagram.com/cesa.bvcoe'
+          target='_blank'
+          className='flex-1'
+        >
+          <Card className='flex h-full items-center justify-center hover:text-destructive'>
+            <CardHeader className='flex flex-col items-center justify-center'>
+              <Image
+                src='/icons/insta.svg'
+                height={48}
+                width={48}
+                alt='Instagram'
+                className='object-contain object-center'
+              />
+              <CardTitle className='flex flex-col text-center text-xl font-semibold'>
+                <p>@cesa.bvcoe</p>
+              </CardTitle>
+            </CardHeader>
+          </Card>
+        </Link>
+
+        <Link
+          href='https://www.linkedin.com/company/bvcoecesa'
+          target='_blank'
+          className='flex-1'
+        >
+          <Card className='flex h-full items-center justify-center hover:text-cesa-blue'>
+            <CardHeader className='flex flex-col items-center justify-center'>
+              <Image
+                src='/icons/linkedin.svg'
+                height={56}
+                width={56}
+                alt='LinkedIn'
+                className='object-contain object-center'
+              />
+              <CardTitle className='flex flex-col text-center text-xl font-semibold'>
+                <p>@bvcoecesa</p>
+              </CardTitle>
+            </CardHeader>
+          </Card>
+        </Link>
+      </div>
 
       <Card className='col-span-1 md:col-span-2'>
         <CardHeader className='flex h-full flex-col items-center justify-center'>
