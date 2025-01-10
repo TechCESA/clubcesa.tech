@@ -19,7 +19,7 @@ export default function CustomizedCarousel({
 }) {
   return (
     <>
-      <p className='mb-4 mt-8 font-bold text-cesa-blue'>{teamName}</p>
+      <p className='mb-4 mt-12 font-bold text-cesa-blue'>{teamName}</p>
       <Carousel
         opts={{ loop: true, align: 'center' }}
         className='w-full'

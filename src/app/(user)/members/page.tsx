@@ -52,7 +52,7 @@ const TEAMS = [
 
 export default function Page() {
   return (
-    <div className='container mx-auto my-16'>
+    <div className='container mx-auto my-20'>
       {TEAMS.map(({ teamName, team, snapDelay }, idx) => (
         <CustomizedCarousel
           key={teamName}
