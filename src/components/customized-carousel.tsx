@@ -83,17 +83,20 @@ export function MemberCard({ mem }: { mem: MemberType }) {
       <h3 className='text-center text-2xl font-bold'>{name}</h3>
       <p className='mb-4 text-sm text-cesa-blue'>{role}</p>
       <div className='mt-4 flex justify-center space-x-4'>
-        {socialProfiles.map((profile) => (
-          <a
-            key={profile.platform}
-            href={profile.url}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-muted-foreground transition-colors hover:text-foreground'
-          >
-            {getSocialIcon(profile.platform)}
-          </a>
-        ))}
+        {socialProfiles.map(
+          (profile) =>
+            profile.url && (
+              <a
+                key={profile.platform}
+                href={profile.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-muted-foreground transition-colors hover:text-foreground'
+              >
+                {getSocialIcon(profile.platform)}
+              </a>
+            ),
+        )}
       </div>
     </div>
   );
