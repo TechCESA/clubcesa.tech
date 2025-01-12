@@ -42,9 +42,9 @@ export const TechnicalTeam: MemberType[] = [
     img: '/team/atharvachavan.jpg',
     name: 'Atharva Chavan',
     role: 'Technical Joint-Lead',
-    linkedin: '',
-    instagram: '',
-    twitter: '',
+    linkedin: 'https://www.linkedin.com/in/atharva-chavan10/',
+    instagram: 'https://www.instagram.com/atharvaa___10/',
+    twitter: 'https://x.com/Atharva__1/',
   },
   {
     img: '/team/shreyabhoir.jpg',
@@ -215,7 +215,7 @@ export const MarketingTeam: MemberType[] = [
     name: 'Gauri Patil',
     role: 'Member',
     linkedin: '',
-    instagram: '',
+    instagram: 'https://www.instagram.com/gauriii___7900',
     twitter: '',
   },
 ];
@@ -223,8 +223,8 @@ export const MarketingTeam: MemberType[] = [
 /* 4 */
 export const PhotographyTeam: MemberType[] = [
   {
-    img: '/team/mitalisalunke.jpg',
-    name: 'Mitali Salunke',
+    img: '/team/mitalisalunkhe.jpg',
+    name: 'Mitali Salunkhe',
     role: 'Photography Lead',
     linkedin: 'http://linkedin.com/in/mitali-salunkhe',
     instagram: 'https://www.instagram.com/__mitali.s__/',
@@ -237,14 +237,6 @@ export const PhotographyTeam: MemberType[] = [
     linkedin: 'https://www.linkedin.com/in/nikhi%C5%82-kathe-97b761312/',
     instagram: 'https://www.instagram.com/nikhilkathe_/',
     twitter: 'https://x.com/nikhilkathe_',
-  },
-  {
-    img: '/team/sparshsaini.jpg',
-    name: 'Sparsh Saini',
-    role: 'Member',
-    linkedin: '',
-    instagram: '',
-    twitter: '',
   },
   {
     img: '/team/sanjeetredkar.jpg',
@@ -262,8 +254,8 @@ export const SportsTeam: MemberType[] = [
     img: '/team/pradeeprathod.jpg',
     name: 'Pradeep Rathod',
     role: 'Sports Lead (Male)',
-    linkedin: '',
-    instagram: '',
+    linkedin: 'https://www.linkedin.com/in/pradeep-rathod22',
+    instagram: 'https://www.instagram.com/_pradeep.22_/',
     twitter: '',
   },
   {
