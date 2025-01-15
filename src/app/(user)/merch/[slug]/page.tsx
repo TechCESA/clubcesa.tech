@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
-const SIZES = ['M-38', 'L-40', 'XL-42', 'XXL-44'];
+const SIZES = ['S-36', 'M-38', 'L-40', 'XL-42', 'XXL-44'];
 
 export default function Page({ params }: { params: { slug: string } }) {
   const product = MerchStoreData.find(
