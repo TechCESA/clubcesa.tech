@@ -21,8 +21,8 @@ export default function NabBar() {
     { name: '/', link: '/' },
     { name: 'Learn', link: '/learn' },
     { name: 'Events', link: '/events' },
+    { name: 'Merch', link: '/merch' },
     { name: 'Memories', link: '/memories' },
-    // { name: 'Merch', link: '/merch' },
   ];
 
   return (
