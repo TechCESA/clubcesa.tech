@@ -16,7 +16,6 @@ export const Events: Event[] = [
     <br/>✅ Classic Mode Battles
     <br/>✅ Squad Competitions
     <br/>✅ Multiple Game Rounds
-    <br/>✅ Live Streaming
     <br/><br/>Show your tactical prowess and claim victory in BGMI!
     <br/><br/><b>📅 Date:</b> 21st January 2024
     <br/><b>📍 Venue:</b> Online Event
