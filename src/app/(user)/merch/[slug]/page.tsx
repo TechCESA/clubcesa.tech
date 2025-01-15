@@ -1,18 +1,16 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
 import { MerchStoreData } from '@/utils/merch-store';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import React, { useState } from 'react';
+import React from 'react';
 
-const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+const SIZES = ['M-38', 'L-40', 'XL-42', 'XXL-44'];
 
 export default function Page({ params }: { params: { slug: string } }) {
   const product = MerchStoreData.find(
@@ -23,8 +21,6 @@ export default function Page({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const [selectedImage, setSelectedImage] = useState(0);
-
   return (
     <div className='container mx-auto my-12 px-4 py-8'>
       <div className='grid items-start gap-8 lg:grid-cols-2'>
@@ -32,14 +28,14 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className='space-y-4'>
           <div className='relative aspect-square overflow-hidden rounded-lg bg-muted'>
             <Image
-              src={product.images[selectedImage]}
+              src={product.images[0]}
               alt='Product image'
               fill
               className='object-cover'
               priority
             />
           </div>
-          <div className='flex snap-x gap-4 overflow-auto pb-2'>
+          {/* <div className='flex snap-x gap-4 overflow-auto pb-2'>
             {product.images.map((image, index) => (
               <button
                 key={index}
@@ -57,7 +53,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 />
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Product Info */}
@@ -73,10 +69,10 @@ export default function Page({ params }: { params: { slug: string } }) {
 
           <div className='space-y-4'>
             <div className='space-y-2'>
-              <Label className='flex flex-row items-center justify-between text-base'>
+              {/* <Label className='flex flex-row items-center justify-between text-base'>
                 <p>Size</p>
                 <SizeGuideModal src={product.size_chart} />
-              </Label>
+              </Label> */}
 
               <RadioGroup defaultValue='M' className='grid grid-cols-4 gap-2'>
                 {SIZES.map((size) => (
@@ -92,34 +88,36 @@ export default function Page({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          <Button className='w-full bg-cesa-blue' size='lg'>
-            Buy
-          </Button>
+          <Link href={product.google_form} className='block'>
+            <Button className='w-full bg-cesa-blue' size='lg'>
+              Buy
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
 
-function SizeGuideModal({ src }: { src: string }) {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Link href='' className='text-sm text-blue-600 underline'>
-          Size guide
-        </Link>
-      </DialogTrigger>
-      <DialogContent className='sm:max-w-[425px]'>
-        <div className='relative aspect-square overflow-hidden rounded-lg bg-muted'>
-          <Image
-            src={src}
-            alt='Product image'
-            fill
-            className='object-cover'
-            priority
-          />
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
+// function SizeGuideModal({ src }: { src: string }) {
+//   return (
+//     <Dialog>
+//       <DialogTrigger asChild>
+//         <Link href='' className='text-sm text-blue-600 underline'>
+//           Size guide
+//         </Link>
+//       </DialogTrigger>
+//       <DialogContent className='sm:max-w-[425px]'>
+//         <div className='relative aspect-square overflow-hidden rounded-lg bg-muted'>
+//           <Image
+//             src={src}
+//             alt='Product image'
+//             fill
+//             className='object-cover'
+//             priority
+//           />
+//         </div>
+//       </DialogContent>
+//     </Dialog>
+//   );
+// }
