@@ -130,6 +130,7 @@ export default function ContributeForm({ tags }: { tags: string[] }) {
           <Link
             href='mailto:connect.cesaofficial@gmail.com'
             className='text-blue-500'
+            target='_blank'
           >
             connect.cesaofficial@gmail.com
           </Link>

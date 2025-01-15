@@ -17,6 +17,7 @@ export default function Page() {
             href={
               'https://www.playbook.com/s/farewell-24/gqMxLPLxd8z3XMgWhkdCV31b'
             }
+            target='_blank'
             className='relative h-full overflow-hidden rounded-2xl border-2 border-slate-100'
           >
             <Image
@@ -38,6 +39,7 @@ export default function Page() {
               href={
                 'https://drive.google.com/drive/folders/1nKpUJfib8CBNUQzvBIezYNpheMKgSUPk'
               }
+              target='_blank'
               className='relative col-span-2 row-span-3 h-full overflow-hidden rounded-2xl border-2 border-slate-100 lg:col-span-1 lg:row-span-2'
             >
               <Image
@@ -58,6 +60,7 @@ export default function Page() {
               href={
                 'https://drive.google.com/drive/folders/1-IMzu40f0LWnZUB9O7GcWrhTS03BYzWb'
               }
+              target='_blank'
               className='relative row-span-3 overflow-hidden rounded-2xl border-2 border-slate-100'
             >
               <Image
@@ -78,6 +81,7 @@ export default function Page() {
               href={
                 'https://drive.google.com/drive/folders/1_7iVvblgVCVIQ6Kq2Y6RYCnjOxhJJ9qO'
               }
+              target='_blank'
               className='relative row-span-3 overflow-hidden rounded-2xl border-2 border-slate-100'
             >
               <Image

@@ -55,7 +55,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             dangerouslySetInnerHTML={{ __html: event.description }}
           ></p>
 
-          <Link href={event.registerLink} className='block'>
+          <Link href={event.registerLink} className='block' target='_blank'>
             <Button type='submit' className='w-full bg-cesa-blue text-white'>
               Fill the form
             </Button>

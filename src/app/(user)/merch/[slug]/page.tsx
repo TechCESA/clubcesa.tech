@@ -88,7 +88,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          <Link href={product.google_form} className='block'>
+          <Link href={product.google_form} className='block' target='_blank'>
             <Button className='w-full bg-cesa-blue' size='lg'>
               Buy
             </Button>

@@ -25,7 +25,7 @@ export default function Bento() {
         </div>
       </Link>
 
-      <Link href='members' className='row-span-2'>
+      <Link href='/members' className='row-span-2'>
         <Card className='bg-[#FF5C00] p-2 text-accent'>
           <CardHeader className='flex h-full flex-col items-center text-center'>
             <div className='relative aspect-[6/2] h-auto w-full md:aspect-[6/1]'>
