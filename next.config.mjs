@@ -19,10 +19,6 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'firebasestorage.googleapis.com',
       },
-      {
-        protocol: 'https',
-        hostname: 'fakeimg.pl',
-      },
     ],
   },
   logging: {
