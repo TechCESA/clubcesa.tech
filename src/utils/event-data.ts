@@ -52,7 +52,7 @@ export const Events: Event[] = [
     <br/><b>📍 Venue:</b> Quandrangle, BVCOENM Campus
     <br/><b>💰 Registration Fee:</b> ₹150
     <br/><b>⌚ Time:</b> 03:00PM - 05:00PM
-    <br/><b>⌚ Team Size:</b> At Most 5 Players per team
+    <br/><b>💪🏻 Team Size:</b> At Most 5 Players per team
     
     <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹2000
     
