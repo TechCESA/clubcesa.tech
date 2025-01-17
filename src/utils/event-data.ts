@@ -96,7 +96,7 @@ export const Events: Event[] = [
   {
     slug: 'figjam',
     title: 'FigJam',
-    price: '₹ 100',
+    price: '₹ 50',
     isTeamGame: false,
     main_image: '/events/figjam.png',
     date: '20',
@@ -112,7 +112,7 @@ export const Events: Event[] = [
     <br/><br/>Unleash your creativity and craft stunning UIs for applications!
     <br/><br/><b>📅 Date:</b> 20th January 2024
     <br/><b>📍 Venue:</b> Room 107
-    <br/><b>💰 Registration Fee:</b> ₹100
+    <br/><b>💰 Registration Fee:</b> ₹50
     <br/><b>⌚ Time:</b> 01:00PM - 02:00PM
     
     <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹1000
@@ -127,7 +127,7 @@ export const Events: Event[] = [
   {
     slug: 'code-crack',
     title: 'Code Crack',
-    price: '₹ 200',
+    price: '₹ 100',
     isTeamGame: false,
     main_image: '/events/codecrack.png',
     date: '20',
@@ -143,7 +143,7 @@ export const Events: Event[] = [
     <br/><br/>Showcase your coding skills and secure a Premium Internship Opportunity!
     <br/><br/><b>📅 Date:</b> 20th January 2024
     <br/><b>📍 Venue:</b> Room 107
-    <br/><b>💰 Registration Fee:</b> ₹200
+    <br/><b>💰 Registration Fee:</b> ₹100
     <br/><b>⌚ Time:</b> 02:00PM - 03:00PM
     
     <br/><br/>🏆 <b>GRAND PRIZE:</b> Premium Internship Opportunity!
