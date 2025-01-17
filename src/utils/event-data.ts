@@ -4,7 +4,7 @@ export const Events: Event[] = [
   {
     slug: 'bgmi',
     title: 'BGMI',
-    price: '₹ 200',
+    price: '₹ 120',
     isTeamGame: true,
     main_image: '/events/bgmi.png',
     date: '21',
@@ -19,7 +19,7 @@ export const Events: Event[] = [
     <br/><br/>Show your tactical prowess and claim victory in BGMI!
     <br/><br/><b>📅 Date:</b> 21st January 2024
     <br/><b>📍 Venue:</b> Online Event
-    <br/><b>💰 Registration Fee:</b> ₹200
+    <br/><b>💰 Registration Fee:</b> ₹120
     <br/><b>⌚ Time:</b> To Be Announced
     
     <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹2000
@@ -34,7 +34,7 @@ export const Events: Event[] = [
   {
     slug: 'scavenger',
     title: 'Scavenger Hunt',
-    price: '₹ 200',
+    price: '₹ 150',
     isTeamGame: true,
     main_image: '/events/scavenger.png',
     date: '20',
@@ -50,7 +50,7 @@ export const Events: Event[] = [
     <br/><br/>Navigate through campus, solve puzzles, and race against time!
     <br/><br/><b>📅 Date:</b> 20th January 2024
     <br/><b>📍 Venue:</b> Quandrangle, BVCOENM Campus
-    <br/><b>💰 Registration Fee:</b> ₹200
+    <br/><b>💰 Registration Fee:</b> ₹150
     <br/><b>⌚ Time:</b> 03:00PM - 05:00PM
     
     <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹2000
@@ -65,7 +65,7 @@ export const Events: Event[] = [
   {
     slug: 'human-foosball',
     title: 'Human Foosball',
-    price: '₹ 200',
+    price: '₹100',
     isTeamGame: true,
     main_image: '/events/foosball.png',
     date: '20',
@@ -81,7 +81,7 @@ export const Events: Event[] = [
     <br/><br/>Transform into life-sized foosball players and compete for glory!
     <br/><br/><b>📅 Date:</b> 20th January 2024
     <br/><b>📍 Venue:</b> Room 107
-    <br/><b>💰 Registration Fee:</b> ₹200
+    <br/><b>💰 Registration Fee:</b> ₹100
     <br/><b>⌚ Time:</b> 11:00AM - 02:00PM
     
     <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹2000
