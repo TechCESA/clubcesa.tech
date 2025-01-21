@@ -20,9 +20,10 @@ export const Events: Event[] = [
     <br/><br/><b>📅 Date:</b> 21st January 2024
     <br/><b>📍 Venue:</b> Online Event
     <br/><b>💰 Registration Fee:</b> ₹120
-    <br/><b>⌚ Time:</b> To Be Announced
+    <br/><b>⌚ Time:</b> 03:00 PM (IST)
     
-    <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹2000
+    
+    <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹1000
     
     <br/><br/><b>For More Details:</b>
     <br/>📞 Anuj: +91 7208349211
