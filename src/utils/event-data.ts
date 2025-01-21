@@ -23,7 +23,7 @@ export const Events: Event[] = [
     <br/><b>⌚ Time:</b> 03:00 PM (IST)
     
     
-    <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹1000
+    <br/><br/>🏆 <b>FIRST PRIZE:</b> ₹1500
     
     <br/><br/><b>For More Details:</b>
     <br/>📞 Anuj: +91 7208349211
