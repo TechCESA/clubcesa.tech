@@ -27,6 +27,9 @@ export const Events: Event[] = [
     
     <br/><br/><b>For More Details:</b>
     <br/>📞 Anuj: +91 7208349211
+
+
+  <br/>* Price Money may be subject to change.
     
     <br/><br/>⚡ Fight. Survive. Win. ⚡`,
     registerLink: 'https://forms.gle/au8i5WnD6CXtwuh3A',
