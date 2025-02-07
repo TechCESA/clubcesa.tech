@@ -15,7 +15,7 @@ export default function Page() {
         <div className='grid h-[90vh] grid-rows-2 gap-4'>
           <Link
             href={
-              'https://www.playbook.com/s/farewell-24/gqMxLPLxd8z3XMgWhkdCV31b'
+              'https://www.playbook.com/s/cipher-quest/UDrHMRfCbZYw9ZtsXERFHUFZ'
             }
             target='_blank'
             className='relative h-full overflow-hidden rounded-2xl border-2 border-slate-100'
@@ -23,15 +23,15 @@ export default function Page() {
             <Image
               className='blur-[1px]'
               src={
-                'https://img.playbook.com/6ObnewikNYqznXCJovgPpJSpXlXzNx_J4LiNNClGWMA/w:750/Z3M6Ly9icmFuZGlm/eS11c2VyY29udGVu/dC1kZXYvcHJvZC9w/cmV2aWV3cy9jNGFh/MzlkYi0zZTZjLTQy/ZmItOTZlNi04OGUx/OGUxMWM4MjU.webp'
+                'https://img.playbook.com/Pv2QuJsfpyLpxWb5oHgz0isr03qrtjQZ6B_38qH8VDU/w:1000/Z3M6Ly9icmFuZGlm/eS11c2VyY29udGVu/dC1kZXYvcHJvZC9s/YXJnZV9wcmV2aWV3/cy82ZmVkNDYyMC0w/MjA3LTQ4YjEtYTNl/ZC00OTcyOGVlZmNm/YTg.webp'
               }
-              alt='Farewell 2024'
+              alt='Cipher Quest'
               fill={true}
               loading='lazy'
               style={{ objectFit: 'cover' }}
             />
             <p className='absolute bottom-4 left-6 z-10 text-4xl font-bold text-white'>
-              Farewell 2024
+              Cipher Quest
             </p>
           </Link>
           <div className='grid grid-cols-2 grid-rows-5 gap-4'>
@@ -52,8 +52,29 @@ export default function Page() {
                 loading='lazy'
                 style={{ objectFit: 'cover' }}
               />
-              <p className='absolute bottom-4 left-4 z-10 text-2xl text-white'>
+              <p className='absolute bottom-4 left-4 z-10 text-2xl font-bold text-white'>
                 Cyber Carnival
+              </p>
+            </Link>
+            <Link
+              href={
+                'https://www.playbook.com/s/farewell-24/gqMxLPLxd8z3XMgWhkdCV31b'
+              }
+              target='_blank'
+              className='relative row-span-3 overflow-hidden rounded-2xl border-2 border-slate-100'
+            >
+              <Image
+                className='blur-[1px]'
+                src={
+                  'https://img.playbook.com/6ObnewikNYqznXCJovgPpJSpXlXzNx_J4LiNNClGWMA/w:750/Z3M6Ly9icmFuZGlm/eS11c2VyY29udGVu/dC1kZXYvcHJvZC9w/cmV2aWV3cy9jNGFh/MzlkYi0zZTZjLTQy/ZmItOTZlNi04OGUx/OGUxMWM4MjU.webp'
+                }
+                alt='Farewell 2024'
+                fill={true}
+                loading='lazy'
+                style={{ objectFit: 'cover' }}
+              />
+              <p className='absolute bottom-4 left-6 z-10 text-2xl font-bold text-white'>
+                Farewell 2024
               </p>
             </Link>
             <Link
@@ -73,7 +94,7 @@ export default function Page() {
                 loading='lazy'
                 style={{ objectFit: 'cover' }}
               />
-              <p className='absolute bottom-4 left-4 z-10 text-2xl text-white'>
+              <p className='absolute bottom-4 left-4 z-10 text-2xl font-bold text-white'>
                 Sports 2023
               </p>
             </Link>
@@ -82,7 +103,7 @@ export default function Page() {
                 'https://drive.google.com/drive/folders/1_7iVvblgVCVIQ6Kq2Y6RYCnjOxhJJ9qO'
               }
               target='_blank'
-              className='relative row-span-3 overflow-hidden rounded-2xl border-2 border-slate-100'
+              className='relative row-span-2 overflow-hidden rounded-2xl border-2 border-slate-100'
             >
               <Image
                 className='blur-[1px]'
@@ -94,13 +115,10 @@ export default function Page() {
                 loading='lazy'
                 style={{ objectFit: 'cover' }}
               />
-              <p className='absolute bottom-4 left-4 z-10 text-2xl text-white'>
+              <p className='absolute bottom-4 left-4 z-10 text-2xl font-bold text-white'>
                 Alumni Meet 2023
               </p>
             </Link>
-            <div className='row-span-2 hidden items-center justify-center overflow-hidden rounded-2xl border-2 border-slate-100 bg-yellow-300 text-2xl font-bold uppercase lg:flex'>
-              Discover the past
-            </div>
           </div>
         </div>
       </div>
